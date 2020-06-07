@@ -1,0 +1,15 @@
+.mat-toolbar{
+  height:200px;
+  background-color: #1C3764;
+  color:white;
+  height:160px;
+}
+.logo{
+  cursor: pointer;
+}
+
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
