@@ -1,0 +1,51 @@
+#map {
+    height: 664px;
+    // height: 894px;
+    width: 100%;
+   }
+   .input-search{
+    border-radius: 10px;
+    border: 1px solid #979797;
+    width: 416px;
+    height: 50px;
+    background-color: #FFF;
+   }
+  
+  ::-moz-placeholder {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Montserrat' !important;
+    color: #808080;
+   }
+   input[type=text] {
+    padding-left: 20px;
+}
+.search{
+    z-index: 1;
+position: absolute;
+left: 80px;
+top: 116px;
+
+}
+.input-latitude{
+    border-radius: 10px;
+    border: 1px solid #979797;
+    width: 200px;
+    height: 50px;
+    background-color: #FFF;
+   }
+  .latitude{
+    z-index: 1;
+    position: absolute;
+    left: 80px;
+    top: 205px;
+    
+    }
+.longitude{
+    z-index: 1;
+    position: absolute;
+    left: 317px;
+    top: 205px;
+    
+}
+

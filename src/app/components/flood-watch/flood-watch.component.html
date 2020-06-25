@@ -1,0 +1,7 @@
+<input placeholder="Search" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="input-search search" #search >
+
+<input type="text" [value]=lat class="input-latitude latitude" placeholder="Latitude" >
+<input type="text" [value]=lng class="input-latitude longitude" placeholder="Longitude" >
+<button (click)=this.mapInitializer()>Submit</button>
+<div #mapContainer id="map"></div>
+

@@ -1,16 +1,31 @@
 .mat-toolbar{
-  height:200px;
-  background-color: #1C3764;
-  color:white;
-  height:160px;
+  height:87px;
+  background-color: #FFFFFF;  
   font-size: 14px;
+  
 }
 .logo{
   cursor: pointer;
+  width: 92px;
+  height: 46px;
+  margin-left: 80px;
+  margin-top: 20.5px;
+  margin-bottom: 20.5px;
 }
 
 .example-fill-remaining-space {
   /* This fills the remaining space, by using flexbox.
      Every toolbar row uses a flexbox row layout. */
   flex: 1 1 auto;
+  text-align: right;
 }
+
+.heading{
+  cursor:pointer !important;
+  font-size:14px !important;
+  font-family: 'Montserrat' !important;
+  color: #29436D;
+  font-weight: 400;
+  margin: 40px;
+}
+

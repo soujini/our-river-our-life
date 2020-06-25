@@ -1,8 +1,13 @@
 <mat-toolbar>
   <img class="logo"  [routerLink] = "'/home'" src="../../assets/scalable-vector-graphics/orol-logo.svg">
 
-  <!-- This fills the remaining space of the current row -->
-  <span class="example-fill-remaining-space"></span>
+<div class="example-fill-remaining-space" > 
+  <span class="heading" [routerLink] = "'/top-nav'">Home</span>
+  <span class="heading" [routerLink] = "'/flood-watch'">Flood Watch</span> 
+  <span class="heading" [routerLink] = "'/flora-fauna'">Flora & Fauna Gallery</span>
+  <span class="heading" [routerLink] = "'/research'">Research Papers</span>
+  <span class="heading" [routerLink] = "'/privacy-policy'">Privacy Policy</span>
+</div>
 
-  <span style="color:white; cursor:pointer" [routerLink] = "'/privacy-policy'">PRIVACY POLICY</span>
 </mat-toolbar>
+
