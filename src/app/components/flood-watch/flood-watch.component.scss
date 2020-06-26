@@ -6,7 +6,7 @@
    .input-search{
     border-radius: 10px;
     border: 1px solid #979797;
-    width: 416px;
+    width: 394px;
     height: 50px;
     background-color: #FFF;
    }
@@ -30,7 +30,7 @@ top: 116px;
 .input-latitude{
     border-radius: 10px;
     border: 1px solid #979797;
-    width: 200px;
+    width: 178px;
     height: 50px;
     background-color: #FFF;
    }
@@ -44,8 +44,20 @@ top: 116px;
 .longitude{
     z-index: 1;
     position: absolute;
-    left: 317px;
+    left: 299px;
     top: 205px;
     
+}
+.data{
+    font-size: 16px;
+    font-weight:500;
+    color:#FFFFFF;
+    font-family: 'Montserrat' !important;
+}
+.data-position{
+    z-index: 1;
+position: absolute;
+left: 249px;
+top: 177px;
 }
 

@@ -1,7 +1,19 @@
-<input placeholder="Search" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="input-search search" #search >
+<!-- <input placeholder="Search" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="input-search search" #search formControl="searchControl">
 
 <input type="text" [value]=lat class="input-latitude latitude" placeholder="Latitude" >
+<span class="data data-position">OR ENTER</span>
 <input type="text" [value]=lng class="input-latitude longitude" placeholder="Longitude" >
-<button (click)=this.mapInitializer()>Submit</button>
-<div #mapContainer id="map"></div>
 
+<div #mapContainer id="map"></div>
+ -->
+ <google-map
+ (mapClick)="click($event)"
+ height="618px"
+ width="100%"
+ [zoom]="zoom"
+ [center]="center"
+ [options]="options"
+></google-map>
+<!-- Use custom zoom buttons -->
+<button (click)="zoomIn()">Zoom in</button>
+<button (click)="zoomOut()">Zoom out</button>

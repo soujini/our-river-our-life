@@ -1,36 +1,41 @@
-import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { FormControl } from "@angular/forms";
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps'
 
 @Component({
   selector: 'app-flood-watch',
   templateUrl: './flood-watch.component.html',
   styleUrls: ['./flood-watch.component.scss']
 })
-export class FloodWatchComponent implements AfterViewInit  {
-  @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
-  map: google.maps.Map;
-  lat = 40.730610;
-  lng = -73.935242;
-  public searchControl: FormControl;
-  coordinates = new google.maps.LatLng(this.lat, this.lng);
 
-  mapOptions: google.maps.MapOptions = {
-    center: this.coordinates,
-    zoom: 8,
-  };
-
-  marker = new google.maps.Marker({
-    position: this.coordinates,
-    map: this.map,
-  });
-
-  ngAfterViewInit() {
-    this.mapInitializer();
-   }
-
-   mapInitializer() {
-    this.map = new google.maps.Map(this.gmap.nativeElement, 
-    this.mapOptions);
-    this.marker.setMap(this.map);
-   }
-}
+  export class FloodWatchComponent implements OnInit {
+    zoom = 12
+    click(event: google.maps.MouseEvent) {
+      console.log(event)
+    }
+    center: google.maps.LatLngLiteral
+    options: google.maps.MapOptions = {
+      mapTypeId: 'hybrid',
+      zoomControl: false,
+      scrollwheel: false,
+      disableDoubleClickZoom: true,
+      maxZoom: 15,
+      minZoom: 8,
+    }
+  
+    ngOnInit() {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.center = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        }
+      })
+    }
+  
+    zoomIn() {
+      if (this.zoom < this.options.maxZoom) this.zoom++
+    }
+  
+    zoomOut() {
+      if (this.zoom > this.options.minZoom) this.zoom--
+    }
+  }
