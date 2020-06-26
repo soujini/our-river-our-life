@@ -15,6 +15,9 @@ import { FloodWatchComponent } from './components/flood-watch/flood-watch.compon
 import { FloraFaunaComponent } from './components/flora-fauna/flora-fauna.component';
 import { ResearchComponent } from './components/research/research.component';
 import { GoogleMapsModule } from '@angular/google-maps'
+import { AgmCoreModule } from '@agm/core';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +38,11 @@ import { GoogleMapsModule } from '@angular/google-maps'
     MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyALR2ZDTTyZXGBRFeCV0AHd0S-TV_GWYm8",     
+      libraries: ["places"]
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

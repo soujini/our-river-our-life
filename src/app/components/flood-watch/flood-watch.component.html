@@ -1,19 +1,17 @@
-<!-- <input placeholder="Search" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="input-search search" #search formControl="searchControl">
+<div class="container">
+  
+  <div class="form-group">
+   
 
-<input type="text" [value]=lat class="input-latitude latitude" placeholder="Latitude" >
-<span class="data data-position">OR ENTER</span>
-<input type="text" [value]=lng class="input-latitude longitude" placeholder="Longitude" >
+    <input placeholder="Search" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="input-search search" #search [formControl]="searchControl">
 
-<div #mapContainer id="map"></div>
- -->
- <google-map
- (mapClick)="click($event)"
- height="618px"
- width="100%"
- [zoom]="zoom"
- [center]="center"
- [options]="options"
-></google-map>
-<!-- Use custom zoom buttons -->
-<button (click)="zoomIn()">Zoom in</button>
-<button (click)="zoomOut()">Zoom out</button>
+    <input type="text"  class="input-latitude latitude" placeholder="Latitude" >
+    <span class="data data-position">OR ENTER</span>
+    <input type="text"  class="input-latitude longitude" placeholder="Longitude">
+
+  </div>
+  <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" [usePanning]='true' (mapReady)="mapReady($event)"  
+>
+    <agm-marker [latitude]="latitude" [longitude]="longitude"  iconUrl="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></agm-marker>
+  </agm-map>
+</div>
