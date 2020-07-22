@@ -2,9 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AppRoutingModule } from './app-routing.module';
-import {MatFormFieldModule} from '@angular/material/form-field'; 
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -16,7 +16,9 @@ import { FloraFaunaComponent } from './components/flora-fauna/flora-fauna.compon
 import { ResearchComponent } from './components/research/research.component';
 import { GoogleMapsModule } from '@angular/google-maps'
 import { AgmCoreModule } from '@agm/core';
+import { MDBBootstrapModulesPro, CarouselModule, WavesModule} from 'ng-uikit-pro-standard';
 
+// MDBBootstrapModulesPro
 
 @NgModule({
   declarations: [
@@ -39,8 +41,11 @@ import { AgmCoreModule } from '@agm/core';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
+    CarouselModule,
+    WavesModule,
+    MDBBootstrapModulesPro.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyALR2ZDTTyZXGBRFeCV0AHd0S-TV_GWYm8",     
+      apiKey: "AIzaSyALR2ZDTTyZXGBRFeCV0AHd0S-TV_GWYm8",
       libraries: ["places"]
     }),
   ],
