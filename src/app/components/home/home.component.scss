@@ -1,9 +1,15 @@
-.under-construction-text{
-  font-size: 52px;
-  text-transform:capitalize !important;
-  text-align: center;
-  color:#1C3764;
-  font-family: cursive;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
+.container{
+  height: 200px !important;
+  color: white !important;
+  background-color: #1C3764 !important;
+  padding: 28px !important;
+  }
+  .text{
+  font-size: 29px;
+  font-weight: 700;
+  font-family: Open Sans;
+  }
+  .ul-menu{
+      display:flex;
+      list-style-type: none;
+  }

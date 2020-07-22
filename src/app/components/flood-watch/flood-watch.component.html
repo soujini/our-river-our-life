@@ -1,17 +1,19 @@
 <div class="container">
-  
+
   <div class="form-group">
-   
 
-    <input placeholder="Search" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="input-search search" #search [formControl]="searchControl">
+<div>
+    <input placeholder="Search" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+      class="input-search search" #search [formControl]="searchControl">
 
-    <input type="text"  class="input-latitude latitude" placeholder="Latitude" >
+    <input type="text" class="input-latitude latitude" placeholder="Latitude">
     <span class="data data-position">OR ENTER</span>
-    <input type="text"  class="input-latitude longitude" placeholder="Longitude">
-
+    <input type="text" class="input-latitude longitude" placeholder="Longitude">
   </div>
-  <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" [usePanning]='true' (mapReady)="mapReady($event)"  
->
-    <agm-marker [latitude]="latitude" [longitude]="longitude"  iconUrl="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></agm-marker>
+  </div>
+  <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" [usePanning]='true'
+    (mapReady)="mapReady($event)">
+    <agm-marker [latitude]="latitude" [longitude]="longitude"
+      iconUrl="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></agm-marker>
   </agm-map>
 </div>
