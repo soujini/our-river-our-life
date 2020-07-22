@@ -10,13 +10,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { HomeComponent } from './components/home/home.component';
-import { TopNavComponent } from './components/top-nav/top-nav.component';
 import { FloodWatchComponent } from './components/flood-watch/flood-watch.component';
 import { FloraFaunaComponent } from './components/flora-fauna/flora-fauna.component';
 import { ResearchComponent } from './components/research/research.component';
 import { GoogleMapsModule } from '@angular/google-maps'
 import { AgmCoreModule } from '@agm/core';
 import { MDBBootstrapModulesPro, CarouselModule, WavesModule} from 'ng-uikit-pro-standard';
+import { ImagesGalleryComponent } from './components/images-gallery/images-gallery.component';
+import { VideosGalleryComponent } from './components/videos-gallery/videos-gallery.component';
 
 // MDBBootstrapModulesPro
 
@@ -26,10 +27,11 @@ import { MDBBootstrapModulesPro, CarouselModule, WavesModule} from 'ng-uikit-pro
     ToolbarComponent,
     PrivacyPolicyComponent,
     HomeComponent,
-    TopNavComponent,
     FloodWatchComponent,
     FloraFaunaComponent,
-    ResearchComponent
+    ResearchComponent,
+    ImagesGalleryComponent,
+    VideosGalleryComponent
   ],
   imports: [
     GoogleMapsModule,

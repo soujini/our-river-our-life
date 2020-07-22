@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TopNavComponent} from './components/top-nav/top-nav.component';
+// import { TopNavComponent} from './components/top-nav/top-nav.component';
 import { HomeComponent} from './components/home/home.component';
 import { FloodWatchComponent} from './components/flood-watch/flood-watch.component';
 import { FloraFaunaComponent} from './components/flora-fauna/flora-fauna.component';
@@ -13,10 +13,7 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent
   },
-  {
-    path: 'top-nav',
-    component: TopNavComponent
-  },
+  
   {
     path: 'flood-watch',
     component: FloodWatchComponent

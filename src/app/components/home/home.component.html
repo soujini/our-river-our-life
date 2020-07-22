@@ -1,37 +1,38 @@
-<div Class="container">
-    <span class="text">Hello!</span> <br />
-    <span></span>
+<div Class="top-nav">
+    <h3 class="text">Hello!</h3> 
+
+<p>Our River, Our Life is a citizen centric movement which envisions monitoring  and protection of our watersheds through community participation, while enabling partnerships across diverse groups, to empower and enable custodianship of our precious freshwater resources. </p>
 </div>
 <div>
     <ul class="ul-menu">
         <li>
-            <div>
-                <img src="./assets/jpg/river_monitoring.jpg" alt="River Monitoring" height="214" width="235">
-                <button>River Monitoring</button>
+            <div class="component">
+                <img src="./assets/jpg/river_monitoring.jpg" alt="River Monitoring" height="214" width="235"><br/>
+                <button mdbBtn type="button" color="primary" rounded="true" outline="true" mdbWavesEffect>River Monitoring</button>
             </div>
         </li>
         <li>
-            <div>
-                <img src="./assets/jpg/flood_watch.jpg" alt="Flood Watch"  height="214" width="235">
-                <button>Flood Watch</button>
+            <div class="component">
+                <img  src="../../assets/jpg/flood_watch.jpg" alt="Flood Watch" height="214" width="235"> <br/>
+                <button mdbBtn type="button" color="primary" rounded="true" outline="true" mdbWavesEffect>Flood Watch</button>
             </div>
         </li>
         <li>
-            <div>
-                <img src="./assets/jpg/flora_fauna.jpg" alt="Flora and Fauna"  height="214" width="235">
-                <button>Flora & Fauna</button>
+            <div class="component">
+                <img src="./assets/jpg/flora_fauna.jpg" alt="Flora and Fauna"  height="214" width="235"><br/>
+                <button mdbBtn type="button" color="primary" rounded="true" outline="true" mdbWavesEffect>Flora & Fauna</button>
+            </div>
+        </li>
+        <li>                
+            <div class="component">
+                <img src="./assets/jpg/voices_from_the_river.jpg" alt="Voices"  height="214" width="235"><br/>
+                <button mdbBtn type="button" color="primary" rounded="true" outline="true" mdbWavesEffect>Voices from the River</button>
             </div>
         </li>
         <li>
-            <div>
-                <img src="./assets/jpg/voices_from_the_river.jpg" alt="Voices"  height="214" width="235">
-                <button>Voices from the River</button>
-            </div>
-        </li>
-        <li>
-            <div>
-                <img src="./assets/jpg/resources.jpg" alt="Resources"  height="214" width="235">
-                <button>Resources</button>
+            <div class="component">
+                <img src="./assets/jpg/resources.jpg" alt="Resources"  height="214" width="235"> <br/>
+                <button mdbBtn type="button" color="primary" rounded="true" outline="true" mdbWavesEffect>Resources</button>
             </div>
         </li>
     </ul>
@@ -69,20 +70,4 @@
 
 </div>
   <app-flood-watch></app-flood-watch>
-  <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
-                [animation]="'slide'">
-    <mdb-carousel-item *ngFor="let item of slides; let i = index">
-      <div class="col-md-12" *ngFor="let card of item; let cardIndex = index">
-        <mdb-card class="my-1">
-          <mdb-card-img [src]="card.img" alt="Card image cap"></mdb-card-img>
-          <mdb-card-body>
-            <mdb-card-title>
-              <h4>{{card.title}}</h4>
-            </mdb-card-title>
-            <p>{{card.description}}</p>
-            <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{card.buttonText}}</a>
-          </mdb-card-body>
-        </mdb-card>
-      </div>
-    </mdb-carousel-item>
-  </mdb-carousel>
+<app-images-gallery></app-images-gallery>
