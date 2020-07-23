@@ -1,8 +1,19 @@
-.icone{
-width: 57px;
-height: 57px;
-border-radius: 50%;
-}
 .content{
-    display: flex;
+  display: flex;
+}
+mdb-card-img {
+background-color: black;
+}
+mdb-card-img img {
+  width: 100% !important;
+  height: 636px !important;
+}
+
+.artist-profile-pic{
+  width: 57px;
+  height: 57px;
+  border-radius: 50%;
+}
+mdb-carousel-item{
+  text-align: center;
 }

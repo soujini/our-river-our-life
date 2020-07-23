@@ -3,11 +3,13 @@
     <mdb-carousel-item *ngFor="let item of slides; let i = index">
         <div class="col-md-12" *ngFor="let card of item; let cardIndex = index">
             <mdb-card class="my-1">
-                <mdb-card-img [src]="card.image" alt="Card image cap"></mdb-card-img>
+
+                <mdb-card-img [src]="card.image" alt="Card image cap" height="636px"></mdb-card-img>
                 <mdb-card-body>
                     <div class="content">
                             <div>
-                                <img class="icone" [src]="card.artist_profile_pic">
+
+                                <img class="artist-profile-pic" [src]="card.artist_profile_pic" >
                                 <span>{{card.artist}}</span><br />
                                 <span>{{card.artist_social_media_1}}</span><br />
                                 <span>{{card.artist_social_media_2}}</span>

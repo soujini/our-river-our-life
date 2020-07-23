@@ -1,13 +1,31 @@
-.top-nav{
-  height: 200px !important;
-  color: white !important;
-  background-color: #1C3764 !important;
-  padding-left: 80px !important;
-  padding-top: 23px !important;
-  font-size: 19px !important;
-  font-weight: 500 !important;
-  font-family: 'Montserrat' !important;
-  }
+.component{
+  // padding:100px;
+  padding-top:0px;
+}
+.banner{
+  padding:100px;
+  text-align: center;
+  color:white;
+  font-family: 'Dancing Script', cursive;
+  font-weight: bold;
+  font-size: 36px;
+  // background-color: #1C3764;
+  // background-color: yellowgreen;
+  letter-spacing: 1px;
+  background: url('../../../assets/jpg/bg3.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+// .top-nav{
+//   height: 200px !important;
+//   color: white !important;
+//   background-color: #1C3764 !important;
+//   padding-left: 80px !important;
+//   padding-top: 23px !important;
+//   font-size: 19px !important;
+//   font-weight: 500 !important;
+//   font-family: 'Montserrat' !important;
+//   }
   .text{
   font-size: 29px !important;
   font-weight: 700 !important;
@@ -18,6 +36,6 @@
       list-style-type: none;
       padding: 80px;
   }
-  .component{
-    margin-right: 27px;
-  }
+  // .component{
+  //   margin-right: 27px;
+  // }
