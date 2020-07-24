@@ -1,1 +1,82 @@
-<p>videos-gallery works!</p>
+ <!-- <h3>Featured Videos</h3>  -->
+
+
+<!--    <iframe  [src]="safeSrc" width="916" height="540" frameborder="0" webkitallowfullscreen mozallowfullscreen 
+    style="margin-left: 45px;" allowfullscreen></iframe>
+   -->
+
+
+   <div class="container">
+   <div class="vid-container">
+	<iframe id="vid_frame" [src]="safeSrc" width="916" height="580" frameborder="0" ></iframe>
+</div>
+
+<div class="vid-list-container">
+<div class="vid-list">
+<div class="vid-item" onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/bvI8pBdfPYQ'">
+    <div class="thumb">
+        <img src="http://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg">
+    </div>
+    <div class="desc">
+        māti - land, floods and displacement
+    </div>
+  </div>
+  <div class="vid-item" onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/oVXmpxZkoTQ'">
+	<div class="thumb">
+        <img src="https://img.youtube.com/vi/oVXmpxZkoTQ/1.jpg">
+	</div>
+	<div class="desc">
+		India's ancient swamps and why they need more protection
+	</div>
+</div>
+<div class="vid-item" onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/oVXmpxZkoTQ'">
+	<div class="thumb">
+        <img src="https://img.youtube.com/vi/oVXmpxZkoTQ/1.jpg">
+	</div>
+	<div class="desc">
+		India's ancient swamps and why they need more protection
+	</div>
+</div> 
+ <div class="vid-item" onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/oVXmpxZkoTQ'">
+	<div class="thumb">
+        <img src="https://img.youtube.com/vi/oVXmpxZkoTQ/1.jpg">
+	</div>
+	<div class="desc">
+		India's ancient swamps and why they need more protection
+	</div>
+</div> 
+ <div class="vid-item" onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/oVXmpxZkoTQ'">
+	<div class="thumb">
+        <img src="https://img.youtube.com/vi/oVXmpxZkoTQ/1.jpg">
+	</div>
+	<div class="desc">
+		India's ancient swamps and why they need more protection
+	</div>
+</div> 
+ <div class="vid-item" onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/oVXmpxZkoTQ'">
+	<div class="thumb">
+        <img src="https://img.youtube.com/vi/oVXmpxZkoTQ/1.jpg">
+	</div>
+	<div class="desc">
+		India's ancient swamps and why they need more protection
+	</div>
+</div>  
+
+
+  
+
+</div>
+</div>
+
+<div class="arrows">
+	<div (click)="doClick('left')" class="arrow-left">
+		<i  class="fa fa-chevron-left fa-lg"></i>
+    </div>
+    
+	<div (click)="doClick('right')" class="arrow-right">
+		<i  class="fa fa-chevron-right fa-lg"></i>
+	</div>
+</div>
+
+
+

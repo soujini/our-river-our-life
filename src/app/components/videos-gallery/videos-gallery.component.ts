@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-videos-gallery',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./videos-gallery.component.scss']
 })
 export class VideosGalleryComponent implements OnInit {
+  safeSrc: SafeResourceUrl;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private sanitizer: DomSanitizer) { 
+    this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/bvI8pBdfPYQ");
   }
+  
+  ngOnInit(): void {
 
+  }
+  
+  doClick(btn) {
+    alert(`you clicked the ${btn} button`)
+  }
 }

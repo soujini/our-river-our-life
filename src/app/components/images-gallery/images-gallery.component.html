@@ -1,5 +1,5 @@
 <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
-    [animation]="'slide'">
+    [animation]="'none'">
     <mdb-carousel-item *ngFor="let item of slides; let i = index">
         <div class="col-md-12" *ngFor="let card of item; let cardIndex = index">
             <mdb-card class="my-1">
@@ -7,18 +7,23 @@
                 <mdb-card-img [src]="card.image" alt="Card image cap" height="636px"></mdb-card-img>
                 <mdb-card-body>
                     <div class="content">
-                            <div>
-
-                                <img class="artist-profile-pic" [src]="card.artist_profile_pic" >
-                                <span>{{card.artist}}</span><br />
-                                <span>{{card.artist_social_media_1}}</span><br />
+                        <div class="details" >
+                             <img class="artist-profile-pic" [src]="card.artist_profile_pic">
+                            <div>   
+                                 <span>{{card.artist}}</span><br />
+                                <span>{{card.artist_social_media_1}}</span><br/>
                                 <span>{{card.artist_social_media_2}}</span>
                             </div>
+                            </div>
+                          
+             
                         <div>
                             <mdb-card-title>
                                 <h4>{{card.title}}</h4>
                             </mdb-card-title>
+                            <div>
                             <p>{{card.description}}</p>
+                        </div>
                         </div>
                     </div>
                 </mdb-card-body>

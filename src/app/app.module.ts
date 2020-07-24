@@ -18,6 +18,9 @@ import { AgmCoreModule } from '@agm/core';
 import { MDBBootstrapModulesPro, CarouselModule, WavesModule} from 'ng-uikit-pro-standard';
 import { ImagesGalleryComponent } from './components/images-gallery/images-gallery.component';
 import { VideosGalleryComponent } from './components/videos-gallery/videos-gallery.component';
+import { AboutComponent } from './components/about/about.component';
+import { StoreComponent } from './components/store/store.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 // MDBBootstrapModulesPro
 
@@ -31,7 +34,10 @@ import { VideosGalleryComponent } from './components/videos-gallery/videos-galle
     FloraFaunaComponent,
     ResearchComponent,
     ImagesGalleryComponent,
-    VideosGalleryComponent
+    VideosGalleryComponent,
+    AboutComponent,
+    StoreComponent,
+    FooterComponent
   ],
   imports: [
     GoogleMapsModule,
