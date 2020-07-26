@@ -15,12 +15,15 @@ import { FloraFaunaComponent } from './components/flora-fauna/flora-fauna.compon
 import { ResearchComponent } from './components/research/research.component';
 import { GoogleMapsModule } from '@angular/google-maps'
 import { AgmCoreModule } from '@agm/core';
-import { MDBBootstrapModulesPro, CarouselModule, WavesModule} from 'ng-uikit-pro-standard';
+import { MDBBootstrapModulesPro, CarouselModule, WavesModule, CardsModule, ButtonsModule} from 'ng-uikit-pro-standard';
 import { ImagesGalleryComponent } from './components/images-gallery/images-gallery.component';
 import { VideosGalleryComponent } from './components/videos-gallery/videos-gallery.component';
 import { AboutComponent } from './components/about/about.component';
 import { StoreComponent } from './components/store/store.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { BannerComponent } from './components/banner/banner.component';
+import { FeaturesComponent } from './components/features/features.component';
+import { ContributorsComponent } from './components/contributors/contributors.component';
 
 // MDBBootstrapModulesPro
 
@@ -37,7 +40,10 @@ import { FooterComponent } from './components/footer/footer.component';
     VideosGalleryComponent,
     AboutComponent,
     StoreComponent,
-    FooterComponent
+    FooterComponent,
+    BannerComponent,
+    FeaturesComponent,
+    ContributorsComponent
   ],
   imports: [
     GoogleMapsModule,
@@ -50,6 +56,8 @@ import { FooterComponent } from './components/footer/footer.component';
     FormsModule,
     BrowserAnimationsModule,
     CarouselModule,
+    CardsModule,
+    ButtonsModule,
     WavesModule,
     MDBBootstrapModulesPro.forRoot(),
     AgmCoreModule.forRoot({

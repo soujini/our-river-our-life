@@ -1,0 +1,25 @@
+.feature-heading{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  line-height: 1.42857143;
+  color: #303030;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.feature-description{
+  height:300px;
+  font-size: 16px;
+ font-family: 'Montserrat';
+ color:#808080;
+ font-weight:400;
+}
+.feature-icon{
+  font-size:75px;
+  color:yellowgreen;
+}
+.parallax-custom{
+  background-image: url('../../../assets/jpg/parallax_3.jpg');
+  background-attachment: fixed;
+  height: 1200px;
+}

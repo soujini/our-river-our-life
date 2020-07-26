@@ -9,15 +9,15 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class VideosGalleryComponent implements OnInit {
   safeSrc: SafeResourceUrl;
 
-  constructor(private sanitizer: DomSanitizer) { 
-    this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/bvI8pBdfPYQ");
+  constructor(private sanitizer: DomSanitizer) {
+    this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/oVXmpxZkoTQ");
   }
-  
+
   ngOnInit(): void {
 
   }
-  
+
   doClick(btn) {
-    alert(`you clicked the ${btn} button`)
+    // alert(`you clicked the ${btn} button`)
   }
 }

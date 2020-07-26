@@ -1,32 +1,31 @@
-@media (max-width: 624px) {
-	.arrows {
-		position:relative;
-		margin: 0 auto;
-		width:96px;
-	}
-	.arrow-left {
-		left: 0;
-		top: -20px;
-	}
+// @media (max-width: 624px) {
+// 	.arrows {
+// 		position:relative;
+// 		margin: 0 auto;
+// 		width:96px;
+// 	}
+// 	.arrow-left {
+// 		left: 0;
+// 		top: -20px;
+// 	}
+//
+// 	.arrow-right {
+// 		right: 0;
+// 		top: -20px;
+// 	}
+// }
 
-	.arrow-right {
-		right: 0;
-		top: -20px;
-	}
-}
-
-.container {
+.container1 {
     width: 100%;
-    max-width: 80%;
-    min-width: 440px;
     background: #fff;
     margin: 0 auto;
+		// padding:75px 0px 75px 0px;
 }
 .vid-container {
 	position: relative;
 	padding-bottom: 52%;
-	padding-top: 30px; 
-	height: 0; 
+	padding-top: 30px;
+	height: 0;
 }
 .vid-container iframe{
 	position: absolute;
@@ -64,7 +63,7 @@
 	height: 84px;
 }
 .vid-item .desc {
-	color: #21A1D2;
+	color: gray;
 	font-size: 15px;
 	margin-top:5px;
 }
@@ -76,6 +75,7 @@
 .arrows {
 	position:relative;
 	width: 100%;
+
 }
 
 .arrow-left {
@@ -87,6 +87,7 @@
 	top: -130px;
 	z-index: 99;
 	cursor: pointer;
+	margin-left:2%;
 }
 
 .arrow-right {
@@ -98,4 +99,5 @@
 	top: -130px;
 	z-index:100;
 	cursor: pointer;
+	margin-right:2%;
 }

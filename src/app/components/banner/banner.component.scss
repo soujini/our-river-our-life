@@ -1,0 +1,21 @@
+.banner{
+  padding:75px;
+  text-align: center;
+  color:#95be42;
+  color:darkslategray;
+  font-family: 'Dancing Script', cursive;
+  font-weight: bold;
+  font-size: 32px;
+  letter-spacing: 1px;
+  // xbackground: url('../../../assets/jpg/bg3.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color:#191919;
+  background-color:#f7f7f7;
+  margin-bottom:-4px;
+}
+.parallax-custom{
+  background-image: url('../../../assets/jpg/parallax_3.jpg');
+  background-attachment: fixed;
+  height: 1200px;
+}

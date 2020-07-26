@@ -1,14 +1,17 @@
-<mat-toolbar>
+<mat-toolbar style="position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 998;">
   <img class="logo"  [routerLink] = "'/home'" src="../../assets/scalable-vector-graphics/orol-logo.svg">
 
-<div class="example-fill-remaining-space" > 
-  <span class="heading" [routerLink] = "'/home'">Home</span>
-  <span class="heading" [routerLink] = "'/about'">About</span>
-  <span class="heading" [routerLink] = "'/flood-watch'">Flood Watch</span> 
-  <span class="heading" [routerLink] = "'/flora-fauna'">Flora & Fauna Gallery</span>
-  <span class="heading" [routerLink] = "'/research'">Research Papers</span>
-  <span class="heading" [routerLink] = "'/privacy-policy'">Privacy Policy</span>
+<div class="example-fill-remaining-space" >
+  <span class="heading" [routerLink] = "'/home'" routerLinkActive="router-link-active">HOME</span>
+  <span class="heading" [routerLink] = "'/about'" routerLinkActive="router-link-active">ABOUT</span>
+  <!-- <span class="heading" [routerLink] = "'/flood-watch'">Flood Watch</span>  -->
+  <span class="heading" [routerLink] = "'/flora-fauna'" routerLinkActive="router-link-active">GALLERY</span>
+  <span class="heading" [routerLink] = "'/research'" routerLinkActive="router-link-active">RESEARCH PAPERS</span>
+  <span class="heading" [routerLink] = "'/privacy-policy'" routerLinkActive="router-link-active">PRIVACY POLICY</span>
 </div>
 
 </mat-toolbar>
-
