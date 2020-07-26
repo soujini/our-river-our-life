@@ -18,16 +18,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 //   height: -webkit-fill-available !important;
 // }
 .carousel-multi-item .controls-top .btn-floating {
-    background: gray !important;
+    background: black !important;
+    opacity:0.4 !important;
 }
 
 .carousel-multi-item .carousel-indicators li {
     height: 1.25rem;
     width: 1.25rem;
     max-width: 1.25rem;
-    background-color: yellowgreen !important;
+    background-color: black !important;
     margin-bottom: -3.75rem;
 }
 .btn-floating i {
-  color:white !important;
+  color:gray !important;
 }

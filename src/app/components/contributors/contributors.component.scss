@@ -2,10 +2,15 @@
   font-size: 16px;
  font-family: 'Montserrat';
  color:#303030;
- font-weight:500;
+ font-weight:bold;
+ // text-transform: uppercase;
 }
 .parallax-custom{
   background-image: url('../../../assets/jpg/parallax_2.jpg');
   background-attachment: fixed;
   height: 1200px;
+}
+
+mdb-slide{
+  margin-top:100px !important;
 }
