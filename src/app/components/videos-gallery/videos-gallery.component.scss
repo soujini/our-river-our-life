@@ -36,26 +36,33 @@
 }
 
 .vid-list-container {
-	width: 92%;
-	overflow: hidden;
-	margin-top: 20px;
-	margin-left:4%;
-	padding-bottom: 20px;
+	// width: 92%;
+	// overflow: hidden;
+	// margin-top: 20px;
+	// margin-left:4%;
+	// padding-bottom: 20px;
 }
 .vid-list {
-	width: 1344px;
-	position: relative;
-	top:0;
-	left: 0;
+	width: 100%;
+	 position: absolute;
+   background-color: red;
+  text-align: center;
+
+
+
+	// top:0;
+	// left: 0;
 }
 
 .vid-item {
-	display: block;
-	width: 148px;
-	height: 148px;
-	float: left;
-	margin: 0;
-	padding: 10px;
+	// display: block;
+	// width: 148px;
+	// height: 148px;
+  // // width: 20%;
+  // height:auto;
+	// float: left;
+	// margin: 0;
+	// padding: 10px;
 }
 
 .thumb {
@@ -100,4 +107,8 @@
 	z-index:100;
 	cursor: pointer;
 	margin-right:2%;
+}
+ul > li{
+  padding:15px !important;
+  padding-top:50px !important;
 }
