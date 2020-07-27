@@ -16,7 +16,7 @@ import { FloraFaunaComponent } from './components/flora-fauna/flora-fauna.compon
 import { ResearchComponent } from './components/research/research.component';
 import { GoogleMapsModule } from '@angular/google-maps'
 import { AgmCoreModule } from '@agm/core';
-import { MDBBootstrapModulesPro, CarouselModule, WavesModule,CardsModule, ButtonsModule,LightBoxModule,ModalModule,TabsModule} from 'ng-uikit-pro-standard';
+import { MDBBootstrapModulesPro, CarouselModule,CollapseModule , WavesModule,CardsModule, ButtonsModule,LightBoxModule,ModalModule,TabsModule} from 'ng-uikit-pro-standard';
 import { ImagesGalleryComponent } from './components/images-gallery/images-gallery.component';
 import { VideosGalleryComponent } from './components/videos-gallery/videos-gallery.component';
 import { AboutComponent } from './components/about/about.component';
@@ -58,6 +58,7 @@ import { ContributorsComponent } from './components/contributors/contributors.co
     FormsModule,
     BrowserAnimationsModule,
     CarouselModule,
+    CollapseModule ,
     LightBoxModule,
     ModalModule,
     CardsModule,

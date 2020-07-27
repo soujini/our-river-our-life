@@ -72,8 +72,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 #cdk-overlay-0{
-  top: 0px !important;
-  left: 0px !important;
+   top: 154px !important;
+  left: 11px !important;
   margin-left: 31% !important;
   margin-top: 10px !important;
+  position: absolute;
+  border: 1px solid black;
 }
