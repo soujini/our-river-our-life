@@ -24,6 +24,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { FeaturesComponent } from './components/features/features.component';
 import { ContributorsComponent } from './components/contributors/contributors.component';
+import { ImgLoadedDirective } from './directives/directive.directive';
 
 // MDBBootstrapModulesPro
 
@@ -43,7 +44,8 @@ import { ContributorsComponent } from './components/contributors/contributors.co
     FooterComponent,
     BannerComponent,
     FeaturesComponent,
-    ContributorsComponent
+    ContributorsComponent,
+    ImgLoadedDirective
   ],
   imports: [
     GoogleMapsModule,

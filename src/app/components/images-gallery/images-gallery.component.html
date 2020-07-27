@@ -1,10 +1,10 @@
-<mdb-carousel class="carousel slide carousel-fade" xtype="'carousel-thumbnails'" [animation]="'fade'">
+<mdb-carousel class="carousel slide carousel-fade" xtype="'carousel-thumbnails'" [animation]="'fade'" style="margin-top:100px">
   <mdb-carousel-item *ngFor="let item of slides; let i = index">
     <div *ngFor="let card of item; let cardIndex = index">
       <mdb-card class="my-1" style="xborder-top-left-radius:25px;xborder-bottom-left-radius:25px; background-color:black; border-shadow:none;xpadding:1px; xborder: 1px dotted black">
         <div *ngIf="i % 2 == 0" style="display:flex">
-          <div style="width:60%; xpadding:1px">
-            <img class="img-fluid" [src]="card.image" alt="Card image cap" style="width:100%; height:650px;xborder-radius:25px" >
+          <div style="width:60%">
+            <img class="img-fluid" [src]="card.image" alt="Card image cap" style="width:100%; height:650px;" >
           </div>
           <div style="width:40%; padding:50px; color:white; background-color:black; border-left: 5px inset gray; position:relative;" class="text-center">
             <div #div1 xstyle="position:absolute; top:0">
@@ -33,7 +33,7 @@
         <div *ngIf="i % 2 != 0" style="display:flex">
 
           <div style="width:40%; padding:50px; color:white; background-color:black; border-right: 5px inset gray; position:relative;" class="text-center">
-            <div #div1 xstyle="position:absolute; top:0">
+            <div #div1>
 
               <mdb-card-title>
                 <p style="font-family: 'Open Sans', sans-serif; font-size:36px; font-weight:bold" class="text-left">{{card.title}}</p>
@@ -55,7 +55,7 @@
             </div>
 
           </div>
-          <div style="width:60%; xpadding:1px">
+          <div style="width:60%;" >
             <img class="img-fluid" [src]="card.image" alt="Card image cap" style="width:100%; height:650px;xborder-radius:25px" >
           </div>
         </div>

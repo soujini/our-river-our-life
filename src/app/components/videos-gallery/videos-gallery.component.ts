@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
@@ -7,6 +7,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrls: ['./videos-gallery.component.scss']
 })
 export class VideosGalleryComponent implements OnInit {
+  @ViewChild('widgetsContent') widgetsContent: ElementRef;
   safeSrc: SafeResourceUrl;
 
   constructor(private sanitizer: DomSanitizer) {
@@ -17,7 +18,11 @@ export class VideosGalleryComponent implements OnInit {
 
   }
 
-  doClick(btn) {
-    // alert(`you clicked the ${btn} button`)
+  scrollLeft(){
+    this.widgetsContent.nativeElement.scrollLeft -= 150;
+  }
+
+  scrollRight(){
+    this.widgetsContent.nativeElement.scrollLeft += 150;
   }
 }
