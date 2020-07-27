@@ -1,0 +1,70 @@
+.about{
+  margin-top:110px;
+  // height:300px;
+  font-size: 16px;
+ font-family: 'Montserrat';
+ color:#808080;
+ font-weight:400;
+}
+.about-banner{
+  height:300px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  line-height: 300px;
+}
+.h1-about{
+  line-height: 300px;
+  color:black;
+
+}
+.jarallax_about_banner{
+  background-image: url('https://mdbootstrap.com/img/Photos/Others/img%20%2844%29.jpg');
+  background-image: url('../../../assets/jpg/texture_teal.jpeg');
+    background-image: url('../../../assets/jpg/about_banner_bg7.jpg');
+  // background-image: url('../../../assets/jpg/about_banner_bg1.jpg');
+  background-attachment: fixed; height: 600px; margin-top:110px
+}
+.who-we-are{
+  // margin-top:110px;
+  // height:300px;
+ //  font-size: 16px;
+ // font-family: 'Montserrat';
+ // color:#116bb5;
+ // font-weight:500;
+ font-family: 'Open Sans', sans-serif;
+ font-weight: 800;
+ line-height: 1.42857143;
+ color: #303030;
+ margin-top:20px;
+ margin-bottom:20px;
+   // font-size: 24px;
+   text-transform: uppercase;
+}
+.display-1 {
+    font-size: 5rem !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+    font-family: 'Open Sans', sans-serif !important;
+}
+.parallax-about-banner2{
+  background-image: url('../../../assets/jpg/about_banner_bg1.jpg');
+  background-attachment: fixed;
+  min-height: 300px;
+}
+.parallax-about-banner3{
+  background-image: url('../../../assets/jpg/about_banner_bg8.jpg');
+  background-attachment: fixed;
+  min-height: 300px;
+}
+.parallax-about-banner4{
+  background-image: url('../../../assets/jpg/about_banner_bg2.jpg');
+  background-attachment: fixed;
+  min-height: 300px;
+}
+.about-description{
+  font-size:18px;
+  padding-left:100px;
+  padding-right:100px;
+font-family: 'Montserrat';
+}
