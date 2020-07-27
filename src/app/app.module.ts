@@ -5,6 +5,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AppRoutingModule } from './app-routing.module';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input'; 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -15,7 +16,7 @@ import { FloraFaunaComponent } from './components/flora-fauna/flora-fauna.compon
 import { ResearchComponent } from './components/research/research.component';
 import { GoogleMapsModule } from '@angular/google-maps'
 import { AgmCoreModule } from '@agm/core';
-import { MDBBootstrapModulesPro, CarouselModule, WavesModule, CardsModule, ButtonsModule} from 'ng-uikit-pro-standard';
+import { MDBBootstrapModulesPro, CarouselModule, WavesModule,CardsModule, ButtonsModule,LightBoxModule,ModalModule,TabsModule} from 'ng-uikit-pro-standard';
 import { ImagesGalleryComponent } from './components/images-gallery/images-gallery.component';
 import { VideosGalleryComponent } from './components/videos-gallery/videos-gallery.component';
 import { AboutComponent } from './components/about/about.component';
@@ -54,12 +55,16 @@ import { ImgLoadedDirective } from './directives/directive.directive';
     MatToolbarModule,
     MatAutocompleteModule,
     MatFormFieldModule,
+    MatInputModule,
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
     CarouselModule,
+    LightBoxModule,
+    ModalModule,
     CardsModule,
     ButtonsModule,
+    TabsModule,
     WavesModule,
     MDBBootstrapModulesPro.forRoot(),
     AgmCoreModule.forRoot({
