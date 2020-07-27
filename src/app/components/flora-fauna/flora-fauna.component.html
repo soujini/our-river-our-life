@@ -1,1 +1,52 @@
-<p>flora-fauna works!</p>
+
+<div class="content">
+  <div class="search-box" id="searchUser">
+    <form  > 
+        <mat-form-field id="searchUser" class="example-full-width " appearance="outline">
+          <input  style="border:none" matInput placeholder="Search For a common/biology name" aria-label="User" [matAutocomplete]="auto" (keyup)="valueChange()" [formControl]="myControl ">
+          <mat-autocomplete #auto="matAutocomplete" >
+            <mat-option *ngFor="let user of resource" [value]="user.name" class="card-search mat-option" > 
+             <div class="mat-option-text"  >            
+              <div style="display:flex;">
+                <div>
+                  <!-- <img [src]="user.iconUrl" width="38px" height="38px" > -->
+                </div>
+                <div class="ml-3">
+                  <span [innerHTML]="user.name"  class="operator-name"></span> <br/>
+                </div>
+              </div>
+           </div>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+     </form>
+     </div> 
+
+<mdb-tabset [buttonClass]="'classic-tabs tabs-cyan'" [contentClass]="'card'" class="classic-tabs">
+
+    <mdb-tab heading="Flora">
+      <div class="row">
+        <div class="col-12">
+          <br>
+          <mdb-image-modal [modalImages]="images" type="margin"></mdb-image-modal>
+        </div>
+      </div>
+    </mdb-tab>
+   
+    <mdb-tab heading="Fauna">
+      <div class="row">
+        <div class="col-12">
+          <br>
+          <mdb-image-modal [modalImages]="images" type="margin"></mdb-image-modal>
+        </div>
+      </div>
+    </mdb-tab>
+
+  </mdb-tabset> 
+</div>
+
+
+  
+  
+
+     

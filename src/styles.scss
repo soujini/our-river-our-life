@@ -32,3 +32,48 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .btn-floating i {
   color:gray !important;
 }
+
+.classic-tabs .nav li:first-child {
+  margin-left: 40% !important;
+}
+
+
+
+#searchUser{
+  .mat-form-field-outline{
+    width: 440px !important;
+    height: 54px !important;
+    opacity: none !important;
+    margin-left: -15px !important;
+}
+.mat-form-field-outline-thick{
+  color: #E1E1E1  !important;
+}
+.cdk-overlay-pane{
+  width: 440px !important;
+}
+
+.mat-input-element {
+  margin-top: 17px !important;
+  margin-right: -24px !important;
+  font-weight: 500 !important;
+  font-family: 'Quicksand' !important;
+}
+
+ .mat-form-field-underline {
+  height: 0px !important;
+}
+.mat-autocomplete-panel{
+  overflow: hidden !important;
+}
+}
+#cdk-overlay-1.cdk-overlay-pane{
+  width: 440px !important;
+}
+
+#cdk-overlay-0{
+  top: 0px !important;
+  left: 0px !important;
+  margin-left: 31% !important;
+  margin-top: 10px !important;
+}
