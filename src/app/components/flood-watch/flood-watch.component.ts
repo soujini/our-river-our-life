@@ -22,7 +22,7 @@ export class FloodWatchComponent implements OnInit {
   ) {}
 
   mapReady(event) {
-    console.log(event);
+    // console.log(event);
     this.setCurrentPosition();
   }
 
@@ -36,7 +36,7 @@ export class FloodWatchComponent implements OnInit {
     this.searchControl = new FormControl();
 
     //set current position
-    
+
     // this.recenterMap()
 
     //load Places Autocomplete
@@ -73,14 +73,14 @@ export class FloodWatchComponent implements OnInit {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
         this.zoom = 15;
-        console.log(this.latitude, this.longitude);
+        //console.log(this.latitude, this.longitude);
       });
     }
   }
 
   getPosition(){
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {        
+      navigator.geolocation.getCurrentPosition((position) => {
     this.latitude=position.coords.latitude+(0.0000000000100*Math.random());
     this.longitude=position.coords.longitude+(0.0000000000100*Math.random());
       });
@@ -89,5 +89,3 @@ export class FloodWatchComponent implements OnInit {
     }
    }
 }
-
-

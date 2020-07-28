@@ -26,6 +26,8 @@ import { BannerComponent } from './components/banner/banner.component';
 import { FeaturesComponent } from './components/features/features.component';
 import { ContributorsComponent } from './components/contributors/contributors.component';
 import { ImgLoadedDirective } from './directives/directive.directive';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 // MDBBootstrapModulesPro
 
@@ -72,6 +74,7 @@ import { ImgLoadedDirective } from './directives/directive.directive';
       apiKey: "AIzaSyALR2ZDTTyZXGBRFeCV0AHd0S-TV_GWYm8",
       libraries: ["places"]
     }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]

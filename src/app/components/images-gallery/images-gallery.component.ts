@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-images-gallery',
   templateUrl: './images-gallery.component.html',
   styleUrls: ['./images-gallery.component.scss']
 })
-export class ImagesGalleryComponent implements OnInit {
+export class ImagesGalleryComponent implements AfterViewInit {
   cards = [
     {
       // title: 'Card Title 1',
@@ -103,6 +103,10 @@ export class ImagesGalleryComponent implements OnInit {
       image:"../../../assets/jpg/gallery_10.jpg"
     },
   ];
+  ngAfterViewInit(){
+    // alert("images");
+    // this.slides = this.chunk(this.cards, 1);
+  }
   slides: any = [[]];
   chunk(arr, chunkSize) {
     let R = [];
@@ -113,6 +117,7 @@ export class ImagesGalleryComponent implements OnInit {
   }
   constructor() { }
   ngOnInit() {
+    // alert("asdasd");
     this.slides = this.chunk(this.cards, 1);
   }
 

@@ -1,21 +1,28 @@
 <div class="container" style="background-color:black; padding-bottom:75px">
   <h1 class="text-center" style="font-family: 'Open Sans', sans-serif;padding-top:75px; padding-bottom:75px;
- font-weight: 800;"><span style="color:gray">VIEW</span><span style="color:yellowgreen"> MAPS</span></h1>
-  <div class="form-group search-bar">
+  font-weight: 800;"><span style="color:gray">VIEW</span><span style="color:yellowgreen"> MAPS</span></h1>
+  <div class="xform-group search-bar">
     <button mdbBtn type="button" color="secondary" rounded="true" outline="true" [routerLink] = "'/flood-watch'" mdbWavesEffect>Flood Watch</button>
     <button mdbBtn type="button" color="secondary" rounded="true" outline="true" [routerLink] = "" mdbWavesEffect>RIVER MONITORING</button>
 
-    <input placeholder="Search by location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+    <label for="search">
+      <input id="search" placeholder="Search by location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
       class="input-search search" #search [formControl]="searchControl">
-    <input type="text" class="input-latitude latitude" placeholder="Latitude">
-    <input type="text" class="input-latitude longitude" placeholder="Longitude">
-  
+    </label>
+
+    <label for="latitude">
+    <input type="text" id="latitude" class="input-latitude latitude" placeholder="Latitude" />
+    </label>
+    <label for="longitude"></label>
+
+    <input type="text" id="longitude" class="input-latitude longitude" placeholder="Longitude" />
+
   </div>
   <div class="search-bar">
-  <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" [usePanning]='true'
+    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" [usePanning]='true'
     (mapReady)="mapReady($event)">
     <agm-marker [latitude]="latitude" [longitude]="longitude"
-      iconUrl="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></agm-marker>
+    iconUrl="https://maps.google.com/mapfiles/ms/icons/blue-dot.png"></agm-marker>
   </agm-map>
 </div>
 </div>
