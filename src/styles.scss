@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -11,13 +11,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .card {
     box-shadow:0px !important;
   }
-// mdb-card{
-//   height:650px;
-// }
-// mdb-card-img img {
-//   // width: auto !important;
-//   height: -webkit-fill-available !important;
-// }
+
 .carousel-multi-item .controls-top .btn-floating {
     background: black !important;
     opacity:0.4 !important;
@@ -77,4 +71,34 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-top: 10px !important;
   position: absolute;
   border: 1px solid black;
+}
+mdb-card-img img {
+  width: auto !important;
+  max-height: 636px !important;
+}
+
+.accordion{
+  display: flex !important;
+    flex-wrap: wrap !important;
+     margin-right: 15px !important;
+     margin-left: 15px !important;
+}
+.mdb-accordion-indicator {
+  // visibility: hidden !important;
+}
+
+
+.md-accordion .card {
+  border-bottom: none !important;
+}
+.card {
+  background-color: transparent !important;
+}
+.md-accordion .card .card-body {
+    font-size: 1rem !important;
+    font-weight: 300 !important;
+    color: #303030 !important; //626262
+    font-family:'Roboto' !important;
+    text-align: justify !important;
+
 }

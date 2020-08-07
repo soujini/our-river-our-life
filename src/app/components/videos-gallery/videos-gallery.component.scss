@@ -1,3 +1,12 @@
+.videos{
+   // background: url('../../../assets/scalable-vector-graphics/river_bg2.svg');
+     background:url(../../../assets/jpg/banner/bg_waves2.png);
+  background-repeat: no-repeat;
+  // background-attachment: fixed
+    background-position: center;
+  background-size: cover;
+
+}
 .custom-slider-main{
     display: flex;
     overflow: hidden;

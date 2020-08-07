@@ -2,6 +2,9 @@ import { Component, OnInit, AfterViewInit, AfterViewChecked, Output, EventEmitte
 import { MDBBootstrapModulesPro, CarouselModule, WavesModule} from 'ng-uikit-pro-standard';
 import { forkJoin } from 'rxjs';
 import { ImgLoadedDirective } from '../../directives/directive.directive';
+// import { BannerComponent } from '../../components/banner/banner.component';
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

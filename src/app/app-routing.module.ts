@@ -1,44 +1,46 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// import { TopNavComponent} from './components/top-nav/top-nav.component';
-import { HomeComponent} from './components/home/home.component';
-import { AboutComponent} from './components/about/about.component';
-import { FloodWatchComponent} from './components/flood-watch/flood-watch.component';
-import { FloraFaunaComponent} from './components/flora-fauna/flora-fauna.component';
-import { ResearchComponent} from './components/research/research.component';
+// import { HomeComponent} from './components/home/home.component';
+// import { AboutComponent} from './components/about/about.component';
+import { NotFoundComponent} from './components/not-found/not-found.component';
 import { PrivacyPolicyComponent} from './components/privacy-policy/privacy-policy.component';
-
 
 const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent
+    loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule)
   },
+
   {
     path: 'about',
-    component: AboutComponent
+    loadChildren: () => import('./components/about/about.module').then(m => m.AboutModule)
+  },
+  {
+    path: 'river-monitoring',
+    loadChildren: () => import('./components/river-monitoring/river-monitoring.module').then(m => m.RiverMonitoringModule)
   },
   {
     path: 'flood-watch',
-    component: FloodWatchComponent
+    loadChildren: () => import('./components/flood-watch/flood-watch.module').then(m => m.FloodWatchModule)
   },
   {
     path: 'flora-fauna',
-    component: FloraFaunaComponent
+    loadChildren: () => import('./components/flora-fauna/flora-fauna.module').then(m => m.FloraFaunaModule)
   },
   {
-    path: 'research',
-    component: ResearchComponent
+    path: 'voices-from-the-river',
+    loadChildren: () => import('./components/voices-from-the-river/voices-from-the-river.module').then(m => m.VoicesFromTheRiverModule)
   },
   {
-    path: 'privacy-policy',
-    component: PrivacyPolicyComponent
+    path: 'ongoing-campaigns',
+    loadChildren: () => import('./components/ongoing-campaigns/ongoing-campaigns.module').then(m => m.OngoingCampaignsModule)
   },
   {
 	path: '',
 	redirectTo: 'home',
 	pathMatch: 'full'
 },
+{ path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

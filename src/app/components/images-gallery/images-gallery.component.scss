@@ -1,13 +1,21 @@
+.banner{
+  // background: url(../../../assets/jpg/banner/banner9.jpg);
+  // background:url(../../../assets/jpg/banner/bg_waves2.png);
+  // background-repeat: no-repeat;
+  // background-size: 100% 100%;
+  background:url(../../../assets/jpg/banner/bg_waves2.png);
+background-repeat: no-repeat;
+// background-attachment: fixed
+ background-position: center;
+background-size: cover;
+}
 .content{
   display: flex;
 }
 mdb-card-img {
 background-color: black;
 }
-mdb-card-img img {
-  width: 100% !important;
-  height: 636px !important;
-}
+
 
 .artist-profile-pic{
   width: 57px;
@@ -23,11 +31,12 @@ mdb-carousel-item{
 
 }
 .image-description{
-  font-size: 16px;
+font-size: 16px;
  font-family: 'Montserrat';
  color:#c6c6c6;
  font-weight:400;
  text-align: left;
+ line-height: 2em;
 }
 .artist-info{
   font-size: 14px;
@@ -35,4 +44,8 @@ mdb-carousel-item{
  color:#c6c6c6;
  font-weight:400;
  text-align: left;
+}
+.carousel-control-prev,
+.carousel-control-next{
+  align-self: flex-end; /* Aligns it at the bottom */
 }

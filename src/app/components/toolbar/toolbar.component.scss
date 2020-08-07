@@ -1,8 +1,10 @@
 .mat-toolbar{
-  height:110px;
-  background-color: black;
+  height:150px;
+  background-color: white;
   font-size: 14px;
-
+  background-image: url(../../../assets/scalable-vector-graphics/banner_header2.svg);
+   background-repeat: no-repeat;
+  background-position: right;
 }
 .logo{
   cursor: pointer;
@@ -22,13 +24,19 @@
 
 .heading{
   cursor:pointer !important;
-  font-size:14px !important;
+  font-size:13px !important;
   font-family: 'Montserrat' !important;
-  color: white;
+  color: gray;
   font-weight: 500;
-  margin: 40px;
+  padding: 20px;
+  text-transform: capitalize !important;
 }
 .router-link-active{
-  color:yellowgreen;
+   color:#303030;
   font-weight:bold;
 }
+// .parallax-custom{
+//   background-image: url('../../../assets/jpg/parallax_3.jpg');
+//   background-attachment: fixed;
+//   height: 1200px;
+// }

@@ -1,20 +1,23 @@
-<mat-toolbar style="position: fixed;
+<mat-toolbar style="position: fixed; width:100%; 
   top: 0;
   left: 0;
   right: 0;
   z-index: 998;">
+  <div class="col-md-4">
   <img alt="logo" class="logo"  [routerLink] = "'/home'" src="../../assets/scalable-vector-graphics/orol-logo.svg">
-
+</div>
 <div class="example-fill-remaining-space" >
-  <span class="heading" [routerLink] = "'/home'" routerLinkActive="router-link-active">HOME</span>
-  <span class="heading" [routerLink] = "'/about'" routerLinkActive="router-link-active">ABOUT</span>
-  <span class="heading" [routerLink] = "">RIVER MONITORING</span>
-  <span class="heading" [routerLink] = "'/flora-fauna'" routerLinkActive="router-link-active">FLORA & FAUNA</span>
-  <span class="heading" [routerLink] = "'/flood-watch'">FLOOD WATCH</span>
-  <span class="heading" [routerLink] = "">VOICES FROM THE RIVER</span>
-  <span class="heading" [routerLink] = "">RESOURCES</span>
+  <span class="heading" [routerLink] = "'/home'" routerLinkActive="router-link-active">Home</span>
+  <span class="heading" [routerLink] = "'/about'" routerLinkActive="router-link-active">About</span>
+  <span class="heading" [routerLink] = "'/river-monitoring'">River Monitoring</span>
+  <span class="heading" [routerLink] = "'/flood-watch'">Flood Watch</span>
+  <span class="heading" [routerLink] = "'/flora-fauna'" routerLinkActive="router-link-active">Flora & Fauna</span>
+
+  <span class="heading" [routerLink] = "'/voices-from-the-river'">Voices from the River</span>
+  <span class="heading" [routerLink] = "'/resources'">Resources</span>
+  <span class="heading" [routerLink] = "'/ongoing-campaigns'">Ongoing Campaigns</span>
   <!-- <span class="heading" [routerLink] = "'/research'" routerLinkActive="router-link-active">RESEARCH PAPERS</span> -->
-  <span class="heading" [routerLink] = "'/privacy-policy'" routerLinkActive="router-link-active">PRIVACY POLICY</span>
+  <!-- <span class="heading" [routerLink] = "'/privacy-policy'" routerLinkActive="router-link-active">PRIVACY POLICY</span> -->
 </div>
 
 </mat-toolbar>
