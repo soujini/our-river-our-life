@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FloodWatchRoutingModule } from './flood-watch-routing.module';
 import { FloodWatchComponent } from './flood-watch.component';
 // import { MapsComponent } from '../../components/maps/maps.component';
+// import { MapsViewComponent } from '../../components/maps-view/maps-view.component';
 import { GoogleMapsModule } from '@angular/google-maps'
 import { AgmCoreModule } from '@agm/core';
 
@@ -20,6 +21,7 @@ import { AgmCoreModule } from '@agm/core';
   ],
   exports:[
     FloodWatchComponent,
+    // MapsViewComponent,
     // MapsComponent
   ]
 })

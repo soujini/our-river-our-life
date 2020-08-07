@@ -20,6 +20,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 // import { MapsComponent } from './components/maps/maps.component';
 import { GoogleMapsModule } from '@angular/google-maps'
 import { AgmCoreModule } from '@agm/core';
+// import { MapsViewComponent } from './components/maps-view/maps-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { AgmCoreModule } from '@agm/core';
     FooterComponent,
     ImgLoadedDirective,
     NotFoundComponent,
+    // MapsViewComponent,
     // MapsComponent,
   ],
   imports: [
