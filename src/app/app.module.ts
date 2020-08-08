@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 // import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { AppRoutingModule } from './app-routing.module';
@@ -41,7 +41,6 @@ import { AgmCoreModule } from '@agm/core';
     // MatAutocompleteModule,
     // MatFormFieldModule,
     ReactiveFormsModule,
-    FormsModule,
     BrowserAnimationsModule,
     CarouselModule,
     CollapseModule ,

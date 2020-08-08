@@ -6,8 +6,9 @@ import { HomeComponent } from './home.component';
 import { BannerComponent } from '../../components/banner/banner.component';
 import { ImagesGalleryComponent } from '../../components/images-gallery/images-gallery.component';
 import { FeaturesComponent } from '../../components/features/features.component';
-//  import { MapsComponent } from '../../components/maps/maps.component';
+
 import { MapsViewComponent } from '../../components/maps-view/maps-view.component';
+// import { MapsComponent } from '../../components/maps/maps.component';
 
  import { VideosGalleryComponent } from '../../components/videos-gallery/videos-gallery.component';
  import { ContributorsComponent } from '../../components/contributors/contributors.component';

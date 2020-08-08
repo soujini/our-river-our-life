@@ -7,11 +7,25 @@ import { FloodWatchComponent } from './flood-watch.component';
 // import { MapsViewComponent } from '../../components/maps-view/maps-view.component';
 import { GoogleMapsModule } from '@angular/google-maps'
 import { AgmCoreModule } from '@agm/core';
+ import { MapsComponent } from '../../components/maps/maps.component';
+ import { MDBBootstrapModulesPro, CarouselModule,CollapseModule ,TimePickerModule,DatepickerModule, WavesModule,CardsModule, ButtonsModule,LightBoxModule,ModalModule,TabsModule} from 'ng-uikit-pro-standard';
+ import {MatInputModule} from '@angular/material/input';
+ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
-  declarations: [FloodWatchComponent],
+  declarations: [
+    FloodWatchComponent,
+    MapsComponent,
+  ],
   imports: [
     CommonModule,
+    TimePickerModule,
+    DatepickerModule,
+    MatInputModule,
+    WavesModule,
+    FormsModule,
+    ButtonsModule,
+     ReactiveFormsModule,
     FloodWatchRoutingModule,
     GoogleMapsModule,
     AgmCoreModule.forRoot({
@@ -21,8 +35,7 @@ import { AgmCoreModule } from '@agm/core';
   ],
   exports:[
     FloodWatchComponent,
-    // MapsViewComponent,
-    // MapsComponent
+    MapsComponent
   ]
 })
 export class FloodWatchModule { }

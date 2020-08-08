@@ -1,0 +1,75 @@
+<div class="cxontaine w-100 x"  style="background-color:#e8e8e8; border-bottom:10px solid #7a6f63; xpadding-bottom:85px">
+  <div class="banner " style="font-family: 'Open Sans', sans-serif;padding-top:75px; padding-bottom:75px;">
+  <h1 class="text-center" ><span style="color:#303030;font-weight: 800;">VIEW</span><span style="color:#303030; font-weight:800"> MAPS</span></h1>
+ </div>
+  <div class="form-group search-bar" [formGroup]="mapsForm"   xngIf="!(show)" [class.show]="!show" >
+    <button mdbBtn type="button" color="secondary" class="flood-watch" rounded="true" [routerLink] = "'/flood-watch'" mdbWavesEffect>FLOOD WATCH</button>
+    <button mdbBtn type="button" color="secondary" class="river-monitoring" rounded="true" [routerLink] = "" mdbWavesEffect>RIVER MONITORING</button>
+    <input for="location"  formControlName="location" placeholder="Search by location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+      class="input-search search" #search [formControl]="searchControl">
+    <input for="latitude"  formControlName="latitude"  type="text" class="input-latitude latitude" placeholder="Latitude">
+    <input for="latitude"  formControlName="longitude"   type="text" class="input-latitude longitude" placeholder="Longitude">
+    <div class="alert-div">
+      <p>Did You Observe Flooding in the above location ?</p>
+      <button mdbBtn type="button" color="secondary" class="add-alert" rounded="true" (click)="toggle()" mdbWavesEffect>
+        Add Alert</button>
+    </div>
+  </div>
+
+
+  <div class="alert-box search-bar" [formGroup]="mapsForm" *ngIf="show" >
+    <img class="mr-2" (click)="toggle()" src="../../../assets/scalable-vector-graphics/back.svg">
+    <span class="alert-text mr-2">Add Flood Alert</span><img
+      src="../../../assets/scalable-vector-graphics/flood-watch.svg">
+    <hr class="line-header">
+    <div>
+      <label  for="location"  class="alert-location" >Location: </label> 
+      <input id ="location" formControlName="location"  class="alert-text"><br />
+      <label for="latitude & longitude"  class="alert-location">Latitude & Longitude:</label> 
+      <input  id ="latitude" formControlName="latitude" class="alert-text"> 
+      <input  id ="longitude" formControlName="longitude" class="alert-text"> 
+
+      
+      <br />
+    </div>
+    <div class="date">
+       <label  class="alert-date">Date</label>
+      <mdb-date-picker name="mydate" for='activityDate' auto  [formControl]="activityDate"  [options]="myDatePickerOptions" id="mydp" [placeholder]="'Selected date'" required>
+      </mdb-date-picker>
+    </div>
+    <div style="margin-top: 50px;">
+    <label class="alert-date" for='activityTime'>Activity time</label>
+    <mdb-time-picker #timepicker ></mdb-time-picker>
+  </div>
+     <div>
+      <label class="uploader"  ondragover="return false;" [class.loaded]="loaded" formControlName="images"  for='images'
+        [style.outlineColor]="dragging ? activeColor : baseColor" (dragenter)="handleDragEnter()" 
+        (dragleave)="handleDragLeave()" (drop)="handleDrop($event)">
+        <div class="text">
+          <span class="text1">Drag and Drop images</span> <br />
+          <span class="text2">OR</span> <br />
+          <button mdbBtn type="button" color="primary" rounded="true" mdbWavesEffect>Upload images</button> </div>
+        <img [src]="imageSrc" (load)="handleImageLoad()" [class.loaded]="imageLoaded" />
+
+        <input type="file" name="file" accept="image/*" (change)="handleInputChange($event)">
+      </label>
+    </div> 
+
+ <div class="md-form input-group optional" for='experience'>
+  <textarea class="md-textarea form-control" formControlName="experience" placeholder="Your experience or message (Optional)" aria-label="With textarea"></textarea>
+</div> 
+
+<button mdbBtn type="button" class="alert-button mr-3" color="info" rounded="true" outline="true" mdbWavesEffect>Cancel</button>
+<button mdbBtn type="button" color="primary" class="alert-button" rounded="true" mdbWavesEffect>+ Add Alert</button> 
+
+  </div>
+
+
+  <div class="search-bar">
+    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" [usePanning]='true'
+      (mapReady)="mapReady($event)">
+      <agm-marker [latitude]="latitude" [longitude]="longitude"
+        iconUrl="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></agm-marker>
+    </agm-map>
+  </div>
+</div>
