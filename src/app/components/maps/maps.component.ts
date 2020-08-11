@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators, FormArray } from '@ang
 import { MapsAPILoader } from '@agm/core';
 import { IMyOptions } from 'ng-uikit-pro-standard';
 import { timer } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 declare var google;
 
 
@@ -12,6 +13,17 @@ declare var google;
   styleUrls: ['./maps.component.scss']
 })
 export class MapsComponent implements OnInit {
+  images = [];
+
+  myForm = new FormGroup({
+
+   name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+
+   file: new FormControl('', [Validators.required]),
+
+   fileSource: new FormControl('', [Validators.required])
+
+ });
   @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
   activityDate = new FormControl(new Date());
   // public activityTime = new Date();
@@ -53,7 +65,7 @@ export class MapsComponent implements OnInit {
   }
 
 
-  constructor(private fb: FormBuilder,
+  constructor(private fb: FormBuilder,private http: HttpClient,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
   ) {
@@ -221,5 +233,62 @@ export class MapsComponent implements OnInit {
     var reader = e.target;
     this.imageSrc = reader.result;
     this.loaded = true;
+  }
+  get f(){
+
+    return this.myForm.controls;
+
+  }
+  onFileChange(event) {
+
+    if (event.target.files && event.target.files[0]) {
+
+        var filesAmount = event.target.files.length;
+
+        for (let i = 0; i < filesAmount; i++) {
+
+                var reader = new FileReader();
+
+   
+
+                reader.onload = (event:any) => {
+
+                  console.log(event.target.result);
+
+                   this.images.push(event.target.result); 
+
+   
+
+                   this.myForm.patchValue({
+
+                      fileSource: this.images
+
+                   });
+
+                }
+
+  
+
+                reader.readAsDataURL(event.target.files[i]);
+
+        }
+
+    }
+
+  }
+  submit(){
+
+    console.log(this.myForm.value);
+
+    this.http.post('http://localhost:8001/upload.php', this.myForm.value)
+
+      .subscribe(res => {
+
+        console.log(res);
+
+        alert('Uploaded Successfully.');
+
+      })
+
   }
 }
