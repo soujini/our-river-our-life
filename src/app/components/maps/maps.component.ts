@@ -152,9 +152,9 @@ export class MapsComponent implements OnInit {
       location:[''],
       latitude:[''],
       longitude:[''],
-      activityDate:[''],
-      activityTime:[''],
-      images:this.fb.array([]),
+      date:[''],
+      time:[''],
+      photos:this.fb.array([]),
       experience:['']
     });
 
@@ -168,7 +168,9 @@ export class MapsComponent implements OnInit {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
           location: 'kaveri',
-          experience:'N/A',
+          experience:'',
+          date:'',
+          time:''
         }) ;
         this.codeLatLng(12.385129, 75.491320);
         // this.codeLatLng( position.coords.latitude, position.coords.longitude);
@@ -190,6 +192,7 @@ export class MapsComponent implements OnInit {
     }
   }
   addAlert() {
+    console.log(this.mapsForm.value);
 
     // this.addAlert=true;
   }

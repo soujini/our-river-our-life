@@ -39,12 +39,12 @@
     </div>
     <div class="date">
       <label class="alert-date">Date</label>
-      <mdb-date-picker name="mydate" for='activityDate' auto [formControl]="activityDate"
+      <mdb-date-picker  for='date' auto [formControl]="date"
         [options]="myDatePickerOptions" id="mydp" [placeholder]="'Selected date'" required>
       </mdb-date-picker>
     </div>
     <div style="margin-top: 50px;">
-      <label class="alert-date" for='activityTime'>Activity time</label>
+      <label class="alert-date" for='activityTime'>Time</label>
       <mdb-time-picker #timepicker></mdb-time-picker>
     </div>
 
@@ -60,7 +60,7 @@
         </div>
       </div>
     </form>
-
+    
 
     <!-- <div>
       <label class="uploader"  ondragover="return false;" [class.loaded]="loaded" formControlName="images"  for='images'
@@ -92,7 +92,7 @@
 
     <button mdbBtn type="button" class="alert-button mr-3" color="info" rounded="true" outline="true"
       mdbWavesEffect>Cancel</button>
-    <button mdbBtn type="button" color="primary" class="alert-button" rounded="true" mdbWavesEffect>+ Add Alert</button>
+    <button mdbBtn type="button" color="primary" class="alert-button" rounded="true" (click)="addAlert()"  mdbWavesEffect>+ Add Alert</button>
 
   </div>
 
