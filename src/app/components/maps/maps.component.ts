@@ -4,6 +4,8 @@ import { MapsAPILoader } from '@agm/core';
 import { IMyOptions } from 'ng-uikit-pro-standard';
 import { timer } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import {OrolService} from '../../services/orol.service';
+
 declare var google;
 
 @Component({
@@ -12,6 +14,7 @@ declare var google;
   styleUrls: ['./maps.component.scss']
 })
 export class MapsComponent implements OnInit {
+  apps :any;
   images = [];
   // myForm = new FormGroup({
   //   name: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -59,7 +62,7 @@ export class MapsComponent implements OnInit {
   }
 
 
-  constructor(private fb: FormBuilder,private http: HttpClient,
+  constructor(private fb: FormBuilder,private http: HttpClient,private orolService: OrolService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
   ) {
@@ -163,6 +166,16 @@ export class MapsComponent implements OnInit {
   //   }
   // }
   addAlert() {
+        this.orolService.addAlert().then(
+      data => {
+        this.apps=data.response;
+        console.log('success Add Alert');
+      },
+      error => {
+        console.log('oops  Add Alert', error);
+        return error;
+      }
+    );
 
     console.log(this.mapsForm.value);
     // this.addAlert=true;
