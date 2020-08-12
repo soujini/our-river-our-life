@@ -25,8 +25,8 @@ export class MapsComponent implements OnInit {
 
  });
   @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
-  activityDate = new FormControl(new Date());
-  // public activityTime = new Date();
+  date = new FormControl(new Date());
+  // public time = new Date();
   activeColor: string = 'green';
   mapsForm: FormGroup;
   imagesArray:any;
@@ -197,40 +197,40 @@ export class MapsComponent implements OnInit {
     // this.addAlert=true;
   }
 
-  handleDragEnter() {
-    this.dragging = true;
-  }
+  // handleDragEnter() {
+  //   this.dragging = true;
+  // }
 
-  handleDragLeave() {
-    this.dragging = false;
-  }
+  // handleDragLeave() {
+  //   this.dragging = false;
+  // }
 
-  handleDrop(e) {
-    e.preventDefault();
-    this.dragging = false;
-    this.handleInputChange(e);
-  }
+  // handleDrop(e) {
+  //   e.preventDefault();
+  //   this.dragging = false;
+  //   this.handleInputChange(e);
+  // }
 
   handleImageLoad() {
     this.imageLoaded = true;
   }
 
-  handleInputChange(e) {
-    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+  // handleInputChange(e) {
+  //   var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
 
-    var pattern = /image-*/;
-    var reader = new FileReader();
+  //   var pattern = /image-*/;
+  //   var reader = new FileReader();
 
-    if (!file.type.match(pattern)) {
-      alert('invalid format');
-      return;
-    }
+  //   if (!file.type.match(pattern)) {
+  //     alert('invalid format');
+  //     return;
+  //   }
 
-    this.loaded = false;
+  //   this.loaded = false;
 
-    reader.onload = this._handleReaderLoaded.bind(this);
-    reader.readAsDataURL(file);
-  }
+  //   reader.onload = this._handleReaderLoaded.bind(this);
+  //   reader.readAsDataURL(file);
+  // }
 
   _handleReaderLoaded(e) {
     var reader = e.target;

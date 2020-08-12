@@ -3,6 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  // BASE_URL:'https://our-river-our-life-api.herokuapp',
+  OROL_API_URL: 'https://our-river-our-life-api.herokuapp/',
+  REDIRECT_URL: 'http://localhost:4200',
   production: false
 };
 
