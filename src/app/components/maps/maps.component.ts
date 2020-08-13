@@ -4,7 +4,7 @@ import { MapsAPILoader } from '@agm/core';
 import { IMyOptions } from 'ng-uikit-pro-standard';
 import { timer } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import {OrolService} from '../../services/orol.service';
+import { OrolService } from '../../services/orol.service';
 
 declare var google;
 
@@ -14,33 +14,12 @@ declare var google;
   styleUrls: ['./maps.component.scss']
 })
 export class MapsComponent implements OnInit {
-  apps :any;
-  images = [];
-  // myForm = new FormGroup({
-  //   name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-  //   file: new FormControl('', [Validators.required]),
-  //   fileSource: new FormControl('', [Validators.required])
-  // });
-
   @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
-  // date = new FormControl(new Date());
-  // public time = new Date();
-  activeColor: string = 'green';
+  public myDatePickerOptions: IMyOptions = {};
+  apps: any;
+  images = [];
+  geocoder: any;
   mapsForm: FormGroup;
-  // imagesArray:any;
-  geocoder:any;
-  baseColor: string = '#ccc';
-  overlayColor: string = 'rgba(255,255,255,0.5)';
-  dragging: boolean = false;
-  loaded: boolean = false;
-  imageLoaded: boolean = false;
-  imageSrc: string = '';
-
-  public myDatePickerOptions: IMyOptions = {
-    // Your options
-  };
-
-  addingAlert: boolean;
   public latitude: number;
   public longitude: number;
   public searchControl: FormControl;
@@ -62,13 +41,11 @@ export class MapsComponent implements OnInit {
   }
 
 
-  constructor(private fb: FormBuilder,private http: HttpClient,private orolService: OrolService,
+  constructor(private fb: FormBuilder, private http: HttpClient, private orolService: OrolService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
   ) {
     this.createForm();
-    // this.imagesArray = this.mapsForm.controls.images as FormArray;
-
   }
 
   mapReady(event) {
@@ -104,20 +81,15 @@ export class MapsComponent implements OnInit {
     });
   }
 
-  // recenterMap() {
-  //   this.latitude = 36.8392542;
-  //   this.longitude = 10.313922699999999;
-  // }
-
   createForm() {
     this.mapsForm = this.fb.group({
-      location:[''],
-      latitude:[''],
-      longitude:[''],
-      activityDate:[(new Date())],
-      activityTime:[''],
+      location: [''],
+      latitude: [''],
+      longitude: [''],
+      activityDate: [(new Date())],
+      activityTime: [''],
       photos: this.fb.array([]),
-      experience:['']
+      experience: ['']
     });
   }
 
@@ -126,7 +98,7 @@ export class MapsComponent implements OnInit {
     this.geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(lat, lng);
 
-    await this.geocoder.geocode({latLng: latlng}, function(results, status) {
+    await this.geocoder.geocode({ latLng: latlng }, function (results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         var arrAddress = results;
         address = results[0].formatted_address;
@@ -154,21 +126,10 @@ export class MapsComponent implements OnInit {
       alert("Geolocation is not supported by this browser.");
     }
   }
-
-  // getPosition() {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition((position) => {
-  //       this.latitude = position.coords.latitude + (0.0000000000100 * Math.random());
-  //       this.longitude = position.coords.longitude + (0.0000000000100 * Math.random());
-  //     });
-  //   } else {
-  //     alert("Geolocation is not supported by this browser.");
-  //   }
-  // }
   addAlert() {
-        this.orolService.addAlert().then(
+    this.orolService.addAlert().then(
       data => {
-        this.apps=data.response;
+        this.apps = data.response;
         console.log('success Add Alert');
       },
       error => {
@@ -181,49 +142,12 @@ export class MapsComponent implements OnInit {
     // this.addAlert=true;
   }
 
-  // handleDrop(e) {
-  //   e.preventDefault();
-  //   this.dragging = false;
-  //   this.handleInputChange(e);
-  // }
-  //
-  // handleImageLoad() {
-  //   this.imageLoaded = true;
-  // }
-
-  // handleInputChange(e) {
-  //   var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-
-  //   var pattern = /image-*/;
-  //   var reader = new FileReader();
-
-  //   if (!file.type.match(pattern)) {
-  //     alert('invalid format');
-  //     return;
-  //   }
-
-  //   this.loaded = false;
-
-  //   reader.onload = this._handleReaderLoaded.bind(this);
-  //   reader.readAsDataURL(file);
-  // }
-
-  // _handleReaderLoaded(e) {
-  //   var reader = e.target;
-  //   this.imageSrc = reader.result;
-  //   this.loaded = true;
-  // }
-  // get f(){
-  //
-  //   return this.myForm.controls;
-  //
-  // }
   onFileChange(event) {
     if (event.target.files && event.target.files[0]) {
       var filesAmount = event.target.files.length;
       for (let i = 0; i < filesAmount; i++) {
         var reader = new FileReader();
-        reader.onload = (event:any) => {
+        reader.onload = (event: any) => {
           console.log(event.target.result);
           this.images.push(event.target.result);
           // this.mapsForm.patchValue({

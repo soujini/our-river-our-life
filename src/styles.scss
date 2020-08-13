@@ -13,9 +13,23 @@ body { margin: 0; font-family: 'Open Sans', sans-serif; }
     box-shadow:0px !important;
   }
   
-  
-  
-
+  #mytp {
+    .md-form{
+      position: relative !important;
+    margin-top: 1em !important;
+    margin-bottom: 1em !important;
+    }
+  }
+  #mydp {
+    .md-form{
+      position: relative !important;
+    margin-top: 1em !important;
+    margin-bottom: 1em !important;
+    }
+  }
+  .picker {
+    position: relative !important;
+    }
 .carousel-multi-item .controls-top .btn-floating {
     background: black !important;
     opacity:0.4 !important;

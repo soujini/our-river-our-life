@@ -3,21 +3,11 @@
   width: 350px;
   height: 170px;
 }
-.x{
-  // background: url('../../../assets/jpg/banner/banner10.jpg');
-  // background-repeat: no-repeat;
-  // background-size: 100% 100%;
-}
 .banner{
-  // background: url('../../../assets/jpg/banner/banner9.jpg');
-  // // background-repeat: no-repeat;
-   // background-size: 100% 100%;
     background:url(../../../assets/jpg/banner/bg_waves2.png);
- background-repeat: no-repeat;
- // background-attachment: fixed
+  background-repeat: no-repeat;
    background-position: center;
  background-size: cover;
-  // background-repeat: no-repeat;
 }
 #input{
     margin-top: -15px;
@@ -45,6 +35,8 @@ margin-left: 19px;
 .text2{
     margin-left: 67px;
     }
+
+  
 .date{
     margin-top: 15px;
 }
@@ -102,6 +94,10 @@ border-radius: 15px;
     font-weight: 700;
     font-family: 'Montserrat';
 }
+.btn-secondary{
+  background-color: #34495e !important;
+  color: #fff;
+}
 .flood-watch{
     z-index: 1;
 position: absolute;
@@ -116,7 +112,6 @@ left: 260px;
 top: 78px;
 }
 agm-map {
-
     height: 860px;
     width: 100% !important;
    }
@@ -195,68 +190,3 @@ margin:0px;
 //     max-width: 100%;
 // }
 // }
-
-.uploader input {
-    display: none;
-  }
-
-  .uploader {
-    -webkit-align-items: center;
-    align-items: center;
-    background-color: #efefef;
-    background-color: rgba(0, 0, 0, 0.02);
-    cursor: pointer;
-    display: -webkit-flex;
-    display: flex;
-    height: 223px;
-    -webkit-justify-content: center;
-    justify-content: center;
-    outline: 1px solid #D8D8D8;
-border-radius: 10px;
-    position: relative;
-    width: 368px;
-  }
-
-  .uploader img,
-  .uploader .icon {
-    pointer-events: none;
-  }
-
-  .uploader,
-  .uploader .icon {
-    -webkit-transition: all 100ms ease-in;
-    -moz-transition: all 100ms ease-in;
-    -ms-transition: all 100ms ease-in;
-    -o-transition: all 100ms ease-in;
-    transition: all 100ms ease-in;
-  }
-
-  .uploader .icon {
-    color: #eee;
-    color: rgba(0, 0, 0, 0.2);
-    font-size: 5em;
-  }
-
-  .uploader img {
-    left: 50%;
-    opacity: 0;
-    max-height: 100%;
-    max-width: 100%;
-    position: absolute;
-    top: 50%;
-    -webkit-transition: all 300ms ease-in;
-    -moz-transition: all 300ms ease-in;
-    -ms-transition: all 300ms ease-in;
-    -o-transition: all 300ms ease-in;
-    transition: all 300ms ease-in;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    z-index: -1;
-  }
-
-  .uploader img.loaded {
-    opacity: 1;
-  }
