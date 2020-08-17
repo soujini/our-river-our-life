@@ -1,7 +1,7 @@
 .image_container{
   overflow-y: scroll;
-  width: 350px;
-  height: 170px;
+  // width: 350px;
+  // height: 170px;
 }
 .banner{
     background:url(../../../assets/jpg/banner/bg_waves2.png);
@@ -12,11 +12,11 @@
 #input{
     margin-top: -15px;
 }
-.alert-button{
-    margin-top: -24px;
-}
+// .alert-button{
+//     // margin-top: -24px;
+// }
 .optional{
-    width: 368px;
+    // width: 368px;
    height: 133px;
    border: 1px solid #D8D8D8;
    border-radius: 10px;
@@ -29,11 +29,11 @@
       color:  #000000;
 }
 .text1{
-margin-left: 19px;
+// margin-left: 19px;
 
 }
 .text2{
-    margin-left: 67px;
+    // margin-left: 67px;
     }
 
 
@@ -65,46 +65,41 @@ margin-left: 19px;
     border: 2px solid #1C3764;
   }
   .search-bar{
-    position: relative;
-    margin:0px;
+    // position: relative;
+    // margin:0px;
      border-top:10px solid #7a6f63;
      border-top:5px solid gray;
-    
+
     }
   .search-bar1{
-    position: relative;     
-  } 
-  .alert-box1{
-    z-index: 1;  
-    top: 845px;
-    left: 45px;
+    // position: relative;
   }
+
 .alert-box{
-    width: 416px;
-    height: 830px;
+    height: 800px;
     z-index: 1;
     border: 1px solid gray;
-    top: 845px;
-    left: 109px;
     padding: 35px;
-    background-color: #FFF;
     border-radius: 20px;
+    margin-top:50px;
+}
+.bg-white{
+  background-color: #FFF;
+
 }
 .alert-div{
-width: 416px;
+// width: 416px;
 height: 150px;
-z-index: 1;
-position: absolute;
 border: 1px solid gray;
-top: 285px;
-left: 75px;
-padding: 35px;
+// top: 285px;
+// left: 75px;
+ padding: 35px;
 background-color: #FFF;
 border-radius: 15px;
 }
 
 .add-alert{
-    margin-left: 85px;
+    // margin-left: 85px;
     font-size: 14px;
     font-weight: 700;
     font-family: 'Montserrat';
@@ -113,28 +108,23 @@ border-radius: 15px;
   background-color: #34495e !important;
   color: #fff;
 }
-.flood-watch{
-    z-index: 1;
-position: absolute;
-left: 80px;
-top: 78px;
-}
-
-.river-monitoring{
-    z-index: 1;
-position: absolute;
-left: 260px;
-top: 78px;
-}
+// .flood-watch{
+//     z-index: 1;
+// }
+//
+// .river-monitoring{
+//     z-index: 1;
+//
+// }
 agm-map {
-    height: 860px;
+    height: 950px;
     width: 100% !important;
    }
 
    .input-search{
     border-radius: 10px;
     border: 1px solid #979797;
-    width: 394px;
+    // width: 394px;
     height: 50px;
     background-color: #ffffff;
    }
@@ -148,34 +138,34 @@ agm-map {
    input[type=text] {
     padding-left: 20px;
 }
-.search{
-    z-index: 1;
-position: absolute;
-left: 80px;
-top: 150px;
-
-}
+// .search{
+//     z-index: 1;
+// position: absolute;
+// // left: 80px;
+// top: 150px;
+//
+// }
 .input-latitude{
     border-radius: 10px;
     border: 1px solid #979797;
-    width: 178px;
+    // width: 178px;
     height: 50px;
     background-color: #FFF;
    }
-  .latitude{
-    z-index: 1;
-    position: absolute;
-    left: 80px;
-    top: 215px;
-
-    }
-.longitude{
-    z-index: 1;
-    position: absolute;
-    left: 299px;
-    top: 215px;
-
-}
+  // .latitude{
+  //   z-index: 1;
+  //   position: absolute;
+  //   // left: 80px;
+  //   // top: 215px;
+  //
+  //   }
+// .longitude{
+//     z-index: 1;
+//     position: absolute;
+//     // left: 299px;
+//     // top: 215px;
+//
+// }
 .data{
     font-size: 16px;
     font-weight:500;
@@ -185,20 +175,30 @@ top: 150px;
 .data-position{
     z-index: 1;
 position: absolute;
-left: 249px;
+// left: 249px;
 top: 177px;
 }
 
 p {
     font-family: Lato;
   }
- 
+
 .visible{
   visibility: visible;
+  display: visible;
 }
 
 .hidden{
   visibility: hidden;
+  display: none;
+}
+.container-fluid {
+  display: grid;
+  height:600px;
+}
+
+.content, .overlay {
+  grid-area: 1 / 1;
 }
 
 // @media (min-width: 1200px){

@@ -1,9 +1,6 @@
-<div>
-  <!-- <div class="banner " style="font-family: 'Open Sans', sans-serif;padding-top:75px; padding-bottom:75px;">
-    <h1 class="text-center"><span style="color:#303030;font-weight: 800;">VIEW</span><span
-      style="color:#303030; font-weight:800">MAPS</span></h1>
-    </div> -->
-  <div class="alert-box1 search-bar1" [formGroup]="mapsForm" [ngClass]="!(show) ? 'visible': 'hidden'">
+<!-- <div style="position:relative">
+
+   <div class="alert-box1 search-bar1" [formGroup]="mapsForm" [ngClass]="!(show) ? 'visible': 'hidden'">
     <button mdbBtn type="button" color="secondary" class="flood-watch" rounded="true" [routerLink]="'/flood-watch'"
       mdbWavesEffect>FLOOD WATCH</button>
     <button mdbBtn type="button" color="secondary" class="river-monitoring" rounded="true" [routerLink]=""
@@ -68,6 +65,85 @@
       <agm-marker [latitude]="latitude" [longitude]="longitude"
         iconUrl="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></agm-marker>
     </agm-map>
+</div> -->
+<div class="banner " style="margin-top:150px;font-family: 'Open Sans', sans-serif;padding-top:75px; padding-bottom:75px;">
+  <h1 class="text-center"><span style="color:#303030;font-weight: 800;">FLOOD</span><span
+    style="color:#303030; font-weight:800"> WATCH</span></h1>
+  </div>
+<div class="container-fluid" xstyl="margin-top:160px">
+  <div class="content">
+    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" [usePanning]='true'
+      (mapReady)="mapReady($event)" [draggable]=false>
+      <agm-marker [latitude]="latitude" [longitude]="longitude"
+        iconUrl="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></agm-marker>
+    </agm-map>
+  </div>
+  <div class="overlay col-md-4" style="z-index:1; background-color:green">
+    <div class="alert-box" [formGroup]="mapsForm" [ngClass]="!(show) ? 'visible': 'hidden'">
+      <div class="d-flex" style="justify-content: center;">
+        <button mdbBtn type="button" color="secondary" rounded="true" [routerLink]="'/flood-watch'"
+          mdbWavesEffect>FLOOD WATCH</button>
+          <button mdbBtn type="button" color="secondary" rounded="true" [routerLink]=""
+            mdbWavesEffect>RIVER MONITORING</button>
+        </div>
+        <div>
+          <input for="location" formControlName="location" placeholder="Search by location" autocorrect="off"
+            autocapitalize="off" spellcheck="off" type="text" class="input-search col-md-12 mt-3" #search
+            [formControl]="searchControl">
+            <input for="latitude" formControlName="latitude" type="text" class="input-latitude col-md-6 mt-3" placeholder="Latitude">
+            <input for="latitude" formControlName="longitude" type="text" class="input-latitude col-md-6 mt-3" placeholder="Longitude">
+          </div>
+          <div class="alert-div mt-3 text-center">
+            <p>Did You Observe Flooding in the above location ?</p>
+            <button mdbBtn type="button" color="secondary" class="add-alert" rounded="true" (click)="toggle()" mdbWavesEffect>
+              Add Alert</button>
+          </div>
+   </div>
+   <div class="alert-box bg-white" [formGroup]="mapsForm" [ngClass]="(show) ? 'visible': 'hidden'">
+     <img class="mr-2" (click)="toggle()" src="../../../assets/scalable-vector-graphics/back.svg">
+     <span class="alert-text mr-2">Add Flood Alert</span><img
+       src="../../../assets/scalable-vector-graphics/flood-watch.svg">
+     <hr class="line-header">
+     <div>
+       <label for="location" class="alert-location">Location: </label> <span> {{mapsForm.get('location').value}}</span>
+       <div class="col-md-12">
+       <label for="latitude & longitude" class="alert-location">Latitude & Longitude:</label>
+       <span> ({{mapsForm.get('latitude').value}}</span>
+       <span> , {{mapsForm.get('longitude').value}})</span>
+     </div>
+     </div>
+     <div class="date">
+       <label class="alert-date">Date</label>
+       <mdb-date-picker name="mydate" auto formControlName="activityDate" [options]="myDatePickerOptions" id="mydp"
+         [placeholder]="'Selected date'" required>
+
+       </mdb-date-picker>
+     </div>
+     <div>
+       <label class="alert-date" for='activityTime'>Time</label>
+       <mdb-time-picker #timepicker formControlName="activityTime" id="mytp"></mdb-time-picker>
+     </div>
+
+     <div class="image_container">
+
+       <div class="form-group">
+         <label for="file">File</label>
+         <!-- <img *ngFor='let url of images' [src]="url" height="75px" width="100px" style="margin: 3px;"> <br /> -->
+         <input id="file" type="file" class="form-control" multiple="" (change)="onFileChange($event)">
+       </div>
+     </div>
+     <div class="md-form input-group optional" for='experience'>
+       <textarea class="lg-textarea form-control" formControlName="experience"
+         placeholder="Your experience or message (Optional)" aria-label="With textarea"></textarea>
+     </div>
+     <div class="text-center">
+     <button mdbBtn type="button" color="secondary" class="mr-3" rounded="true"
+       mdbWavesEffect>Cancel</button>
+     <button mdbBtn type="button" color="secondary" rounded="true" (click)="addAlert()"
+       mdbWavesEffect>+ Add Alert</button>
+       </div>
+   </div>
+  </div>
 </div>
 
 
@@ -80,4 +156,4 @@
 iconUrl="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></agm-marker>
 </agm-map>
 </div> -->
-<!-- <img *ngFor='let url of images' [src]="url" height="75px" width="100px" style="margin: 3px;"> <br /> -->
+<!--  -->
