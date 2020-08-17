@@ -1,41 +1,31 @@
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false"
   (mapClick)="mapClicked($event)">
-
-  <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.lat"
-    [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable" (dragEnd)="markerDragEnd(m, $event)">
-
+<!-- (dragEnd)="markerDragEnd(m, $event)" -->
+  <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.latitude"
+    [longitude]="m.longitude" [label]="m.label" [markerDraggable]="m.draggable" >
     <agm-info-window>
-
       <mdb-tabset [buttonClass]="'pills-secondary white mb-2'" [contentClass]="'card'">
-
         <mdb-tab heading="Info">
           <div class="row">
             <div class="col-12">
-              <strong>{{m.title}}</strong>
+              <strong>{{m.location}}</strong>
             </div>
           </div>
         </mdb-tab>
-
         <mdb-tab heading="Images">
           <div class="row">
             <div class="col-12">
 
-              <div *ngFor="let img of m.images">
+              <div *ngFor="let img of m.photos">
                 <img [src]="img">
               </div>
-
             </div>
           </div>
         </mdb-tab>
       </mdb-tabset>
     </agm-info-window>
-
   </agm-marker>
+  <agm-circle [latitude]="lat" [longitude]="lng" [radius]="50" [fillColor]="'red'" [circleDraggable]="false"
+    [editable]="true">
+  </agm-circle>
 </agm-map>
-
-
-
-
-
-
-

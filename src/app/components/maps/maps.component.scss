@@ -36,7 +36,7 @@ margin-left: 19px;
     margin-left: 67px;
     }
 
-  
+
 .date{
     margin-top: 15px;
 }
@@ -183,6 +183,13 @@ margin:0px;
  border-top:10px solid #7a6f63;
  border-top:5px solid gray;
 
+}
+.visible{
+  visibility: visible;
+}
+
+.hidden{
+  visibility: hidden;
 }
 
 // @media (min-width: 1200px){

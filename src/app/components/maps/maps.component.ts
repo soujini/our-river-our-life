@@ -14,6 +14,13 @@ declare var google;
   styleUrls: ['./maps.component.scss']
 })
 export class MapsComponent implements OnInit {
+  public imageFiles: File[]=[];
+  // myForm = new FormGroup({
+  //   name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+  //   file: new FormControl('', [Validators.required]),
+  //   fileSource: new FormControl('', [Validators.required])
+  // });
+
   @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
   public myDatePickerOptions: IMyOptions = {};
   apps: any;
@@ -56,15 +63,16 @@ export class MapsComponent implements OnInit {
 
   ngOnInit() {
     //set google maps defaults
-    this.zoom = 15;
+     // this.zoom = 15;
     this.searchControl = new FormControl();
-
+// this.recenterMap();
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
         types: ["address"]
       });
       autocomplete.addListener("place_changed", () => {
+        alert("wah");
         this.ngZone.run(() => {
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
           //verify result
@@ -73,12 +81,20 @@ export class MapsComponent implements OnInit {
           }
 
           //set latitude, longitude and zoom
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
+          this.mapsForm.patchValue({
+            latitude:  place.geometry.location.lat(),
+            longitude:  place.geometry.location.lng(),
+          });
+
           // this.zoom = 12;
         });
       });
     });
+  }
+
+  recenterMap() {
+    this.latitude = 36.8392542;
+    this.longitude = 10.313922699999999;
   }
 
   createForm() {
@@ -116,9 +132,9 @@ export class MapsComponent implements OnInit {
       navigator.geolocation.getCurrentPosition((position) => {
         this.mapsForm.patchValue({
           latitude: position.coords.latitude,
-          longitude: position.coords.latitude,
+          longitude: position.coords.longitude,
         });
-        this.getAddressByLatitudeAndLongitude(position.coords.latitude + (0.0000000000100 * Math.random()), position.coords.latitude + (0.0000000000100 * Math.random()), this.mapsForm);
+        this.getAddressByLatitudeAndLongitude(position.coords.latitude, position.coords.longitude, this.mapsForm);
         // this.zoom = 15;
       });
     }
@@ -127,16 +143,18 @@ export class MapsComponent implements OnInit {
     }
   }
   addAlert() {
-    this.orolService.addAlert().then(
-      data => {
-        this.apps = data.response;
-        console.log('success Add Alert');
-      },
-      error => {
-        console.log('oops  Add Alert', error);
-        return error;
-      }
-    );
+    console.log(this.imageFiles);
+     this.orolService.addAlert(this.mapsForm.value, this.imageFiles);
+    //     this.orolService.addAlert().then(
+    //   data => {
+    //     this.apps=data.response;
+    //     console.log('success Add Alert');
+    //   },
+    //   error => {
+    //     console.log('oops  Add Alert', error);
+    //     return error;
+    //   }
+    // );
 
     console.log(this.mapsForm.value);
     // this.addAlert=true;
@@ -144,19 +162,21 @@ export class MapsComponent implements OnInit {
 
   onFileChange(event) {
     if (event.target.files && event.target.files[0]) {
-      var filesAmount = event.target.files.length;
-      for (let i = 0; i < filesAmount; i++) {
-        var reader = new FileReader();
-        reader.onload = (event: any) => {
-          console.log(event.target.result);
-          this.images.push(event.target.result);
+      var length = event.target.files.length;
+      for (let i = 0; i < event.target.files.length; i++) {
+        console.log(event.target.files[i]);
+         this.imageFiles.push(event.target.files[i]);
+        // var reader = new FileReader();
+        // reader.onload = (event:any) => {
+        //   console.log(event.target.result);
+          //this.images.push(event.target.result);
           // this.mapsForm.patchValue({
           //   photos:this.images
           //   // fileSource: this.images
           // });
         }
-        reader.readAsDataURL(event.target.files[i]);
+        //reader.readAsDataURL(event.target.files[i]);
       }
     }
-  }
+
 }
