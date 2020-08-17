@@ -15,12 +15,6 @@ declare var google;
 })
 export class MapsComponent implements OnInit {
   public imageFiles: File[]=[];
-  // myForm = new FormGroup({
-  //   name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-  //   file: new FormControl('', [Validators.required]),
-  //   fileSource: new FormControl('', [Validators.required])
-  // });
-
   @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
   public myDatePickerOptions: IMyOptions = {};
   apps: any;
@@ -62,11 +56,8 @@ export class MapsComponent implements OnInit {
 
 
   ngOnInit() {
-    //set google maps defaults
       this.zoom = 15;
     this.searchControl = new FormControl();
- // this.recenterMap();
-    //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
         types: ["address"]

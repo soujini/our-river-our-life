@@ -64,6 +64,21 @@ margin-left: 19px;
     margin-bottom: 20px;
     border: 2px solid #1C3764;
   }
+  .search-bar{
+    position: relative;
+    margin:0px;
+     border-top:10px solid #7a6f63;
+     border-top:5px solid gray;
+    
+    }
+  .search-bar1{
+    position: relative;     
+  } 
+  .alert-box1{
+    z-index: 1;  
+    top: 845px;
+    left: 45px;
+  }
 .alert-box{
     width: 416px;
     height: 830px;
@@ -177,13 +192,7 @@ top: 177px;
 p {
     font-family: Lato;
   }
-  .search-bar{
-position: relative;
-margin:0px;
- border-top:10px solid #7a6f63;
- border-top:5px solid gray;
-
-}
+ 
 .visible{
   visibility: visible;
 }
