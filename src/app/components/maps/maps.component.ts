@@ -63,9 +63,9 @@ export class MapsComponent implements OnInit {
 
   ngOnInit() {
     //set google maps defaults
-     // this.zoom = 15;
+      this.zoom = 15;
     this.searchControl = new FormControl();
-// this.recenterMap();
+ // this.recenterMap();
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
@@ -134,6 +134,8 @@ export class MapsComponent implements OnInit {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         });
+        this.latitude=position.coords.latitude;
+        this.longitude=position.coords.longitude;
         this.getAddressByLatitudeAndLongitude(position.coords.latitude, position.coords.longitude, this.mapsForm);
         // this.zoom = 15;
       });

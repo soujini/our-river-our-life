@@ -1,19 +1,21 @@
 .store{
-  background-color: blue;
   text-align: center;
-   padding:50px;
-  background-color:#161616;
-  background-color: #222222 ;
-  height:150px;
+   padding:25px;
+  // background-color: #e5e5e5;
+  color:teal;
+  height:100px;
+  // background: url(banner_backsplash.bb6e959….jpg
+  background:url(../../../assets/jpg/banner/banner_backsplash.jpg);
+  // background:url(../../../assets/jpg/banner/bg_waves2.png);
+  background-repeat: no-repeat;
+    background-position: center;
+  background-size: cover;
+  // background-color: black;
 }
 .download-on{
-  color: #808080 ;
-  font-size:28px;
-  font-family: 'Dancing Script', cursive;
-  // font-weight: bold;
-  // text-transform: uppercase;
-  // line-height: 2em;
-  // font-family: 'Open Sans', sans-serif;
+  color: black;
+  font-size:20px;
+   font-family: 'Open Sans', sans-serif; font-weight:600;
 }
 .contact-title{
   font-family: 'Dancing Script', cursive;

@@ -3,7 +3,6 @@
     <h1 class="text-center"><span style="color:#303030;font-weight: 800;">VIEW</span><span
       style="color:#303030; font-weight:800">MAPS</span></h1>
     </div>
-
     <div class="form-group search-bar" [formGroup]="mapsForm" [ngClass]="!(show) ? 'visible': 'hidden'">
       <button mdbBtn type="button" color="secondary" class="flood-watch" rounded="true" [routerLink]="'/flood-watch'"
       mdbWavesEffect>FLOOD WATCH</button>
@@ -21,7 +20,7 @@
         <button mdbBtn type="button" color="secondary" class="add-alert" rounded="true" (click)="toggle()" mdbWavesEffect>
           Add Alert</button>
         </div>
-    </div>
+      </div>
 
       <div class="alert-box search-bar" [formGroup]="mapsForm" [ngClass]="(show) ? 'visible': 'hidden'">
         <img class="mr-2" (click)="toggle()" src="../../../assets/scalable-vector-graphics/back.svg">
@@ -49,7 +48,7 @@
       </div>
 
       <div class="image_container">
-        <!-- <img *ngFor='let url of images' [src]="url" height="75px" width="100px" style="margin: 3px;"> <br /> -->
+
         <div class="form-group">
           <label for="file">File</label>
           <input id="file" type="file" class="form-control" multiple=""
@@ -65,11 +64,21 @@
       <button mdbBtn type="button" color="secondary" class="alert-button" rounded="true" (click)="addAlert()"
       mdbWavesEffect>+ Add Alert</button>
     </div>
+
     <div class="search-bar">
+
       <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" [usePanning]='true'
       (mapReady)="mapReady($event)" [draggable]=false>
       <agm-marker [latitude]="latitude" [longitude]="longitude"
       iconUrl="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></agm-marker>
     </agm-map>
   </div>
-  </div>
+</div>
+<!-- <div style="background-color:red;padding:25px;margin-top:150px">
+<agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" xzoom="4" usePanning='true'
+(mapReady)="mapReady($event)" [draggable]=false>
+<agm-marker [latitude]="latitude" [longitude]="longitude"
+iconUrl="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></agm-marker>
+</agm-map>
+</div> -->
+<!-- <img *ngFor='let url of images' [src]="url" height="75px" width="100px" style="margin: 3px;"> <br /> -->

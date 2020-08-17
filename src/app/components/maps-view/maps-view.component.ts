@@ -71,10 +71,9 @@ export class MapsViewComponent  {
     // alert(a);
 
     this.orolService.getFloodAlerts().subscribe((data)=>{
-      // console.log(data.rows);
-    //  if(data.rows){
-    //   for(var i=0; i<data.rows.length;i++){
-    //
+       // console.log(data);
+    //  if(data.count){
+    //   for(var i=0; i<data.count;i++){
     //     this.markers.push({
     //       latitude: data.rows[i].latitude,
     //       longitude:data.rows[i].longitude,
