@@ -26,10 +26,10 @@ export class MapsViewComponent  {
   }
 
   mapClicked($event: MouseEvent) {
-    alert("clicked");
+    // alert("clicked");
     // this.markers.push({
     //   latitude: $event.coords.lat,
-    //   lng: $event.coords.lng,
+    //   longitude: $event.coords.lng,
     //   draggable: true
     // });
   }
@@ -37,38 +37,44 @@ export class MapsViewComponent  {
   // markerDragEnd(m: marker, $event: MouseEvent) {
   //   console.log('dragEnd', m, $event);
   // }
-  markers:marker[]=[];
-  // markers: marker[] = [
-  //   {
-  //     latitude: 19.0760,
-  //     lng: 72.8777,
-  //     label: 'A',
-  //     title:'Location 1',
-  //     images: [
-  //       '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
-  //       '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
-  //       '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
-  //     ],
-  //     draggable: true
-  //   },
-  //   {
-  //     lat: 12.384532,
-  //     lng: 75.490376,
-  //     label: 'B',
-  //     title:'Location 2',
-  //     images: [
-  //       '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
-  //       '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
-  //       '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
-  //     ],
-  //     draggable: false
-  //   },
-  // ]
+  // markers:marker[]=[];
+  markers: marker[] = [
+    {
+      latitude: 19.0760,
+      longitude: 72.8777,
+      label: 'A',
+      activityDate:  '12-aug-2020',
+      activityTime:'10:50 Pm',
+      location:'Location 1',
+      experience : 'N/A' ,
+      photos: [
+        '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
+        '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
+        '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
+      ],
+      draggable: true
+    },
+    {
+      latitude: 12.384532,
+      longitude: 75.490376,
+      label: 'B',
+      activityDate:  '18-aug-2020',
+      activityTime:'12:50 Am',
+      location:'Location 2',
+      experience : 'N/A' ,
+      photos: [
+        '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
+        '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
+        '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
+      ],
+      draggable: false
+    },
+  ]
 
   getFloodAlerts() {
     // console.log(this.imageFiles);
-    // var a = this.orolService.getFloodAlerts();
-    // alert(a);
+    var a = this.orolService.getFloodAlerts();
+    alert('hi');
 
     this.orolService.getFloodAlerts().subscribe((data)=>{
        // console.log(data);
@@ -99,4 +105,8 @@ interface marker {
   draggable: boolean;
   location?: string;
   photos?: Array <string>;
+  activityTime:string;
+  activityDate: string;
+  experience : string;
 }
+

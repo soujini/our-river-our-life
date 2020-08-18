@@ -1,7 +1,5 @@
 .image_container{
   overflow-y: scroll;
-  // width: 350px;
-  // height: 170px;
 }
 .banner{
     background:url(../../../assets/jpg/banner/bg_waves2.png);
@@ -12,11 +10,7 @@
 #input{
     margin-top: -15px;
 }
-// .alert-button{
-//     // margin-top: -24px;
-// }
 .optional{
-    // width: 368px;
    height: 133px;
    border: 1px solid #D8D8D8;
    border-radius: 10px;
@@ -28,14 +22,6 @@
     font-family: 'Montserrat';
       color:  #000000;
 }
-.text1{
-// margin-left: 19px;
-
-}
-.text2{
-    // margin-left: 67px;
-    }
-
 
 .date{
     margin-top: 15px;
@@ -65,20 +51,14 @@
     border: 2px solid #1C3764;
   }
   .search-bar{
-    // position: relative;
-    // margin:0px;
      border-top:10px solid #7a6f63;
      border-top:5px solid gray;
 
     }
-  .search-bar1{
-    // position: relative;
-  }
 
 .alert-box{
     height: 800px;
     z-index: 1;
-    border: 1px solid gray;
     padding: 35px;
     border-radius: 20px;
     margin-top:50px;
@@ -88,18 +68,14 @@
 
 }
 .alert-div{
-// width: 416px;
 height: 150px;
 border: 1px solid gray;
-// top: 285px;
-// left: 75px;
- padding: 35px;
+padding: 35px;
 background-color: #FFF;
 border-radius: 15px;
 }
 
 .add-alert{
-    // margin-left: 85px;
     font-size: 14px;
     font-weight: 700;
     font-family: 'Montserrat';
@@ -108,14 +84,6 @@ border-radius: 15px;
   background-color: #34495e !important;
   color: #fff;
 }
-// .flood-watch{
-//     z-index: 1;
-// }
-//
-// .river-monitoring{
-//     z-index: 1;
-//
-// }
 agm-map {
     height: 950px;
     width: 100% !important;
@@ -124,7 +92,6 @@ agm-map {
    .input-search{
     border-radius: 10px;
     border: 1px solid #979797;
-    // width: 394px;
     height: 50px;
     background-color: #ffffff;
    }
@@ -138,34 +105,12 @@ agm-map {
    input[type=text] {
     padding-left: 20px;
 }
-// .search{
-//     z-index: 1;
-// position: absolute;
-// // left: 80px;
-// top: 150px;
-//
-// }
 .input-latitude{
     border-radius: 10px;
     border: 1px solid #979797;
-    // width: 178px;
     height: 50px;
     background-color: #FFF;
    }
-  // .latitude{
-  //   z-index: 1;
-  //   position: absolute;
-  //   // left: 80px;
-  //   // top: 215px;
-  //
-  //   }
-// .longitude{
-//     z-index: 1;
-//     position: absolute;
-//     // left: 299px;
-//     // top: 215px;
-//
-// }
 .data{
     font-size: 16px;
     font-weight:500;
@@ -175,7 +120,6 @@ agm-map {
 .data-position{
     z-index: 1;
 position: absolute;
-// left: 249px;
 top: 177px;
 }
 
@@ -200,9 +144,3 @@ p {
 .content, .overlay {
   grid-area: 1 / 1;
 }
-
-// @media (min-width: 1200px){
-// .container {
-//     max-width: 100%;
-// }
-// }

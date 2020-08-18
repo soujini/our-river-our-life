@@ -47,6 +47,7 @@ export class MapsComponent implements OnInit {
     private ngZone: NgZone
   ) {
     this.createForm();
+    
   }
 
   mapReady(event) {

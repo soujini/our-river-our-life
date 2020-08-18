@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Route, Router, NavigationStart, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-// import { SpinnerService } from '../services/spinner.service';
+import { SpinnerService } from '../services/spinner.service';
 declare var Orol:any;
 
 
@@ -13,23 +13,30 @@ declare var Orol:any;
 export class OrolService {
   private baseURL: string = environment.OROL_API_URL;
 
-  constructor( private router: Router, public httpClient: HttpClient) { }
+  constructor( private router: Router, public httpClient: HttpClient,private spinnerService: SpinnerService) { }
 
   public addAlert(x, images:File[]){
+    this.spinnerService.setSpinner(true);
     const form = new FormData;
     for(var i=0; i<images.length;i++){
       form.append('photos', images[i]);
+      this.spinnerService.setSpinner(false);
+
     }
+   
     form.append("location", x.location);
     form.append("latitude", x.latitude);
     form.append("longitude", x.longitude);
     form.append("activityDate", x.activityDate);
     form.append("activityTime", x.activityTime);
     form.append("experience", x.experience);
+    this.spinnerService.setSpinner(false);
 
     this.httpClient.post("https://our-river-our-life-api.herokuapp.com/flood-alert/create-alert", form).subscribe(
       (res) => console.log(res),
       (err) => console.log(err));
+      this.spinnerService.setSpinner(false);
+      
     }
 
     public getFloodAlerts(){

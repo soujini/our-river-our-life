@@ -8,7 +8,14 @@
         <mdb-tab heading="Info">
           <div class="row">
             <div class="col-12">
-              <strong>{{m.location}}</strong>
+              <label>Location :</label>
+              <strong>{{m.location}}</strong> <br/>
+              <label>Time :</label>
+              <strong> {{m.activityTime}}</strong> <br/>
+              <label>Date :</label>
+              <strong> {{m.activityDate}}</strong> <br/>
+              <label>Experience :</label>
+              <strong> {{m.experience}}</strong> <br/>
             </div>
           </div>
         </mdb-tab>
@@ -24,7 +31,4 @@
       </mdb-tabset>
     </agm-info-window>
   </agm-marker>
-  <agm-circle [latitude]="lat" [longitude]="lng" [radius]="50" [fillColor]="'red'" [circleDraggable]="false"
-    [editable]="false">
-  </agm-circle>
 </agm-map>
