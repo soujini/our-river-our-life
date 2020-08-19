@@ -1,6 +1,6 @@
-.image_container{
-  overflow-y: scroll;
-}
+// .image_container{
+//   overflow-y: scroll;
+// }
 .banner{
     background:url(../../../assets/jpg/banner/bg_waves2.png);
   background-repeat: no-repeat;
@@ -12,7 +12,7 @@
 }
 .optional{
    height: 133px;
-   border-radius: 10px;
+ 
 }
 .text{
     line-height: 2.5;
@@ -65,6 +65,12 @@
 .bg-white{
   background-color: #FFF;
 
+}
+.textAddflood{
+  font-size:13px !important;
+  font-weight: 500 !important;
+  font-family: 'Montserrat' !important;
+  color: #000000 !important;
 }
 .alert-div{
 height: 150px;
@@ -146,3 +152,7 @@ p {
 .pointer{
   cursor: pointer;
 }
+.area{
+  border-radius: 10px;
+}
+

@@ -4,11 +4,11 @@
   </div>
 <div class="container-fluid" xstyl="margin-top:160px">
   <div class="content">
-    <agm-map [fitBounds]="true" [latitude]="this.mapsForm.get('latitude').value" [longitude]="this.mapsForm.get('longitude').value" [fullscreenControl]='true' [mapTypeId]="'hybrid'"
-     [mapTypeControl]='true' [scrollwheel]="false" [zoom]="zoom" [usePanning]='true'
-      (mapReady)="mapReady($event)" [draggable]=false>
+    <agm-map [fitBounds]="true" [latitude]="this.mapsForm.get('latitude').value" [longitude]="this.mapsForm.get('longitude').value" 
+    [mapTypeId]="'hybrid'"  [scrollwheel]="false" [zoom]="zoom" [usePanning]='true' (mapReady)="mapReady($event)" [draggable]=false>
+    <!-- [fullscreenControl]='true'  [mapTypeControl]='true' -->
       <agm-marker [agmFitBounds]="true" [latitude]="this.mapsForm.get('latitude').value" [longitude]="this.mapsForm.get('longitude').value"
-        iconUrl="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></agm-marker>
+       [iconUrl]='{"url": iconUrl,"scaledSize": {"height": 35, "width": 35}}'  ></agm-marker>
     </agm-map>
   </div>
   <div class="overlay col-md-4" style="z-index:1;">
@@ -27,7 +27,7 @@
             <input for="longitude" formControlName="longitude" type="text" class="input-latitude col-md-6 mt-3" placeholder="Longitude" (change)="bla()">
           </div>
           <div class="alert-div mt-3 text-center">
-            <p>Did You Observe Flooding in the above location ?</p>
+            <span class="textAddflood">Did You Observe Flooding in the above location ?</span> <br/>
             <button mdbBtn type="button" color="secondary" class="add-alert" rounded="true" (click)="toggle()" mdbWavesEffect>
               Add Alert</button>
           </div>
@@ -38,15 +38,15 @@
        src="../../../assets/scalable-vector-graphics/flood-watch.svg">
      <hr class="line-header">
      <div>
-       <label for="location" class="alert-location">Location: </label> <span> {{mapsForm.get('location').value}}</span>
-       <div class="col-md-12">
-       <label for="latitude & longitude" class="alert-location">Latitude & Longitude:</label>
-       <span> ({{mapsForm.get('latitude').value}}</span>
-       <span> , {{mapsForm.get('longitude').value}})</span>
-     </div>
+       <label for="location" class="alert-location">Location: </label> <span class="alert-text"> {{mapsForm.get('location').value}}</span> <br /><br /> 
+       <!-- <div xclass="col-md-12"> --> 
+       <label for="latitude & longitude" class="alert-location">Latitude & Longitude: </label>
+       <span class="alert-text"> ({{mapsForm.get('latitude').value}}</span>
+       <span class="alert-text"> , {{mapsForm.get('longitude').value}})</span>
+     <!-- </div> -->
      </div>
      <div class="date">
-       <label class="alert-date">Date</label>
+       <label class="alert-date" >Date</label>
        <mdb-date-picker [inline]="true" name="mydate" auto formControlName="activityDate" [options]="myDatePickerOptions" id="mydp"
          [placeholder]="'Selected date'" required>
        </mdb-date-picker>
@@ -60,13 +60,13 @@
      <div class="image_container">
 
        <div class="form-group">
-         <label for="file">File</label>
+         <!-- <label for="file">File</label> -->
          <!-- <img *ngFor='let url of images' [src]="url" height="75px" width="100px" style="margin: 3px;"> <br /> -->
          <input id="file" type="file" class="form-control" multiple="" (change)="onFileChange($event)">
        </div>
      </div>
      <div class="md-form input-group optional" for='experience'>
-       <textarea class="lg-textarea form-control" formControlName="experience"
+       <textarea class="lg-textarea form-control area" formControlName="experience"
          placeholder="Your experience or message (Optional)" aria-label="With textarea"></textarea>
      </div>
      <div class="text-center">

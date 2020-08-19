@@ -1,4 +1,4 @@
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="4" gestureHandling= 'none' [disableDefaultUI]="false" zoomControl="true"
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="4" gestureHandling= 'none' [mapTypeId]="'hybrid'"  [disableDefaultUI]="false" zoomControl="true"
   (mapClick)="mapClicked($event)">
 <!-- (dragEnd)="markerDragEnd(m, $event)" -->
   <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.latitude"
