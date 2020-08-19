@@ -9,6 +9,8 @@ import { ActivatedRoute, Router, NavigationEnd ,NavigationStart, Event } from '@
 })
 export class AppComponent implements AfterViewInit {
   title = 'our-river-our-life';
+  isLoading:boolean=false;
+timeout;
 
   constructor(private router: Router, public spinnerService:SpinnerService){
   router.events.subscribe((event: Event) => {

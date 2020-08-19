@@ -82,6 +82,9 @@ export class MapsViewComponent  {
             label:data['rows'][i].location,
             location:data['rows'][i].location,
             photos:data['rows'][i].photos,
+            activityDate:data['rows'][i].activityDate,
+            activityTime:data['rows'][i].activityTime,
+            experience:data['rows'][i].experience,
             draggable: false,
           });
         }
