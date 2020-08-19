@@ -1,7 +1,7 @@
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="4" gestureHandling= 'none' [mapTypeId]="'hybrid'"  [disableDefaultUI]="false" zoomControl="true"
   (mapClick)="mapClicked($event)">
 <!-- (dragEnd)="markerDragEnd(m, $event)" -->
-  <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.latitude"
+  <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.latitude"  [iconUrl]='{"url": iconUrl,"scaledSize": {"height": 35, "width": 35}}'
     [longitude]="m.longitude" [label]="m.label" [markerDraggable]="m.draggable" >
     <agm-info-window>
       <mdb-tabset [buttonClass]="'pills-secondary white mb-2'" [contentClass]="'card'">

@@ -166,3 +166,20 @@ mdb-card-img img {
     width:100%;
     height:100%;
 }
+
+ // agm info window
+
+.gm-style .gm-style-iw {
+
+  width: 100%;
+  max-width: 284px !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .gm-style .gm-style-iw {
+
+      width: 100%;
+      max-width: 284px !important;
+  }
+}
+
