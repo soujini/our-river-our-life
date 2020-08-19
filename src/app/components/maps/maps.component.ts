@@ -21,33 +21,32 @@ export class MapsComponent implements OnInit {
   images = [];
   geocoder: any;
   mapsForm: FormGroup;
-  public latitude: number;
-  public longitude: number;
+  // public latitude: number = 23.074290;
+  // public longitude: number = 79.134113;
   public searchControl: FormControl;
   public zoom: number;
   show: boolean = false;
   buttonName = 'Show';
   hide: any;
+  centerLoc:any={};
 
   toggle() {
     this.show = !this.show
 
     if (this.show) {
       this.buttonName = 'Hide'
-      console.log(this.show)
     }
     else {
       this.buttonName = 'Show'
     }
   }
 
-
   constructor(private fb: FormBuilder, private http: HttpClient, private orolService: OrolService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
   ) {
     this.createForm();
-    
+
   }
 
   mapReady(event) {
@@ -57,7 +56,7 @@ export class MapsComponent implements OnInit {
 
 
   ngOnInit() {
-      this.zoom = 15;
+    this.zoom = 15;
     this.searchControl = new FormControl();
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
@@ -77,23 +76,28 @@ export class MapsComponent implements OnInit {
             latitude:  place.geometry.location.lat(),
             longitude:  place.geometry.location.lng(),
           });
-
-          // this.zoom = 12;
+          this.centerLoc = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() };
         });
       });
     });
   }
+  bla(){
+    this.getAddressByLatitudeAndLongitude(this.mapsForm.get('latitude').value, this.mapsForm.get('longitude').value, this.mapsForm);
+    this.centerLoc = { lat: this.mapsForm.get('latitude').value, lng: this.mapsForm.get('longitude').value };
+    //this.recenterMap();
+  }
 
   recenterMap() {
-    this.latitude = 36.8392542;
-    this.longitude = 10.313922699999999;
+    // alert("woo");
+    // this.latitude = this.mapsForm.get('latitude').value;
+    // this.longitude = this.mapsForm.get('longitude').value;
   }
 
   createForm() {
     this.mapsForm = this.fb.group({
       location: [''],
-      latitude: [''],
-      longitude: [''],
+      latitude: [23.074290],
+      longitude: [79.134113],
       activityDate: [(new Date())],
       activityTime: [''],
       photos: this.fb.array([]),
@@ -126,8 +130,9 @@ export class MapsComponent implements OnInit {
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         });
-        this.latitude=position.coords.latitude;
-        this.longitude=position.coords.longitude;
+        this.centerLoc = { lat: position.coords.latitude, lng: position.coords.longitude };
+        // this.latitude=position.coords.latitude;
+        // this.longitude=position.coords.longitude;
         this.getAddressByLatitudeAndLongitude(position.coords.latitude, position.coords.longitude, this.mapsForm);
         // this.zoom = 15;
       });

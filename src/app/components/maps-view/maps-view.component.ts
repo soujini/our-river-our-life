@@ -72,28 +72,21 @@ export class MapsViewComponent  {
   ]
 
   getFloodAlerts() {
-    // console.log(this.imageFiles);
     var a = this.orolService.getFloodAlerts();
-    alert('hi');
-
     this.orolService.getFloodAlerts().subscribe((data)=>{
-       // console.log(data);
-    //  if(data.count){
-    //   for(var i=0; i<data.count;i++){
-    //     this.markers.push({
-    //       latitude: data.rows[i].latitude,
-    //       longitude:data.rows[i].longitude,
-    //       label:data.rows[i].location,
-    //       location:data.rows[i].location,
-    //       photos:data.rows[i].photos,
-    //       draggable: false,
-    //     });
-    //   }
-    //   console.log(this.markers);
-    // }
+      if(data['count']){
+        for(var i=0; i<data['count'];i++){
+          this.markers.push({
+            latitude: data['rows'][i].latitude,
+            longitude:data['rows'][i].longitude,
+            label:data['rows'][i].location,
+            location:data['rows'][i].location,
+            photos:data['rows'][i].photos,
+            draggable: false,
+          });
+        }
+      }
     });
-
-
   }
 }
 
@@ -109,4 +102,3 @@ interface marker {
   activityDate: string;
   experience : string;
 }
-

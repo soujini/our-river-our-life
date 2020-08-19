@@ -10,37 +10,37 @@ body { margin: 0; font-family: 'Open Sans', sans-serif; }
   outline-width: 0px !important;
 }
 .card {
-    box-shadow:0px !important;
-  }
-  
-  #mytp {
-    .md-form{
-      position: relative !important;
-    margin-top: 1em !important;
-    margin-bottom: 1em !important;
-    }
-  }
-  #mydp {
-    .md-form{
-      position: relative !important;
-    margin-top: 1em !important;
-    margin-bottom: 1em !important;
-    }
-  }
-  .picker {
+  box-shadow:0px !important;
+}
+
+#mytp {
+  .md-form{
     position: relative !important;
-    }
+    margin-top: 1em !important;
+    margin-bottom: 1em !important;
+  }
+}
+#mydp {
+  .md-form{
+    position: relative !important;
+    margin-top: 1em !important;
+    margin-bottom: 1em !important;
+  }
+}
+.picker {
+  position: relative !important;
+}
 .carousel-multi-item .controls-top .btn-floating {
-    background: black !important;
-    opacity:0.4 !important;
+  background: black !important;
+  opacity:0.4 !important;
 }
 
 .carousel-multi-item .carousel-indicators li {
-    height: 1.25rem;
-    width: 1.25rem;
-    max-width: 1.25rem;
-    background-color: black !important;
-    margin-bottom: -3.75rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  max-width: 1.25rem;
+  background-color: black !important;
+  margin-bottom: -3.75rem;
 }
 .btn-floating i {
   // color:gray !important;
@@ -56,34 +56,34 @@ body { margin: 0; font-family: 'Open Sans', sans-serif; }
     height: 54px !important;
     opacity: none !important;
     margin-left: -15px !important;
-}
-.mat-form-field-outline-thick{
-  color: #E1E1E1  !important;
-}
-.cdk-overlay-pane{
-  width: 440px !important;
-}
+  }
+  .mat-form-field-outline-thick{
+    color: #E1E1E1  !important;
+  }
+  .cdk-overlay-pane{
+    width: 440px !important;
+  }
 
-.mat-input-element {
-  margin-top: 17px !important;
-  margin-right: -24px !important;
-  font-weight: 500 !important;
-  font-family: 'Quicksand' !important;
-}
+  .mat-input-element {
+    margin-top: 17px !important;
+    margin-right: -24px !important;
+    font-weight: 500 !important;
+    font-family: 'Quicksand' !important;
+  }
 
- .mat-form-field-underline {
-  height: 0px !important;
-}
-.mat-autocomplete-panel{
-  overflow: hidden !important;
-}
+  .mat-form-field-underline {
+    height: 0px !important;
+  }
+  .mat-autocomplete-panel{
+    overflow: hidden !important;
+  }
 }
 #cdk-overlay-1.cdk-overlay-pane{
   width: 440px !important;
 }
 
 #cdk-overlay-0{
-   top: 154px !important;
+  top: 154px !important;
   left: 11px !important;
   margin-left: 31% !important;
   margin-top: 10px !important;
@@ -97,14 +97,13 @@ mdb-card-img img {
 
 .accordion{
   display: flex !important;
-    flex-wrap: wrap !important;
-     margin-right: 15px !important;
-     margin-left: 15px !important;
+  flex-wrap: wrap !important;
+  margin-right: 15px !important;
+  margin-left: 15px !important;
 }
 .mdb-accordion-indicator {
   // visibility: hidden !important;
 }
-
 
 .md-accordion .card {
   border-bottom: none !important;
@@ -113,17 +112,45 @@ mdb-card-img img {
   background-color: transparent !important;
 }
 .md-accordion .card .card-body {
-    font-size: 1rem !important;
-    font-weight: 300 !important;
-    color: #303030 !important; //626262
-    text-align: justify !important;
+  font-size: 1rem !important;
+  font-weight: 300 !important;
+  color: #303030 !important; //626262
+  text-align: justify !important;
 
 }
 .mdb-accordion-indicator {
-    position: absolute;
+  position: absolute;
+  right: 0;
+  -webkit-transform-origin: 50% 65%;
+  transform-origin: 50% 65%;
+  margin-right: 24px;
+  top: none !important;
+}
+.navbar{
+  position: fixed !important;
+  background-color: white;
+  width:100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 998;
+  background-image: url(assets/scalable-vector-graphics/banner_header2.svg) !important;
+  background-repeat: no-repeat !important;
+  background-position: right !important;
+}
+.loader {
+    // display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
     right: 0;
-    -webkit-transform-origin: 50% 65%;
-    transform-origin: 50% 65%;
-     margin-right: 24px;
-      top: none !important;
+    bottom: 0;
+     background:url('./assets/scalable-vector-graphics/spinner_coco.svg') no-repeat #FFFFFFE6 50%;
+    -moz-background-size:64px 64px;
+    -o-background-size:64px 64px;
+    -webkit-background-size:64px 64px;
+    background-size:64px 64px;
+    z-index: 2999999999;
+    width:100%;
+    height:100%;
 }

@@ -5,7 +5,6 @@
   background: linear-gradient(60deg, #34679a 0%, #fafafa 100%);
   color: white;
   margin-top:175px;
-
 }
 .logo {
   width: 50px;
@@ -15,7 +14,7 @@
   vertical-align: middle;
 }
 .inner-header {
-  height: 45vh;
+  min-height: 45vh;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -81,7 +80,7 @@
     height: 30vh;
   }
   h1 {
-    font-size: 24px;
+    font-size: 1.5em;
   }
 }
 .banner{
@@ -90,7 +89,7 @@
   padding-bottom:75px;
   text-align: center;
   letter-spacing: 1px;
-  height:350px;
+  min-height:350px;
 }
 .banner-div{
   padding-top:50px;
@@ -103,7 +102,7 @@
   color:#303f9f;
   color:#14757F;
   color: #34495E;
-  font-size:24px;
+  font-size:1.5em;
   font-weight: bold;
   line-height: 2em;
   letter-spacing: 1px;
@@ -113,7 +112,7 @@
   color:#14757F;
   color:white;
   color: #34495E;
-  font-size:24px;
+  font-size:1.5em;
   font-weight: 500;
   line-height: 2em;
   letter-spacing: 1px;

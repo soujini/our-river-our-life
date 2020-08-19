@@ -4,10 +4,10 @@
   </div>
 <div class="container-fluid" xstyl="margin-top:160px">
   <div class="content">
-    <agm-map [latitude]="latitude" [longitude]="longitude" [fullscreenControl]='true' [mapTypeId]="'hybrid'"
+    <agm-map [fitBounds]="true" [latitude]="this.mapsForm.get('latitude').value" [longitude]="this.mapsForm.get('longitude').value" [fullscreenControl]='true' [mapTypeId]="'hybrid'"
      [mapTypeControl]='true' [scrollwheel]="false" [zoom]="zoom" [usePanning]='true'
       (mapReady)="mapReady($event)" [draggable]=false>
-      <agm-marker [latitude]="latitude" [longitude]="longitude"
+      <agm-marker [agmFitBounds]="true" [latitude]="this.mapsForm.get('latitude').value" [longitude]="this.mapsForm.get('longitude').value"
         iconUrl="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></agm-marker>
     </agm-map>
   </div>
@@ -23,8 +23,8 @@
           <input for="location" formControlName="location" placeholder="Search by location" autocorrect="off"
             autocapitalize="off" spellcheck="off" type="text" class="input-search col-md-12 mt-3" #search
             [formControl]="searchControl">
-            <input for="latitude" formControlName="latitude" type="text" class="input-latitude col-md-6 mt-3" placeholder="Latitude">
-            <input for="latitude" formControlName="longitude" type="text" class="input-latitude col-md-6 mt-3" placeholder="Longitude">
+            <input for="latitude" formControlName="latitude" type="text" class="input-latitude col-md-6 mt-3" placeholder="Latitude" (change)="bla()">
+            <input for="longitude" formControlName="longitude" type="text" class="input-latitude col-md-6 mt-3" placeholder="Longitude" (change)="bla()">
           </div>
           <div class="alert-div mt-3 text-center">
             <p>Did You Observe Flooding in the above location ?</p>
@@ -33,7 +33,7 @@
           </div>
    </div>
    <div class="alert-box bg-white" [formGroup]="mapsForm" [ngClass]="(show) ? 'visible': 'hidden'">
-     <img class="mr-2" (click)="toggle()" src="../../../assets/scalable-vector-graphics/back.svg">
+     <img class="mr-2 pointer" (click)="toggle()" src="../../../assets/scalable-vector-graphics/back.svg">
      <span class="alert-text mr-2">Add Flood Alert</span><img
        src="../../../assets/scalable-vector-graphics/flood-watch.svg">
      <hr class="line-header">
@@ -47,15 +47,15 @@
      </div>
      <div class="date">
        <label class="alert-date">Date</label>
-       <mdb-date-picker name="mydate" auto formControlName="activityDate" [options]="myDatePickerOptions" id="mydp"
+       <mdb-date-picker [inline]="true" name="mydate" auto formControlName="activityDate" [options]="myDatePickerOptions" id="mydp"
          [placeholder]="'Selected date'" required>
-
        </mdb-date-picker>
      </div>
      <div>
        <label class="alert-date" for='activityTime'>Time</label>
        <mdb-time-picker #timepicker formControlName="activityTime" id="mytp"></mdb-time-picker>
      </div>
+
 
      <div class="image_container">
 
@@ -70,7 +70,7 @@
          placeholder="Your experience or message (Optional)" aria-label="With textarea"></textarea>
      </div>
      <div class="text-center">
-     <button mdbBtn type="button" color="secondary" class="mr-3" rounded="true"
+     <button mdbBtn type="button" color="secondary" class="mr-3" rounded="true" (click)="toggle()"
        mdbWavesEffect>Cancel</button>
      <button mdbBtn type="button" color="secondary" rounded="true" (click)="addAlert()"
        mdbWavesEffect>+ Add Alert</button>
@@ -78,7 +78,3 @@
    </div>
   </div>
 </div>
-
-
-
-

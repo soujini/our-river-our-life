@@ -20,10 +20,8 @@ export class OrolService {
     const form = new FormData;
     for(var i=0; i<images.length;i++){
       form.append('photos', images[i]);
-      this.spinnerService.setSpinner(false);
-
     }
-   
+
     form.append("location", x.location);
     form.append("latitude", x.latitude);
     form.append("longitude", x.longitude);
@@ -36,7 +34,6 @@ export class OrolService {
       (res) => console.log(res),
       (err) => console.log(err));
       this.spinnerService.setSpinner(false);
-      
     }
 
     public getFloodAlerts(){

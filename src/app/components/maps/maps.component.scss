@@ -12,7 +12,6 @@
 }
 .optional{
    height: 133px;
-   border: 1px solid #D8D8D8;
    border-radius: 10px;
 }
 .text{
@@ -20,7 +19,7 @@
     font-size:14px;
     font-weight: 500;
     font-family: 'Montserrat';
-      color:  #000000;
+    color: #000000;
 }
 
 .date{
@@ -143,4 +142,7 @@ p {
 
 .content, .overlay {
   grid-area: 1 / 1;
+}
+.pointer{
+  cursor: pointer;
 }

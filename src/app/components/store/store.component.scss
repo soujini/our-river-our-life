@@ -1,33 +1,77 @@
 .store{
-  text-align: center;
-   padding:25px;
-  // background-color: #e5e5e5;
-  color:teal;
   height:100px;
-  // background: url(banner_backsplash.bb6e959….jpg
+  padding:25px;
   background:url(../../../assets/jpg/banner/banner_backsplash.jpg);
-  // background:url(../../../assets/jpg/banner/bg_waves2.png);
   background-repeat: no-repeat;
-    background-position: center;
+  background-position: center;
   background-size: cover;
-  // background-color: black;
+  text-align: center;
+  color:teal;
 }
+
+.footer{
+  background-color:white;
+  color: teal;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight:600;
+  height:100px;
+
+  .section-copyright{
+    margin-top:25px;
+    margin-bottom:25px;
+    border-right:1px solid #c0c0c0;
+    padding-left:50px;
+    padding-right:50px;
+  }
+  .section-habitat{
+    margin-top:25px;
+    margin-bottom:25px;
+    display:inline-flex;
+    border-right:1px solid #c0c0c0;
+    padding-left:50px;
+    padding-right:50px;
+  }
+  .section-privacy{
+    margin-top:25px;
+    margin-bottom:25px;
+    text-align:center;
+    border-right:1px solid #c0c0c0;
+    padding-left:50px;
+    padding-right:50px;
+  }
+  .section-contact{
+    margin-top:25px;
+    margin-bottom:25px;
+    text-align:center;
+    border-right:1px solid #c0c0c0;
+    padding-left:50px;
+    padding-right:50px;
+  }
+  .section-social-media{
+    margin-top:25px;
+    margin-bottom:25px;
+    text-align:center;
+    padding-left:50px;
+    padding-right:50px;
+  }
+
+}
+
 .download-on{
   color: black;
   font-size:20px;
-   font-family: 'Open Sans', sans-serif; font-weight:600;
+  font-family: 'Open Sans', sans-serif; font-weight:600;
 }
 .contact-title{
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   font-size: 24px;
   color:white;
 }
-
 .copyright{
   line-height: 1.7;
   color: #f7f7f7;
   font-size: 12px;
   background-color:#333333;
-  // xfont-family: 'Open Sans', sans-serif"
 }
