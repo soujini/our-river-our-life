@@ -6,7 +6,7 @@
   padding-top:75px;
   padding-bottom:75px;
   background-color:white;
-  height:775px;
+  min-height:775px;
 }
 .feature-card-img{
   height:100px;
@@ -24,7 +24,7 @@
   color:#34495e;
   margin-top:20px;
   margin-bottom:20px;
-  font-size: 20px;
+  font-size: 1.1rem;
   letter-spacing: 1px;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .min-text{
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: #303030;
   font-weight:500;
@@ -49,7 +49,7 @@
 }
 .feature-description{
   // height:400px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight:400;
   color:#303030;
   // align:justify;

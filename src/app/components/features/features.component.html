@@ -1,15 +1,20 @@
 <div class="features d-md-flex">
-<div class="row">
-<mdb-accordion class="row">
-  <mdb-accordion-item class="col-md-3">
+<div>
+<mdb-accordion>
+  <mdb-accordion-item class="col-lg-3">
     <mdb-accordion-item-head>
       <div class="text-center">
         <div class="feature-card-img">
         <img src="../../assets/scalable-vector-graphics/river_monitoring_white_icon.svg" alt="River Monitoring" height="50px">
         </div>
         <h3 class="feature-heading wow fadeInUp" data-wow-delay="0.6s">River Monitoring</h3>
+
       </div>
       <p class="min-text">Get involved by creating a group to observe, document and monitor the health of your rivers, streams or lakes.</p>
+      <div class="text-center">
+      <mdb-icon fas icon="angle-down" style="color:#34495e" (click)="feature1_show = true" *ngIf="!feature1_show"></mdb-icon>
+      <mdb-icon fas icon="angle-up" style="color:#34495e" (click)="feature1_show = false" *ngIf="feature1_show"></mdb-icon>
+      </div>
     </mdb-accordion-item-head>
     <mdb-accordion-item-body>
       <p class="feature-description">
@@ -19,7 +24,7 @@
     </mdb-accordion-item-body>
   </mdb-accordion-item>
 
-  <mdb-accordion-item class="col-md-3">
+  <mdb-accordion-item class="col-lg-3">
     <mdb-accordion-item-head>
       <div class="text-center">
         <div class="feature-card-img">
@@ -27,6 +32,10 @@
         </div>
         <h3 class="feature-heading">Flood Watch</h3>
         <p class="min-text">Flood Watch enables you to mark real time flood alerts along with documentation, such as images and videos.</p>
+        <div class="text-center">
+        <mdb-icon fas icon="angle-down" style="color:#34495e" (click)="feature2_show = true" *ngIf="!feature2_show"></mdb-icon>
+        <mdb-icon fas icon="angle-up" style="color:#34495e" (click)="feature2_show = false" *ngIf="feature2_show"></mdb-icon>
+        </div>
       </div>
     </mdb-accordion-item-head>
     <mdb-accordion-item-body>
@@ -41,7 +50,7 @@
     </mdb-accordion-item-body>
   </mdb-accordion-item>
 
-  <mdb-accordion-item class="col-md-3">
+  <mdb-accordion-item class="col-lg-3">
     <mdb-accordion-item-head>
       <div class="text-center">
         <div class="feature-card-img">
@@ -49,6 +58,10 @@
         </div>
         <h3 class="feature-heading">Flora & Fauna</h3>
         <p class="min-text">Help us discover and document the natural wonders of freshwater ecosystems, through your eyes and lenses.</p>
+        <div class="text-center">
+        <mdb-icon fas icon="angle-down" style="color:#34495e" (click)="feature3_show = true" *ngIf="!feature3_show"></mdb-icon>
+        <mdb-icon fas icon="angle-up" style="color:#34495e" (click)="feature3_show = false" *ngIf="feature3_show"></mdb-icon>
+        </div>
       </div>
     </mdb-accordion-item-head>
     <mdb-accordion-item-body>
@@ -63,7 +76,7 @@
       </p>
     </mdb-accordion-item-body>
   </mdb-accordion-item>
-  <mdb-accordion-item class="col-md-3">
+  <mdb-accordion-item class="col-lg-3">
     <mdb-accordion-item-head>
       <div class="text-center">
           <div class="feature-card-img" >
@@ -71,6 +84,10 @@
           </div>
           <h3 class="feature-heading">Voices from the River</h3>
           <p class="min-text">Come join our journey of river exploration and learning, by sharing your stories and experiences.</p>
+          <div class="text-center">
+          <mdb-icon fas icon="angle-down" style="color:#34495e" (click)="feature4_show = true" *ngIf="!feature4_show"></mdb-icon>
+          <mdb-icon fas icon="angle-up" style="color:#34495e" (click)="feature4_show = false" *ngIf="feature4_show"></mdb-icon>
+          </div>
           <i aria-hidden="true" class="mdb-accordion-indicator rotate-icon ng-star-inserted"></i>
         </div>
       </mdb-accordion-item-head>

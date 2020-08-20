@@ -11,56 +11,61 @@
 
 .footer{
   background-color:white;
-  color: teal;
-  font-size: 14px;
+  color: gray;
+  font-size: 12px;
   font-family: 'Open Sans', sans-serif;
   font-weight:600;
   height:100px;
+  display: flex;
 
   .section-copyright{
     margin-top:25px;
     margin-bottom:25px;
     border-right:1px solid #c0c0c0;
-    padding-left:50px;
-    padding-right:50px;
+    padding-left:15px;
+    padding-right:15px;
+    align-items: center;
+    justify-content: center;
   }
   .section-habitat{
     margin-top:25px;
     margin-bottom:25px;
     display:inline-flex;
     border-right:1px solid #c0c0c0;
-    padding-left:50px;
-    padding-right:50px;
+    padding-left:15px;
+    padding-right:15px;
+    align-items: center;
+    justify-content: center;
   }
   .section-privacy{
     margin-top:25px;
     margin-bottom:25px;
     text-align:center;
     border-right:1px solid #c0c0c0;
-    padding-left:50px;
-    padding-right:50px;
+    padding-left:15px;
+    padding-right:15px;
   }
   .section-contact{
     margin-top:25px;
     margin-bottom:25px;
     text-align:center;
     border-right:1px solid #c0c0c0;
-    padding-left:50px;
-    padding-right:50px;
+    padding-left:15px;
+    padding-right:15px;
   }
   .section-social-media{
     margin-top:25px;
     margin-bottom:25px;
     text-align:center;
-    padding-left:50px;
-    padding-right:50px;
+    padding-left:15px;
+    padding-right:15px;
   }
 
 }
 
 .download-on{
   color: black;
-  font-size:20px;
+  font-size:14px;
   font-family: 'Open Sans', sans-serif; font-weight:600;
 }
 .contact-title{
@@ -75,3 +80,76 @@
   font-size: 12px;
   background-color:#333333;
 }
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575px) {
+// .footer{
+//   display: block !important;
+// }
+
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767px) {
+
+ }
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991px) {
+
+ }
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199px) {
+  .footer{
+    display: block !important;
+
+    .section-copyright{
+      margin-top:25px;
+      margin-bottom:25px;
+      border-right:none;
+      padding-left:15px;
+      padding-right:15px;
+    }
+    .section-habitat{
+      margin-top:25px;
+      margin-bottom:25px;
+      display:inline-flex;
+      border-right:none;
+      padding-left:15px;
+      padding-right:15px;
+    }
+    .section-privacy{
+      margin-top:25px;
+      margin-bottom:25px;
+      text-align:center;
+      border-right:none;
+      padding-left:15px;
+      padding-right:15px;
+    }
+    .section-contact{
+      margin-top:25px;
+      margin-bottom:25px;
+      text-align:center;
+      border-right:none;
+      padding-left:15px;
+      padding-right:15px;
+    }
+    .section-social-media{
+      margin-top:25px;
+      margin-bottom:25px;
+      text-align:center;
+      padding-left:15px;
+      padding-right:15px;
+    }
+  }
+
+ }

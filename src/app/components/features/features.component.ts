@@ -8,6 +8,10 @@ declare var jarallax: any;
   styleUrls: ['./features.component.scss']
 })
 export class FeaturesComponent implements AfterViewInit {
+feature1_show:boolean=false;
+feature2_show:boolean=false;
+feature3_show:boolean=false;
+feature4_show:boolean=false;
 
   constructor() { }
 

@@ -1,19 +1,18 @@
 <div class="banner text-center"style="font-family: 'Open Sans', sans-serif;padding-top:75px; padding-bottom:75px;
 ">
-  <h1><span style="color:#357ba0;font-weight: 800;">RIVERSCAPES</span><span style="color:yellowgreen"></span>
+<h1><span style="color:#357ba0;font-weight: 800;">RIVERSCAPES</span><span style="color:yellowgreen"></span>
 </h1>
 </div>
-<mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'" >
-  <mdb-carousel-item *ngFor="let item of slides; let i = index" style="margin-top:-4px">
+<mdb-carousel class="carousel slide carousel-fade d-none d-xl-block" [animation]="'fade'" >
+  <mdb-carousel-item *ngFor="let item of slides; let i = index" style="margin-top:-8px">
     <div *ngFor="let card of item; let cardIndex = index">
-      <mdb-card class="my-1" style="xborder-top-left-radius:25px;xborder-bottom-left-radius:25px; background-color:black; border-shadow:none;xpadding:1px; xborder: 1px dotted black">
+      <mdb-card class="my-1" style="background-color:black; border-shadow:none;">
         <div *ngIf="i % 2 == 0" style="display:flex">
           <div xclass="row col-12" style="width:70%">
             <img alt="name"  class="img-fluid" [src]="card.image" alt="Card image cap" style="width:100%; height:650px;" >
           </div>
-          <div xclass="row col-12" style="width:30%; padding:50px; color:white; background-color:#222222; xborder-left: 5px solid black; position:relative;" class="text-center">
+          <div style="width:30%; padding:50px; color:white; background-color:#222222; position:relative;" class="text-center">
             <div #div1 xstyle="position:absolute; top:0">
-
               <mdb-card-title>
                 <p style="font-family: 'Open Sans', sans-serif; font-size:2em; font-weight:bold" class="text-left">{{card.title}}</p>
               </mdb-card-title>
@@ -32,14 +31,11 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
         <div *ngIf="i % 2 != 0" style="display:flex">
-
-          <div xclass="row col-12" style="width:30%; padding:50px; color:white; background-color:#222222; xborder-right: 5px solid black; position:relative;" class="text-center">
+          <div style="width:30%; padding:50px; color:white; background-color:#222222; position:relative;" class="text-center">
             <div #div1>
-
               <mdb-card-title>
                 <p style="font-family: 'Open Sans', sans-serif; font-size:2em; font-weight:bold" class="text-left">{{card.title}}</p>
               </mdb-card-title>
@@ -58,44 +54,46 @@
                 </div>
               </div>
             </div>
-
           </div>
-          <div xclass="row col-12" style="width:70%;" >
-            <img alt="name"  class="img-fluid" [src]="card.image" alt="Card image cap" style="width:100%; height:650px;xborder-radius:25px" >
+          <div style="width:70%;" >
+            <img alt="name"  class="img-fluid" [src]="card.image" alt="Card image cap" style="width:100%; height:650px;" >
           </div>
         </div>
-
-  </mdb-card>
-  </div>
-    </mdb-carousel-item>
-</mdb-carousel>
-<!-- <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
-
-  <mdb-carousel-item *ngFor="let card of cards; let cardIndex = index; let i = index">
-    <div class="xview xw-100">
-      <img class="d-block w-100" [src]="card.image" xsrc="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide" style="height:600px; width:auto">
-      <div class="mask rgba-white-slight waves-light" mdbWavesEffect></div>
-    </div>
-    <div class="row xcarousel-caption">
-      <h3 class="h3-responsive">{{card.title}}</h3>
-      <p>{{card.description}}</p>
-    </div>
-  </mdb-carousel-item>
-
-</mdb-carousel> -->
-<!-- <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
-              [animation]="'slide'">
-  <mdb-carousel-item *ngFor="let item of slides; let i = index">
-    <div class="col-md-12 pb-2" *ngFor="let card of item; let cardIndex = index">
-      <mdb-card class="my-1 h-100">
-        <mdb-card-img [src]="card.image" alt="Card image cap" xstyle="height:600px; width:auto"></mdb-card-img>
-        <mdb-card-body>
-          <mdb-card-title>
-            <h4>{{card.title}}</h4>
-          </mdb-card-title>
-          <p>{{card.description}}</p>
-        </mdb-card-body>
       </mdb-card>
     </div>
   </mdb-carousel-item>
-</mdb-carousel> -->
+</mdb-carousel>
+
+<mdb-carousel id="gallery-sm" class="carousel slide carousel-fade d-block d-xl-none" [animation]="'fade'" >
+  <mdb-carousel-item *ngFor="let item of slides; let i = index" style="margin-top:-8px">
+    <div *ngFor="let card of item; let cardIndex = index">
+      <mdb-card class="my-1" style="background-color:black; border-shadow:none;">
+        <div>
+          <div xclass="row col-12">
+            <img alt="name"  class="img-fluid" [src]="card.image" alt="Card image cap" style="width:100%; height:auto;">
+          </div>
+          <div style="padding:15px; color:white; background-color:#222222; position:relative;" class="text-center">
+            <div #div1 xstyle="position:absolute; top:0">
+              <mdb-card-title>
+                <p style="font-family: 'Open Sans', sans-serif; font-size:2em; font-weight:bold" class="text-left">{{card.title}}</p>
+              </mdb-card-title>
+              <div>
+                <p class="text-left" class="image-description">{{card.description}}</p>
+              </div>
+            </div>
+            <div #div1 style="margin-top:25px;" class="text-left">
+              <div class="details">
+                <div><img alt="name"  class="artist-profile-pic" [src]="card.artist_profile_pic" type='image/jp2' alt="Profile"></div>
+                <div class="ml-3 mt-2 artist-info">
+                  <span>{{card.artist}}</span><br />
+                  <span *ngIf="card.artist_social_media_1 != ''">{{card.artist_social_media_1}}</span><br/>
+                  <span *ngIf="card.artist_social_media_2 != ''">{{card.artist_social_media_2}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mdb-card>
+    </div>
+  </mdb-carousel-item>
+</mdb-carousel>

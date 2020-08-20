@@ -35,7 +35,7 @@
   }
   .text1{
   margin-left: 19px;
-  
+
   }
   .text2{
       margin-left: 67px;
@@ -61,12 +61,12 @@
       font-family: 'Montserrat';
       color:#808080;
   }
-  .line-header{
-      width: 100%;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      border: 2px solid #1C3764;
-    }
+  // .line-header{
+  //     width: 100%;
+  //     margin-top: 20px;
+  //     margin-bottom: 20px;
+  //     border: 2px solid #1C3764;
+  //   }
   .alert-box{
       width: 416px;
       height: 830px;
@@ -90,10 +90,10 @@
   background-color: #FFF;
   border-radius: 15px;
   }
-  
+
   .add-alert{
       margin-left: 85px;
-      font-size: 14px;
+      font-size: 0.9rem;
       font-weight: 700;
       font-family: 'Montserrat';
   }
@@ -103,7 +103,7 @@
   left: 80px;
   top: 78px;
   }
-  
+
   .river-monitoring{
       z-index: 1;
   position: absolute;
@@ -111,11 +111,11 @@
   top: 78px;
   }
   agm-map {
-  
+
       height: 860px;
       width: 100% !important;
      }
-  
+
      .input-search{
       border-radius: 10px;
       border: 1px solid #979797;
@@ -123,9 +123,9 @@
       height: 50px;
       background-color: #ffffff;
      }
-  
+
     ::-moz-placeholder {
-      font-size: 14px;
+      font-size: 0.9rem;
       font-weight: 500;
       font-family: 'Montserrat' !important;
       color: #808080;
@@ -138,7 +138,7 @@
   position: absolute;
   left: 80px;
   top: 150px;
-  
+
   }
   .input-latitude{
       border-radius: 10px;
@@ -152,17 +152,17 @@
       position: absolute;
       left: 80px;
       top: 215px;
-  
+
       }
   .longitude{
       z-index: 1;
       position: absolute;
       left: 299px;
       top: 215px;
-  
+
   }
   .data{
-      font-size: 16px;
+      font-size: 1rem;
       font-weight:500;
       color:#FFFFFF;
       font-family: 'Montserrat' !important;
@@ -173,28 +173,28 @@
   left: 249px;
   top: 177px;
   }
-  
+
   p {
       font-family: Lato;
     }
     .search-bar{
   position: relative;
   margin:0px;
-   border-top:10px solid #7a6f63;
-   border-top:5px solid gray;
-  
+   // border-top:10px solid #7a6f63;
+   // border-top:5px solid gray;
+
   }
-  
+
   // @media (min-width: 1200px){
   // .container {
   //     max-width: 100%;
   // }
   // }
-  
+
   .uploader input {
       display: none;
     }
-  
+
     .uploader {
       -webkit-align-items: center;
       align-items: center;
@@ -211,12 +211,12 @@
       position: relative;
       width: 368px;
     }
-  
+
     .uploader img,
     .uploader .icon {
       pointer-events: none;
     }
-  
+
     .uploader,
     .uploader .icon {
       -webkit-transition: all 100ms ease-in;
@@ -225,13 +225,13 @@
       -o-transition: all 100ms ease-in;
       transition: all 100ms ease-in;
     }
-  
+
     .uploader .icon {
       color: #eee;
       color: rgba(0, 0, 0, 0.2);
       font-size: 5em;
     }
-  
+
     .uploader img {
       left: 50%;
       opacity: 0;
@@ -251,11 +251,13 @@
       transform: translate(-50%, -50%);
       z-index: -1;
     }
-  
+
     .uploader img.loaded {
       opacity: 1;
+    }
+    .agm-map-container-inner{
+      margin-top:-8px !important;
     }
   //   #pills-secondary  .nav-link.active, .pills-secondary .show > .nav-link, .tabs-secondary {
   //     background-color: #34495e !important;
   // }
-   
