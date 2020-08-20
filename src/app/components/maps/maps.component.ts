@@ -53,8 +53,12 @@ export class MapsComponent implements OnInit {
 
   mapReady(event) {
     // console.log(event);
-    this.setCurrentPosition();
+     this.setCurrentPosition();
+     // this.getGeoLocation();
   }
+//    getGeolocation() {
+//   navigator.geolocation.getCurrentPosition(drawMap);
+// }
 
 
   ngOnInit() {
@@ -64,6 +68,7 @@ export class MapsComponent implements OnInit {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
         types: ["address"]
       });
+
       autocomplete.addListener("place_changed", () => {
         alert("wah");
         this.ngZone.run(() => {
@@ -128,9 +133,11 @@ export class MapsComponent implements OnInit {
   private setCurrentPosition() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
+        var accuracy = position.coords.accuracy;
+        alert(accuracy);
         this.mapsForm.patchValue({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
+          latitude: +position.coords.latitude,
+          longitude: +position.coords.longitude,
         });
         this.centerLoc = { lat: position.coords.latitude, lng: position.coords.longitude };
         // this.latitude=position.coords.latitude;
