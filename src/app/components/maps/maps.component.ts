@@ -65,6 +65,7 @@ export class MapsComponent implements OnInit {
 
 
   ngOnInit() {
+    this.setCurrentTime();
      this.zoom = 13;
     this.searchControl = new FormControl();
     this.mapsAPILoader.load().then(() => {
@@ -73,7 +74,6 @@ export class MapsComponent implements OnInit {
       });
 
       autocomplete.addListener("place_changed", () => {
-        alert("wah");
         this.ngZone.run(() => {
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
           //verify result
@@ -91,6 +91,16 @@ export class MapsComponent implements OnInit {
       });
     });
   }
+
+  setCurrentTime(){
+    let dt = new Date();
+    let normalizeHour = dt.getHours() >= 13 ? dt.getHours() - 12 : dt.getHours()
+     var formattedTime = dt.getHours() >= 13 ? normalizeHour + ':' + dt.getMinutes() + 'PM' : normalizeHour + ':' + dt.getMinutes() + 'AM';
+     this.mapsForm.patchValue({
+       activityTime: formattedTime
+     });
+  }
+
   bla(){
     this.getAddressByLatitudeAndLongitude(this.mapsForm.get('latitude').value, this.mapsForm.get('longitude').value, this.mapsForm);
     this.centerLoc = { lat: this.mapsForm.get('latitude').value, lng: this.mapsForm.get('longitude').value };

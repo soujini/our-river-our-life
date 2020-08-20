@@ -39,38 +39,7 @@ export class MapsViewComponent  {
   //   console.log('dragEnd', m, $event);
   // }
   // markers:marker[]=[];
-  markers: marker[] = [
-    {
-      latitude: 19.0760,
-      longitude: 72.8777,
-      label: 'A',
-      activityDate:  '12-aug-2020',
-      activityTime:'10:50 Pm',
-      location:'Location 1',
-      experience : 'N/A' ,
-      photos: [
-        '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
-        '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
-        '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
-      ],
-      draggable: true
-    },
-    {
-      latitude: 12.384532,
-      longitude: 75.490376,
-      label: 'B',
-      activityDate:  '18-aug-2020',
-      activityTime:'12:50 Am',
-      location:'Location 2',
-      experience : 'N/A' ,
-      photos: [
-        '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
-        '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
-        '../../../assets/scalable-vector-graphics/fish_river_icon.svg',
-      ],
-      draggable: false
-    },
-  ]
+  markers: marker[] = [];
 
   getFloodAlerts() {
     var a = this.orolService.getFloodAlerts();
@@ -83,8 +52,8 @@ export class MapsViewComponent  {
             label:data['rows'][i].location,
             location:data['rows'][i].location,
             photos:data['rows'][i].photos,
-            activityDate:data['rows'][i].activityDate,
-            activityTime:data['rows'][i].activityTime,
+            activityDate:data['rows'][i].date,
+            activityTime:data['rows'][i].time,
             experience:data['rows'][i].experience,
             draggable: false,
           });

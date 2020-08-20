@@ -258,6 +258,9 @@
     .agm-map-container-inner{
       margin-top:-8px !important;
     }
-  //   #pills-secondary  .nav-link.active, .pills-secondary .show > .nav-link, .tabs-secondary {
-  //     background-color: #34495e !important;
-  // }
+    .pills-secondary .nav-link.active, .pills-secondary .show>.nav-link, .tabs-secondary {
+        background-color: blue !important;
+    }
+    .pills-custom{
+        background-color: blue !important;
+    }
