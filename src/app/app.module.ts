@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+// import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { FloraFaunaComponent } from './components/flora-fauna/flora-fauna.component';
 import { MDBBootstrapModulesPro,CollapseModule ,CarouselModule, WavesModule,CardsModule, ButtonsModule,LightBoxModule,ModalModule,TabsModule} from 'ng-uikit-pro-standard';
 import { StoreComponent } from './components/store/store.component';
@@ -26,7 +26,7 @@ import { AgmCoreModule } from '@agm/core';
   declarations: [
     AppComponent,
     ToolbarComponent,
-    PrivacyPolicyComponent,
+    // PrivacyPolicyComponent,
     StoreComponent,
     FooterComponent,
     ImgLoadedDirective,

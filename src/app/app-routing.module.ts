@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 // import { HomeComponent} from './components/home/home.component';
 // import { AboutComponent} from './components/about/about.component';
 import { NotFoundComponent} from './components/not-found/not-found.component';
-import { PrivacyPolicyComponent} from './components/privacy-policy/privacy-policy.component';
+// import { PrivacyPolicyComponent} from './components/privacy-policy/privacy-policy.component';
 
 const routes: Routes = [
   {
@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'ongoing-campaigns',
     loadChildren: () => import('./components/ongoing-campaigns/ongoing-campaigns.module').then(m => m.OngoingCampaignsModule)
+  },
+  {
+    path: 'privacy-policy',
+    loadChildren: () => import('./components/privacy-policy/privacy-policy.module').then(m => m.PrivacyPolicyModule)
   },
   {
 	path: '',
