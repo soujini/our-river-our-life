@@ -18,7 +18,10 @@ export class MapsComponent implements OnInit {
   public iconUrl = '../../../assets/scalable-vector-graphics/flood-watch.svg';
   public imageFiles: File[]=[];
   @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
-  public myDatePickerOptions: IMyOptions = {};
+  public myDatePickerOptions: IMyOptions = {
+    dateFormat: 'dd mmm yyyy',
+    closeAfterSelect:true
+  };
   apps: any;
   images = [];
   geocoder: any;
