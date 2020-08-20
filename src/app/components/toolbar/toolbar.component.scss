@@ -49,6 +49,11 @@
    color:#303030;
   font-weight:bold;
 }
+.dropdown-item:hover{
+  background-color: #f7f7f7 !important;
+  box-shadow: none !important;
+}
+
 // .parallax-custom{
 //   background-image: url('../../../assets/jpg/parallax_3.jpg');
 //   background-attachment: fixed;

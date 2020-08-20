@@ -11,7 +11,7 @@ declare var Orol:any;
   providedIn: 'root'
 })
 export class OrolService {
-  private baseURL: string = environment.OROL_API_URL;
+  // private baseURL: string = environment.OROL_API_URL;
 
   constructor( private router: Router, public httpClient: HttpClient,private spinnerService: SpinnerService) { }
 
