@@ -2,7 +2,7 @@
 //   overflow-y: scroll;
 // }
 .banner{
-    background:url(../../../assets/jpg/banner/bg_waves2.png);
+    background:url(../../../assets/jpg/banner/banner2.jpg);
   background-repeat: no-repeat;
    background-position: center;
  background-size: cover;
@@ -22,7 +22,7 @@
     line-height: 2.5;
     font-size:14px;
     font-weight: 500;
-    font-family: 'Montserrat';
+    font-family: 'Open Sans', sans-serif !important;
     color: #000000;
 }
 
@@ -32,19 +32,19 @@
 .alert-date{
     font-size:12px;
     font-weight: 300;
-    font-family: 'Montserrat';
+    font-family: 'Open Sans', sans-serif !important;
       color:  #000000;
 }
 .alert-text{
     font-size:14px;
     font-weight: 500;
-    font-family: 'Montserrat';
+    font-family: 'Open Sans', sans-serif !important;
       color:  #000000;
 }
 .alert-location{
     font-size:14px;
     font-weight: 500;
-    font-family: 'Montserrat';
+    font-family: 'Open Sans', sans-serif !important;
     color:#808080;
 }
 .line-header{
@@ -87,7 +87,7 @@ border-radius: 15px;
 .add-alert{
     font-size: 0.9rem;
     font-weight: 700;
-    font-family: 'Montserrat';
+    font-family: 'Open Sans', sans-serif !important;
 }
 .btn-secondary{
   background-color: #34495e !important;
@@ -147,7 +147,9 @@ p {
 }
 .container-fluid {
   display: grid;
-  height:600px;
+  // height:600px;
+  padding-left:0px;
+  padding-right:0px;
 }
 
 .content, .overlay {

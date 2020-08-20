@@ -2,7 +2,7 @@
   margin-top:150px;
   // height:300px;
   font-size: 1rem;
- font-family: 'Montserrat';
+ font-family: 'Open Sans', sans-serif !important;
  color:#808080;
  font-weight:400;
 }
@@ -20,15 +20,15 @@
 }
 .jarallax_about_banner{
   // background-image: url('https://mdbootstrap.com/img/Photos/Others/img%20%2844%29.jpg');
-    background-image: url('../../../assets/jpg/about_banner_bg7.jpg');
+    background-image: url('../../../assets/jpg/banner/bg_mountain1.jpg');
   // background-image: url('../../../assets/jpg/about_banner_bg1.jpg');
-  background-attachment: fixed; height: 600px; margin-top:150px
+  background-attachment: fixed; height: 700px; margin-top:150px
 }
 .who-we-are{
   // margin-top:150px;
   // height:300px;
  //  font-size: 1rem;
- // font-family: 'Montserrat';
+ // font-family: 'Open Sans', sans-serif !important;
  // color:#116bb5;
  // font-weight:500;
  font-family: 'Open Sans', sans-serif;
@@ -41,7 +41,7 @@
    text-transform: uppercase;
 }
 .display-1 {
-    font-size: 5rem !important;
+    font-size: 3rem !important;
     font-weight: 800 !important;
     line-height: 1.2 !important;
     font-family: 'Open Sans', sans-serif !important;
@@ -62,8 +62,61 @@
   min-height: 300px;
 }
 .about-description{
-  font-size:18px;
+  font-size:1rem;
   padding-left:100px;
   padding-right:100px;
-font-family: 'Montserrat';
+  line-height: 2;
+  font-family: 'Open Sans', sans-serif !important;
+  font-weight: 500;
 }
+.about-image1{
+  margin-top:3rem;
+}
+.about-image2{
+  margin-top:3rem;
+}
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575px) {
+
+
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767px) {
+ //  .about-description{
+ //    font-size:1rem;
+ //    padding-left:15px;
+ //    padding-right:15px;
+ // }
+ // .about-image1{
+ //   margin-top:0px;
+ //   margin-bottom:3rem;
+ // }
+ // .about-image2{
+ //   margin-top:3rem;
+ //   margin-bottom:0px;
+ // }
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991px) {
+  .about-description{
+    font-size:1rem;
+    padding-left:15px;
+    padding-right:15px;
+ }
+ }
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199px) {
+
+ }

@@ -14,7 +14,7 @@
     line-height: 2.5;
     font-size:14px;
     font-weight: 500;
-    font-family: 'Montserrat';
+    font-family: 'Open Sans', sans-serif !important;
       color:  #000000;
 }
 .text1{
@@ -30,19 +30,19 @@ margin-left: 19px;
 .alert-date{
     font-size:12px;
     font-weight: 300;
-    font-family: 'Montserrat';
+    font-family: 'Open Sans', sans-serif !important;
       color:  #000000;
 }
 .alert-text{
     font-size:14px;
     font-weight: 500;
-    font-family: 'Montserrat';
+    font-family: 'Open Sans', sans-serif !important;
       color:  #000000;
 }
 .alert-location{
     font-size:14px;
     font-weight: 500;
-    font-family: 'Montserrat';
+    font-family: 'Open Sans', sans-serif !important;
     color:#808080;
 }
 .line-header{
@@ -79,7 +79,7 @@ border-radius: 15px;
     margin-left: 85px;
     font-size: 0.9rem;
     font-weight: 700;
-    font-family: 'Montserrat';
+    font-family: 'Open Sans', sans-serif !important;
 }
 .flood-watch{
     z-index: 1;
@@ -95,7 +95,7 @@ left: 260px;
 top: 78px;
 }
 agm-map {
- 
+
     height: 860px;
     width: 100% !important;
    }
@@ -174,7 +174,7 @@ position: relative;
 .uploader input {
     display: none;
   }
-  
+
   .uploader {
     -webkit-align-items: center;
     align-items: center;
@@ -191,12 +191,12 @@ border-radius: 10px;
     position: relative;
     width: 368px;
   }
-  
+
   .uploader img,
   .uploader .icon {
     pointer-events: none;
   }
-  
+
   .uploader,
   .uploader .icon {
     -webkit-transition: all 100ms ease-in;
@@ -205,13 +205,13 @@ border-radius: 10px;
     -o-transition: all 100ms ease-in;
     transition: all 100ms ease-in;
   }
-  
+
   .uploader .icon {
     color: #eee;
     color: rgba(0, 0, 0, 0.2);
     font-size: 5em;
   }
-  
+
   .uploader img {
     left: 50%;
     opacity: 0;
@@ -231,9 +231,7 @@ border-radius: 10px;
     transform: translate(-50%, -50%);
     z-index: -1;
   }
-  
+
   .uploader img.loaded {
     opacity: 1;
   }
-
-  
