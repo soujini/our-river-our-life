@@ -178,3 +178,22 @@ mdb-card-img img {
 .agm-map-container-inner{
   margin-top:-8px !important;
 }
+
+#maps-flood-watch .agm-map-container-inner{
+  margin-top:0px !important;
+}
+ // agm info window
+
+.gm-style .gm-style-iw {
+
+  width: 100%;
+  max-width: 284px !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .gm-style .gm-style-iw {
+
+      width: 100%;
+      max-width: 284px !important;
+  }
+}

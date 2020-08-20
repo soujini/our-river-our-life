@@ -11,6 +11,7 @@ export class MapsViewComponent  {
   // google maps zoom level
   zoom: number=5;
 
+  public iconUrl = '../../../assets/scalable-vector-graphics/flood-watch.svg';
   // initial center position for the map
   lat: number = 20.5937;
   lng: number = 78.9629;

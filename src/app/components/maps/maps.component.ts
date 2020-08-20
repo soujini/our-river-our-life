@@ -14,7 +14,7 @@ declare var google;
   styleUrls: ['./maps.component.scss']
 })
 export class MapsComponent implements OnInit {
- 
+
   public iconUrl = '../../../assets/scalable-vector-graphics/flood-watch.svg';
   public imageFiles: File[]=[];
   @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
@@ -58,7 +58,7 @@ export class MapsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.zoom = 15;
+     this.zoom = 13;
     this.searchControl = new FormControl();
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {

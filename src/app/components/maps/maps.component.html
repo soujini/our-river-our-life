@@ -1,10 +1,10 @@
-<div class="banner " style="margin-top:150px;font-family: 'Open Sans', sans-serif;padding-top:75px; padding-bottom:75px;">
+<div class="banner">
   <h1 class="text-center"><span style="color:#303030;font-weight: 800;">FLOOD</span><span
     style="color:#303030; font-weight:800"> WATCH</span></h1>
   </div>
 <div class="container-fluid" xstyl="margin-top:160px">
   <div class="content">
-    <agm-map [fitBounds]="true" [latitude]="this.mapsForm.get('latitude').value" [longitude]="this.mapsForm.get('longitude').value" 
+    <agm-map id="maps-flood-watch" [fitBounds]="true" [latitude]="this.mapsForm.get('latitude').value" [longitude]="this.mapsForm.get('longitude').value"
     [mapTypeId]="'hybrid'"  [scrollwheel]="false" [zoom]="zoom" [usePanning]='true' (mapReady)="mapReady($event)" [draggable]=false>
     <!-- [fullscreenControl]='true'  [mapTypeControl]='true' -->
       <agm-marker [agmFitBounds]="true" [latitude]="this.mapsForm.get('latitude').value" [longitude]="this.mapsForm.get('longitude').value"
@@ -38,8 +38,8 @@
        src="../../../assets/scalable-vector-graphics/flood-watch.svg">
      <hr class="line-header">
      <div>
-       <label for="location" class="alert-location">Location: </label> <span class="alert-text"> {{mapsForm.get('location').value}}</span> <br /><br /> 
-       <!-- <div xclass="col-md-12"> --> 
+       <label for="location" class="alert-location">Location: </label> <span class="alert-text"> {{mapsForm.get('location').value}}</span> <br /><br />
+       <!-- <div xclass="col-md-12"> -->
        <label for="latitude & longitude" class="alert-location">Latitude & Longitude: </label>
        <span class="alert-text"> ({{mapsForm.get('latitude').value}}</span>
        <span class="alert-text"> , {{mapsForm.get('longitude').value}})</span>
