@@ -1,6 +1,7 @@
-<div>
-  <h1 class="text-center" style="padding-bottom:75px;padding-top:75px;font-family: 'Open Sans', sans-serif;
-  font-weight: 800; background-color:#13214e"><span style="color:white">FLOOD ALERTS</span></h1>
+<div class="banner text-center"style="font-family: 'Open Sans', sans-serif;padding-top:75px; padding-bottom:75px;">
+<h1><span style="color:#357ba0;font-weight: 800;">FLOOD ALERTS</span><span style="color:yellowgreen"></span>
+</h1>
+</div>
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="4" gestureHandling= 'none' [mapTypeId]="'hybrid'"  [disableDefaultUI]="false" zoomControl="true"
   (mapClick)="mapClicked($event)">
 <!-- (dragEnd)="markerDragEnd(m, $event)" -->
@@ -35,4 +36,3 @@
     </agm-info-window>
   </agm-marker>
 </agm-map>
-</div>
