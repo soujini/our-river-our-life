@@ -16,8 +16,6 @@
       <div class="d-flex" style="justify-content: center;">
         <button mdbBtn type="button" color="secondary" rounded="true" [routerLink]="'/flood-watch'"
           mdbWavesEffect>FLOOD WATCH</button>
-          <button mdbBtn type="button" color="secondary" rounded="true" [routerLink]=""
-            mdbWavesEffect>RIVER MONITORING</button>
         </div>
         <div>
           <input for="location" formControlName="location" placeholder="Search by location" autocorrect="off"
@@ -53,7 +51,7 @@
      </div>
      <div>
        <label class="alert-date" for='activityTime'>Time</label>
-       <mdb-time-picker [twelvehour]="true" #timepicker formControlName="activityTime" id="mytp"></mdb-time-picker>
+       <mdb-time-picker #timepicker formControlName="activityTime"   id="mytp"></mdb-time-picker>
      </div>
 
      <div class="image_container">

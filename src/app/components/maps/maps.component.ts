@@ -74,6 +74,7 @@ export class MapsComponent implements OnInit {
       });
 
       autocomplete.addListener("place_changed", () => {
+        // alert("wah");
         this.ngZone.run(() => {
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
           //verify result
