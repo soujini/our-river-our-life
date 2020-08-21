@@ -1,18 +1,11 @@
-.navbar{
-  position: fixed !important;
-  background-image: url(../../../assets/scalable-vector-graphics/banner_header2.svg);
-   background-repeat: no-repeat;
-  background-position: right;
-}
+// .navbar{
+//   position: fixed !important;
+//   background-image: url(../../../assets/scalable-vector-graphics/banner_header2.svg);
+//    background-repeat: no-repeat;
+//   background-position: right;
+//   height:100px !important;
+// }
 
-.mat-toolbar{
-  height:150px;
-  background-color: white;
-  font-size: 0.9rem;
-  background-image: url(../../../assets/scalable-vector-graphics/banner_header2.svg);
-   background-repeat: no-repeat;
-  background-position: right;
-}
 .logo{
   cursor: pointer;
   width: 150px;
@@ -30,12 +23,13 @@
 
 .heading{
   cursor:pointer !important;
-  font-size:0.875rem !important;
+  font-size:0.9rem !important;
   font-family: 'Montserrat' !important;
   color: gray;
   font-weight: 500;
   padding: 20px;
   text-transform: capitalize !important;
+  letter-spacing: 1px;
 }
 .router-link-active{
    color:#303030;

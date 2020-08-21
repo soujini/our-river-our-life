@@ -3,7 +3,7 @@
 <h1><span style="color:#357ba0;font-weight: 800; color:#116bb5">RIVERSCAPES</span><span style="color:yellowgreen"></span>
 </h1>
 </div>
-<mdb-carousel class="carousel slide carousel-fade d-none d-xl-block" [animation]="'fade'" >
+<mdb-carousel [interval]="15000" class="carousel slide carousel-fade d-none d-xl-block" [animation]="'fade'" >
   <mdb-carousel-item *ngFor="let item of slides; let i = index" style="margin-top:-8px">
     <div *ngFor="let card of item; let cardIndex = index">
       <mdb-card class="my-1" style="background-color:black; border-shadow:none;">
@@ -31,6 +31,7 @@
                 </div>
               </div>
             </div>
+
           </div>
         </div>
         <div *ngIf="i % 2 != 0" style="display:flex">
@@ -72,7 +73,7 @@
           <div xclass="row col-12">
             <img alt="name"  class="img-fluid" [src]="card.image" alt="Card image cap" style="width:100%; height:auto;">
           </div>
-          <div style="padding:15px; color:white; background-color:#222222; position:relative;" class="text-center">
+          <div style="padding:15px; color:#303030; background-color:#efefef; position:relative;" class="text-center">
             <div #div1 xstyle="position:absolute; top:0">
               <mdb-card-title>
                 <p style="font-family: 'Open Sans', sans-serif; font-size:2em; font-weight:bold" class="text-left">{{card.title}}</p>

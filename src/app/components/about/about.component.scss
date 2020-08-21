@@ -1,6 +1,4 @@
 .about{
-  margin-top:150px;
-  // height:300px;
   font-size: 1rem;
  font-family: 'Open Sans', sans-serif !important;
  color:#808080;
@@ -18,19 +16,23 @@
   color:black;
 
 }
+.banner{
+    background:url(../../../assets/jpg/banner/bg_waves2.png);
+  background-repeat: no-repeat;
+   background-position: center;
+ background-size: cover;
+ margin-top:100px;
+ font-family: 'Open Sans',sans-serif;
+
+ padding-top:75px;
+ padding-bottom:75px;
+}
 .jarallax_about_banner{
-  // background-image: url('https://mdbootstrap.com/img/Photos/Others/img%20%2844%29.jpg');
     background-image: url('../../../assets/jpg/banner/bg_mountain1.jpg');
-  // background-image: url('../../../assets/jpg/about_banner_bg1.jpg');
-  background-attachment: fixed; height: 700px; margin-top:150px
+  background-attachment: fixed; height: 700px;
+  margin-top:100px
 }
 .who-we-are{
-  // margin-top:150px;
-  // height:300px;
- //  font-size: 1rem;
- // font-family: 'Open Sans', sans-serif !important;
- // color:#116bb5;
- // font-weight:500;
  font-family: 'Open Sans', sans-serif;
  font-weight: 800;
  line-height: 1.42857143;
@@ -46,22 +48,16 @@
     line-height: 2 !important;
     font-family: 'Open Sans', sans-serif !important;
     letter-spacing: 1px;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    color:#303030;
 }
-.parallax-about-banner2{
-  background-image: url('../../../assets/jpg/about_banner_bg1.jpg');
+.parallax-about-banner{
+  background:url(../../../assets/jpg/banner/bg_waves2.png);
   background-attachment: fixed;
-  min-height: 300px;
+  min-height: 206px;
 }
-.parallax-about-banner3{
-  background-image: url('../../../assets/jpg/about_banner_bg8.jpg');
-  background-attachment: fixed;
-  min-height: 300px;
-}
-.parallax-about-banner4{
-  background-image: url('../../../assets/jpg/about_banner_bg2.jpg');
-  background-attachment: fixed;
-  min-height: 300px;
-}
+
 .about-description{
   font-size:1rem;
   padding-left:100px;
