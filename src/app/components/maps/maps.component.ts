@@ -70,7 +70,7 @@ export class MapsComponent implements OnInit {
       });
 
       autocomplete.addListener("place_changed", () => {
-        alert("wah");
+        // alert("wah");
         this.ngZone.run(() => {
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
           //verify result
@@ -134,6 +134,7 @@ export class MapsComponent implements OnInit {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         var accuracy = position.coords.accuracy;
+        // alert(accuracy);
         this.mapsForm.patchValue({
           latitude: +position.coords.latitude,
           longitude: +position.coords.longitude,
@@ -146,7 +147,7 @@ export class MapsComponent implements OnInit {
       });
     }
     else {
-      alert("Geolocation is not supported by this browser.");
+      // alert("Geolocation is not supported by this browser.");
     }
   }
   addAlert() {
