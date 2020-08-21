@@ -4,15 +4,10 @@
     // background-size: 100% 100%;
   }
   .banner{
-    // background: url('../../../assets/jpg/banner/banner9.jpg');
-    // // background-repeat: no-repeat;
-     // background-size: 100% 100%;
-      background:url(../../../assets/jpg/banner/bg_waves2.png);
-   background-repeat: no-repeat;
-   // background-attachment: fixed
-     background-position: center;
-   background-size: cover;
-    // background-repeat: no-repeat;
+    background:url(../../../assets/jpg/banner/bg_waves2.png);
+  background-repeat: no-repeat;
+   background-position: center;
+  background-size: cover;
   }
   #input{
       margin-top: -15px;
@@ -258,6 +253,9 @@
     .agm-map-container-inner{
       margin-top:-8px !important;
     }
-  //   #pills-secondary  .nav-link.active, .pills-secondary .show > .nav-link, .tabs-secondary {
-  //     background-color: #34495e !important;
-  // }
+    .pills-secondary .nav-link.active, .pills-secondary .show>.nav-link, .tabs-secondary {
+        background-color: blue !important;
+    }
+    .pills-custom{
+        background-color: blue !important;
+    }

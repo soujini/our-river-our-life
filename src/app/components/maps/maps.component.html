@@ -47,15 +47,14 @@
      </div>
      <div class="date">
        <label class="alert-date" >Date</label>
-       <mdb-date-picker [inline]="true" name="mydate" auto formControlName="activityDate" [options]="myDatePickerOptions" id="mydp"
+       <mdb-date-picker name="mydate" auto formControlName="activityDate" [options]="myDatePickerOptions" id="mydp"
          [placeholder]="'Selected date'" required>
        </mdb-date-picker>
      </div>
      <div>
        <label class="alert-date" for='activityTime'>Time</label>
-       <mdb-time-picker #timepicker formControlName="activityTime" id="mytp"></mdb-time-picker>
+       <mdb-time-picker [twelvehour]="true" #timepicker formControlName="activityTime" id="mytp"></mdb-time-picker>
      </div>
-
 
      <div class="image_container">
 
