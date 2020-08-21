@@ -22,25 +22,25 @@
 
 </mat-toolbar> -->
 
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light white" [containerInside]="false">
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light white" [containerInside]="true">
   <mdb-navbar-brand><a class="navbar-brand" href="#"><img alt="logo" class="logo"  [routerLink] = "'/home'" src="../../assets/scalable-vector-graphics/orol-logo.svg"></a></mdb-navbar-brand>
   <links>
     <ul class="navbar-nav ml-auto menu-dd">
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect><span class="heading" [routerLink] = "'/home'" routerLinkActive="router-link-active">Home</span></a>
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink] = "'/home'" routerLinkActive="router-link-active"><span class="heading" >Home</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect><span class="heading" [routerLink] = "'/about'" routerLinkActive="router-link-active">About</span></a>
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink] = "'/about'" routerLinkActive="router-link-active"><span class="heading">About</span></a>
       </li>
 
       <li class="nav-item dropdown" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
           <span class="heading">Get Involved</span><span class="caret"></span></a>
         <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect><span class="heading" [routerLink] = "'/river-monitoring'" routerLinkActive="router-link-active">River Monitoring</span></a>
-          <a class="dropdown-item waves-light" mdbWavesEffect ><span class="heading" [routerLink] = "'/flood-watch'" routerLinkActive="router-link-active">Flood Watch</span></a>
-          <a class="dropdown-item waves-light" mdbWavesEffect><span class="heading" [routerLink] = "'/flora-fauna'" routerLinkActive="router-link-active">Flora & Fauna</span></a>
-          <a class="dropdown-item waves-light" mdbWavesEffect ><span class="heading" [routerLink] = "'/voices-from-the-river'" routerLinkActive="router-link-active">Voices from the River</span></a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink] = "'/river-monitoring'" routerLinkActive="router-link-active"><span class="heading" >River Monitoring</span></a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink] = "'/flood-watch'" routerLinkActive="router-link-active"><span class="heading" >Flood Watch</span></a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink] = "'/flora-fauna'" routerLinkActive="router-link-active"><span class="heading" >Flora & Fauna</span></a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink] = "'/voices-from-the-river'" routerLinkActive="router-link-active"><span class="heading" >Voices from the River</span></a>
         </div>
       </li>
       <li class="nav-item">
