@@ -9,7 +9,7 @@ import {OrolService} from '../../services/orol.service';
 })
 export class MapsViewComponent  {
   // google maps zoom level
-  zoom: number=5;
+  zoom: number = 8;
 
   public iconUrl = '../../../assets/scalable-vector-graphics/flood-watch.svg';
   // initial center position for the map

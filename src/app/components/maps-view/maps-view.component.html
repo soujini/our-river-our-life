@@ -1,12 +1,24 @@
 <div class="banner text-center"style="font-family: 'Open Sans', sans-serif;padding-top:75px; padding-bottom:75px;">
-<h1><span style="color:#357ba0;font-weight: 800;">FLOOD ALERTS</span><span style="color:yellowgreen"></span>
+<h1><span style="color:#357ba0;font-weight: 800;color:#116bb5">FLOOD WATCH</span><span style="color:yellowgreen"></span>
 </h1>
 </div>
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="4" gestureHandling= 'none' [mapTypeId]="'hybrid'"  [disableDefaultUI]="false" zoomControl="true"
+<agm-map
+[latitude]="lat"
+[longitude]="lng"
+[zoom]="zoom"
+[mapTypeId]="'hybrid'"
+[disableDefaultUI]="false"
+[zoomControl]="true"
+[fitBounds]="true"
   (mapClick)="mapClicked($event)">
-<!-- (dragEnd)="markerDragEnd(m, $event)" -->
-  <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.latitude"  [iconUrl]='{"url": iconUrl,"scaledSize": {"height": 35, "width": 35}}'
-    [longitude]="m.longitude" xlabel="m.label" [markerDraggable]="m.draggable" >
+  <agm-marker [agmFitBounds]="true" *ngFor="let m of markers; let i = index"
+    (markerClick)="clickedMarker(m.label, i)"
+    [latitude]="m.latitude"
+    [iconUrl]='{"url": iconUrl,"scaledSize": {"height": 35, "width": 35}}'
+    [longitude]="m.longitude"
+    xlabel="m.label"
+    [markerDraggable]="m.draggable" >
+
     <agm-info-window>
       <mdb-tabset [buttonClass]="'pills-primary white mb-2'" [contentClass]="'card'">
         <mdb-tab heading="Info">
@@ -35,4 +47,10 @@
       </mdb-tabset>
     </agm-info-window>
   </agm-marker>
+  <agm-circle [latitude]="lat + 0.3" [longitude]="lng"
+      [radius]="5000"
+      [fillColor]="'red'"
+      [circleDraggable]="true"
+      [editable]="true">
+  </agm-circle>
 </agm-map>
