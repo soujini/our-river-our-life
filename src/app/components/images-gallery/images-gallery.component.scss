@@ -15,7 +15,6 @@ mdb-card-img {
 background-color: black;
 }
 
-
 .artist-profile-pic{
   width: 57px;
   height: 57px;
@@ -32,18 +31,18 @@ mdb-carousel-item{
 .image-description{
 font-size: 1rem;
  font-family: 'Open Sans', sans-serif !important;
- color:#c6c6c6;
- color:black;
+ // color:#c6c6c6;
+ color:#303030;
  font-weight:400;
  text-align: left;
- line-height: 1.5;
+ line-height: 2;
  letter-spacing: 1px;
 }
 .artist-info{
   font-size: 0.875rem;
  font-family: 'Open Sans', sans-serif !important;
- color:#c6c6c6;
-  color:black;
+ // color:#c6c6c6;
+  color:#303030;
  font-weight:400;
  text-align: left;
  line-height: 1.5;
