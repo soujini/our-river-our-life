@@ -1,16 +1,9 @@
 .navbar{
   position: fixed !important;
-  // width:100%;
-  //   top: 0;
-  //   left: 0;
-  //   right: 0;
-  //   z-index: 998;
   background-image: url(../../../assets/scalable-vector-graphics/banner_header2.svg);
    background-repeat: no-repeat;
   background-position: right;
 }
-
-
 
 .mat-toolbar{
   height:150px;
@@ -23,7 +16,6 @@
 .logo{
   cursor: pointer;
   width: 150px;
-  // height: 46px;
   margin-left: 80px;
   margin-top: 20.5px;
   margin-bottom: 20.5px;
@@ -38,7 +30,7 @@
 
 .heading{
   cursor:pointer !important;
-  font-size:13px !important;
+  font-size:0.875rem !important;
   font-family: 'Montserrat' !important;
   color: gray;
   font-weight: 500;

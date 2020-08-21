@@ -41,10 +41,11 @@
    text-transform: uppercase;
 }
 .display-1 {
-    font-size: 3rem !important;
+    font-size: 2.5rem !important;
     font-weight: 800 !important;
-    line-height: 1.2 !important;
+    line-height: 2 !important;
     font-family: 'Open Sans', sans-serif !important;
+    letter-spacing: 1px;
 }
 .parallax-about-banner2{
   background-image: url('../../../assets/jpg/about_banner_bg1.jpg');
@@ -68,6 +69,7 @@
   line-height: 2;
   font-family: 'Open Sans', sans-serif !important;
   font-weight: 500;
+  letter-spacing: 1px;
 }
 .about-image1{
   margin-top:3rem;

@@ -2,7 +2,7 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 // @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
 
-html, body { height: 100%; }
+html, body { height: 100%;   font-size: 16px; }
 body { margin: 0; font-family: 'Open Sans', sans-serif; }
 
 
@@ -184,11 +184,10 @@ mdb-card-img img {
 }
  // agm info window
 
-// .gm-style .gm-style-iw {
-//
-//   width: 100%;
-//   max-width: 284px !important;
-// }
+.gm-style .gm-style-iw {
+  width: 550px !important;
+  height:250px !important;
+}
 //
 //
 // @media only screen and (max-width: 767px) {

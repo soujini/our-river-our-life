@@ -11,7 +11,8 @@
 .feature-card-img{
   height:100px;
   width:100px;
-  background-color:#34495e;
+  // background-color:#34495e;
+  background-color: #116bb5;
   padding:25px;
   text-align: center;
   margin: 0 auto;
@@ -19,12 +20,12 @@
 }
 .feature-heading{
   font-weight: bold;
-  // line-height: 1.42857143;
+  line-height: 1.25em;
   color: #303030;
   color:#34495e;
   margin-top:20px;
   margin-bottom:20px;
-  font-size: 1.1rem;
+  font-size:1.25rem;
   letter-spacing: 1px;
 }
 
@@ -39,7 +40,7 @@
 }
 
 .min-text{
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 500;
   color: #303030;
   font-weight:500;
@@ -49,7 +50,7 @@
 }
 .feature-description{
   // height:400px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight:400;
   color:#303030;
   // align:justify;
