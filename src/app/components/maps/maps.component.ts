@@ -147,6 +147,7 @@ export class MapsComponent implements OnInit {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         var accuracy = position.coords.accuracy;
+        // alert(accuracy);
         this.mapsForm.patchValue({
           latitude: +position.coords.latitude,
           longitude: +position.coords.longitude,
@@ -159,7 +160,7 @@ export class MapsComponent implements OnInit {
       });
     }
     else {
-      alert("Geolocation is not supported by this browser.");
+      // alert("Geolocation is not supported by this browser.");
     }
   }
   addAlert() {
