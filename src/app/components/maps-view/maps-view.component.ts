@@ -45,8 +45,10 @@ export class MapsViewComponent  {
     var a = this.orolService.getFloodAlerts();
     this.orolService.getFloodAlerts().subscribe((data)=>{
       if(data['count']){
-        for(var i=0; i<data['count'];i++){
+        //for(var i=0; i<data['count'];i++){
+          for(var i=0; i<data['rows'].length;i++){
           this.markers.push({
+
             latitude: data['rows'][i].latitude,
             longitude:data['rows'][i].longitude,
             label:data['rows'][i].location,

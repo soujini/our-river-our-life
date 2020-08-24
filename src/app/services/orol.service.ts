@@ -11,12 +11,10 @@ declare var Orol:any;
   providedIn: 'root'
 })
 export class OrolService {
-  // private baseURL: string = environment.OROL_API_URL;
-
   constructor( private router: Router, public httpClient: HttpClient,private spinnerService: SpinnerService) { }
 
   public addAlert(x, images:File[]){
-    this.spinnerService.setSpinner(true);
+
     const form = new FormData;
     for(var i=0; i<images.length;i++){
       form.append('photos', images[i]);
@@ -28,15 +26,16 @@ export class OrolService {
     form.append("activityDate", x.activityDate);
     form.append("activityTime", x.activityTime);
     form.append("experience", x.experience);
-    this.spinnerService.setSpinner(false);
 
     this.httpClient.post("https://our-river-our-life-api.herokuapp.com/flood-alert/create-alert", form).subscribe(
       (res) => console.log(res),
       (err) => console.log(err));
+      alert("done");
       this.spinnerService.setSpinner(false);
     }
 
     public getFloodAlerts(){
+      this.spinnerService.setSpinner(true);
       return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/flood-alert");
     }
 
