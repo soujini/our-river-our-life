@@ -4,11 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "node app.js",
-    "build": "ng build && gzipper --verbose ./dist",
+    "build": "ng build && gzipper compress ./dist",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build && gzipper --verbose ./dist"
+    "postinstall": "ng build && gzipper compress ./dist"
   },
   "private": true,
   "dependencies": {
