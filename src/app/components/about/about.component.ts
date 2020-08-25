@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import 'jarallax';
 declare var jarallax: any;
+
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
