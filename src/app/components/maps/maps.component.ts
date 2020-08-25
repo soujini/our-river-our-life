@@ -36,15 +36,11 @@ export class MapsComponent implements OnInit {
   hide: any;
   centerLoc:any={};
 
-  toggle() {
-    this.show = !this.show
-
-    if (this.show) {
-      this.buttonName = 'Hide'
-    }
-    else {
-      this.buttonName = 'Show'
-    }
+  toggle(mode:string) {
+    this.show = !this.show;
+    if(mode == ''){
+    this.setCurrentPosition();
+  }
   }
 
   constructor(private fb: FormBuilder, private http: HttpClient, private orolService: OrolService,private spinnerService: SpinnerService,
@@ -75,7 +71,6 @@ export class MapsComponent implements OnInit {
       });
 
       autocomplete.addListener("place_changed", () => {
-        // alert("wah");
         this.ngZone.run(() => {
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
           //verify result
@@ -87,6 +82,7 @@ export class MapsComponent implements OnInit {
           this.mapsForm.patchValue({
             latitude:  place.geometry.location.lat(),
             longitude:  place.geometry.location.lng(),
+            location: place.formatted_address,
           });
           this.centerLoc = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() };
         });
@@ -170,6 +166,7 @@ export class MapsComponent implements OnInit {
     this.spinnerService.setSpinner(true);
       await this.orolService.addAlert(this.mapsForm.value, this.imageFiles);
       this.show = false;
+      this.setCurrentPosition();
       this.imageFiles=[];
   }
 

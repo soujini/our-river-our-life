@@ -49,7 +49,8 @@ export class ImagesGalleryComponent implements AfterViewInit {
       artist_profile_pic:"../../../assets/jpg/arati_rao.jpg",
       artist_social_media_1:"www.peepli.org",
       title:"Artisinal Hilsa fishermen, Sundarbans.",
-      description:"“When we were young, we’d go out for an hour and come back with enough fish for a day. But now we go for eight hours, we fish deeper, fish farther out, and still come up with less than half the fish compared to my younger days” ~ Noor Miyan, 60  years old.Hilsa is their most lucrative catch. Hilsa makes their lives.Hilsa (Ilish mach) fisheries are facing an unprecedented crisis, with a catch return of one fish a day, in recent times.",
+      description:"“When we were young, we’d go out for an hour and come back with enough fish for a day. But now we go for eight hours, we fish deeper, fish farther out, and still come up with less than half the fish compared to my younger days” ~ Noor Miyan, 60  years old.",
+      description2:"Hilsa is their most lucrative catch. Hilsa makes their lives.Hilsa (Ilish mach) fisheries are facing an unprecedented crisis, with a catch return of one fish a day, in recent times.",
       image:"../../../assets/jpg/gallery_5.jpg"
     },
     {

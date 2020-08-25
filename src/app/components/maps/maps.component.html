@@ -26,12 +26,12 @@
           </div>
           <div class="alert-div mt-3 text-center">
             <span class="textAddflood">Did You Observe Flooding in the above location ?</span> <br/>
-            <button mdbBtn type="button" color="secondary" class="add-alert" rounded="true" (click)="toggle()" mdbWavesEffect>
+            <button mdbBtn type="button" color="secondary" class="add-alert" rounded="true" (click)="toggle('add')" mdbWavesEffect>
               Add Alert</button>
           </div>
    </div>
    <div class="alert-box bg-white" [formGroup]="mapsForm" [ngClass]="(show) ? 'visible': 'hidden'">
-     <img class="mr-2 pointer" (click)="toggle()" src="../../../assets/scalable-vector-graphics/back.svg">
+     <img class="mr-2 pointer" (click)="toggle('')" src="../../../assets/scalable-vector-graphics/back.svg">
      <span class="alert-text mr-2">Add Flood Alert</span><img
        src="../../../assets/scalable-vector-graphics/flood-watch.svg">
      <hr class="line-header">
@@ -59,7 +59,7 @@
        <div class="form-group">
          <!-- <label for="file">File</label> -->
          <!-- <img *ngFor='let url of images' [src]="url" height="75px" width="100px" style="margin: 3px;"> <br /> -->
-         <input id="file" type="file" class="form-control" multiple="" (change)="onFileChange($event)">
+         <input id="file" type="file" class="form-control" multiple (change)="onFileChange($event)" style="height:45px;">
        </div>
      </div>
      <div class="md-form input-group optional" for='experience'>
@@ -67,7 +67,7 @@
          placeholder="Your experience or message (Optional)" aria-label="With textarea"></textarea>
      </div>
      <div class="text-center">
-     <button mdbBtn type="button" color="secondary" class="mr-3" rounded="true" (click)="toggle()"
+     <button mdbBtn type="button" color="secondary" class="mr-3" rounded="true" (click)="toggle('')"
        mdbWavesEffect>Cancel</button>
      <button mdbBtn type="button" color="secondary" rounded="true" (click)="addAlert()"
        mdbWavesEffect>+ Add Alert</button>
