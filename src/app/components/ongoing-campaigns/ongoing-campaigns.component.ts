@@ -10,10 +10,11 @@ export class OngoingCampaignsComponent implements OnInit {
   @ViewChild('widgetsContent') widgetsContent: ElementRef;
   safeSrc: SafeResourceUrl;
 
-  
+
   campaigns_list: any = [
     {
       name: 'Hubbali Ankola Railway Line',
+      defaultVideo:this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/bvI8pBdfPYQ"),
       campaigns: [
         {
           name: 'Hubballi-Ankola rail line: Why are environmentalists against it?',
@@ -24,11 +25,13 @@ export class OngoingCampaignsComponent implements OnInit {
         {
           name: 'Hubbali Ankola Railway Line',
           url: 'https://www.youtube.com/embed/bvI8pBdfPYQ',
+          thumb:'https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg'
         }
       ],
     },
     {
       name: 'Environment Impact Assessment',
+      defaultVideo:this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/4S1IvA_aDgI"),
       campaigns: [
         {
           name: 'Environment Impact Assessment 2020',
@@ -39,16 +42,19 @@ export class OngoingCampaignsComponent implements OnInit {
         {
           name: 'Understanding EIA concerns: How does the new draft EIA affect the environment and us?',
           url: 'https://www.youtube.com/embed/4S1IvA_aDgI' ,
+          thumb:'https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg'
         },
         {
           name: 'How does the new draft EIA affect the environment and us?',
           url: 'https://www.youtube.com/embed/vzqH4MsrOAQ' ,
+          thumb:'https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg'
         }
       ],
     },
-    
+
     {
       name: 'Dibang Valley Hydropower Project',
+      defaultVideo:this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/1jwwvQX1T6s"),
       campaigns: [
         {
           name: 'Dibang Valley Hydropower Project',
@@ -63,31 +69,36 @@ export class OngoingCampaignsComponent implements OnInit {
         {
           name: 'Dibang Valley, not a dam country',
           url: 'https://www.youtube.com/embed/1jwwvQX1T6s' ,
+          thumb:'https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg'
         },
         {
           name: 'How big do you think 11.5 sq kms is?',
           url: 'https://www.youtube.com/embed/LV8lY0Yj4sA' ,
+          thumb:'https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg'
         },
         {
           name: 'Voices of Dibang Resistance',
           url: 'https://www.youtube.com/embed/ow3ZdbhT2vs' ,
+          thumb:'https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg'
         },
         {
           name: 'Dibang Valley Resistance',
           url: 'https://www.youtube.com/embed/6aX9YS5e7x8' ,
+          thumb:'https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg'
         },
         {
           name: 'Voices of the Youth',
           url: 'https://www.youtube.com/embed/4ujI8T22fdc' ,
+          thumb:'https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg'
         },
       ],
     },
- 
-    
+
+
   ]
 
   constructor(private sanitizer: DomSanitizer) {
-    this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/oVXmpxZkoTQ");
+    // this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/oVXmpxZkoTQ");
   }
 
   ngOnInit(): void {

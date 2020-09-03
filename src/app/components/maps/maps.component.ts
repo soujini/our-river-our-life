@@ -38,8 +38,8 @@ export class MapsComponent implements OnInit {
   toggle(mode:string) {
     this.show = !this.show;
     if(mode == ''){
-    this.setCurrentPosition();
-  }
+      this.setCurrentPosition();
+    }
   }
 
   constructor(private fb: FormBuilder, private http: HttpClient, private orolService: OrolService,
@@ -52,17 +52,17 @@ export class MapsComponent implements OnInit {
 
   mapReady(event) {
     // console.log(event);
-     this.setCurrentPosition();
-     // this.getGeoLocation();
+    this.setCurrentPosition();
+    // this.getGeoLocation();
   }
-//    getGeolocation() {
-//   navigator.geolocation.getCurrentPosition(drawMap);
-// }
+  //    getGeolocation() {
+  //   navigator.geolocation.getCurrentPosition(drawMap);
+  // }
 
 
   ngOnInit() {
     this.setCurrentTime();
-     this.zoom = 13;
+    this.zoom = 13;
     this.searchControl = new FormControl();
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
@@ -92,10 +92,10 @@ export class MapsComponent implements OnInit {
   setCurrentTime(){
     let dt = new Date();
     let normalizeHour = dt.getHours() >= 13 ? dt.getHours() - 12 : dt.getHours()
-     var formattedTime = dt.getHours() >= 13 ? normalizeHour + ':' + dt.getMinutes() + 'PM' : normalizeHour + ':' + dt.getMinutes() + 'AM';
-     this.mapsForm.patchValue({
-       activityTime: formattedTime
-     });
+    var formattedTime = dt.getHours() >= 13 ? normalizeHour + ':' + dt.getMinutes() + 'PM' : normalizeHour + ':' + dt.getMinutes() + 'AM';
+    this.mapsForm.patchValue({
+      activityTime: formattedTime
+    });
   }
 
   bla(){
@@ -160,31 +160,27 @@ export class MapsComponent implements OnInit {
       // alert("Geolocation is not supported by this browser.");
     }
   }
-<<<<<<< HEAD
-  addAlert() {
-    console.log(this.imageFiles);
-     this.orolService.addAlert(this.mapsForm.value, this.imageFiles);
-    //     this.orolService.addAlert().then(
-    //   data => {
-    //     this.apps=data.response;
-    //     console.log('success Add Alert');
-    //   },
-    //   error => {
-    //     console.log('oops  Add Alert', error);
-    //     return error;
-    //   }
-    // );
-
-    console.log(this.mapsForm.value);
-    // this.addAlert=true;
-=======
+  // addAlert() {
+  //   console.log(this.imageFiles);
+  //   this.orolService.addAlert().then(
+  //     data => {
+  //       this.apps=data.response;
+  //       console.log('success Add Alert');
+  //     },
+  //     error => {
+  //       console.log('oops  Add Alert', error);
+  //       return error;
+  //     }
+  //   );
+  //
+  // }
+  // this.addAlert=true;
   async addAlert() {
-    this.spinnerService.setSpinner(true);
+    // this.spinnerService.setSpinner(true);
       await this.orolService.addAlert(this.mapsForm.value, this.imageFiles);
       this.show = false;
       this.setCurrentPosition();
       this.imageFiles=[];
->>>>>>> a769310f3cc2806fb24d5465649858bfe0b996dd
   }
 
   onFileChange(event) {
@@ -192,18 +188,18 @@ export class MapsComponent implements OnInit {
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
         console.log(event.target.files[i]);
-         this.imageFiles.push(event.target.files[i]);
+        this.imageFiles.push(event.target.files[i]);
         // var reader = new FileReader();
         // reader.onload = (event:any) => {
         //   console.log(event.target.result);
-          //this.images.push(event.target.result);
-          // this.mapsForm.patchValue({
-          //   photos:this.images
-          //   // fileSource: this.images
-          // });
-        }
-        //reader.readAsDataURL(event.target.files[i]);
+        //this.images.push(event.target.result);
+        // this.mapsForm.patchValue({
+        //   photos:this.images
+        //   // fileSource: this.images
+        // });
       }
+      //reader.readAsDataURL(event.target.files[i]);
     }
+  }
 
 }
