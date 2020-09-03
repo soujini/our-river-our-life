@@ -8,13 +8,12 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class OngoingCampaignsComponent implements OnInit {
   @ViewChild('widgetsContent') widgetsContent: ElementRef;
-  safeSrc: SafeResourceUrl;
-
+  defaultVideo: SafeResourceUrl;
 
   campaigns_list: any = [
     {
       name: 'Hubbali Ankola Railway Line',
-      defaultVideo:this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/bvI8pBdfPYQ"),
+      defaultVideo:this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/wHwZOwxNbKc"),
       campaigns: [
         {
           name: 'Hubballi-Ankola rail line: Why are environmentalists against it?',
@@ -24,8 +23,8 @@ export class OngoingCampaignsComponent implements OnInit {
       videos: [
         {
           name: 'Hubbali Ankola Railway Line',
-          url: 'https://www.youtube.com/embed/bvI8pBdfPYQ',
-          thumb:'https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg'
+          url: 'https://www.youtube.com/embed/wHwZOwxNbKc',
+          thumb:'https://img.youtube.com/vi/wHwZOwxNbKc/0.jpg'
         }
       ],
     },
@@ -42,12 +41,12 @@ export class OngoingCampaignsComponent implements OnInit {
         {
           name: 'Understanding EIA concerns: How does the new draft EIA affect the environment and us?',
           url: 'https://www.youtube.com/embed/4S1IvA_aDgI' ,
-          thumb:'https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg'
+          thumb:'https://img.youtube.com/vi/4S1IvA_aDgI/0.jpg'
         },
         {
           name: 'How does the new draft EIA affect the environment and us?',
           url: 'https://www.youtube.com/embed/vzqH4MsrOAQ' ,
-          thumb:'https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg'
+          thumb:'https://img.youtube.com/vi/vzqH4MsrOAQ/0.jpg'
         }
       ],
     },
@@ -69,27 +68,27 @@ export class OngoingCampaignsComponent implements OnInit {
         {
           name: 'Dibang Valley, not a dam country',
           url: 'https://www.youtube.com/embed/1jwwvQX1T6s' ,
-          thumb:'https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg'
+          thumb:'https://img.youtube.com/vi/1jwwvQX1T6s/0.jpg'
         },
         {
           name: 'How big do you think 11.5 sq kms is?',
           url: 'https://www.youtube.com/embed/LV8lY0Yj4sA' ,
-          thumb:'https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg'
+          thumb:'https://img.youtube.com/vi/LV8lY0Yj4sA/0.jpg'
         },
         {
           name: 'Voices of Dibang Resistance',
           url: 'https://www.youtube.com/embed/ow3ZdbhT2vs' ,
-          thumb:'https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg'
+          thumb:'https://img.youtube.com/vi/ow3ZdbhT2vs/0.jpg'
         },
         {
           name: 'Dibang Valley Resistance',
           url: 'https://www.youtube.com/embed/6aX9YS5e7x8' ,
-          thumb:'https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg'
+          thumb:'https://img.youtube.com/vi/6aX9YS5e7x8/0.jpg'
         },
         {
           name: 'Voices of the Youth',
           url: 'https://www.youtube.com/embed/4ujI8T22fdc' ,
-          thumb:'https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg'
+          thumb:'https://img.youtube.com/vi/4ujI8T22fdc/0.jpg'
         },
       ],
     },
@@ -98,7 +97,7 @@ export class OngoingCampaignsComponent implements OnInit {
   ]
 
   constructor(private sanitizer: DomSanitizer) {
-    // this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/oVXmpxZkoTQ");
+    // this.defaultVideo =  this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/oVXmpxZkoTQ");
   }
 
   ngOnInit(): void {
