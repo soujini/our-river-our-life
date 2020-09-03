@@ -1,8 +1,6 @@
 .videos{
-   // background: url('../../../assets/scalable-vector-graphics/river_bg2.svg');
      background:url(../../../assets/jpg/banner/bg_waves2.png);
   background-repeat: no-repeat;
-  // background-attachment: fixed
     background-position: center;
   background-size: cover;
 }
@@ -21,7 +19,6 @@
     width: 100%;
     background: #fff;
     margin: 0 auto;
-		// padding:75px 0px 75px 0px;
 }
 .vid-container {
 	position: relative;
@@ -37,35 +34,13 @@
 	height: 100%;
 }
 
-.vid-list-container {
-	// width: 92%;
-	// overflow: hidden;
-	// margin-top: 20px;
-	// margin-left:4%;
-	// padding-bottom: 20px;
-}
 .vid-list {
 	width: 100%;
 	 position: absolute;
    background-color: red;
   text-align: center;
-
-
-
-	// top:0;
-	// left: 0;
 }
 
-.vid-item {
-	// display: block;
-	// width: 148px;
-	// height: 148px;
-  // // width: 20%;
-  // height:auto;
-	// float: left;
-	// margin: 0;
-	// padding: 10px;
-}
 
 .thumb {
 	overflow:hidden;
@@ -114,5 +89,4 @@ ul > li{
   padding:15px !important;
   padding-top:25px !important;
   width: 150px;
-  // height:250px
 }

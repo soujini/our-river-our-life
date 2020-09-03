@@ -5,7 +5,6 @@ import { IMyOptions } from 'ng-uikit-pro-standard';
 import { timer } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { OrolService } from '../../services/orol.service';
-import { SpinnerService } from '../../services/spinner.service';
 
 declare var google;
 
@@ -47,7 +46,7 @@ export class MapsComponent implements OnInit {
     }
   }
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private orolService: OrolService,private spinnerService: SpinnerService,
+  constructor(private fb: FormBuilder, private http: HttpClient, private orolService: OrolService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
   ) {
@@ -98,10 +97,9 @@ export class MapsComponent implements OnInit {
     let dt = new Date();
     let normalizeHour = dt.getHours() >= 13 ? dt.getHours() - 12 : dt.getHours()
      var formattedTime = dt.getHours() >= 13 ? normalizeHour + ':' + dt.getMinutes() + 'PM' : normalizeHour + ':' + dt.getMinutes() + 'AM';
-     return formattedTime;
-     // this.mapsForm.patchValue({
-     //   activityTime: formattedTime
-     // });
+     this.mapsForm.patchValue({
+       activityTime: formattedTime
+     });
   }
 
   bla(){
@@ -122,7 +120,7 @@ export class MapsComponent implements OnInit {
       latitude: [23.074290],
       longitude: [79.134113],
       activityDate: [(new Date())],
-      activityTime: [this.setCurrentTime()],
+      activityTime: [''],
       photos: this.fb.array([]),
       experience: ['']
     });
@@ -166,19 +164,40 @@ export class MapsComponent implements OnInit {
       // alert("Geolocation is not supported by this browser.");
     }
   }
-  async addAlert() {
-    this.spinnerService.setSpinner(true);
-      await this.orolService.addAlert(this.mapsForm.value, this.imageFiles);
-      this.show = false;
-      this.imageFiles=[];
+  addAlert() {
+    console.log(this.imageFiles);
+     this.orolService.addAlert(this.mapsForm.value, this.imageFiles);
+    //     this.orolService.addAlert().then(
+    //   data => {
+    //     this.apps=data.response;
+    //     console.log('success Add Alert');
+    //   },
+    //   error => {
+    //     console.log('oops  Add Alert', error);
+    //     return error;
+    //   }
+    // );
+
+    console.log(this.mapsForm.value);
+    // this.addAlert=true;
   }
 
   onFileChange(event) {
     if (event.target.files && event.target.files[0]) {
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
+        console.log(event.target.files[i]);
          this.imageFiles.push(event.target.files[i]);
+        // var reader = new FileReader();
+        // reader.onload = (event:any) => {
+        //   console.log(event.target.result);
+          //this.images.push(event.target.result);
+          // this.mapsForm.patchValue({
+          //   photos:this.images
+          //   // fileSource: this.images
+          // });
         }
+        //reader.readAsDataURL(event.target.files[i]);
       }
     }
 

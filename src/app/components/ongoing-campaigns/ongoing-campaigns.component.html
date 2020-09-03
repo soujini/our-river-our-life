@@ -1,1 +1,149 @@
-<p style="margin-top:150px;height:405px; padding:50px">Ongoing Campaigns Content !</p>
+<!-- <p style="margin-top:150px;height:405px; padding:50px">Ongoing Campaigns Content !</p> -->
+<div class="ongoing-campaigns" *ngFor="let campaign of campaigns_list">
+
+  <h1> Name : {{campaign.name}}</h1>
+
+  <div *ngFor="let c of campaign.campaigns">
+    <a [href]="c.url" target="_blank">{{c.name}}</a>
+  </div>
+
+  <div *ngFor="let v of campaign.videos">
+
+    <h1> Name : {{v.name}}</h1>
+
+    <div class="videos row" style="padding-bottom:75px;padding-left:0px; padding-right:0px">
+      <div class="vid-container col-10" >
+        <iframe id="vid_frame" [src]="safeSrc" width="916" height="580" frameborder="0" title="video"></iframe>
+      </div>
+
+
+      <div class="col-2" xstyle="">
+        <div class="col-1" style="text-align:right;line-height:3;cursor:pointer;">
+          <div (click)="scrollUp()" class="pull-right">
+            <i class="fa fa-chevron-up fa-lg ml-5" style="width:47px;height:47px; border-radius:50%; opacity:0.8"></i>
+          </div>
+        </div>
+
+        <ul #widgetsContent style="justify-content:center;overflow-y: scroll; list-style-type:none; height: 650px;">
+
+          <li style="padding:15px" >
+            <div class="vid-item"
+              onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/bvI8pBdfPYQ'">
+              <div class="thumb">
+                <img alt="name" src="https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg">
+              </div>
+              <div class="desc">
+                māti - land, floods and displacement
+              </div>
+            </div>
+          </li>
+
+          <li style="padding:15px">
+            <div class="vid-item"
+              onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/2T6F-ih-AX4'">
+              <div class="thumb">
+                <img alt="name" src="https://img.youtube.com/vi/2T6F-ih-AX4/0.jpg">
+              </div>
+              <div class="desc">
+                Losing livelihoods along Narmada river
+              </div>
+            </div>
+          </li>
+          <li style="padding:15px">
+            <div class="vid-item"
+              onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/prqVUa_vkOE'">
+              <div class="thumb">
+                <img alt="name" src="https://img.youtube.com/vi/prqVUa_vkOE/0.jpg">
+              </div>
+              <div class="desc">
+                Himalayas’ shy otters
+              </div>
+            </div>
+          </li>
+
+          <li style="padding:15px">
+            <div class="vid-item"
+              onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/3cvZpORNOl8'">
+              <div class="thumb">
+                <img alt="name" src="https://img.youtube.com/vi/3cvZpORNOl8/0.jpg">
+              </div>
+              <div class="desc">
+                Our River, Our Rights- The Story of Goa
+              </div>
+            </div>
+          </li>
+
+          <li style="padding:15px">
+            <div class="vid-item"
+              onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/4-6o4Nb21FU'">
+              <div class="thumb">
+                <img alt="name" src="https://img.youtube.com/vi/4-6o4Nb21FU/0.jpg">
+              </div>
+              <div class="desc">
+                Agumbe Monsoon
+              </div>
+            </div>
+          </li>
+
+          <li style="padding:15px">
+            <div class="vid-item"
+              onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/FI6YlxLPWC8'">
+              <div class="thumb">
+                <img alt="name" src="https://img.youtube.com/vi/FI6YlxLPWC8/0.jpg">
+              </div>
+              <div class="desc">
+                Save River Cauvery
+              </div>
+            </div>
+          </li>
+
+          <li style="padding:15px">
+            <div class="vid-item"
+              onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/pkk0tk5WUtA'">
+              <div class="thumb">
+                <img alt="name" src="https://img.youtube.com/vi/pkk0tk5WUtA/0.jpg">
+              </div>
+              <div class="desc">
+                Aghanishini
+              </div>
+            </div>
+          </li>
+
+          <li style="padding:15px">
+            <div class="vid-item"
+              onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/RuVnAwkuTVw'">
+              <div class="thumb">
+                <img alt="name" src="https://img.youtube.com/vi/RuVnAwkuTVw/0.jpg">
+              </div>
+              <div class="desc">
+                Kali
+              </div>
+            </div>
+          </li>
+          <li style="padding:15px">
+            <div class="vid-item"
+              onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/0LqdOwYmFwU'">
+              <div class="thumb">
+                <img alt="name" src="https://img.youtube.com/vi/0LqdOwYmFwU/0.jpg">
+              </div>
+              <div class="desc">
+                Small Dams, Big Problems
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="col-1" style="text-align:right;line-height:150px;cursor:pointer; ">
+          <div (click)="scrollDown()" class="pull-right">
+            <i class="fa fa-chevron-down fa-lg ml-5" style="width:47px;height:47px; border-radius:50%; opacity:0.8"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>
+
