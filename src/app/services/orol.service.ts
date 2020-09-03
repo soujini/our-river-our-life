@@ -27,11 +27,21 @@ export class OrolService {
     form.append("activityTime", x.activityTime);
     form.append("experience", x.experience);
 
-    this.httpClient.post("https://our-river-our-life-api.herokuapp.com/flood-alert/create-alert", form).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err));
-      alert("done");
-      this.spinnerService.setSpinner(false);
+    // this.httpClient.post("https://our-river-our-life-api.herokuapp.com/flood-alert/create-alert", form).subscribe(
+    //   (res) => {
+    //     console.log(res);
+    //   },
+    //   (err) => {
+    //     console.log(err)
+    //   },
+    //   alert("done2"),
+    // );
+    //   this.spinnerService.setSpinner(false);
+    //   alert("done");
+
+      this.httpClient.post("https://our-river-our-life-api.herokuapp.com/flood-alert/create-alert", form).subscribe((res) => {
+        this.spinnerService.setSpinner(false);
+      });
     }
 
     public getFloodAlerts(){

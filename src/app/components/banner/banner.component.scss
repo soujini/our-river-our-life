@@ -2,18 +2,12 @@
 .header {
   position: relative;
   text-align: center;
-  // background: linear-gradient(60deg, #34679a 0%, #fafafa 100%);
-  // background: linear-gradient(60deg, #a1ceab 0%, #fafafa 100%);
-// background: linear-gradient(60deg, #6bbbab 0%, #fafafa 100%);63b8ac 4daf9e 3a9aaa
-background: linear-gradient(60deg, #63b8ac 0%, #f7f7f7 100%);
-
-
+  background: linear-gradient(60deg, #63b8ac 0%, #f7f7f7 100%);
   color: white;
 }
 .logo {
   width: 50px;
   fill: white;
-  // padding-right: 15px;
   display: inline-block;
   vertical-align: middle;
 }
@@ -22,7 +16,6 @@ background: linear-gradient(60deg, #63b8ac 0%, #f7f7f7 100%);
   width: 100%;
   margin: 0;
   padding: 0;
-  // margin-top:50px;
 }
 .flex {
   /*Flexbox for containers*/
@@ -73,10 +66,7 @@ background: linear-gradient(60deg, #63b8ac 0%, #f7f7f7 100%);
     transform: translate3d(85px, 0, 0);
   }
 }
-/*Shrinking for mobile*/
-// @media (max-width: 768px) {
-//
-// }
+
 .banner{
   margin-top:150px;
   padding-top:50px;
@@ -165,7 +155,7 @@ background: linear-gradient(60deg, #63b8ac 0%, #f7f7f7 100%);
   h1 {
     font-size: 1.5em;
   }
- }
+}
 
 // Medium devices (tablets, less than 992px)
 @media (max-width: 991px) {
@@ -192,12 +182,12 @@ background: linear-gradient(60deg, #63b8ac 0%, #f7f7f7 100%);
   h1 {
     font-size: 1.5em;
   }
- }
+}
 
 // Large devices (desktops, less than 1200px)
 @media (max-width: 1199px) {
 
- }
+}
 
 // Extra large devices (large desktops)
 // No media query since the extra-large breakpoint has no upper bound on its width
