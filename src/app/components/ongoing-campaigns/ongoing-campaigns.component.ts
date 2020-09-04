@@ -103,7 +103,9 @@ export class OngoingCampaignsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+  bla(i, url){
+    this.campaigns_list[i].defaultVideo=this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
   scrollUp(){
     this.widgetsContent.nativeElement.scrollUp -= 150;
   }
