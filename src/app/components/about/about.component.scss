@@ -23,12 +23,14 @@
  background-size: cover;
  margin-top:100px;
  font-family: 'Open Sans',sans-serif;
-
+ -webkit-transform: translate3d(0,0,0);
+background-attachment: scroll;
  padding-top:75px;
  padding-bottom:75px;
 }
 .jarallax_about_banner{
     background-image: url(../../../assets/jpg/banner/bg_mountain1.jpg);
+    -webkit-transform: translate3d(0,0,0);
   background-attachment: fixed; height: 700px;
   margin-top:100px
 }
@@ -54,6 +56,8 @@
 }
 .parallax-about-banner{
   background:url(../../../assets/jpg/banner/bg_waves2.webp);
+  background-attachment: scroll;
+  -webkit-transform: translate3d(0,0,0);
   background-attachment: fixed;
   min-height: 206px;
 }

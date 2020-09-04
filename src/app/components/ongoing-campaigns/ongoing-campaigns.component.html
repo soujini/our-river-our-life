@@ -1,41 +1,38 @@
-<div class="ongoing-campaigns" *ngFor="let campaign of campaigns_list; let i=index">
-  <h1>{{campaign.name}}</h1>
-  <div *ngFor="let c of campaign.campaigns">
-    <a [href]="c.url" target="_blank">{{c.url}}</a>
-  </div>
-  <div>
-    <div class="videos row" style="padding-bottom:75px;padding-left:0px; padding-right:0px">
-      <div class="vid-container col-10" >
-        <iframe id="vid_frame" [src]="campaign.defaultVideo" width="916" height="400" frameborder="0" title="video"></iframe>
+<div class="ongoing-campaigns" style="background:url(../../../assets/jpg/banner/bg_waves2.webp);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  -webkit-transform: translate3d(0,0,0);
+  background-attachment: scroll;">
+  <!-- <app-banner-waves></app-banner-waves> -->
+  <div class="campaigns" *ngFor="let campaign of campaigns_list; let i=index">
+    <p class="campaign-title">{{campaign.name}}</p>
+    <div class="campaign-url" *ngFor="let c of campaign.campaigns">
+      <a class="col-12" [href]="c.url" target="_blank">{{c.url}}</a>
+    </div>
+    <div>
+      <div class="videos row" style="margin-right:0px;margin-left:0px;">
+        <div class="vid-container col-10" >
+          <iframe id="vid_frame" [src]="campaign.defaultVideo" frameborder="0" title="video"></iframe>
+        </div>
+
+        <div class="col-2 videos-list">
+          <ul #widgetsContent>
+            <li *ngFor="let v of campaign.videos">
+              <div class="vid-item" (click)="bla(i, v.url);">
+              <div class="thumb">
+                <img alt="name" [src]="v.thumb">
+              </div>
+              <div class="video-description">
+                {{v.name}}
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
 
-      <div class="col-2" xstyle="">
-        <!-- <div class="col-1" style="text-align:right;line-height:3;cursor:pointer;">
-          <div (click)="scrollUp()" class="pull-right">
-            <i class="fa fa-chevron-up fa-lg ml-5" style="width:47px;height:47px; border-radius:50%; opacity:0.8"></i>
-          </div>
-        </div> -->
-
-        <ul #widgetsContent style="justify-content:center;overflow-y: scroll; list-style-type:none; height: 650px;">
-          <li *ngFor="let v of campaign.videos" style="padding:15px" >
-            <div class="vid-item" (click)="bla(i, v.url);"
-            xonClick="document.getElementById('vid_frame').[src]='v.url'">
-            <div class="thumb">
-              <img alt="name" [src]="v.thumb">
-            </div>
-            <div class="desc" style="color:red">
-              {{v.name}}
-            </div>
-          </div>
-        </li>
-      </ul>
-
-      <!-- <div class="col-1" style="text-align:right;line-height:150px;cursor:pointer; ">
-        <div (click)="scrollDown()" class="pull-right">
-          <i class="fa fa-chevron-down fa-lg ml-5" style="width:47px;height:47px; border-radius:50%; opacity:0.8"></i>
-        </div>
-      </div> -->
-    </div>
   </div>
-</div>
+
+  </div>
+  </div>
 </div>

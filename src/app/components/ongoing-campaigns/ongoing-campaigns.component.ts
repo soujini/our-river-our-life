@@ -1,6 +1,8 @@
 // import { Component, OnInit } from '@angular/core';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+// import { BannerWavesComponent } from '../../../banner-waves/banner-waves.component';
+
 @Component({
   selector: 'app-ongoing-campaigns',
   templateUrl: './ongoing-campaigns.component.html',

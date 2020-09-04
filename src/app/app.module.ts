@@ -20,6 +20,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 // import { MapsComponent } from './components/maps/maps.component';
 import { GoogleMapsModule } from '@angular/google-maps'
 import { AgmCoreModule } from '@agm/core';
+// import { BannerWavesComponent } from './components/banner-waves/banner-waves.component';
 
 // import { MapsViewComponent } from './components/maps-view/maps-view.component';
 @NgModule({
@@ -31,6 +32,7 @@ import { AgmCoreModule } from '@agm/core';
     FooterComponent,
     ImgLoadedDirective,
     NotFoundComponent,
+    // BannerWavesComponent,
     // MapsViewComponent,
     // MapsComponent,
   ],

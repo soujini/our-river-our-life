@@ -1,12 +1,14 @@
 .features{
-  background-image: url(../../../assets/jpg/banner/bg_river1.webp);
-  background-size: 100% 100%;
+  background-image: url('../../../assets/jpg/banner/bg_river1.webp');
+  // background-size: 100% 100%;
   background-position: right;
   background-repeat: no-repeat;
   padding-top:75px;
   padding-bottom:75px;
-  background-color:white;
+  // background-color:white;
   min-height:775px;
+  -webkit-transform: translate3d(0,0,0);
+  background-attachment: scroll;
 }
 .feature-card-img{
   height:100px;
