@@ -108,12 +108,12 @@ export class OngoingCampaignsComponent implements OnInit {
   bla(i, url){
     this.campaigns_list[i].defaultVideo=this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
-  scrollUp(){
-    this.widgetsContent.nativeElement.scrollUp -= 150;
-  }
-
-  scrollDown(){
-    this.widgetsContent.nativeElement.scrollUp += 150;
-  }
+  // scrollUp(){
+  //   this.widgetsContent.nativeElement.scrollUp -= 150;
+  // }
+  //
+  // scrollDown(){
+  //   this.widgetsContent.nativeElement.scrollUp += 150;
+  // }
 
 }

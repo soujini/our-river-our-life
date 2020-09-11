@@ -12,11 +12,12 @@
 .footer{
   background-color:white;
   color: gray;
-  font-size: 12px;
+  font-size: 10px;
   font-family: 'Open Sans', sans-serif;
   font-weight:600;
   height:100px;
   display: flex;
+  letter-spacing: 0.5px;
 
   .section-copyright{
     border-right:1px dashed #eaeaea;

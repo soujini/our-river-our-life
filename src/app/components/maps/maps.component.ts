@@ -5,6 +5,8 @@ import { IMyOptions } from 'ng-uikit-pro-standard';
 import { timer } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { OrolService } from '../../services/orol.service';
+import { Event, Route, Router, ActivatedRoute,RoutesRecognized } from '@angular/router';
+
 
 declare var google;
 
@@ -42,7 +44,7 @@ export class MapsComponent implements OnInit {
     }
   }
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private orolService: OrolService,
+  constructor(public router: Router, private fb: FormBuilder, private http: HttpClient, private orolService: OrolService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
   ) {
@@ -176,11 +178,11 @@ export class MapsComponent implements OnInit {
   // }
   // this.addAlert=true;
   async addAlert() {
-    // this.spinnerService.setSpinner(true);
       await this.orolService.addAlert(this.mapsForm.value, this.imageFiles);
       this.show = false;
       this.setCurrentPosition();
       this.imageFiles=[];
+      this.router.navigate(['./home']);
   }
 
   onFileChange(event) {

@@ -14,7 +14,7 @@ export class OrolService {
   constructor( private router: Router, public httpClient: HttpClient,private spinnerService: SpinnerService) { }
 
   public addAlert(x, images:File[]){
-
+    this.spinnerService.setSpinner(true);
     const form = new FormData;
     for(var i=0; i<images.length;i++){
       form.append('photos', images[i]);
@@ -40,6 +40,7 @@ export class OrolService {
     //   alert("done");
 
       this.httpClient.post("https://our-river-our-life-api.herokuapp.com/flood-alert/create-alert", form).subscribe((res) => {
+        console.log("souji "+res);
         this.spinnerService.setSpinner(false);
       });
     }

@@ -1,25 +1,21 @@
 .banner{
-  // background: url(../../../assets/jpg/banner/banner9.jpg);
-  // background:url(../../../assets/jpg/banner/bg_waves2.webp);
-  // background-repeat: no-repeat;
-  // background-size: 100% 100%;
   background:url(../../../assets/jpg/banner/bg_waves2.webp);
   background-attachment: scroll;
   -webkit-transform: translate3d(0,0,0);
-background-repeat: no-repeat;
- background-position: center;
-background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .content{
   display: flex;
 }
 mdb-card-img {
-background-color: black;
+  background-color: black;
 }
 
 .artist-profile-pic{
-  width: 57px;
-  height: 57px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 mdb-carousel-item{
@@ -27,30 +23,36 @@ mdb-carousel-item{
 }
 .details{
   display: -webkit-inline-box;
-  margin-top: 20px;
+  margin-top: 10px;
 
 }
 .image-description{
-font-size: 1rem;
- font-family: 'Open Sans', sans-serif !important;
- // color:#c6c6c6;
- color:#303030;
- font-weight:400;
- text-align: left;
- line-height: 2;
- letter-spacing: 1px;
+  font-size: 1rem;
+  font-family: 'Open Sans', sans-serif !important;
+  color:#303030;
+  font-weight:400;
+  text-align: left;
+  line-height: 1.7;
+  letter-spacing: 1px;
 }
 .artist-info{
-  font-size: 0.875rem;
- font-family: 'Open Sans', sans-serif !important;
- // color:#c6c6c6;
+  font-size: 0.7rem;
+  font-family: 'Open Sans', sans-serif !important;
   color:#303030;
- font-weight:400;
- text-align: left;
- line-height: 1.5;
- letter-spacing: 1px;
+  font-weight:400;
+  text-align: left;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  margin-top:5px;
 }
 .carousel-control-prev,
 .carousel-control-next{
   align-self: flex-end; /* Aligns it at the bottom */
+}
+
+.card-title{
+  font-family: 'Open Sans', sans-serif;
+  font-size:1.25rem;
+  font-weight:bold;
+  letter-spacing: 1px;
 }

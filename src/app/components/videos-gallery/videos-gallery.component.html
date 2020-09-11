@@ -1,145 +1,31 @@
-
-<div class="videos col-12" style="padding-bottom:75px;padding-left:0px; padding-right:0px">
-  <h1 class="text-center" style="padding-bottom:75px;padding-top:75px;font-family: 'Open Sans', sans-serif;
-  font-weight: 800; xbackground-color:white"><span style="color:#34495e;color:#116bb5">FEATURED VIDEOS</span></h1>
-  <div class="vid-container" style="margin-top:-10px">
-    <iframe id="vid_frame" [src]="safeSrc" width="916" height="580" frameborder="0" title="video" ></iframe>
+  <div class="videos-gallery">
+  <div class="banner text-center"style="font-family: 'Open Sans', sans-serif;padding-top:35px; padding-bottom:35px;
+  ">
+  <h2><span style="color:#357ba0;font-weight: 800; color:#116bb5">FEATURED VIDEOS</span>
+  </h2>
   </div>
-  <div class="row" style="xborder-top:2px dashed #116bb5; margin-left:0px;margin-right:0px; padding-left:25px; padding-right:25px">
-    <div class="col-1" style="line-height:150px; cursor:pointer">
-      <div (click)="scrollLeft()" xclass="arrow-left">
-        <i  class="fa fa-chevron-left fa-lg"></i>
-      </div>
-    </div>
-    <ul #widgetsContent class="col-10 d-flex custom-slider-main" style="justify-content:center; overflow:auto; list-style-type:none">
+  <div class="campaigns" *ngFor="let campaign of campaigns_list; let i=index">
+    <div>
+      <div class="row" style="margin-right:0px;margin-left:0px;">
+        <div class="vid-container col-9" height="300px" >
+          <iframe id="vid_frame" [src]="campaign.defaultVideo" frameborder="0" title="video"></iframe>
+        </div>
 
-      <li style="padding:15px">
-        <div class="vid-item" onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/bvI8pBdfPYQ'">
-          <div class="thumb">
-            <img alt="name"  src="https://img.youtube.com/vi/bvI8pBdfPYQ/0.jpg">
-          </div>
-          <div class="desc">
-            māti - land, floods and displacement
-          </div>
+        <div class="col-3 videos-list">
+          <ul #widgetsContent>
+            <li *ngFor="let v of campaign.videos">
+              <div class="vid-item text-center" (click)="bla(i, v.url);">
+                <div class="thumb">
+                  <img alt="name" [src]="v.thumb">
+                </div>
+                <div class="video-description">
+                  {{v.name}}
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
-      </li>
-
-      <li style="padding:15px">
-        <div class="vid-item" onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/2T6F-ih-AX4'">
-          <div class="thumb">
-            <img alt="name" src="https://img.youtube.com/vi/2T6F-ih-AX4/0.jpg" >
-          </div>
-          <div class="desc">
-            Losing livelihoods along Narmada river
-          </div>
-        </div>
-      </li>
-
-      <li style="padding:15px">
-        <div class="vid-item" onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/prqVUa_vkOE'">
-          <div class="thumb">
-            <img alt="name"  src="https://img.youtube.com/vi/prqVUa_vkOE/0.jpg">
-               </div>
-          <div class="desc">
-            Himalayas’ shy otters
-          </div>
-        </div>
-      </li>
-
-      <li style="padding:15px">
-        <div class="vid-item" onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/3cvZpORNOl8'">
-          <div class="thumb">
-            <img alt="name" src="https://img.youtube.com/vi/3cvZpORNOl8/0.jpg">
-          </div>
-          <div class="desc">
-            Our River, Our Rights- The Story of Goa
-          </div>
-        </div>
-      </li>
-
-      <li style="padding:15px">
-        <div class="vid-item" onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/4-6o4Nb21FU'">
-          <div class="thumb">
-            <img alt="name" src="https://img.youtube.com/vi/4-6o4Nb21FU/0.jpg">
-          </div>
-          <div class="desc">
-            Agumbe Monsoon
-          </div>
-        </div>
-      </li>
-
-      <li style="padding:15px">
-        <div class="vid-item" onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/FI6YlxLPWC8'">
-          <div class="thumb">
-            <img alt="name"  src="https://img.youtube.com/vi/FI6YlxLPWC8/0.jpg">
-          </div>
-          <div class="desc">
-            Save River Cauvery
-          </div>
-        </div>
-      </li>
-
-      <li style="padding:15px">
-        <div class="vid-item" onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/pkk0tk5WUtA'">
-          <div class="thumb">
-            <img alt="name"  src="https://img.youtube.com/vi/pkk0tk5WUtA/0.jpg">
-          </div>
-          <div class="desc">
-            Aghanishini
-          </div>
-        </div>
-      </li>
-
-      <li style="padding:15px">
-        <div class="vid-item" onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/RuVnAwkuTVw'">
-          <div class="thumb">
-            <img alt="name"  src="https://img.youtube.com/vi/RuVnAwkuTVw/0.jpg">
-          </div>
-          <div class="desc">
-            Kali
-          </div>
-        </div>
-      </li>
-      <li style="padding:15px">
-        <div class="vid-item" onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/0LqdOwYmFwU'">
-          <div class="thumb">
-            <img alt="name"  src="https://img.youtube.com/vi/0LqdOwYmFwU/0.jpg">
-          </div>
-          <div class="desc">
-            Small Dams, Big Problems
-          </div>
-        </div>
-      </li>
-    </ul>
-    <div class="col-1" style="text-align:right;line-height:150px;cursor:pointer; ">
-      <div (click)="scrollRight()" class="pull-right">
-        <i  class="fa fa-chevron-right fa-lg" style="width:47px;height:47px; border-radius:50%; opacity:0.8"></i>
       </div>
     </div>
   </div>
   </div>
-
-
-
-
-
-   <!-- <li style="padding:15px">
-        <div class="vid-item" onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/4S1IvA_aDgI'">
-          <div class="thumb">
-            <img alt="name"  src="https://img.youtube.com/vi/4S1IvA_aDgI/0.jpg">
-          </div>
-          <div class="desc">
-            Understanding EIA concerns
-          </div>
-        </div>
-      </li>
-      <li style="padding:15px">
-        <div class="vid-item" onClick="document.getElementById('vid_frame').src='https://www.youtube.com/embed/vzqH4MsrOAQ'">
-          <div class="thumb">
-            <img alt="name"  src="https://img.youtube.com/vi/vzqH4MsrOAQ/0.jpg">
-          </div>
-          <div class="desc">
-            How does the new draft EIA affect the environment and us
-          </div>
-        </div>
-      </li> -->
