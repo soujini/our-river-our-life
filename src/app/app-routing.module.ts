@@ -35,6 +35,7 @@ const routes: Routes = [
     path: 'privacy-policy',
     loadChildren: () => import('./components/privacy-policy/privacy-policy.module').then(m => m.PrivacyPolicyModule)
   },
+ 
   {
 	path: '',
 	redirectTo: 'home',

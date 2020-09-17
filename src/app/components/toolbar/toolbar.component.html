@@ -26,58 +26,26 @@
         <a class="nav-link waves-light" mdbWavesEffect><span class="heading" [routerLink] = "'/ongoing-campaigns'">Ongoing Campaigns</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light"  mdbWavesEffect><span class="heading" [routerLink] = "'/dashboard'">Login/Register</span></a>
+        <a class="nav-link waves-light" (click)="this.isLogin = true"   mdbWavesEffect><span class="heading" [routerLink] = "''">Login/Register</span></a>
       </li>
-      <!-- (click)="loginModal.show()" -->
+  
     </ul>
   </links>
 </mdb-navbar>
 
-
-<div id="loginModal" mdbModal #loginModal="mdbModal" class="modal fade " tabindex="-1" role="dialog"
-aria-labelledby="myBasicModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" role="document" >
-  <div class="modal-content">
-    <div class="modal-header">
-       <div style="display:flex;xalign-items:baseline">    
-        <div class="login_header">
-        <h3>Login</h3>  
-        </div>
-      </div>
-    </div>
-    <div class="modal-body">
-      <div style="display:flex; align-items:baseline">
-        <div style="flex:1">
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-                <label class="input_header">Mobile Number</label>
-                <input #phone (keydown)="onKey($event)"  class="form-control" (keyup)="onKeyUp($event)" type="text" value="+91" />
-            </div>
-            <div class="form-group">
-                <label class="input_header" for="password">Password</label>
-                <input type="password" formControlName="password" class="form-control"/>
-                  <div class="eye_div">
-                  <img *ngIf="this.isEyeHidden == false" (click)="toggleClientSecret()" class="img-add1"
-                  src="../../../assets/scalableVectorGraphics/mask_group_67.svg">
-                  <img *ngIf="this.isEyeHidden == true" (click)="toggleClientSecret()" class="img-add1"
-                  src="../../../assets/scalableVectorGraphics/eye_hidden.svg">
-                </div>
-            </div>
-            <a class="input_header forget">Forgot Password?</a>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal-footer justify-content-center">
-      <button [disabled]="loading" type="button" class="btn btn-primary loginbtn_size btn-rounded">LOGIN</button>
-    </div>
-         <a class="btn-link ml-5"> <span>Not a Member?</span> <a (click)="register()">  Register </a></a>
-  </div>
-</div>
+<div *ngIf="isLogin == true  && isRecoverPassword== false && isRegister== false ">
+  <app-sign-in (isRegister)='setIsRegister($event)' (isRecoverPassword)='setIsRecoverPassword($event)'></app-sign-in>
+  <!--    -->
 </div>
 
+<div *ngIf="isRegister== true">
+  <app-sign-up></app-sign-up>
+</div>
 
-<div *ngIf="isRegister == true" >
-<app-register></app-register>
+<div *ngIf="isRegister== true">
+  <app-sign-up></app-sign-up>
+</div>
+
+<div *ngIf="isRecoverPassword== true">
+  <app-forgot-password></app-forgot-password>
 </div>

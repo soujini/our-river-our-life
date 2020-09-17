@@ -12,6 +12,9 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FloraFaunaComponent } from './components/flora-fauna/flora-fauna.component';
 import { MDBBootstrapModulesPro,CollapseModule ,CarouselModule, WavesModule,CardsModule, ButtonsModule,LightBoxModule,ModalModule,TabsModule} from 'ng-uikit-pro-standard';
 import { StoreComponent } from './components/store/store.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+
 import { FooterComponent } from './components/footer/footer.component';
 import { ImgLoadedDirective } from './directives/directive.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -24,11 +27,13 @@ import { GoogleMapsModule } from '@angular/google-maps'
 
 // import { BannerWavesComponent } from './components/banner-waves/banner-waves.component';
 
-import { RegisterComponent } from './components/register/register.component';
-// import { AuthService } from "../../src/app/services/auth.service";
+import { AuthService } from "../app/shared/services/auth.service";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+// import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+// import { DashboardComponent } from './components/dashboard/dashboard.component';
 // import { MapsViewComponent } from './components/maps-view/maps-view.component';
 @NgModule({
   declarations: [
@@ -37,6 +42,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     // PrivacyPolicyComponent,
     StoreComponent,
     FooterComponent,
+    SignInComponent,
+    SignUpComponent,
     ImgLoadedDirective,
     NotFoundComponent,
     // MapsFloodWatchComponent,
@@ -44,7 +51,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     // MapsFloraComponent,
     // MapsFaunaComponent,
     // BannerWavesComponent,
-    RegisterComponent,
+    // SignUpComponent,
+    ForgotPasswordComponent,
+    // VerifyEmailComponent,
+    // DashboardComponent,
     // MapsViewComponent,
     // MapsComponent,
   ],
@@ -76,7 +86,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     // }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

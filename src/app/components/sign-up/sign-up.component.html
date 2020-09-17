@@ -1,0 +1,59 @@
+<div id="registerModal" mdbModal #registerModal="mdbModal" class="modal fade " tabindex="-1" role="dialog"
+  aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div style="display:flex;xalign-items:baseline">
+          <div class="login_header">
+            <h3>Register</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div style="display:flex; align-items:baseline">
+          <div style="flex:1">
+            <div class="displayTable">
+              <div class="displayTableCell">
+            
+                <div class="authBlock">
+                  <h3>Sign Up</h3>
+            
+                  <div class="formGroup">
+                    <input type="email" class="formControl" placeholder="Email Address" #userEmail required>
+                  </div>
+            
+                  <div class="formGroup">
+                    <input type="password" class="formControl" placeholder="Password" #userPwd required>
+                  </div>
+            
+                  <div class="formGroup">
+                    <button   (click)="authService.SignUp(userEmail.value, userPwd.value)" 
+                    type="button" class="btn btn-primary loginbtn_size btn-rounded">Sign Up</button>
+
+                  </div>
+            
+                  <div class="formGroup">
+                    <span class="or"><span class="orInner">Or</span></span>
+                  </div>
+                  </div>
+            
+                <div class="redirectToLogin">
+                  <span>Already have an account? <span class="redirect" routerLink="/sign-in">Log In</span></span>
+                </div>
+              </div>
+            
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="modal-footer justify-content-center">
+        <button [disabled]="loading" type="button" class="btn btn-primary btn-rounded">REGISTER</button>
+      </div> -->
+      <a class="xbtn btn-link" (click)="registerModal.hide();"> <span>By registering your accept the</span> <a>
+          terms and conditions</a></a>
+    </div>
+  </div>
+</div>
