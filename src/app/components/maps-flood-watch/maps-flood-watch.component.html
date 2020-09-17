@@ -1,0 +1,58 @@
+<div>
+  <agm-map
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom"
+  [mapTypeId]="'hybrid'"
+  [disableDefaultUI]="false"
+  [zoomControl]="true"
+  [fitBounds]="true"
+  (mapClick)="mapClicked($event)"
+  height=200>
+  <agm-marker-cluster  minimumClusterSize= "100"
+  imagePath="../../assets/jpg/umeed_mistry.jpg">
+  <agm-marker [agmFitBounds]="true" *ngFor="let m of markers; let i = index"
+  (markerClick)="clickedMarker(m.label, i)"
+  [latitude]="m.latitude"
+  [iconUrl]='{"url": iconUrl,"scaledSize": {"height": 35, "width": 35}}'
+  [longitude]="m.longitude"
+  xlabel="m.label"
+  [markerDraggable]="m.draggable" >
+
+  <agm-info-window>
+    <mdb-tabset class="xyz" [buttonClass]="'xyz white mb-1'" [contentClass]="'card'">
+      <mdb-tab heading="Info">
+        <div class="row">
+          <div class="col-12">
+            <label>Location :</label>
+            <strong>{{m.location}}</strong> <br/>
+            <label>Time :</label>
+            <strong> {{m.activityTime}}</strong> <br/>
+            <label>Date :</label>
+            <strong> {{m.activityDate}}</strong> <br/>
+            <label>Experience :</label>
+            <strong> {{m.experience}}</strong> <br/>
+          </div>
+        </div>
+      </mdb-tab>
+      <mdb-tab heading="Images">
+        <div class="row">
+          <div class="col-12">
+            <div *ngFor="let img of m.photos" style="display:inline-block; text-align:center">
+              <img [src]="img" height="150px" width="150px" class="ml-2">
+            </div>
+          </div>
+        </div>
+      </mdb-tab>
+    </mdb-tabset>
+  </agm-info-window>
+</agm-marker>
+</agm-marker-cluster>
+<agm-circle [latitude]="lat + 0.3" [longitude]="lng"
+[radius]="5000"
+[fillColor]="'red'"
+[circleDraggable]="true"
+[editable]="true">
+</agm-circle>
+</agm-map>
+</div>

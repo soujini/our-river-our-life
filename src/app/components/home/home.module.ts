@@ -6,17 +6,18 @@ import { HomeComponent } from './home.component';
 import { BannerComponent } from '../../components/banner/banner.component';
 import { ImagesGalleryComponent } from '../../components/images-gallery/images-gallery.component';
 import { FeaturesComponent } from '../../components/features/features.component';
-
 import { MapsViewComponent } from '../../components/maps-view/maps-view.component';
-// import { MapsComponent } from '../../components/maps/maps.component';
-
- import { VideosGalleryComponent } from '../../components/videos-gallery/videos-gallery.component';
- import { ContributorsComponent } from '../../components/contributors/contributors.component';
-
+import { MapsFloodWatchComponent } from '../../components/maps-flood-watch/maps-flood-watch.component';
+import { MapsRiverMonitoringComponent } from '../../components/maps-river-monitoring/maps-river-monitoring.component';
+import { MapsFloraComponent } from '../../components/maps-flora/maps-flora.component';
+import { MapsFaunaComponent } from '../../components/maps-fauna/maps-fauna.component';
+import { VideosGalleryComponent } from '../../components/videos-gallery/videos-gallery.component';
+import { ContributorsComponent } from '../../components/contributors/contributors.component';
 import { MDBBootstrapModulesPro, CarouselModule,CollapseModule , WavesModule,CardsModule, ButtonsModule,LightBoxModule,ModalModule,TabsModule} from 'ng-uikit-pro-standard';
 import {MatInputModule} from '@angular/material/input';
 import { GoogleMapsModule } from '@angular/google-maps'
 import { AgmCoreModule } from '@agm/core';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
@@ -24,10 +25,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     HomeRoutingModule,
     CarouselModule,
+    // MapsFloodWatchComponent,
     // CollapseModule ,
     // WavesModule,
     // CardsModule,
-     ButtonsModule,
+    ButtonsModule,
     // LightBoxModule,
     // ModalModule,
     // TabsModule,
@@ -36,6 +38,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     ReactiveFormsModule,
     MDBBootstrapModulesPro.forRoot(),
     GoogleMapsModule,
+    AgmJsMarkerClustererModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyALR2ZDTTyZXGBRFeCV0AHd0S-TV_GWYm8",
       libraries: ["places"]
@@ -47,20 +50,26 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     BannerComponent,
     ImagesGalleryComponent,
     FeaturesComponent,
-    // MapsComponent,
     MapsViewComponent,
     VideosGalleryComponent,
-    ContributorsComponent
+    ContributorsComponent,
+    MapsFloodWatchComponent,
+    MapsRiverMonitoringComponent,
+    MapsFloraComponent,
+    MapsFaunaComponent
   ],
   declarations: [
     HomeComponent,
     BannerComponent,
     ImagesGalleryComponent,
     FeaturesComponent,
-    // MapsComponent,
     MapsViewComponent,
     VideosGalleryComponent,
-    ContributorsComponent
+    ContributorsComponent,
+    MapsFloodWatchComponent,
+    MapsRiverMonitoringComponent,
+    MapsFloraComponent,
+    MapsFaunaComponent
   ],
 })
 export class HomeModule { }

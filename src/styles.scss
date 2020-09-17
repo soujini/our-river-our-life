@@ -213,4 +213,23 @@ mdb-card-img img {
   padding-left: 0px !important;
     padding-right: 0px !important;
 }
+mdb-tabset .white li {
+    margin: 0 1em!important;
+    background-color: #34495e !important;
+    color:white !important;
+}
+mdb-tabset .white li .nav-link {
+    color: red !important;
+}
+// .pills-primary .nav-link.active, .pills-primary .show>.nav-link, .tabs-primary {
+//     background-color: #34495e !important;
+//     color:yellowgreen !important;
+// }
+.gm-style {
+    font: 400 11px 'Open Sans', sans-serif !important;
+}
+
+.xyz{
+  background-color: green !important;
+}
 /////////////////////////

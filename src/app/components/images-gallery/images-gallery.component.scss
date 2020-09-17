@@ -1,9 +1,8 @@
 .banner{
-  background:url(../../../assets/jpg/banner/bg_waves2.webp);
-  background-attachment: scroll;
-  -webkit-transform: translate3d(0,0,0);
-  background-repeat: no-repeat;
-  background-position: center;
+  background:url(../../../assets/jpg/banner/bg_waves2.webp) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 }
 .content{

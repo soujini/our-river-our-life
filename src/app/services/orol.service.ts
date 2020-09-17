@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Route, Router, NavigationStart, ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SpinnerService } from '../services/spinner.service';
 declare var Orol:any;
 
@@ -11,7 +11,7 @@ declare var Orol:any;
   providedIn: 'root'
 })
 export class OrolService {
-  constructor( private router: Router, public httpClient: HttpClient,private spinnerService: SpinnerService) { }
+  constructor( private router: Router, public httpClient: HttpClient,  private spinnerService: SpinnerService) { }
 
   public addAlert(x, images:File[]){
     this.spinnerService.setSpinner(true);
@@ -40,7 +40,7 @@ export class OrolService {
     //   alert("done");
 
       this.httpClient.post("https://our-river-our-life-api.herokuapp.com/flood-alert/create-alert", form).subscribe((res) => {
-        console.log("souji "+res);
+        console.log(res);
         this.spinnerService.setSpinner(false);
       });
     }
@@ -48,6 +48,14 @@ export class OrolService {
     public getFloodAlerts(){
       this.spinnerService.setSpinner(true);
       return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/flood-alert");
+
+    }
+    public getWaterTestDetails(){
+      this.spinnerService.setSpinner(true);
+      const httpHeaders: HttpHeaders = new HttpHeaders({
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZU51bWJlciI6Ijk5NDk1MDk5MzMiLCJpYXQiOjE1OTI5MDY4NDZ9.lNFKWIF-laGYTbrBgdAzcuZpvSI8TsRinwQCV8ZWZcI'
+      });
+      return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/water-test-details", { headers: httpHeaders });
     }
 
     public errorHandler(error:any){

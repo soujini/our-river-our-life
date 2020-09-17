@@ -1,56 +1,25 @@
-<div class="banner text-center"style="font-family: 'Open Sans', sans-serif;padding-top:35px; padding-bottom:35px;">
-<h2><span style="color:#357ba0;font-weight: 800;color:#116bb5">FLOOD WATCH</span><span style="color:yellowgreen"></span>
-</h2>
+<div class="text-center banner">
+<div class="row" style="display:flex; justify-content:center">
+  <button [ngClass]="mapsMode == 1 ? 'btn-custom-green' : 'btn-custom-blue'" mdbBtn type="button" rounded="true" (click)="selectMap(1)"
+  mdbWavesEffect>FLOOD WATCH</button>
+  <button [ngClass]="mapsMode == 2 ? 'btn-custom-green' : 'btn-custom-blue'" mdbBtn type="button" rounded="true" (click)="selectMap(2)"
+  mdbWavesEffect>RIVER MONITORING</button>
+  <button [ngClass]="mapsMode == 3 ? 'btn-custom-green' : 'btn-custom-blue'" mdbBtn type="button" rounded="true" (click)="selectMap(3)"
+  mdbWavesEffect>FLORA</button>
+  <button [ngClass]="mapsMode == 4 ? 'btn-custom-green' : 'btn-custom-blue'" mdbBtn type="button" rounded="true" (click)="selectMap(4)"
+  mdbWavesEffect>FAUNA</button>
 </div>
-<agm-map
-[latitude]="lat"
-[longitude]="lng"
-[zoom]="zoom"
-[mapTypeId]="'hybrid'"
-[disableDefaultUI]="false"
-[zoomControl]="true"
-[fitBounds]="true"
-  (mapClick)="mapClicked($event)">
-  <agm-marker [agmFitBounds]="true" *ngFor="let m of markers; let i = index"
-    (markerClick)="clickedMarker(m.label, i)"
-    [latitude]="m.latitude"
-    [iconUrl]='{"url": iconUrl,"scaledSize": {"height": 35, "width": 35}}'
-    [longitude]="m.longitude"
-    xlabel="m.label"
-    [markerDraggable]="m.draggable" >
+</div>
 
-    <agm-info-window>
-      <mdb-tabset [buttonClass]="'pills-primary white mb-2'" [contentClass]="'card'">
-        <mdb-tab heading="Info">
-          <div class="row">
-            <div class="col-12">
-              <label>Location :</label>
-              <strong>{{m.location}}</strong> <br/>
-              <label>Time :</label>
-              <strong> {{m.activityTime}}</strong> <br/>
-              <label>Date :</label>
-              <strong> {{m.activityDate}}</strong> <br/>
-              <label>Experience :</label>
-              <strong> {{m.experience}}</strong> <br/>
-            </div>
-          </div>
-        </mdb-tab>
-        <mdb-tab heading="Images">
-          <div class="row">
-            <div class="col-12">
-              <div *ngFor="let img of m.photos" style="display:inline-block; text-align:center">
-                <img [src]="img" height="150px" width="150px" class="ml-2">
-              </div>
-            </div>
-          </div>
-        </mdb-tab>
-      </mdb-tabset>
-    </agm-info-window>
-  </agm-marker>
-  <agm-circle [latitude]="lat + 0.3" [longitude]="lng"
-      [radius]="5000"
-      [fillColor]="'red'"
-      [circleDraggable]="true"
-      [editable]="true">
-  </agm-circle>
-</agm-map>
+<div *ngIf="this.mapsMode == 1">
+  <app-maps-flood-watch></app-maps-flood-watch>
+</div>
+<div *ngIf="this.mapsMode == 2">
+  <app-maps-river-monitoring></app-maps-river-monitoring>
+</div>
+<div *ngIf="this.mapsMode == 3">
+  <app-maps-flora></app-maps-flora>
+</div>
+<div *ngIf="this.mapsMode == 4">
+  <app-maps-fauna></app-maps-fauna>
+</div>

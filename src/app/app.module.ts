@@ -19,7 +19,9 @@ import { environment } from '../environments/environment';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 // import { MapsComponent } from './components/maps/maps.component';
 import { GoogleMapsModule } from '@angular/google-maps'
-import { AgmCoreModule } from '@agm/core';
+// import { AgmCoreModule } from '@agm/core';
+// import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+
 // import { BannerWavesComponent } from './components/banner-waves/banner-waves.component';
 
 // import { MapsViewComponent } from './components/maps-view/maps-view.component';
@@ -32,6 +34,10 @@ import { AgmCoreModule } from '@agm/core';
     FooterComponent,
     ImgLoadedDirective,
     NotFoundComponent,
+    // MapsFloodWatchComponent,
+    // MapsRiverMonitoringComponent,
+    // MapsFloraComponent,
+    // MapsFaunaComponent,
     // BannerWavesComponent,
     // MapsViewComponent,
     // MapsComponent,
@@ -54,10 +60,11 @@ import { AgmCoreModule } from '@agm/core';
     TabsModule,
     WavesModule,
     MDBBootstrapModulesPro.forRoot(),
-    AgmCoreModule.forRoot({
-      apiKey: "AIzaSyALR2ZDTTyZXGBRFeCV0AHd0S-TV_GWYm8",
-      libraries: ["places"]
-    }),
+    // AgmJsMarkerClustererModule,
+    // AgmCoreModule.forRoot({
+    //   apiKey: "AIzaSyALR2ZDTTyZXGBRFeCV0AHd0S-TV_GWYm8",
+    //   libraries: ["places"]
+    // }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
