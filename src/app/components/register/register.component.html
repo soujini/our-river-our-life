@@ -1,0 +1,53 @@
+<div id="registerModal" mdbModal #registerModal="mdbModal" class="modal fade " tabindex="-1" role="dialog"
+  aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div style="display:flex;xalign-items:baseline">
+          <div class="login_header">
+            <h3>Register</h3>
+          </div>
+        </div>
+      </div>
+      <!-- <hr class="line-header" > -->
+
+      <div class="modal-body">
+        <div style="display:flex; align-items:baseline">
+          <div style="flex:1">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+              <div class="input_header row">
+                <div class="form-group input_header col-6">
+                  <label for="firstName">First Name</label>
+                  <input type="text" formControlName="firstName" class="form-control" />
+                </div>
+                <div class="form-group col-6">
+                  <label for="lastName">Last Name <span class="">(Optional)</span></label>
+                  <input type="text" formControlName="lastName" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="input_header">Mobile Number</label>
+                <input #phone (keydown)="onKey($event)" class="form-control" (keyup)="onKeyUp($event)" type="text"
+                  value="+91" />
+              </div>
+              <div class="form-group">
+                <label class="input_header" for="password">Password</label>
+                <input type="password" formControlName="password" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="input_header" for="email">Email</label>
+                <input type="email" formControlName="email" class="form-control" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <button [disabled]="loading" type="button" class="btn btn-primary btn-rounded">REGISTER</button>
+      </div>
+      <a class="xbtn btn-link" (click)="registerModal.hide();"> <span>By registering your accept the</span> <a>
+          terms and conditions</a></a>
+    </div>
+  </div>
+</div>

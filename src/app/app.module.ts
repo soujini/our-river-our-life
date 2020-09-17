@@ -24,6 +24,11 @@ import { GoogleMapsModule } from '@angular/google-maps'
 
 // import { BannerWavesComponent } from './components/banner-waves/banner-waves.component';
 
+import { RegisterComponent } from './components/register/register.component';
+// import { AuthService } from "../../src/app/services/auth.service";
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 // import { MapsViewComponent } from './components/maps-view/maps-view.component';
 @NgModule({
   declarations: [
@@ -39,10 +44,14 @@ import { GoogleMapsModule } from '@angular/google-maps'
     // MapsFloraComponent,
     // MapsFaunaComponent,
     // BannerWavesComponent,
+    RegisterComponent,
     // MapsViewComponent,
     // MapsComponent,
   ],
   imports: [
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase),
     GoogleMapsModule,
     BrowserModule,
     AppRoutingModule,

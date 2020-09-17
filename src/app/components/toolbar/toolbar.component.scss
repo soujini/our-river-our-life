@@ -1,3 +1,71 @@
+.login_header{
+  font-family: 'Montserrat' !important;
+  font-weight: 500 !important;
+ color: #000000 !important;
+ font-size: 16px !important;
+ letter-spacing: 1px !important;
+
+}
+.forget{
+  display: block !important;
+  text-align: end !important;
+}
+.input_header{
+  font-family: 'Montserrat' !important;
+  font-weight: 300 !important;
+ color: #000000 !important;
+ font-size: 12px !important;
+ letter-spacing: 2px !important;
+
+}
+.loginbtn_size{
+  width: 196px !important;
+}
+
+input{
+  width: 308px;
+height: 50px;
+}
+
+.login{
+  width: 200px !important;
+  height: 50px !important;
+  font-family: 'Montserrat' !important;
+  font-weight: 500 !important;
+ background-color: #1C3764 !important;
+}
+.login_btn{
+  display: flex !important;
+  justify-content: center !important;
+}
+#loginModal{
+  .modal-content{
+    padding:50px !important;
+    width: 416px !important;
+    height: 436px !important;
+    border-radius: 25px !important;
+
+  }
+  .modal-header{
+    padding:0px !important;
+    // padding-top:-50px !important;
+    border: none;
+    height: 86px;
+  }
+  .modal-body{
+      padding:0px !important;
+      // padding-top:20px !important;
+  }
+  .modal-dialog-centered{
+    width: inherit !important;
+    width: 416px !important;
+  }
+  .modal-footer{
+    border:none !important;
+    padding: 0px !important;
+    margin-top: 20px;
+  }
+}
 // .navbar{
 //   position: fixed !important;
 //   background-image: url(../../../assets/scalable-vector-graphics/banner_header2.svg);
@@ -75,3 +143,9 @@
 @media (max-width: 1199px) {
 
  }
+ .line-header{
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1.875% solid #E1E1E1;
+}

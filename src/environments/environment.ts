@@ -6,7 +6,17 @@ export const environment = {
   // BASE_URL:'https://our-river-our-life-api.herokuapp',
   OROL_API_URL: 'https://our-river-our-life-api.herokuapp/',
   REDIRECT_URL: 'http://localhost:4200',
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "api-key",
+    authDomain: "project-id.firebaseapp.com",
+    databaseURL: "https://project-id.firebaseio.com",
+    projectId: "project-id",
+    storageBucket: "project-id.appspot.com",
+    messagingSenderId: "sender-id",
+    appId: "app-id",
+    measurementId: "G-measurement-id"
+  }
 };
 
 /*

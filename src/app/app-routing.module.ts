@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// import { HomeComponent} from './components/home/home.component';
-// import { AboutComponent} from './components/about/about.component';
 import { NotFoundComponent} from './components/not-found/not-found.component';
-// import { PrivacyPolicyComponent} from './components/privacy-policy/privacy-policy.component';
-
 const routes: Routes = [
   {
     path: 'home',
