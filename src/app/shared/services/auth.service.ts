@@ -39,10 +39,16 @@ export class AuthService {
   SignIn(email, password) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['home']);
-        });
-        this.SetUserData(result.user);
+        if(result.user.emailVerified == true){
+          this.ngZone.run(() => {
+            this.router.navigate(['about']);
+          });
+          this.SetUserData(result.user);
+        }
+        else{
+          this.errorMessageSubject.next("Please check for your verification email and login again");
+        }
+
       }).catch((error) => {
         this.errorMessageSubject.next(error.message);
       })
@@ -65,7 +71,8 @@ export class AuthService {
   async SendVerificationMail() {
     return (await this.afAuth.currentUser).sendEmailVerification()
     .then(() => {
-      this.router.navigate(['verify-email-address']);
+        window.alert("Please check your email to verify")
+      // this.router.navigate(['verify-email-address']);
     })
   }
 

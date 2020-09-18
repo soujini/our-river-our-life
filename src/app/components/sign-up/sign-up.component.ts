@@ -9,23 +9,25 @@ import { AuthService } from "../../shared/services/auth.service";
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements AfterViewInit {
-  
+
   @ViewChild('registerModal') public registerModal: ModalDirective;
   registerForm: any;
 
-  constructor( public authService: AuthService,private formBuilder: FormBuilder,private route: ActivatedRoute, 
+  constructor( public authService: AuthService,private formBuilder: FormBuilder,private route: ActivatedRoute,
     private router: Router) { }
 
-  ngAfterViewInit(): void {
-       this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      mobilenumber: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-  });
-  this.registerModal.show();
+    ngAfterViewInit(): void {
+      this.registerForm = this.formBuilder.group({
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        mobilenumber: ['', Validators.required],
+        email: ['', Validators.required],
+        password: ['', [Validators.required, Validators.minLength(6)]]
+      });
+      this.registerModal.show();
+    }
+
+    signUp(userEmail:string, userPwd:string){
+      this.authService.SignUp(userEmail, userPwd);
+    }
   }
-
-
-}

@@ -5,10 +5,7 @@
 #input{
   margin-top: -15px;
 }
-.optional{
-  height: 133px;
 
-}
 .text{
   line-height: 2.5;
   font-size:14px;
@@ -64,7 +61,7 @@
 .textAddflood{
   font-size:13px !important;
   font-weight: 500 !important;
-  font-family: 'Montserrat' !important;
+  font-family: 'Open Sans', sans-serif;
   color: #000000 !important;
 }
 .alert-div{
@@ -99,7 +96,7 @@ agm-map {
 ::-moz-placeholder {
   font-size: 0.9rem;
   font-weight: 500;
-  font-family: 'Montserrat' !important;
+  font-family: 'Open Sans', sans-serif;
   color: #808080;
 }
 input[type=text] {
@@ -115,7 +112,7 @@ input[type=text] {
   font-size: 1rem;
   font-weight:500;
   color:#FFFFFF;
-  font-family: 'Montserrat' !important;
+  font-family: 'Open Sans', sans-serif;
 }
 .data-position{
   z-index: 1;

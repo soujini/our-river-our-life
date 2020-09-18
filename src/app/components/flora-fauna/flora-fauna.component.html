@@ -1,5 +1,5 @@
 <div class="content">
-  <div class="search-box" id="searchUser">
+  <!-- <div class="search-box" id="searchUser">
     <form>
       <mat-form-field id="searchUser" class="example-full-width " appearance="outline">
         <input style="border:none" matInput placeholder="Search For a common/biology name" aria-label="User"
@@ -19,7 +19,7 @@
         </mat-autocomplete>
       </mat-form-field>
     </form>
-  </div>
+  </div> -->
   <div>
     <mdb-tabset [buttonClass]="'classic-tabs tabs-cyan'" [contentClass]="'card'" class="classic-tabs">
 
@@ -27,7 +27,7 @@
         <div class="row">
           <div class="col-12">
             <br>
-            <mdb-image-modal [modalImages]="images" type="margin"></mdb-image-modal>
+            <mdb-image-modal [modalImages]="flora" type="margin"></mdb-image-modal>
           </div>
         </div>
       </mdb-tab>
@@ -36,7 +36,7 @@
         <div class="row">
           <div class="col-12">
             <br>
-            <mdb-image-modal [modalImages]="images" type="margin"></mdb-image-modal>
+            <mdb-image-modal [modalImages]="fauna" type="margin"></mdb-image-modal>
           </div>
         </div>
       </mdb-tab>
@@ -49,18 +49,18 @@
                   autocapitalize="off" spellcheck="off" type="text" class="form-control input-search col-md-6 mt-3" #search
                   [formControl]="searchControl">
               </div>
-<!-- 
+<!--
                <div class="row" >
                 <label for="type" class="col-md-2 mt-3 addFlora">Type <span>*</span></label>
                 <div class="btn-group mt-3" mdbDropdown >
                   <select name="project" [(ngModel)]="selectedProject" (change)="changeProject($event)">
                     <option *ngFor="let opt of projects" [value]="opt.value">{{opt.value}}</option>
                   </select>
-                  
-                  </div>              
+
+                  </div>
                 </div> -->
-            
-              
+
+
               <div class="row ml-5" >
                 <label for="type" class="col-md-2 mt-3 addFlora">Type <span>*</span></label>
                 <div class="btn-group col-6  mt-3 " mdbDropdown >
@@ -73,22 +73,22 @@
                      <div class="dropdown-menu dropdown-primary" >
                       <a class="dropdown-item" (click)="selectApplicationType($event)" *ngFor="let type of types" name={{type.name}}
                        >{{type.name}}</a>
-                    </div> 
-                  </div>              
+                    </div>
+                  </div>
                 </div>
                 
               <div class="row ml-5">
-                <label for="commonName" class="addFlora col-md-2 mt-3">Common Name <span>*</span></label> 
+                <label for="commonName" class="addFlora col-md-2 mt-3">Common Name <span>*</span></label>
                   <input for="commonName" type="text" value='' class="form-control input-latitude col-md-6 mt-3" id="commonName"
                    formControlName="commonName" placeholder="Enter common name">
               </div>
               <div class="row ml-5">
-                <label for="localName" class="addFlora col-md-2 mt-3">Local Name <span>*</span></label> 
+                <label for="localName" class="addFlora col-md-2 mt-3">Local Name <span>*</span></label>
                   <input for="localName" type="text" value='' class="form-control input-latitude col-md-6 mt-3" id="localName"
                    formControlName="localName" placeholder="Enter local name">
               </div>
               <div class="row ml-5">
-                <label for="scientificName" class="addFlora col-md-2 mt-3">Scientific Name <span>*</span></label> 
+                <label for="scientificName" class="addFlora col-md-2 mt-3">Scientific Name <span>*</span></label>
                   <input for="scientificName" type="text" value='' class="form-control input-latitude col-md-6 mt-3" id="scientificName"
                    formControlName="scientificName" placeholder="Enter scientific name">
               </div>
@@ -106,15 +106,15 @@
                 <label class="col-md-2 mt-3 addFlora">Upload Images</label>
               <div class="image_container  mt-3">
                 <div class="form-group ">
-                  <img *ngFor='let url of urls'  [src]="url" height="75px" width="100px" style="margin: 3px;"> 
+                  <img *ngFor='let url of urls'  [src]="url" height="75px" width="100px" style="margin: 3px;">
                   <input type='file'  class="form-control" (change)="onSelectFile($event)" multiple style="height:45px;">
                 </div>
               </div>
               </div>
               <button  type="button" class="btn ml-5 mt-3 center btn-primary btn-rounded">Submit</button>
 
-            </div> 
- 
+            </div>
+
         </div>
       </mdb-tab>
 

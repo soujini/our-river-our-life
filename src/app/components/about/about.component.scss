@@ -32,8 +32,11 @@
 .jarallax_about_banner{
     background-image: url(../../../assets/jpg/banner/bg_mountain1.jpg);
     -webkit-transform: translate3d(0,0,0);
-  background-attachment: fixed; height: 700px;
-  margin-top:83px
+  background-attachment: fixed;
+  height: 600px;
+  width:auto;
+  margin-top:83px;
+  background-size:cover;
 }
 .who-we-are{
  font-family: 'Open Sans', sans-serif;
@@ -78,6 +81,11 @@
 }
 .about-image2{
   margin-top:3rem;
+}
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {

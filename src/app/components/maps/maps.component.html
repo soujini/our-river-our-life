@@ -60,14 +60,16 @@
 
         <div class="form-group">
           <!-- <label for="file">File</label> -->
-          <!-- <img *ngFor='let url of images' [src]="url" height="75px" width="100px" style="margin: 3px;"> <br /> -->
+          <div style="height:55px; display:flex; overflow-x: auto;">
+          <img *ngFor='let url of images' [src]="url" height="50px" width="50px" style="margin: 3px;">
+          </div>
           <input id="file" type="file" class="form-control" multiple (change)="onFileChange($event)"
             style="height:45px;">
         </div>
       </div>
       <div class="md-form input-group optional" for='experience'>
-        <textarea class="lg-textarea form-control area" formControlName="experience"
-          placeholder="Your experience or message (Optional)" aria-label="With textarea"></textarea>
+        <textarea class="form-control" formControlName="experience"
+          placeholder="Your experience or message (Optional)"></textarea>
       </div>
       <div class="text-center">
         <button mdbBtn type="button" color="secondary" class="mr-3" rounded="true" (click)="toggle('')"

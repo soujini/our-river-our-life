@@ -36,6 +36,7 @@ export class MapsComponent implements OnInit {
   buttonName = 'Show';
   hide: any;
   centerLoc:any={};
+  selectedImage:any=[];
 
   toggle(mode:string) {
     this.show = !this.show;
@@ -182,26 +183,20 @@ export class MapsComponent implements OnInit {
       this.show = false;
       this.setCurrentPosition();
       this.imageFiles=[];
-      this.router.navigate(['./home']);
   }
 
   onFileChange(event) {
-    if (event.target.files && event.target.files[0]) {
-      var length = event.target.files.length;
-      for (let i = 0; i < event.target.files.length; i++) {
-        console.log(event.target.files[i]);
-        this.imageFiles.push(event.target.files[i]);
-        // var reader = new FileReader();
-        // reader.onload = (event:any) => {
-        //   console.log(event.target.result);
-        //this.images.push(event.target.result);
-        // this.mapsForm.patchValue({
-        //   photos:this.images
-        //   // fileSource: this.images
-        // });
+      if (event.target.files && event.target.files[0]) {
+        var length = event.target.files.length;
+        for (let i = 0; i < event.target.files.length; i++) {
+          this.imageFiles.push(event.target.files[i]);
+          var reader = new FileReader();
+          reader.onload = (event:any) => {
+          this.images.push(event.target.result);
+        }
+        reader.readAsDataURL(event.target.files[i]);
       }
-      //reader.readAsDataURL(event.target.files[i]);
     }
-  }
 
+}
 }

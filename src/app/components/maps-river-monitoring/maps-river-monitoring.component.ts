@@ -47,6 +47,7 @@ export class MapsRiverMonitoringComponent implements OnInit {
       if(data['count']){
         for(var i=0; i<data['rows'].length;i++){
           console.log(data['rows'][i].generalInformation.latitude + ' ' + data['rows'][i].generalInformation.longitude);
+          if(data['rows'][i].certificateURL != undefined && data['rows'][i].certificateURL != ''){
             this.markers.push({
               latitude: data['rows'][i].generalInformation.latitude,
               longitude:data['rows'][i].generalInformation.longitude,
@@ -59,6 +60,7 @@ export class MapsRiverMonitoringComponent implements OnInit {
               // experience:data['rows'][i].experience,
               // draggable: false,
             });
+          }
         }
       }
       this.spinnerService.setSpinner(false);
