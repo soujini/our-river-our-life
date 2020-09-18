@@ -23,7 +23,7 @@ export class ToolbarComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit()  {
-  
+
 }
 
 setIsRegister(event){
@@ -35,5 +35,8 @@ setIsRecoverPassword(event){
 
   this.isRecoverPassword = event;
   }
+  setIsLogin(event){
+    this.isLogin = event;
+    }
 
 }

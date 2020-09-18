@@ -15,34 +15,34 @@
           <div style="flex:1">
             <div class="displayTable">
               <div class="displayTableCell">
-            
+
                 <div class="authBlock">
                   <h3>Sign Up</h3>
-            
+
                   <div class="formGroup">
                     <input type="email" class="formControl" placeholder="Email Address" #userEmail required>
                   </div>
-            
+
                   <div class="formGroup">
                     <input type="password" class="formControl" placeholder="Password" #userPwd required>
                   </div>
-            
+
                   <div class="formGroup">
-                    <button   (click)="authService.SignUp(userEmail.value, userPwd.value)" 
+                    <button   (click)="authService.SignUp(userEmail.value, userPwd.value)"
                     type="button" class="btn btn-primary loginbtn_size btn-rounded">Sign Up</button>
 
                   </div>
-            
+
                   <div class="formGroup">
                     <span class="or"><span class="orInner">Or</span></span>
                   </div>
                   </div>
-            
+
                 <div class="redirectToLogin">
                   <span>Already have an account? <span class="redirect" routerLink="/sign-in">Log In</span></span>
                 </div>
               </div>
-            
+
             </div>
 
           </div>
@@ -52,7 +52,7 @@
       <!-- <div class="modal-footer justify-content-center">
         <button [disabled]="loading" type="button" class="btn btn-primary btn-rounded">REGISTER</button>
       </div> -->
-      <a class="xbtn btn-link" (click)="registerModal.hide();"> <span>By registering your accept the</span> <a>
+      <a class="xbtn btn-link text-center" (click)="registerModal.hide();"> <span class="text-center">By registering your accept the</span> <a>
           terms and conditions</a></a>
     </div>
   </div>
