@@ -1,3 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="12.968" height="12.968" viewBox="0 0 12.968 12.968">
-  <path id="Cross_Icon" data-name="Cross Icon" d="M8.026,6.484,12.649,1.86A1.09,1.09,0,0,0,11.108.319L6.484,4.943,1.861.319A1.09,1.09,0,0,0,.319,1.86L4.943,6.484.319,11.107a1.09,1.09,0,0,0,1.541,1.541S4.173,8.025,6.484,8.025s4.624,4.624,4.624,4.624a1.09,1.09,0,0,0,1.541-1.541Z" transform="translate(0 0.001)" fill="#e1e1e1" fill-rule="evenodd"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="16.971" height="16.971" viewBox="0 0 16.971 16.971">
+  <g id="Group_2" data-name="Group 2" transform="translate(8.485 -8.014) rotate(45)">
+    <path id="Line_10" data-name="Line 10" d="M1.667,1.667v20" transform="translate(10)" fill="none" stroke="#1c3764" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Line" d="M1.667,1.667h20" transform="translate(0 10)" fill="none" stroke="#1c3764" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
 </svg>

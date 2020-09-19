@@ -1,4 +1,54 @@
-<div id="registerModal" mdbModal #registerModal="mdbModal" class="modal fade " tabindex="-1" role="dialog"
+
+<div id="registerModal" mdbModal #registerModal="mdbModal" class="modal fade" [config]="{backdrop: false, ignoreBackdropClick: true}" tabindex="-1" role="dialog"
+aria-labelledby="myBasicModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document" >
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close pull-right" aria-label="Close"
+      (click)="closeRegisterModal()" style="right:25px">
+      <img class="modal_close_icon" src="../../../assets/scalable-vector-graphics/modal_close_icon.svg" height="12px">
+    </button>
+    <div>
+      <span class="title">Register</span>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div>
+      <!-- <p class="red-text text-center" style="font-size:11px;height:10px">{{errorMessage}}</p> -->
+      <div class="formGroup">
+        <input type="email" class="form-control" placeholder="Email Address" #userEmail required>
+      </div>
+
+      <div class="formGroup">
+        <input type="mobilenumber" class="form-control" placeholder="M obile Number" #userPwd required>
+      </div>
+      <div class="formGroup">
+        <input type="password" class="form-control" placeholder="Password" #userPwd required>
+      </div>
+
+      <div class="formGroup text-center">
+        <button (click)="signUp(userEmail.value, userPwd.value)"
+        type="button" class="btn btn-primary btn-rounded">Sign Up</button>
+      </div>
+      <div class="text-center" style="font-size:12px;color:#6c6666">
+        <span>By registering you accept the</span>
+        <a>
+            terms and conditions</a>
+        </div>
+    </div>
+    <div>
+      <div class="formGroup">
+        <span class="or"><span class="orInner">Or</span></span>
+      </div>
+      <div class="redirectToLogin">
+        <span>Already have an account? <span class="redirect" (click)="login()">Log In</span></span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- <div id="registerModal" mdbModal #registerModal="mdbModal" class="modal fade " tabindex="-1" role="dialog"
   aria-labelledby="myBasicModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -33,7 +83,6 @@
                   <div class="formGroup">
                     <button (click)="signUp(userEmail.value, userPwd.value)"
                     type="button" class="btn btn-primary loginbtn_size btn-rounded">Sign Up</button>
-
                   </div>
 
                   <div class="formGroup">
@@ -55,8 +104,6 @@
       <!-- <div class="modal-footer justify-content-center">
         <button [disabled]="loading" type="button" class="btn btn-primary btn-rounded">REGISTER</button>
       </div> -->
-      <a class="xbtn btn-link text-center" (click)="registerModal.hide();"> <span class="text-center">By registering your accept the</span> <a>
+      <!-- <a class="xbtn btn-link text-center" (click)="registerModal.hide();"> <span class="text-center">By registering your accept the</span> <a>
           terms and conditions</a></a>
-    </div>
-  </div>
-</div>
+    </div> -->

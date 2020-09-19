@@ -82,13 +82,15 @@ h3 {
 }
 
 .authBlock {
-  margin: 0 auto;
-  max-width: 400px;
-  background: white;
-  padding: 30px 40px 10px;
-  overflow: hidden;
-  -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, .04);
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, .04);
+   margin: 0 auto;
+  padding:25px;
+  //
+  // max-width: 400px;
+  // background: white;
+  // padding: 30px 40px 10px;
+  // overflow: hidden;
+  // -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, .04);
+  // box-shadow: 0 0 4px 0 rgba(0, 0, 0, .04);
 }
 
 label {
@@ -104,16 +106,16 @@ label {
   width: 100%;
 }
 
-.formControl {
-  width: 100%;
-  display: block;
-  padding: 15px 15px 14px;
-  border: 2px solid #e7e7e7;
-  outline: none;
-  font-size: 15px;
-  color: #444444;
-  background: #fcfcfc;
-}
+// .formControl {
+//   width: 100%;
+//   display: block;
+//   padding: 15px 15px 14px;
+//   border: 2px solid #e7e7e7;
+//   outline: none;
+//   font-size: 15px;
+//   color: #444444;
+//   background: #fcfcfc;
+// }
 
 .formControl:focus {
   border: 2px solid #d3d3d6
@@ -203,30 +205,7 @@ input:-moz-placeholder {
   float: right;
 }
 
-.forgotPassword {
-  text-align: center;
-  margin: -12px 0 15px 0;
-  float: left;
-  width: 100%;
-}
 
-.forgotPassword span {
-  color: #3C89EF;
-  font-size: 14px;
-  font-weight: 400;
-  cursor: pointer;
-  display: inline-block;
-  padding-top: 20px;
-}
-
-.redirectToLogin {
-  padding: 15px 0 0;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 400;
-  display: block;
-  color:#6c6666;
-}
 .dropdown-toggle:active, .open .dropdown-toggle {
   margin-top:8px;
     content : url("../src/assets/scalable-vector-graphics/chevron_down.svg");
@@ -851,14 +830,14 @@ mdb-card-img img {
   padding-left: 0px !important;
     padding-right: 0px !important;
 }
-mdb-tabset .white li {
-    margin: 0 1em!important;
-    background-color: #34495e !important;
-    color:white !important;
-}
-mdb-tabset .white li .nav-link {
-    color: red !important;
-}
+// mdb-tabset .white li {
+//     margin: 0 1em!important;
+//     background-color: #34495e !important;
+//     color:white !important;
+// }
+// mdb-tabset .white li .nav-link {
+//     color: red !important;
+// }
 // .pills-primary .nav-link.active, .pills-primary .show>.nav-link, .tabs-primary {
 //     background-color: #34495e !important;
 //     color:yellowgreen !important;

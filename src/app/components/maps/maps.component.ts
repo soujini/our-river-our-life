@@ -182,6 +182,7 @@ export class MapsComponent implements OnInit {
       await this.orolService.addAlert(this.mapsForm.value, this.imageFiles);
       this.show = false;
       this.setCurrentPosition();
+      this.images=[];
       this.imageFiles=[];
   }
 

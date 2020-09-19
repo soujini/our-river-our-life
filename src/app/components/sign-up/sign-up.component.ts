@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDirective } from 'ng-uikit-pro-standard';
@@ -9,6 +9,9 @@ import { AuthService } from "../../shared/services/auth.service";
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements AfterViewInit {
+  @Output() isRegister = new EventEmitter();
+  @Output() isLogin = new EventEmitter();
+  @Output() isRecoverPassword = new EventEmitter();
 
   @ViewChild('registerModal') public registerModal: ModalDirective;
   registerForm: any;
@@ -25,8 +28,16 @@ export class SignUpComponent implements AfterViewInit {
         password: ['', [Validators.required, Validators.minLength(6)]]
       });
       this.registerModal.show();
+      this.isLogin.emit(false);
     }
-
+    closeRegisterModal(){
+      this.isRegister.emit(false);
+      this.isLogin.emit(false);
+    }
+    login(){
+      this.isRegister.emit(false);
+      this.isLogin.emit(true);
+    }
     signUp(userEmail:string, userPwd:string){
       this.authService.SignUp(userEmail, userPwd);
     }

@@ -20,18 +20,16 @@
   [markerDraggable]="m.draggable" >
 
   <agm-info-window>
-    <mdb-tabset class="xyz" [buttonClass]="'xyz white mb-1'" [contentClass]="'card'">
+    <mdb-tabset class="xyz" [buttonClass]="'nav md-pills pills-primary'" [contentClass]="'card'">
       <mdb-tab heading="Info">
         <div class="row">
           <div class="col-12">
-            <label>Location :</label>
-            <strong>{{m.location}}</strong> <br/>
-            <label>Time :</label>
-            <strong> {{m.activityTime}}</strong> <br/>
-            <label>Date :</label>
-            <strong> {{m.activityDate}}</strong> <br/>
-            <label>Experience :</label>
-            <strong> {{m.experience}}</strong> <br/>
+            <label class="mb-0">LOCATION</label>
+            <strong>{{m.location}}</strong>
+            <label class="mt-2">TIME : <strong> {{m.activityTime}}</strong></label>
+            <label class="mt-2">DATE : <strong> {{m.activityDate | date :'mediumDate'}}</strong></label>
+            <label class="mt-2 mb-0">EXPERIENCE</label>
+            <strong> {{m.experience}}</strong>
           </div>
         </div>
       </mdb-tab>

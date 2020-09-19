@@ -3,67 +3,40 @@ aria-labelledby="myBasicModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered" role="document" >
   <div class="modal-content">
     <div class="modal-header">
-  <button type="button" class="close pull-right" aria-label="Close"
-  (click)="this.isLogin.emit(false);">
-  <img class="modal_close_icon" src="../../../assets/scalable-vector-graphics/modal_close_icon.svg">
-</button>
-<div class="title-div xrow modal-title w-100">
-  <span class="cp2 title">Login</span>
-</div>
-</div>
-    <div class="modal-body">
-      <div style="display:flex; align-items:baseline">
-        <div style="flex:1">
-          <div class="displayTable">
-            <div class="displayTableCell">
-              <div class="authBlock">
-                <p class="red-text text-center" style="font-size:11px;height:20px">{{errorMessage}}</p>
-                <div class="formGroup">
-                  <input type="text" class="formControl" placeholder="Username" #userName required>
-                </div>
-                <div class="formGroup">
-                  <input type="password" class="formControl" placeholder="Password" #userPassword required>
-                </div>
-                <!-- Calling SignIn Api from AuthService -->
-                <div class="formGroup">
-                  <button [disabled]="loading" (click)="authService.SignIn(userName.value, userPassword.value)" type="button" class="btn btn-primary loginbtn_size btn-rounded">LOGIN</button>
-                </div>
-                <div class="formGroup">
-                  <span class="or"><span class="orInner">Or</span></span>
-                </div>
-                <div class="forgotPassword">
-                  <span (click)="this.isRecoverPassword.emit(true);">Forgot Password?</span>
-                </div>
-              </div>
-              <div class="redirectToLogin">
-                <span>Not a Member?<span class="redirect" (click)="this.isRegister.emit(true);"> Register</span></span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <button type="button" class="close pull-right" aria-label="Close"
+      (click)="this.isLogin.emit(false);" style="right:25px">
+      <img class="modal_close_icon" src="../../../assets/scalable-vector-graphics/modal_close_icon.svg" height="12px">
+    </button>
+    <div>
+      <span class="title">Login</span>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div>
+      <p class="red-text text-center" style="font-size:11px;height:10px">{{errorMessage}}</p>
+      <div class="formGroup">
+        <input mdbInput type="text" class="form-control custom-form-control" placeholder="Mobile Number or Email" #userName required (keyup)="validate($event);">
+      </div>
+      <div id="recaptcha-container"></div>
+      <div class="formGroup" *ngIf="this.showPassword == true">
+        <input mdbInput type="password" class="form-control" placeholder="Password" #userPassword>
+      </div>
+      <div class="formGroup text-center">
+        <button [disabled]="loading" (click)="signIn(userName.value)" type="button" class="btn btn-primary btn-rounded">LOGIN</button>
+      </div>
+    </div>
+    <div>
+      <div class="formGroup">
+        <span class="or"><span class="orInner">Or</span></span>
+      </div>
+      <div class="forgotPassword">
+        <span (click)="forgotPassword()" >Forgot Password?</span>
+      </div>
+      <div class="redirectToLogin">
+        <span>Not a Member?<span class="redirect" (click)="register()"> Register</span></span>
       </div>
     </div>
   </div>
 </div>
 </div>
-
-
-<!-- <div class="modal-footer justify-content-center">
-<button [disabled]="loading" type="button" class="btn btn-primary loginbtn_size btn-rounded">LOGIN</button>
 </div>
-<a class="btn-link ml-5"> <span>Not a Member?</span> <a xclick="register()">  Register </a></a> -->
-
-
-<!-- <div class="eye_div">
-<img *ngIf="this.isEyeHidden == false" (click)="toggleClientSecret()" class="img-add1"
-src="../../../assets/scalableVectorGraphics/mask_group_67.svg">
-<img *ngIf="this.isEyeHidden == true" (click)="toggleClientSecret()" class="img-add1"
-src="../../../assets/scalableVectorGraphics/eye_hidden.svg">
-</div> -->
-<!-- <div>
-<label class="input_header">Mobile Number</label>
-<input #phone (keydown)="onKey($event)"  class="form-control" (keyup)="onKeyUp($event)" type="text" value="+91" />
-
-<label class="input_header" for="password">Password</label>
-<input type="password" formControlName="password" class="form-control"/>
-</div> -->
