@@ -1,123 +1,120 @@
 <div class="content">
   <!-- <div class="search-box" id="searchUser">
-    <form>
-      <mat-form-field id="searchUser" class="example-full-width " appearance="outline">
-        <input style="border:none" matInput placeholder="Search For a common/biology name" aria-label="User"
-          [matAutocomplete]="auto" (keyup)="valueChange()" [formControl]="myControl ">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let user of resource" [value]="user.name" class="card-search mat-option">
-            <div class="mat-option-text">
-              <div style="display:flex;">
-                <div>
-                </div>
-                <div class="ml-3">
-                  <span [innerHTML]="user.name" class="operator-name"></span> <br />
-                </div>
-              </div>
-            </div>
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </form>
-  </div> -->
+  <form>
+  <mat-form-field id="searchUser" class="example-full-width " appearance="outline">
+  <input style="border:none" matInput placeholder="Search For a common/biology name" aria-label="User"
+  [matAutocomplete]="auto" (keyup)="valueChange()" [formControl]="myControl ">
+  <mat-autocomplete #auto="matAutocomplete">
+  <mat-option *ngFor="let user of resource" [value]="user.name" class="card-search mat-option">
+  <div class="mat-option-text">
+  <div style="display:flex;">
   <div>
-    <mdb-tabset [buttonClass]="'classic-tabs tabs-cyan'" [contentClass]="'card'" class="classic-tabs">
+</div>
+<div class="ml-3">
+<span [innerHTML]="user.name" class="operator-name"></span> <br />
+</div>
+</div>
+</div>
+</mat-option>
+</mat-autocomplete>
+</mat-form-field>
+</form>
+</div> -->
+<div>
+  <mdb-tabset id="flora_fauna_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'" [contentClass]="'card'" class="classic-tabs">
 
-      <mdb-tab heading="Flora">
-        <div class="row">
-          <div class="col-12">
-            <br>
-            <mdb-image-modal [modalImages]="flora" type="margin"></mdb-image-modal>
-          </div>
+    <mdb-tab heading="Flora">
+      <div *ngIf="this.flora.length > 0" class="row row mt-3" style="background-color:white">
+        <div class="col-12">
+          <br>
+          <mdb-image-modal [modalImages]="flora" type="margin"></mdb-image-modal>
         </div>
-      </mdb-tab>
-
-      <mdb-tab heading="Fauna">
-        <div class="row">
-          <div class="col-12">
-            <br>
-            <mdb-image-modal [modalImages]="fauna" type="margin"></mdb-image-modal>
-          </div>
+      </div>
+      <div *ngIf="this.flora.length == 0" class="row row mt-3" style="height:300px; background-color:white;margin-left: -35px;margin-right: -35px;">
+        <div class="col-12 text-center mt-5">
+          <div _ngcontent-lpk-c225="" class="feature-card-img"><img _ngcontent-lpk-c225="" src="../../assets/scalable-vector-graphics/flora_fauna_white_icon.svg" alt="River Monitoring" height="50px" style="margin-left: -5px;"></div>
+          <p class="mt-4">Oops! We don’t seem to have any items on our list, do contribute by sharing with us and spread knowledge. </p>
+          <p class="mt-4">Please click on <strong>'+ NEW'</strong> to add a Flora.</p>
         </div>
-      </mdb-tab>
-      <mdb-tab heading="+ Add/New">
-        <div class="overlay form-group ">
-            <div class="alert-box " [formGroup]="addForm">
-              <div class="row ml-5">
-                <label class="col-md-2 mt-3 addFlora" >Name of Place <span>*</span></label>
-                <input for="location" formControlName="location" placeholder="Search by location" autocorrect="off"
-                  autocapitalize="off" spellcheck="off" type="text" class="form-control input-search col-md-6 mt-3" #search
-                  [formControl]="searchControl">
-              </div>
-<!--
-               <div class="row" >
-                <label for="type" class="col-md-2 mt-3 addFlora">Type <span>*</span></label>
-                <div class="btn-group mt-3" mdbDropdown >
-                  <select name="project" [(ngModel)]="selectedProject" (change)="changeProject($event)">
-                    <option *ngFor="let opt of projects" [value]="opt.value">{{opt.value}}</option>
-                  </select>
+      </div>
+    </mdb-tab>
 
-                  </div>
-                </div> -->
-
-
-              <div class="row ml-5" >
-                <label for="type" class="col-md-2 mt-3 addFlora">Type <span>*</span></label>
-                <div class="btn-group col-6  mt-3 " mdbDropdown >
-                  <button   mdbDropdownToggle type="button" mdbBtn class="form-control"  >
-                    <span [class]="this.applicationType == 'Choose application type' ? 'dropdown-btn-placeholder-text':'dropdown-btn-text'">
-                      <span type="button" class="waves-light">{{this.applicationTypeName}}</span> </span>
-                      <span class="dropdown-toggle" style="float:right">
-                      </span>
-                    </button>
-                     <div class="dropdown-menu dropdown-primary" >
-                      <a class="dropdown-item" (click)="selectApplicationType($event)" *ngFor="let type of types" name={{type.name}}
-                       >{{type.name}}</a>
-                    </div>
-                  </div>
-                </div>
-                
-              <div class="row ml-5">
-                <label for="commonName" class="addFlora col-md-2 mt-3">Common Name <span>*</span></label>
-                  <input for="commonName" type="text" value='' class="form-control input-latitude col-md-6 mt-3" id="commonName"
-                   formControlName="commonName" placeholder="Enter common name">
-              </div>
-              <div class="row ml-5">
-                <label for="localName" class="addFlora col-md-2 mt-3">Local Name <span>*</span></label>
-                  <input for="localName" type="text" value='' class="form-control input-latitude col-md-6 mt-3" id="localName"
-                   formControlName="localName" placeholder="Enter local name">
-              </div>
-              <div class="row ml-5">
-                <label for="scientificName" class="addFlora col-md-2 mt-3">Scientific Name <span>*</span></label>
-                  <input for="scientificName" type="text" value='' class="form-control input-latitude col-md-6 mt-3" id="scientificName"
-                   formControlName="scientificName" placeholder="Enter scientific name">
-              </div>
-              <div class="row ml-5">
-                <label class="col-md-2 mt-3 addFlora">Latitude</label>
-                <input for="latitude" formControlName="latitude" type="text" class="form-control input-latitude col-md-6 mt-3"
-                  placeholder="Latitude" (change)="bla()">
-              </div>
-              <div class="row ml-5">
-                <label class="col-md-2 addFlora mt-3">Longitude</label>
-                <input for="longitude" formControlName="longitude" type="text" class="form-control input-latitude col-md-6 mt-3"
-                  placeholder="Longitude" (change)="bla()">
-              </div>
-                <div class="row ml-5">
-                <label class="col-md-2 mt-3 addFlora">Upload Images</label>
-              <div class="image_container  mt-3">
-                <div class="form-group ">
-                  <img *ngFor='let url of urls'  [src]="url" height="75px" width="100px" style="margin: 3px;">
-                  <input type='file'  class="form-control" (change)="onSelectFile($event)" multiple style="height:45px;">
-                </div>
-              </div>
-              </div>
-              <button  type="button" class="btn ml-5 mt-3 center btn-primary btn-rounded">Submit</button>
-
+    <mdb-tab heading="Fauna">
+      <div *ngIf="this.fauna.length > 0" class="row row mt-3" >
+        <div class="col-12">
+          <br>
+          <mdb-image-modal [modalImages]="fauna" type="margin"></mdb-image-modal>
+        </div>
+      </div>
+      <div *ngIf="this.fauna.length == 0" class="row mt-3" style="height:300px; background-color:white;margin-left: -35px;margin-right: -35px;">
+        <div class="col-12 text-center mt-5">
+          <div class="feature-card-img"><img src="../../assets/scalable-vector-graphics/flora_fauna_white_icon.svg" alt="River Monitoring" height="50px" style="margin-left: -5px;"></div>
+          <p class="mt-4">Oops! We don’t seem to have any items on our list, do contribute by sharing with us and spread knowledge. </p>
+          <p class="mt-4">Please click on <strong>'+ NEW'</strong> to add a Fauna.</p>
+        </div>
+      </div>
+    </mdb-tab>
+    <mdb-tab heading="+ New">
+      <div class="overlay form-group mt-3" style="background-color:white;margin-left: -35px;margin-right: -35px;">
+        <div class="alert-box " [formGroup]="addForm">
+          <div class="row" >
+            <label for="type" class="col-md-2 mt-3 addFlora">Type <span>*</span></label>
+            <select class="browser-default custom-select col-md-4 mt-3">
+              <option selected>Select type</option>
+              <option value="1">Flora</option>
+              <option value="2">Fauna</option>
+            </select>
             </div>
-
+          <div class="row">
+            <label class="col-md-2 mt-3 addFlora" >Name of Place <span>*</span></label>
+            <input for="location" formControlName="location" placeholder="Location" autocorrect="off"
+            autocapitalize="off" spellcheck="off" type="text" class="form-control input-search col-md-4 mt-3" #search
+            [formControl]="searchControl">
+          </div>
+      <div class="row">
+        <label for="commonName" class="addFlora col-md-2 mt-3">Common Name <span>*</span></label>
+        <input for="commonName" type="text" value='' class="form-control input-latitude col-md-4 mt-3" id="commonName"
+        formControlName="commonName" placeholder="Common Name">
+      </div>
+      <div class="row">
+        <label for="localName" class="addFlora col-md-2 mt-3">Local Name <span>*</span></label>
+        <input for="localName" type="text" value='' class="form-control input-latitude col-md-4 mt-3" id="localName"
+        formControlName="localName" placeholder="Local Name">
+      </div>
+      <div class="row">
+        <label for="scientificName" class="addFlora col-md-2 mt-3">Scientific Name <span>*</span></label>
+        <input for="scientificName" type="text" value='' class="form-control input-latitude col-md-4 mt-3" id="scientificName"
+        formControlName="scientificName" placeholder="Scientific Name">
+      </div>
+      <div class="row">
+        <label class="col-md-2 mt-3 addFlora">Latitude</label>
+        <input for="latitude" formControlName="latitude" type="text" class="form-control input-latitude col-md-4 mt-3"
+        placeholder="Latitude" (change)="bla()">
+      </div>
+      <div class="row">
+        <label class="col-md-2 addFlora mt-3">Longitude</label>
+        <input for="longitude" formControlName="longitude" type="text" class="form-control input-latitude col-md-4 mt-3"
+        placeholder="Longitude" (change)="bla()">
+      </div>
+      <div class="row">
+        <label class="col-md-2 mt-3 addFlora">Upload Images</label>
+        <div class="image_container mt-3 col-md-4">
+          <div class="form-group ">
+            <img *ngFor='let url of urls'  [src]="url" height="75px" width="100px" style="margin: 3px;">
+            <input type='file' class="form-control w-100" (change)="onSelectFile($event)" multiple style="height:45px;">
+          </div>
         </div>
-      </mdb-tab>
+      </div>
+      <div class="row">
+          <label class="col-md-2 mt-3 addFlora"></label>
 
-    </mdb-tabset>
+      <button  type="button" class="btn mt-3 btn-primary btn-rounded" style="width:200px">Submit</button>
+      </div>
+    </div>
+
   </div>
+</mdb-tab>
+
+</mdb-tabset>
+</div>
 </div>

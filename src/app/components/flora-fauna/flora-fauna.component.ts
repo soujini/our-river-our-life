@@ -21,12 +21,16 @@ export class FloraFaunaComponent implements OnInit {
   applicationType:any="";
   applicationTypeName:string="Choose type";
   urls = [];
-
-  public types:any = [
-    {id: "Flora", name:"Flora", displayName:"Flora",},
-    {id: "Fauna",name:"Fauna", displayName:"Fauna",},
-
-  ];
+  options = [
+  { value: '1', label: 'Flora' },
+  { value: '2', label: 'Fauna' },
+];
+  //
+  // public types:any = [
+  //   {id: "Flora", name:"Flora", displayName:"Flora",},
+  //   {id: "Fauna",name:"Fauna", displayName:"Fauna",},
+  //
+  // ];
 
 
   projects = [
