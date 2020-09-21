@@ -10,10 +10,13 @@ import { AuthService } from "../../shared/services/auth.service";
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements AfterViewInit {
+  successMessage:string="";
+  errorMessage:string=""
   @ViewChild('recoverModal') recoverModal: ModalDirective;
   @Output() isRecoverPassword = new EventEmitter();
   @Output() isRegister = new EventEmitter();
   @Output() isLogin = new EventEmitter();
+
   constructor( public authService: AuthService) { }
 
   ngAfterViewInit(): void {
