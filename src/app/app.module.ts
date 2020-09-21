@@ -23,7 +23,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 // import { MapsComponent } from './components/maps/maps.component';
-import { GoogleMapsModule } from '@angular/google-maps'
+// import { GoogleMapsModule } from '@angular/google-maps'
 // import { AgmCoreModule } from '@agm/core';
 // import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 
@@ -67,7 +67,7 @@ import { NgOtpInputModule } from 'ng-otp-input';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
-    GoogleMapsModule,
+    // GoogleMapsModule,
     BrowserModule,
     AppRoutingModule,
     MatToolbarModule,
