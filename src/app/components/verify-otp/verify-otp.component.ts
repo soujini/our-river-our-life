@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, ViewChild, EventEmitter, AfterViewInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDirective } from 'ng-uikit-pro-standard';
 import { WindowService } from '../../services/window.service';
 import * as firebase from 'firebase';
@@ -16,7 +17,7 @@ export class VerifyOTPComponent implements AfterViewInit {
   @Output() isVerifyOTP = new EventEmitter();
   public otp:number;
 
-  constructor(private win: WindowService) { }
+  constructor(private win: WindowService, private router: Router) { }
   ngAfterViewInit(): void {
     this.otpModal.show();
   }
@@ -30,15 +31,16 @@ export class VerifyOTPComponent implements AfterViewInit {
   verifyLoginCode() {
     this.windowRef.confirmationResult
     .confirm(this.otp)
-    .then( result => {
+    .then(result => {
       console.log(result.user);
+      this.isVerifyOTP.emit(false);
+      this.router.navigate(['./home']);
       // this.user = result.user;
-      alert("otp verified");
+      // alert("otp verified");
     })
     .catch( error => {
       this.errorMessage="Incorrect code entered?";
       console.log(error, "Incorrect code entered?")
     });
   }
-
 }

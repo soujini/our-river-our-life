@@ -5,6 +5,8 @@ import { ModalDirective } from 'ng-uikit-pro-standard';
 import { AuthService } from "../../shared/services/auth.service";
 import { WindowService } from '../../services/window.service';
 import * as firebase from 'firebase';
+import { AngularFireAuth } from "@angular/fire/auth";
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-sign-in',
@@ -30,7 +32,8 @@ export class SignInComponent implements AfterViewInit {
   @Output() isVerifyOTP = new EventEmitter();
 
   constructor( private win: WindowService, public authService: AuthService,private formBuilder: FormBuilder,private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,public afs: AngularFirestore,
+        public afAuth: AngularFireAuth) {
       this.authService.errorMessage.subscribe(data => {
         this.errorMessage=data;
       });
@@ -39,6 +42,8 @@ export class SignInComponent implements AfterViewInit {
     ngOnInit(){
        this.windowRef = this.win.windowRef;
       this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+      // this.windowRef.recaptchaVerifier = this.afAuth.recaptchaVerifier('recaptcha-container');
+
        // this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
        //   "recaptcha-container",
        //   {
@@ -64,7 +69,8 @@ export class SignInComponent implements AfterViewInit {
       // this.isVerifyOTP.emit(true);
       // this.isLogin.emit(false);
       var appVerifier = this.windowRef.recaptchaVerifier;
-      firebase.auth().signInWithPhoneNumber("+91"+phone, appVerifier)
+      // firebase.auth().signInWithPhoneNumber("+91"+phone, appVerifier)
+      this.afAuth.signInWithPhoneNumber("+91"+phone, appVerifier)
       .then(result => {
         this.windowRef.confirmationResult = result;
         this.isVerifyOTP.emit(true);

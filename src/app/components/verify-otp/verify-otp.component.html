@@ -15,10 +15,10 @@ aria-labelledby="myBasicModalLabel" aria-hidden="true">
     <div class="text-center">
     <span>OTP is sent to your number : </span>
     </div>
-    <p class="red-text text-center mt-3" style="font-size:11px;min-height:10px">adadas</p>
+    <p class="red-text text-center mt-3" style="font-size:11px;min-height:10px">{{errorMessage}}</p>
 
     <div class="text-center mt-4">
-    <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:5}"></ng-otp-input>
+    <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:6}"></ng-otp-input>
     </div>
     <div class="text-center mt-4">
     <span class="resend-otp"> RESEND OTP</span>
