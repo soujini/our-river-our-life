@@ -24,5 +24,15 @@ export class ForgotPasswordComponent implements AfterViewInit {
     this.isRecoverPassword.emit(false);
     this.isLogin.emit(false);
   }
-
+  forgotPassword(email){
+    this.authService.ForgotPassword(email).then(() => {
+      this.successMessage = 'Password reset email sent, check your inbox.';
+      setTimeout(() => {
+        this.successMessage ="";
+        this.isRecoverPassword.emit(false);
+      }, 3000);
+    }).catch((error) => {
+      this.errorMessage = error.message;
+    })
+  }
 }

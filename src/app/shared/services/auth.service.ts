@@ -103,12 +103,8 @@ export class AuthService {
 
   // Reset Forggot password
   ForgotPassword(passwordResetEmail) {
-    return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
-    .then(() => {
-      window.alert('Password reset email sent, check your inbox.');
-    }).catch((error) => {
-      this.errorMessageSubject.next(error);
-    })
+    return this.afAuth.sendPasswordResetEmail(passwordResetEmail);
+
   }
 
   // Returns true when user is looged in and email is verified

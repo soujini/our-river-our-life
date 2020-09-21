@@ -33,28 +33,28 @@ export class SignInComponent implements AfterViewInit {
 
   constructor( private win: WindowService, public authService: AuthService,private formBuilder: FormBuilder,private route: ActivatedRoute,
     private router: Router,public afs: AngularFirestore,
-        public afAuth: AngularFireAuth) {
+    public afAuth: AngularFireAuth) {
       this.authService.errorMessage.subscribe(data => {
         this.errorMessage=data;
       });
     }
 
     ngOnInit(){
-       this.windowRef = this.win.windowRef;
+      this.windowRef = this.win.windowRef;
       this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
       // this.windowRef.recaptchaVerifier = this.afAuth.recaptchaVerifier('recaptcha-container');
 
-       // this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-       //   "recaptcha-container",
-       //   {
-       //     size: "invisible",
-       //     callback: function(response) {
-       //       alert("oh ho");
-       //     }
-       //   }
-       // );
+      // this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+      //   "recaptcha-container",
+      //   {
+      //     size: "invisible",
+      //     callback: function(response) {
+      //       alert("oh ho");
+      //     }
+      //   }
+      // );
       //
-       this.windowRef.recaptchaVerifier.render();
+      this.windowRef.recaptchaVerifier.render();
     }
 
     ngAfterViewInit(): void {
