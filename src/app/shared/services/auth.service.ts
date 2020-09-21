@@ -6,7 +6,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { Router } from "@angular/router";
 import { Subject } from 'rxjs/Subject';
 // import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { BehaviorSubject } from 'rxjs/Rx'
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
