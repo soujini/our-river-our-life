@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { BehaviorSubject } from 'rxjs';
+// import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs/Rx'
 import {Spinner} from '../models/spinner';
 import { Observable, throwError } from 'rxjs';
 
@@ -21,4 +22,3 @@ export class SpinnerService {
     return this.spinnerSubject.asObservable();
   }
 }
-
