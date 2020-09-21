@@ -163,21 +163,7 @@ export class MapsComponent implements OnInit {
       // alert("Geolocation is not supported by this browser.");
     }
   }
-  // addAlert() {
-  //   console.log(this.imageFiles);
-  //   this.orolService.addAlert().then(
-  //     data => {
-  //       this.apps=data.response;
-  //       console.log('success Add Alert');
-  //     },
-  //     error => {
-  //       console.log('oops  Add Alert', error);
-  //       return error;
-  //     }
-  //   );
-  //
-  // }
-  // this.addAlert=true;
+
   async addAlert() {
       await this.orolService.addAlert(this.mapsForm.value, this.imageFiles);
       this.show = false;

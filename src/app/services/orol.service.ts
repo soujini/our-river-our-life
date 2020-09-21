@@ -40,6 +40,33 @@ export class OrolService {
     );
     }
 
+    public addFloraFauna(x, images:File[]){
+      // this.spinnerService.setSpinner(true);
+      // const form = new FormData;
+      // for(var i=0; i<images.length;i++){
+      //   form.append('photos', images[i]);
+      // }
+      //
+      // form.append("location", x.location);
+      // form.append("latitude", x.latitude);
+      // form.append("longitude", x.longitude);
+      // form.append("activityDate", x.activityDate);
+      // form.append("activityTime", x.activityTime);
+      // form.append("experience", x.experience);
+      //
+      // this.httpClient.post("https://our-river-our-life-api.herokuapp.com/flood-alert/create-alert", form).subscribe(
+      //   (res) => {
+      //     this.spinnerService.setSpinner(false);
+      //     this.router.navigate(['./home']);
+      //
+      //   },
+      //   (err) => {
+      //     this.spinnerService.setSpinner(false);
+      //     window.alert(err)
+      //   },
+      // );
+      }
+
     public getFloodAlerts(){
       this.spinnerService.setSpinner(true);
       return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/flood-alert");

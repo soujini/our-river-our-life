@@ -31,7 +31,7 @@
   color:#6c6666;
 }
 
-#loginModal{
+#otpModal{
   .modal-content{
     padding:25px !important;
     // padding-top:-50px !important;
@@ -93,6 +93,7 @@
   //   margin-left: -10px !important;
   // }
 }
-.captcha-height{
-  height:0px;
+.resend-otp{
+  text-decoration: underline;
+  font-size:12px;
 }

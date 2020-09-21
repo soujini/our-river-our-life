@@ -14,7 +14,7 @@ import { MapsFaunaComponent } from '../../components/maps-fauna/maps-fauna.compo
 import { VideosGalleryComponent } from '../../components/videos-gallery/videos-gallery.component';
 import { ContributorsComponent } from '../../components/contributors/contributors.component';
 import { MDBBootstrapModulesPro, CarouselModule,CollapseModule , WavesModule,CardsModule, ButtonsModule,LightBoxModule,ModalModule,TabsModule} from 'ng-uikit-pro-standard';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule} from '@angular/material/input';
 import { GoogleMapsModule } from '@angular/google-maps'
 import { AgmCoreModule } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';

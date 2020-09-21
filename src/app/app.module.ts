@@ -14,6 +14,8 @@ import { MDBBootstrapModulesPro,CollapseModule ,CarouselModule, WavesModule,Card
 import { StoreComponent } from './components/store/store.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifyOTPComponent } from './components/verify-otp/verify-otp.component';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { ImgLoadedDirective } from './directives/directive.directive';
@@ -31,7 +33,8 @@ import { AuthService } from "../app/shared/services/auth.service";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { NgOtpInputModule } from 'ng-otp-input';
+
 // import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 // import { DashboardComponent } from './components/dashboard/dashboard.component';
 // import { MapsViewComponent } from './components/maps-view/maps-view.component';
@@ -44,6 +47,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     FooterComponent,
     SignInComponent,
     SignUpComponent,
+    ForgotPasswordComponent,
+    VerifyOTPComponent,
     ImgLoadedDirective,
     NotFoundComponent,
     // MapsFloodWatchComponent,
@@ -52,7 +57,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     // MapsFaunaComponent,
     // BannerWavesComponent,
     // SignUpComponent,
-    ForgotPasswordComponent,
+
     // VerifyEmailComponent,
     // DashboardComponent,
     // MapsViewComponent,
@@ -79,6 +84,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     TabsModule,
     WavesModule,
     MDBBootstrapModulesPro.forRoot(),
+    NgOtpInputModule,
     // AgmJsMarkerClustererModule,
     // AgmCoreModule.forRoot({
     //   apiKey: "AIzaSyALR2ZDTTyZXGBRFeCV0AHd0S-TV_GWYm8",

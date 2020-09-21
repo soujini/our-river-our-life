@@ -120,21 +120,44 @@ label {
 .formControl:focus {
   border: 2px solid #d3d3d6
 }
-
-input::-webkit-input-placeholder {
-  color: #BBBBBB;
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: red !important;
+  opacity: 1 !important; /* Firefox */
 }
 
+select,
+select option:first-child {
+  // color: red !important;
+  font-size: 14px !important;
+}
+
+
+select option[value="1"] {
+  color: green !important;
+}
+
+label {
+  display: block;
+  margin: 16px 0;
+}
+
+input::-webkit-input-placeholder {
+  color: #bbbbbb !important;
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 0.9rem !important;
+}
+
+
 input::-moz-placeholder {
-  color: #BBBBBB;
+  color: #bbbbbb !important;
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 0.9rem !important;
 }
 
 input:-ms-input-placeholder {
-  color: #BBBBBB;
-}
-
-input:-moz-placeholder {
-  color: #BBBBBB
+  color: #bbbbbb !important;
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 0.9rem !important;
 }
 
 .displayTable .btn {
@@ -333,8 +356,11 @@ body .ngx-pagination .current {
   color: red;
   margin-top: 5px;
 }
-
-input.ng-invalid.ng-touched {
+//error border
+// input.ng-invalid.ng-touched {
+//   border: 1px solid red;
+// }
+select.ng-invalid.ng-touched {
   border: 1px solid red;
 }
 
@@ -859,4 +885,14 @@ mdb-card-img img {
 }
 .container-fluid.row.col-md-12{
   padding:0px !important;
+}
+//ERROR MESSAGES
+.error-message-div{
+  min-height:20px;
+}
+.errorMessage{
+  color:#E0724F;
+  font-size:11px;
+  font-weight:500;
+  min-height:16px;
 }

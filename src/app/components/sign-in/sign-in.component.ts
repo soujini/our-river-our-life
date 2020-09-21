@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDirective } from 'ng-uikit-pro-standard';
 import { AuthService } from "../../shared/services/auth.service";
-// import { WindowService } from '../../services/window.service';
+import { WindowService } from '../../services/window.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,6 +12,7 @@ import { AuthService } from "../../shared/services/auth.service";
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements AfterViewInit {
+  windowRef: any;
   // loginForm: FormGroup;
 
   @ViewChild('loginModal') loginModal: ModalDirective;
@@ -18,64 +20,62 @@ export class SignInComponent implements AfterViewInit {
   loading: boolean;
   phone: any;
   errorMessage:any;
-  mode:any="phone";
+  mode:any="invalid";
   showPassword:boolean = false;
-  showOTP:boolean = false;
 
+  appVerifier:any;
   @Output() isRegister = new EventEmitter();
   @Output() isLogin = new EventEmitter();
   @Output() isRecoverPassword = new EventEmitter();
+  @Output() isVerifyOTP = new EventEmitter();
 
-  constructor( public authService: AuthService,private formBuilder: FormBuilder,private route: ActivatedRoute,
+  constructor( private win: WindowService, public authService: AuthService,private formBuilder: FormBuilder,private route: ActivatedRoute,
     private router: Router) {
       this.authService.errorMessage.subscribe(data => {
         this.errorMessage=data;
       });
     }
 
-    ngAfterViewInit(): void {
-      // this.windowRef = this.win.windowRef;
-      // this.loginForm = this.formBuilder.group({
-      //   mobilenumber: ['', Validators.required],
-      //   password: ['', Validators.required]
-      // });
+    ngOnInit(){
+       this.windowRef = this.win.windowRef;
+      this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+       // this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+       //   "recaptcha-container",
+       //   {
+       //     size: "invisible",
+       //     callback: function(response) {
+       //       alert("oh ho");
+       //     }
+       //   }
+       // );
+      //
+       this.windowRef.recaptchaVerifier.render();
+    }
 
+    ngAfterViewInit(): void {
       this.loginModal.show();
-    //
-    //   window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container')
-    //
-    // window.recaptchaVerifier
-    //               .render()
-    //               .then( widgetId => {
-    //
-    //                 window.recaptchaWidgetId = widgetId
-    // });
     }
 
     signIn(userName:string){
-      //     const appVerifier = window.recaptchaVerifier;
-      // alert("signIn");
-      // alert(this.mode);
-      // this.signInWithPhoneNumber(userName, appVerifier);
-      // // this.authService.SignIn(userName, userPassword);
+      this.signInWithPhoneNumber(userName);
     }
-    // signInWithPhoneNumber(phone){
-      // const appVerifier = this.windowRef.recaptchaVerifier;
-  //     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-  // 'size': 'normal',
-  // 'callback': function(response) {
-  //   alert("reCAPTCHA solved, allow signInWithPhoneNumber.");
-  //   // ...
-  // },
-  // 'expired-callback': function() {
-  //   alert("Response expired. Ask user to solve reCAPTCHA again.");
-  //   //
-  //   // ...
-  // }
-// });
-      // this.authService.signInWithPhoneNumber("+91"+phone, appVerifier);
-      //verify mobile and send otp to mobile.
-    // }
+
+    signInWithPhoneNumber(phone){
+      // this.isVerifyOTP.emit(true);
+      // this.isLogin.emit(false);
+      var appVerifier = this.windowRef.recaptchaVerifier;
+      firebase.auth().signInWithPhoneNumber("+91"+phone, appVerifier)
+      .then(result => {
+        this.windowRef.confirmationResult = result;
+        this.isVerifyOTP.emit(true);
+        this.isLogin.emit(false);
+        //alert("wah");
+      })
+      .catch( error => {
+        console.log(error)
+        this.errorMessage = error.message;
+      });
+    }
 
     forgotPassword(){
       this.isRecoverPassword.emit(true);
@@ -89,7 +89,6 @@ export class SignInComponent implements AfterViewInit {
       if(this.validateUsername(event) == true){
         if(this.mode == 'phone'){
           this.showPassword=false;
-          this.showOTP=true;
           this.errorMessage="";
         }
         else if(this.mode == 'email'){
@@ -98,36 +97,25 @@ export class SignInComponent implements AfterViewInit {
         }
       }
       else{
-         if(this.mode == 'invalid'){
+        if(this.mode == 'invalid'){
           this.showPassword=false;
           this.errorMessage = "Please enter a valid mobile number or email"
         }
       }
-      //  this.validateUsername(event);
-      // if(this.mode == 'phone'){
-      //   this.showPassword=false;
-      //   this.showOTP=true;
-      //   this.errorMessage="";
-      // }
-      // else if(this.mode == 'email'){
-      //   this.showPassword=true;
-      //   this.errorMessage="";
-      // }
-
     }
-
-     validateUsername(event){
+    validateUsername(event){
       var phonePattern = /^\d{10}$/;
       if(event.target.value.match(phonePattern)){
-      this.errorMessage="";
+        this.errorMessage="";
+        this.mode="phone";
         return true;
-
       }
       else{
         this.mode="email";
         var emailPattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         if(event.target.value.match(emailPattern)){
           this.errorMessage="";
+          this.mode="email";
           return true;
         }
         else{

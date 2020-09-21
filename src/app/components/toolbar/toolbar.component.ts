@@ -10,33 +10,34 @@ import { ModalDirective } from 'ng-uikit-pro-standard';
 })
 export class ToolbarComponent implements OnInit {
   @ViewChild('phone') phone: ElementRef
-  // @ViewChild('loginModal') loginModal: ModalDirective;
-  // @ViewChild('registerModal', { static: true }) registerModal: ModalDirective
   loginForm: FormGroup;
+  isLogin =false;
   isRegister:boolean=false;
   isRecoverPassword:boolean=false;
+  isVerifyOTP:boolean=false;
 
   loading = false;
   submitted = false;
   isEyeHidden:boolean=true;
-  isLogin =false;
+
   constructor(private formBuilder: FormBuilder,private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit()  {
 
-}
+  }
 
-setIsRegister(event){
+  setIsRegister(event){
+    this.isRegister = event;
+  }
 
-this.isRegister = event;
-}
-
-setIsRecoverPassword(event){
-
-  this.isRecoverPassword = event;
+  setIsRecoverPassword(event){
+    this.isRecoverPassword = event;
   }
   setIsLogin(event){
     this.isLogin = event;
-    }
+  }
+  setisVerifyOTP(event){
+    this.isVerifyOTP=event;
+  }
 
 }

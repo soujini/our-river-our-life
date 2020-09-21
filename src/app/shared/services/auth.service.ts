@@ -36,16 +36,16 @@ export class AuthService {
     })
   }
 
-  signInWithPhoneNumber(phone,appVerifier) {
-    return this.afAuth.signInWithPhoneNumber(phone,appVerifier)
-    .then(result => {
-      // this.windowRef.confirmationResult = result;
-      alert(result);
-
-    }).catch((error) => {
-        this.errorMessageSubject.next(error);
-      });
-  }
+  // signInWithPhoneNumber(phone,appVerifier) {
+  //   return this.afAuth.signInWithPhoneNumber(phone,appVerifier)
+  //   .then(result => {
+  //     // this.windowRef.confirmationResult = result;
+  //     alert(result);
+  //
+  //   }).catch((error) => {
+  //       this.errorMessageSubject.next(error);
+  //     });
+  // }
 
   verifyLoginCode() {
     // this.windowRef.confirmationResult

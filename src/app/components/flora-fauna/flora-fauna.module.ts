@@ -7,6 +7,9 @@ import { FloraFaunaComponent } from './flora-fauna.component';
  import {MatInputModule} from '@angular/material/input';
  import {MatAutocompleteModule} from '@angular/material/autocomplete';
  import {MatFormFieldModule} from '@angular/material/form-field';
+ import { GoogleMapsModule } from '@angular/google-maps'
+ import { AgmCoreModule } from '@agm/core';
+ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 
  import { MDBBootstrapModulesPro, CarouselModule,CollapseModule , WavesModule,CardsModule, ButtonsModule,LightBoxModule,ModalModule,TabsModule} from 'ng-uikit-pro-standard';
 
@@ -25,7 +28,12 @@ import { FloraFaunaComponent } from './flora-fauna.component';
     FormsModule, ReactiveFormsModule,
     LightBoxModule,
     WavesModule,
-    MatInputModule
+    MatInputModule,
+    AgmJsMarkerClustererModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyALR2ZDTTyZXGBRFeCV0AHd0S-TV_GWYm8",
+      libraries: ["places"]
+    })
 
   ]
 })

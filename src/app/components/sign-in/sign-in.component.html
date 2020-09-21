@@ -13,12 +13,12 @@ aria-labelledby="myBasicModalLabel" aria-hidden="true">
   </div>
   <div class="modal-body">
     <div>
-      <p class="red-text text-center" style="font-size:11px;height:10px">{{errorMessage}}</p>
+      <p class="red-text text-center" style="font-size:11px;min-height:10px">{{errorMessage}}</p>
       <div class="formGroup">
         <input mdbInput type="text" class="form-control custom-form-control" placeholder="Mobile Number or Email" #userName required (keyup)="validate($event);">
       </div>
-      <div id="recaptcha-container"></div>
-      <div class="formGroup" *ngIf="this.showPassword == true">
+      <div [ngClass]="this.mode == 'phone' ?'visible':'invisible captcha-height'" class="formGroup text-center" id="recaptcha-container"></div>
+      <div class="formGroup mt-0" *ngIf="this.showPassword == true">
         <input mdbInput type="password" class="form-control" placeholder="Password" #userPassword>
       </div>
       <div class="formGroup text-center">
@@ -30,7 +30,7 @@ aria-labelledby="myBasicModalLabel" aria-hidden="true">
         <span class="or"><span class="orInner">Or</span></span>
       </div>
       <div class="forgotPassword">
-        <span (click)="forgotPassword()" >Forgot Password?</span>
+        <span (click)="forgotPassword()">Forgot Password?</span>
       </div>
       <div class="redirectToLogin">
         <span>Not a Member?<span class="redirect" (click)="register()"> Register</span></span>
