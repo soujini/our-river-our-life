@@ -9,6 +9,7 @@ import { AuthService } from "../../shared/services/auth.service";
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements AfterViewInit {
+  public errorMessage:string="";
   @Output() isRegister = new EventEmitter();
   @Output() isLogin = new EventEmitter();
   @Output() isRecoverPassword = new EventEmitter();
@@ -17,7 +18,13 @@ export class SignUpComponent implements AfterViewInit {
   registerForm: any;
 
   constructor( public authService: AuthService,private formBuilder: FormBuilder,private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router) {
+
+      this.authService.errorMessage.subscribe(data => {
+        this.errorMessage=data;
+      });
+
+    }
 
     ngAfterViewInit(): void {
       this.registerForm = this.formBuilder.group({
@@ -38,7 +45,7 @@ export class SignUpComponent implements AfterViewInit {
       this.isRegister.emit(false);
       this.isLogin.emit(true);
     }
-    signUp(userEmail:string, userPwd:string){
-      this.authService.SignUp(userEmail, userPwd);
+    signUp(userEmail:string, userPwd:string, userPhone:string ){
+      this.authService.SignUp(userEmail, userPwd, userPhone);
     }
   }

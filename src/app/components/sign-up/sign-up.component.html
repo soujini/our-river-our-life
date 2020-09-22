@@ -14,20 +14,20 @@ aria-labelledby="myBasicModalLabel" aria-hidden="true">
   </div>
   <div class="modal-body">
     <div>
-      <!-- <p class="red-text text-center" style="font-size:11px;height:10px">{{errorMessage}}</p> -->
+      <p class="red-text text-center" style="font-size:11px;min-height:10px">{{errorMessage}}</p>
       <div class="formGroup">
         <input type="email" class="form-control" placeholder="Email Address" #userEmail required>
       </div>
 
       <div class="formGroup">
-        <input type="mobilenumber" class="form-control" placeholder="M obile Number" #userPwd required>
+        <input type="mobilenumber" class="form-control" placeholder="Mobile Number" #userPhone required>
       </div>
       <div class="formGroup">
         <input type="password" class="form-control" placeholder="Password" #userPwd required>
       </div>
 
       <div class="formGroup text-center">
-        <button (click)="signUp(userEmail.value, userPwd.value)"
+        <button (click)="signUp(userEmail.value, userPwd.value, userPhone.value)"
         type="button" class="btn btn-primary btn-rounded">Sign Up</button>
       </div>
       <div class="text-center" style="font-size:12px;color:#6c6666">

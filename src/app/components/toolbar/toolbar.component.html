@@ -33,7 +33,7 @@
 </mdb-navbar>
 
 <div *ngIf="isLogin == true">
-  <app-sign-in (isVerifyOTP)="setisVerifyOTP($event)" (isLogin)="setIsLogin($event)" (isRegister)='setIsRegister($event)' (isRecoverPassword)='setIsRecoverPassword($event)'></app-sign-in>
+  <app-sign-in (userName)="setUserName($event)" (password)="setPassword($event)" (phoneNumber)="setPhoneNumber($event)" (isVerifyOTP)="setisVerifyOTP($event)" (isLogin)="setIsLogin($event)" (isRegister)='setIsRegister($event)' (isRecoverPassword)='setIsRecoverPassword($event)'></app-sign-in>
 </div>
 
 <div *ngIf="isRegister == true">
@@ -44,5 +44,5 @@
   <app-forgot-password (isLogin)="setIsLogin($event)" (isRecoverPassword)='setIsRecoverPassword($event)'></app-forgot-password>
 </div>
 <div *ngIf="isVerifyOTP == true">
-  <app-verify-otp (isVerifyOTP)="setisVerifyOTP($event)" (isLogin)="setIsLogin($event)"></app-verify-otp>
+  <app-verify-otp [userName]="this.userName" (isVerifyOTP)="setisVerifyOTP($event)" (isLogin)="setIsLogin($event)"></app-verify-otp>
 </div>

@@ -11,6 +11,9 @@ import { ModalDirective } from 'ng-uikit-pro-standard';
 export class ToolbarComponent implements OnInit {
   @ViewChild('phone') phone: ElementRef
   loginForm: FormGroup;
+  userName :any = "";
+  password :any = "";
+  phoneNumber :any = "";
   isLogin =false;
   isRegister:boolean=false;
   isRecoverPassword:boolean=false;
@@ -38,6 +41,16 @@ export class ToolbarComponent implements OnInit {
   }
   setisVerifyOTP(event){
     this.isVerifyOTP=event;
+  }
+  setUserName(event){
+    alert("in setusername "+event);
+    this.userName=event;
+  }
+  setPassword(event){
+    this.password=event;
+  }
+  setPhoneNumber(event){
+    this.phoneNumber=event;
   }
 
 }

@@ -15,14 +15,15 @@ aria-labelledby="myBasicModalLabel" aria-hidden="true">
     <div>
       <p class="red-text text-center" style="font-size:11px;min-height:10px">{{errorMessage}}</p>
       <div class="formGroup">
-        <input mdbInput type="text" class="form-control custom-form-control" placeholder="Mobile Number or Email" #userName required (keyup)="validate($event);">
+        <input id="userName" mdbInput type="text" class="form-control custom-form-control" placeholder="Mobile Number or Email" #userName required (keyup)="validate($event);">
       </div>
       <div [ngClass]="this.mode == 'phone' ?'visible':'invisible captcha-height'" class="formGroup text-center" id="recaptcha-container"></div>
-      <div class="formGroup mt-0" *ngIf="this.showPassword == true">
-        <input mdbInput type="password" class="form-control" placeholder="Password" #userPassword>
+      <div class="formGroup mt-0" [ngClass]="this.showPassword == true ?'visible':'invisible captcha-height'">
+        <input id="userPassword" mdbInput type="password" class="form-control custom-form-control" placeholder="Password" #userPassword required>
+
       </div>
       <div class="formGroup text-center">
-        <button [disabled]="loading" (click)="signIn(userName.value)" type="button" class="btn btn-primary btn-rounded">LOGIN</button>
+        <button [disabled]="loading" (click)="signIn(userName.value, userPassword.value)" type="button" class="btn btn-primary btn-rounded">{{loginBtnText}}</button>
       </div>
     </div>
     <div>

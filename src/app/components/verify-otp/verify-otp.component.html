@@ -13,7 +13,7 @@ aria-labelledby="myBasicModalLabel" aria-hidden="true">
   </div>
   <div class="modal-body">
     <div class="text-center">
-    <span>OTP is sent to your number : </span>
+    <span>OTP is sent to your number : +91 </span><span>{{userName}}</span>
     </div>
     <p class="red-text text-center mt-3" style="font-size:11px;min-height:10px">{{errorMessage}}</p>
 
@@ -24,7 +24,7 @@ aria-labelledby="myBasicModalLabel" aria-hidden="true">
     <span class="resend-otp"> RESEND OTP</span>
     </div>
     <div class="formGroup text-center mt-5">
-      <button xdisabled="loading" (click)="verifyLoginCode()" type="button" class="btn btn-primary btn-rounded">LOGIN</button>
+      <button xdisabled="loading" (click)="verifyLoginCode()" type="button" class="btn btn-primary btn-rounded">VERIFY</button>
     </div>
   </div>
 </div>

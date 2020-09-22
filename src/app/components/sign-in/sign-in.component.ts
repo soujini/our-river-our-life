@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild,NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDirective } from 'ng-uikit-pro-standard';
@@ -7,6 +7,7 @@ import { WindowService } from '../../services/window.service';
 import * as firebase from 'firebase';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { SpinnerService } from '../../services/spinner.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -30,10 +31,14 @@ export class SignInComponent implements AfterViewInit {
   @Output() isLogin = new EventEmitter();
   @Output() isRecoverPassword = new EventEmitter();
   @Output() isVerifyOTP = new EventEmitter();
+  @Output() userName = new EventEmitter();
+  @Output() password = new EventEmitter();
+  @Output() phoneNumber = new EventEmitter();
+  loginBtnText:string="Send OTP"
 
-  constructor( private win: WindowService, public authService: AuthService,private formBuilder: FormBuilder,private route: ActivatedRoute,
+  constructor( public ngZone: NgZone, private win: WindowService, public authService: AuthService,private formBuilder: FormBuilder,private route: ActivatedRoute,
     private router: Router,public afs: AngularFirestore,
-    public afAuth: AngularFireAuth) {
+    public afAuth: AngularFireAuth, private spinnerService: SpinnerService) {
       this.authService.errorMessage.subscribe(data => {
         this.errorMessage=data;
       });
@@ -61,23 +66,51 @@ export class SignInComponent implements AfterViewInit {
       this.loginModal.show();
     }
 
-    signIn(userName:string){
-      this.signInWithPhoneNumber(userName);
+    signIn(userName:string, password?:string, phoneNumber?:string){
+      this.spinnerService.setSpinner(true);
+      this.submitted=true;
+      if(this.mode == "phone"){
+        this.signInWithPhoneNumber(userName);
+      }
+      else if(this.mode == "email"){
+        this.signInWithEmailAndPassword(userName, password);
+      }
+
+    }
+    signInWithEmailAndPassword(userName:String, password?:string){
+      this.authService.SignIn(userName, password).then((result) => {
+        if(result.user.emailVerified == true){
+          this.spinnerService.setSpinner(false);
+          this.ngZone.run(() => {
+            this.router.navigate(['home']);
+            this.isLogin.emit(false);
+          });
+          // this.SetUserData(result.user);
+        }
+        else{
+          this.spinnerService.setSpinner(false);
+          this.errorMessage = "Please check your email inbox for a verification email.";
+        }
+
+      }).catch((error) => {
+        this.spinnerService.setSpinner(false);
+        this.errorMessage = error.message;
+      });
     }
 
     signInWithPhoneNumber(phone){
-      // this.isVerifyOTP.emit(true);
-      // this.isLogin.emit(false);
+      this.spinnerService.setSpinner(true);
       var appVerifier = this.windowRef.recaptchaVerifier;
-      // firebase.auth().signInWithPhoneNumber("+91"+phone, appVerifier)
       this.afAuth.signInWithPhoneNumber("+91"+phone, appVerifier)
       .then(result => {
+        this.spinnerService.setSpinner(false);
         this.windowRef.confirmationResult = result;
+        this.userName.emit(phone);
         this.isVerifyOTP.emit(true);
         this.isLogin.emit(false);
-        //alert("wah");
       })
       .catch( error => {
+        this.spinnerService.setSpinner(false);
         console.log(error)
         this.errorMessage = error.message;
       });
@@ -94,16 +127,19 @@ export class SignInComponent implements AfterViewInit {
     validate(event){
       if(this.validateUsername(event) == true){
         if(this.mode == 'phone'){
+          this.loginBtnText="SEND OTP";
           this.showPassword=false;
           this.errorMessage="";
         }
         else if(this.mode == 'email'){
+          this.loginBtnText="LOGIN";
           this.showPassword=true;
           this.errorMessage="";
         }
       }
       else{
         if(this.mode == 'invalid'){
+          this.loginBtnText="SEND OTP";
           this.showPassword=false;
           this.errorMessage = "Please enter a valid mobile number or email"
         }
