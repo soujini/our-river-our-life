@@ -13,7 +13,6 @@ export class BannerComponent implements AfterViewInit {
   ngOnInit(): void {
   }
   ngAfterViewInit(){
-    // alert("banner");
   }
 
 }

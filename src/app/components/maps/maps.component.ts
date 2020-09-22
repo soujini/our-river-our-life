@@ -108,7 +108,6 @@ export class MapsComponent implements OnInit {
   }
 
   recenterMap() {
-    // alert("woo");
     // this.latitude = this.mapsForm.get('latitude').value;
     // this.longitude = this.mapsForm.get('longitude').value;
   }

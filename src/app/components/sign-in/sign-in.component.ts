@@ -8,7 +8,7 @@ import * as firebase from 'firebase';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { SpinnerService } from '../../services/spinner.service';
-
+import { OrolService } from '../../services/orol.service';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -36,9 +36,16 @@ export class SignInComponent implements AfterViewInit {
   @Output() phoneNumber = new EventEmitter();
   loginBtnText:string="Send OTP"
 
-  constructor( public ngZone: NgZone, private win: WindowService, public authService: AuthService,private formBuilder: FormBuilder,private route: ActivatedRoute,
-    private router: Router,public afs: AngularFirestore,
-    public afAuth: AngularFireAuth, private spinnerService: SpinnerService) {
+  constructor( public ngZone: NgZone,
+    private win: WindowService,
+    public authService: AuthService,
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    public afs: AngularFirestore,
+    public afAuth: AngularFireAuth,
+    private spinnerService: SpinnerService,
+    public orolService:OrolService) {
       this.authService.errorMessage.subscribe(data => {
         this.errorMessage=data;
       });
@@ -54,7 +61,6 @@ export class SignInComponent implements AfterViewInit {
       //   {
       //     size: "invisible",
       //     callback: function(response) {
-      //       alert("oh ho");
       //     }
       //   }
       // );
@@ -80,6 +86,9 @@ export class SignInComponent implements AfterViewInit {
     signInWithEmailAndPassword(userName:String, password?:string){
       this.authService.SignIn(userName, password).then((result) => {
         if(result.user.emailVerified == true){
+          this.orolService.signInWeb(userName, localStorage.getItem('phone')).subscribe((res)=>{
+            localStorage.setItem('userId', res['id']);
+          });
           this.spinnerService.setSpinner(false);
           this.ngZone.run(() => {
             this.router.navigate(['home']);
@@ -103,6 +112,9 @@ export class SignInComponent implements AfterViewInit {
       var appVerifier = this.windowRef.recaptchaVerifier;
       this.afAuth.signInWithPhoneNumber("+91"+phone, appVerifier)
       .then(result => {
+        this.orolService.signInPhone(phone).subscribe((res)=>{
+          localStorage.setItem('userId', res['id']);
+        });
         this.spinnerService.setSpinner(false);
         this.windowRef.confirmationResult = result;
         this.userName.emit(phone);
@@ -166,41 +178,12 @@ export class SignInComponent implements AfterViewInit {
         }
       }
     }
-    // onKeyUp(e: any) {
-    //   alert("wah")
-    //   const value = e.target.value
-    //   if(!(/^\+[\d ]*$/.test(value))) {
-    //     this.phone.nativeElement.value = value.slice(0, -1)
-    //   }
-    // }
-    //
-    // onKey(e: any) {
-    //   alert("here");
-    //   const value = e.target.value
-    //   if(e.which === 8) {
-    //     return
-    //   }
-    //
-    //   const len = value.length
-    //   if(len === 4 || len === 8 || len === 12) {
-    //     this.phone.nativeElement.value = value + ' '
-    //   }
-    //
-    //   if(len >= 16) {
-    //     e.preventDefault()
-    //   }
-    // }
+
     onSubmit() {
       this.submitted = true;
       this.loading = true;
     }
-
-    // register() {
-    //   this.isRegister.emit(true);
-    //   this.isLogin.emit(false);
+    // toggleClientSecret(){
+    //   // this.isEyeHidden = !this.isEyeHidden;
     // }
-
-    toggleClientSecret(){
-      // this.isEyeHidden = !this.isEyeHidden;
-    }
   }

@@ -18,6 +18,7 @@ export class MapsFloraComponent implements OnInit {
 
   constructor(private orolService: OrolService, private spinnerService:SpinnerService) {
     this.getWaterTestDetails();
+    this.getFlora();
   }
 
   ngOnInit(){
@@ -57,6 +58,24 @@ export class MapsFloraComponent implements OnInit {
             });
           }
 
+        }
+      }
+      this.spinnerService.setSpinner(false);
+    });
+  }
+  getFlora() {
+    this.spinnerService.setSpinner(true);
+    this.orolService.getFloraFauna().subscribe((data)=>{
+      if(data['count']){
+        for(var i=0; i<data['rows'].length;i++){
+          if(data['rows'][i].flora.length > 0){
+            this.markers.push({
+              latitude: data['rows'][i].latitude,
+              longitude:data['rows'][i].longitude,
+               location:data['rows'][i].location,
+               flora:data['rows'][i].flora
+            });
+          }
         }
       }
       this.spinnerService.setSpinner(false);
