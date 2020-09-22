@@ -88,6 +88,7 @@ export class SignInComponent implements AfterViewInit {
         if(result.user.emailVerified == true){
           this.orolService.signInWeb(userName, localStorage.getItem('phone')).subscribe((res)=>{
             localStorage.setItem('userId', res['id']);
+            this.getAccessToken();
           });
           this.spinnerService.setSpinner(false);
           this.ngZone.run(() => {
@@ -104,6 +105,13 @@ export class SignInComponent implements AfterViewInit {
       }).catch((error) => {
         this.spinnerService.setSpinner(false);
         this.errorMessage = error.message;
+      });
+    }
+    getAccessToken(){
+      this.spinnerService.setSpinner(true);
+      this.orolService.getAccessToken(localStorage.getItem('phone')).subscribe((data)=>{
+        localStorage.setItem('accessToken',data['accessToken']);
+        console.log(data);
       });
     }
 
