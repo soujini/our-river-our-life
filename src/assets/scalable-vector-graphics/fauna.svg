@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="45.068" height="29.285" viewBox="0 0 45.068 29.285">
+  <g id="Fauna" transform="translate(0.5 0.5)">
+    <path id="Fill_1" data-name="Fill 1" d="M4,1c0,.554-.9,1-2,1S0,1.55,0,1,.895,0,2,0,4,.442,4,1" transform="translate(34 11)" fill="#1e3664"/>
+    <path id="Stroke_3" data-name="Stroke 3" d="M44,14S37.709,25.663,25.138,25.663A24.34,24.34,0,0,1,18.4,24.6L12.378,28l-1.15-6.728A19.464,19.464,0,0,1,9.4,19.852L0,25.663V2.337L9.4,8.158A22.615,22.615,0,0,1,16.49,4.039V0h2.755c.863,0,7.306.111,10.622,2.921C39.271,5.278,44,14,44,14Z" fill="none" stroke="#1e3664" stroke-miterlimit="10" stroke-width="1"/>
+    <path id="Fill_5" data-name="Fill 5" d="M1.874,9c0,3.625.808,6.829,3.126,9A10.6,10.6,0,0,1,5,0C2.682,2.171,1.874,5.375,1.874,9" transform="translate(27 5)" fill="#1e3664"/>
+  </g>
+</svg>

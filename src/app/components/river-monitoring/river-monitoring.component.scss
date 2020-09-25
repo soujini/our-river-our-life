@@ -1,0 +1,209 @@
+.flora-fauna{
+color:#212121 !important;
+font-family: 'Montserrat', sans-serif;
+font-size:14px;
+font-weight: 400;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+.activeBtn {
+  background-color: #007bff;
+  color: #FFF;
+  border: none !important;
+}
+.click-property{
+  border: 1px solid black;
+
+}
+.example-full-width {
+  width: 100%;
+}
+
+.checkbox-two{
+-moz-column-count:2 !important;
+-webkit-column-count:2 !important;
+column-count:2 !important;
+}
+.alert-box{
+    padding: 25px;
+   }
+   .addFlora{
+    font-size:12px;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif !important;
+    color:#808080;
+  }
+  .fieldSet{
+   margin-left: -14px;
+  }
+  .activityDate{
+   border-radius: 10px;
+   border: 1px solid #979797;
+   width: 308px;
+   height: 50px;
+   background-color: #FFF;
+  }
+
+  .fieldname{
+   border-radius: 10px;
+   border: 1px solid #979797;
+   width: 632px;
+   height: 50px;
+   background-color: #FFF;
+  }
+  #basicModal{
+    .modal-content{
+      padding:50px !important;
+      width: 861px !important;
+      height: 654px !important;
+    }
+    .modal-header{
+      padding:0px !important;
+      padding-top:-50px !important;
+      border-bottom: none !important;
+    }
+    .modal-body{
+        padding:0px !important;
+        // padding-top:20px !important;
+    }
+    .modal-dialog-centered{
+      width: inherit !important;
+      width: 861px !important;
+    }
+    .modal-footer{
+      border:none !important;
+      padding: 0px !important;
+      margin-top:30px !important;
+    }
+  }
+
+  @media (min-width: 576px){
+    .modal-dialog {
+        max-width: inherit !important;
+    }
+    }
+
+
+    .modal-content:not(.card-image) .close {
+      position: absolute;
+      right: 30px !important;
+      top: 23px !important;
+      // margin-right: 0px !important;
+      // margin-top: -42px !important;
+    }
+
+    .file-upload-div{
+      border: 2px dashed #D3D3D3;
+    }
+    .title{
+      padding-left:15px;
+    }
+    .btn-set-image-disabled{
+      height:48px;
+      width:243px;
+      color:#757575;
+      font-family: 'Quicksand', sans-serif;
+      font-size:16px;
+      background-color:#F8F8F8;
+      text-transform: capitalize;
+      border:0px;
+    }
+    .btn-set-image{
+      height:48px;
+      width:243px;
+      color:#FFFFFF;
+      font-family: 'Quicksand', sans-serif;
+      font-size:16px;
+      background-color:#66A19C;
+      text-transform: capitalize;
+      border:0px;
+    }
+    // .btn-choose-image{
+    //   color:#757575;
+    //   font-family: 'Quicksand', sans-serif;
+    //   font-size:15px;
+    //   background-color:#F8F8F8;
+    //   text-transform: capitalize;
+    //   margin-left:50px;
+    //   border: 1px solid #E1E1E1;
+    //   width:148px;
+    //   height:37px;
+    //   font-weight: 500;
+    //   border-radius:5px;
+    //   margin-bottom: 15px;
+    //  }
+    //  .btn-choose-image-error{
+    //   color:#757575;
+    //   font-family: 'Quicksand', sans-serif;
+    //   font-size:15px;
+    //   background-color:#FFFFFF;
+    //   text-transform: capitalize;
+    //   margin-left:50px;
+    //   border: 1px solid #E0724F;
+    //   width:148px;
+    //   height:37px;
+    //   font-weight: 500;
+    //   border-radius:5px;
+    //   margin-bottom: 15px;
+    //  }
+    .cp2 {
+      margin: 0;
+      padding-bottom: 70px;
+      position: relative;
+      border-bottom: 2px solid #F5F5F5;
+      width:100%;
+      display: inline-block;
+    }
+    .cp2:before {
+      position: absolute;
+      background: #66A19C;
+      height: 2px;
+      content: '';
+      width: 100px;
+      bottom: -2px;
+      left: 5;
+    }
+    .title-div{
+      height:105px;
+      overflow: visible;
+      white-space: nowrap;
+      text-align: left;
+      font-family: 'Quicksand', sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 28px;
+      color: rgba(69,78,87,1);
+    }
+  .btn-choose-image{
+    color:#757575;
+    font-family: 'Quicksand', sans-serif;
+    font-size:16px;
+    background-color:#F8F8F8;
+    text-transform: capitalize;
+    margin-left:50px;
+    border: 1px solid #E1E1E1;
+    width:148px;
+    height:37px;
+   }
+   .flexbox {
+    display: flex;
+  }
+  .frame{
+    width: 176px !important;
+    height: 176px !important;
+      vertical-align: middle;
+    text-align: center;
+    display: table-cell;
+  }
+  .flexbox2{
+    flex: 1;
+  align-self: flex-end;
+  }
+  .img-list{
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+  }
