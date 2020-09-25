@@ -43,7 +43,6 @@ export class ToolbarComponent implements OnInit {
     this.isVerifyOTP=event;
   }
   setUserName(event){
-    alert("in setusername "+event);
     this.userName=event;
   }
   setPassword(event){

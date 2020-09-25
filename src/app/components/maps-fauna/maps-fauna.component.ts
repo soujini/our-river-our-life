@@ -18,6 +18,7 @@ export class MapsFaunaComponent implements OnInit {
 
   constructor(private orolService: OrolService, private spinnerService:SpinnerService) {
     this.getWaterTestDetails();
+    this.getFauna();
   }
 
   ngOnInit(){
@@ -37,7 +38,24 @@ export class MapsFaunaComponent implements OnInit {
   // markerDragEnd(m: marker, $event: MouseEvent) {
   //   console.log('dragEnd', m, $event);
   // }
-
+  getFauna() {
+    this.spinnerService.setSpinner(true);
+    this.orolService.getFloraFauna().subscribe((data)=>{
+      if(data['count']){
+        for(var i=0; i<data['rows'].length;i++){
+          if(data['rows'][i].fauna.length > 0){
+            this.markers.push({
+              latitude: data['rows'][i].latitude,
+              longitude:data['rows'][i].longitude,
+              location:data['rows'][i].location,
+              fauna:data['rows'][i].fauna
+            });
+          }
+        }
+      }
+      this.spinnerService.setSpinner(false);
+    });
+  }
   getWaterTestDetails() {
     // var a = this.orolService.getFloodAlerts();
     this.orolService.getWaterTestDetails().subscribe((data)=>{
@@ -47,9 +65,9 @@ export class MapsFaunaComponent implements OnInit {
             this.markers.push({
               latitude: data['rows'][i].generalInformation.latitude,
               longitude:data['rows'][i].generalInformation.longitude,
-               location:data['rows'][i].generalInformation.location,
+              location:data['rows'][i].generalInformation.location,
               // location:data['rows'][i].location,
-               fauna:data['rows'][i].fauna
+              fauna:data['rows'][i].fauna
               // activityDate:data['rows'][i].date,
               // activityTime:data['rows'][i].time,
               // experience:data['rows'][i].experience,
@@ -63,16 +81,16 @@ export class MapsFaunaComponent implements OnInit {
     });
   }
 
-  }
-  // just an interface for type safety.
-  interface marker {
+}
+// just an interface for type safety.
+interface marker {
   latitude: number;
   longitude: number;
   // label?: string;
   // draggable: boolean;
-   location?: string;
+  location?: string;
   fauna?: Array <string>;
   // activityTime:string;
   // activityDate: string;
   // experience : string;
-  }
+}

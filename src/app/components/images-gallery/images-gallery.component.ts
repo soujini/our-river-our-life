@@ -95,7 +95,6 @@ export class ImagesGalleryComponent implements AfterViewInit {
     },
   ];
   ngAfterViewInit(){
-    // alert("images");
     // this.slides = this.chunk(this.cards, 1);
   }
   slides: any = [[]];
@@ -108,7 +107,6 @@ export class ImagesGalleryComponent implements AfterViewInit {
   }
   constructor() { }
   ngOnInit() {
-    // alert("asdasd");
     this.slides = this.chunk(this.cards, 1);
   }
 

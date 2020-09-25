@@ -5,7 +5,6 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 import { Subject } from 'rxjs/Subject';
-// import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { BehaviorSubject } from 'rxjs';
 import { SpinnerService } from '../../services/spinner.service';
 import { OrolService } from '../../services/orol.service';
@@ -52,13 +51,13 @@ export class AuthService {
       this.spinnerService.setSpinner(true);
     return this.afAuth.createUserWithEmailAndPassword(email, password)
     .then((result) => {
+      localStorage.setItem('phone', phoneNumber);
       /* Call the SendVerificaitonMail() function when new user sign
       up and returns promise */
-      this.orolService.signIn(email, phoneNumber).subscribe((res)=>{
-        alert(res);
-        console.log("sign in");
-        console.log(res);
-      });
+      // this.orolService.signIn(email, phoneNumber).subscribe((res)=>{
+      //     alert(res.id);
+      //   localStorage.setItem('userId', res.id);
+      // });
       this.SendVerificationMail();
       this.SetUserData(result.user);
         this.spinnerService.setSpinner(false);

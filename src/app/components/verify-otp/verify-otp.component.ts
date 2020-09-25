@@ -45,7 +45,6 @@ export class VerifyOTPComponent implements AfterViewInit {
       // this.login();
        this.getAccessToken();
       // this.user = result.user;
-      // alert("otp verified");
     })
     .catch( error => {
       this.spinnerService.setSpinner(false);
