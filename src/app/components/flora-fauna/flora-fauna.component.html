@@ -85,15 +85,16 @@
             <label for="localName" class="col-md-2 mt-2 addFlora">Latitude / Longitude <span>*</span></label>
             <div class="col-md-4 mt-2 pl-0 pr-0 d-flex">
               <div class="col-md-6 m-0 p-0">
-                <input for="localName" type="text" class="form-control input-latitude " id="localName"
-                formControlName="latitude" placeholder="Local Name" style="width:99%">
+                <input for="latitude" type="text" class="form-control input-latitude " id="latitude"
+                formControlName="latitude" placeholder="Latitude" style="width:99%" (change)="bla()">
                 <div class="error-message-div mt-1">
                   <p *ngIf="floraFaunaForm.get('latitude').errors?.required && this.submitted == true" class="errorMessage"><img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is required.</p>
                 </div>
               </div>
+
               <div class="col-md-6 m-0 p-0">
                 <input for="scientificName" type="text" class="form-control input-latitude" id="scientificName"
-                formControlName="longitude" placeholder="Scientific Name" style="width:99%">
+                formControlName="longitude" placeholder="Longitude" style="width:99%" (change)="bla()">
                 <div class="error-message-div mt-1">
                   <p *ngIf="floraFaunaForm.get('longitude').errors?.required && this.submitted == true" class="errorMessage"><img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is required.</p>
                 </div>

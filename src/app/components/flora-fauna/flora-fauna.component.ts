@@ -211,4 +211,5 @@ export class FloraFaunaComponent implements OnInit {
         this.orolService.addFauna(this.floraFaunaForm.value, this.imageFile);
       }
     }
+  
   }

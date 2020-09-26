@@ -628,31 +628,30 @@ Image</button>
                       formControlName="testerName" placeholder="Name">
                   </div>
                 </div>
-                <div class="row" formGroupName="generalInformation">
+                <div class="row" >
                   <div class="col-md-12">
                     <label for="rm_location" class="text-left">Location</label>
-                    <input mdbInput id="rm_location" type="text" id="form1" class="form-control"
-                      formControlName="location" placeholder="Location">
+                      <input for="location" id="rm_location" id="form1" formControlName="location" placeholder="Search by location" autocorrect="off"
+                    autocapitalize="off" spellcheck="off" type="text" class="form-control input-searchmt-2" #search
+                    [formControl]="searchControl">
                   </div>
                 </div>
+             
                 <div class="row" formGroupName="generalInformation">
                   <div class="col-md-6">
                     <label for="rm_latitude" class="text-left">Latitude</label>
                     <input mdbInput id="rm_latitude" type="text" id="form1" class="form-control"
-                      formControlName="latitude" placeholder="Location">
-
-
+                      formControlName="latitude" placeholder="Location" (change)="bla()">
                   </div>
                   <div class="col-md-6">
 
                     <label for="rm_longitude" class="text-left">Longitude</label>
                     <input mdbInput id="rm_longitude" type="text" id="form1" class="form-control"
-                      formControlName="longitude" placeholder="Location">
-
+                      formControlName="longitude" placeholder="Location" (change)="bla()">
                   </div>
                 </div>
 
-                <agm-map style="height: 300px;" [latitude]="lat" [longitude]="lng" [zoom]="zoom"
+                <agm-map style="height: 300px;" [mapTypeId]="'hybrid'" [latitude]="lat" [longitude]="lng" [zoom]="zoom"
                   (mapClick)="mapClicked($event)">
                   <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
                 </agm-map>

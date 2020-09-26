@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { IMyOptions } from 'ng-uikit-pro-standard';
 import { ModalDirective } from 'ng-uikit-pro-standard';
 import { MapsAPILoader, AgmMap, MouseEvent} from '@agm/core';
+import { NgZone } from '@angular/core';
 
 
 export class User {
@@ -18,6 +19,7 @@ export class User {
   styleUrls: ['./river-monitoring.component.scss']
 })
 export class RiverMonitoringComponent implements OnInit {
+  @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
   @ViewChild(AgmMap,{static: true}) public agmMap: AgmMap;
   defaultImageURL: string = "../../../assets/icons/default_image_upload.jpg";
   @ViewChild('basicModal') basicModal: ModalDirective;
@@ -28,12 +30,15 @@ export class RiverMonitoringComponent implements OnInit {
   note = ".jpg, .jpeg, .png, files accepted";
   info = "(Max. size 250KB)";
   public searchControl: FormControl;
+  geocoder: any;
+
   lastClickedIndex;
   public myDatePickerOptions: IMyOptions = {
     dateFormat: 'dd mmm yyyy',
     closeAfterSelect: true
   };
   images = [];
+  centerLoc:any={};
   public imageFiles: File[] = [];
   imageUrl = [];
   userControl = new FormControl();
@@ -150,10 +155,35 @@ export class RiverMonitoringComponent implements OnInit {
   getAddress: any;
   lat: number;
   lng: number;
-  constructor(private fb: FormBuilder, private apiloader:MapsAPILoader) {
+  constructor(private fb: FormBuilder, 
+    private mapsAPILoader: MapsAPILoader,private apiloader:MapsAPILoader,private ngZone: NgZone) {
     this.createForm();
   }
   ngOnInit() {
+    this.searchControl = new FormControl();
+    this.mapsAPILoader.load().then(() => {
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+        types: ["address"]
+      });
+
+      autocomplete.addListener("place_changed", () => {
+        this.ngZone.run(() => {
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+          //verify result
+          if (place.geometry === undefined || place.geometry === null) {
+            return;
+          }
+
+          //set latitude, longitude and zoom
+          this.activityForm.get('generalInformation').patchValue({
+            latitude:  place.geometry.location.lat(),
+            longitude:  place.geometry.location.lng(),
+            location: place.formatted_address,
+          });
+          this.centerLoc = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() };
+        });
+      });
+    });
     this.get()
     this.agmMap.triggerResize(true);
      this.zoom = 16;
@@ -222,8 +252,8 @@ export class RiverMonitoringComponent implements OnInit {
         activityTime: [' 6:06 PM'],
         testerName: ['Aravind'],
         location: ['Hebbal, Karnataka'],
-        latitude: ['13.0307684'],
-        longitude: [' 77.5912898'],
+        latitude: [''],
+        longitude: [' '],
       }),
       waterLevelAndWeather: this.fb.group({
         airTemperature: ['21'],
@@ -447,5 +477,46 @@ export class RiverMonitoringComponent implements OnInit {
     })
   }
   
+  }
+
+  private setCurrentPosition() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        var accuracy = position.coords.accuracy;
+        this.activityForm.patchValue({
+          latitude: +position.coords.latitude,
+          longitude: +position.coords.longitude,
+        });
+        this.centerLoc = { lat: position.coords.latitude, lng: position.coords.longitude };
+        this.getAddressByLatitudeAndLongitude(position.coords.latitude, position.coords.longitude, this.activityForm);
+      });
+    }
+    else {
+      // alert("Geolocation is not supported by this browser.");
+    }
+  }
+
+  bla(){
+    this.getAddressByLatitudeAndLongitude(this.activityForm.get('generalInformation').get('latitude').value, this.activityForm.get('generalInformation').get('longitude').value, this.activityForm);
+    this.centerLoc = { lat: this.activityForm.get('generalInformation').get('latitude').value, lng: this.activityForm.get('generalInformation').get('longitude').value };
+    //this.recenterMap();
+  }
+  
+  async getAddressByLatitudeAndLongitude(lat, lng, form) {
+    var address;
+    this.geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(lat, lng);
+
+    await this.geocoder.geocode({ latLng: latlng }, function (results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        var arrAddress = results;
+        address = results[0].formatted_address;
+        form.patchValue({
+          location: address
+        });
+      } else {
+        console.log("Geocoder failed due to: " + status);
+      }
+    });
   }
 }
