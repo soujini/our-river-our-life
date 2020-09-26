@@ -1,603 +1,725 @@
-<div style="margin-top:70px; padding:50px;">
-  <mdb-tabset #staticTabs [buttonClass]="'nav md-pills pills-secondary mb-2'" [justified]="true"
-    [contentClass]="'card'">
-    <mdb-tab heading="Report">
+<!-- <div style="margin-top:100px; padding-bottom:50px;">
+<mdb-tabset #staticTabs [buttonClass]="'nav md-pills pills-secondary mb-2'" [justified]="true"
+[contentClass]="'card'">
 
-    </mdb-tab>
 
-    <mdb-tab heading="Activity">
-      <form [formGroup]="activityForm">
+<mdb-tab heading="Create Report">
+<form [formGroup]="activityForm">
+<mdb-stepper #stepper>
+<mdb-step name="General Information">
+<div class="row mt-3" formGroupName="generalInformation">
+<div class="col-xs-6">
+<label class="addFlora">Activity Date</label>
+<mdb-date-picker name="mydate" auto formControlName="activityDate" [options]="myDatePickerOptions"
+for="activityDate" id="mydp" [placeholder]="'Selected date'" value='' required
+class="form-control activityDate ">
+</mdb-date-picker>
+</div>
+<div class="col-md-6">
+<label class="addFlora">Activity Time</label>
+<mdb-time-picker #timepicker formControlName="activityTime" class="form-control activityDate " id="mytp"
+value='' [placeholder]="'Selected time'"></mdb-time-picker>
+</div>
+</div>
 
-        <mdb-stepper #stepper>
+<div class="fieldSet" formGroupName="generalInformation">
+<label for="testerName" class="addFlora">Name</label>
+<input for="testerName" type="text" value='' class="form-control fieldname" id="testerName"
+formControlName="testerName" placeholder="Name">
+</div>
 
-          <mdb-step name="General Information">
+<div class="fieldSet mt-3" formGroupName="generalInformation">
+<label for="location" class="addFlora">Location</label>
+<input for="location" type="text" value='' class="form-control fieldname" id="location"
+autocapitalize="off" spellcheck="off" formControlName="location" [formControl]="searchControl"
+placeholder="Search by location" autocorrect="off" #search>
+</div>
 
-            <!-- <form [formGroup]="activityForm"> -->
+<div class="row mt-3" formGroupName="generalInformation">
+<div class="col-xs-6">
+<label class="addFlora">Latitude</label>
+<input for="latitude" formControlName="latitude" type="text" value='' class="form-control activityDate "
+placeholder="Latitude">
+</div>
+<div class="col-md-6">
+<label class=" addFlora">Longitude</label>
+<input for="longitude" formControlName="longitude" type="text" value=''
+class="form-control activityDate" placeholder="Longitude">
+</div>
+</div>
 
-            <div class="row mt-3" formGroupName="generalInformation">
-              <div class="col-xs-6">
-                <label class="addFlora">Activity Date</label>
-                <mdb-date-picker name="mydate" auto formControlName="activityDate" [options]="myDatePickerOptions"
-                  for="activityDate" id="mydp" [placeholder]="'Selected date'" value='' required
-                  class="form-control activityDate ">
-                </mdb-date-picker>
-              </div>
-              <div class="col-md-6">
-                <label class="addFlora">Activity Time</label>
-                <mdb-time-picker #timepicker formControlName="activityTime" class="form-control activityDate " id="mytp"
-                  value='' [placeholder]="'Selected time'"></mdb-time-picker>
-              </div>
-            </div>
 
-            <div class="fieldSet mt-3" formGroupName="generalInformation">
-              <label for="testerName" class="addFlora">Name</label>
-              <input for="testerName" type="text" value='' class="form-control fieldname" id="testerName"
-                formControlName="testerName" placeholder="Name">
-            </div>
+<button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
+(click)="stepper.next()">CONTINUE</button>
+</mdb-step>
 
-            <div class="fieldSet mt-3" formGroupName="generalInformation">
-              <label for="location" class="addFlora">Location</label>
-              <input for="location" type="text" value='' class="form-control fieldname" id="location"
-                autocapitalize="off" spellcheck="off" formControlName="location" [formControl]="searchControl"
-                placeholder="Search by location" autocorrect="off" #search>
-            </div>
+<mdb-step name="Water Level & Weather">
 
-            <div class="row mt-3" formGroupName="generalInformation">
-              <div class="col-xs-6">
-                <label class="addFlora">Latitude</label>
-                <input for="latitude" formControlName="latitude" type="text" value='' class="form-control activityDate "
-                  placeholder="Latitude">
-              </div>
-              <div class="col-md-6">
-                <label class=" addFlora">Longitude</label>
-                <input for="longitude" formControlName="longitude" type="text" value=''
-                  class="form-control activityDate" placeholder="Longitude">
-              </div>
-            </div>
+<div class="row mt-3" formGroupName="waterLevelAndWeather">
+<div class="col-xs-6">
+<label class="addFlora">Measure the air temperature</label>
+<div for="airTemperature" class="input-group mb-2">
+<input formControlName="airTemperature" type="text" value='' class="form-control activityDate "
+placeholder="Temperature">
+<div class="input-group-prepend">
+<div class="input-group-text">°C</div>
+</div>
+</div>
 
-            <!-- </form> -->
+</div>
+</div>
+<div class="col-xs-12">
+<label class="addFlora">Observe the Water Level</label>
+<div class="d-flex">
+<div *ngFor="let wl of waterLevels">
+<img [src]="wl.imageUrl" class="mr-2">
+<label class="text-center">{{wl.name}}</label>
+</div>
+</div>
+</div>
+<div class="col-xs-12">
+<label class="addFlora">Weather Conditions</label>
+<div class="d-flex">
+<div *ngFor="let wc of weatherCodition">
+<img [src]="wc.imageUrl" class="mr-2">
+<label class="text-center">{{wc.name}}</label>
+</div>
+</div>
+</div>
 
-            <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
-              (click)="stepper.next()">CONTINUE</button>
-          </mdb-step>
+<div class="col-xs-12">
+<label class="addFlora">River Picture</label>
+<div class="form-group">
+<div class="flexbox">
+<div class="flexbox1" style="height:176px; width:176px; background-color: #F7F7F7; line-height:54px;">
+<div class="frame">
+<img [src]=defaultImageURL class="img-list" height="auto" width="176px">
+</div>
+</div>
+<div class="flexbox2">
+<div class="flex">
+<button type="button" mdbBtn color="primary" rounded="true" outline="true"
+class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>River Picture</button>
+</div>
 
-          <mdb-step name="Water Level & Weather">
+<div mdbModal id="basicModal" #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog"
+aria-labelledby="myBasicModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close pull-right" aria-label="Close"
+(click)="basicModal.hide()">
+<img class="modal_close_icon"
+src="../../../assets/scalable-vector-graphics/modal_close_icon.svg">
 
-            <!-- <form [formGroup]="activityForm"> -->
-            <div class="row mt-3" formGroupName="waterLevelAndWeather">
-              <div class="col-xs-6">
-                <label class="addFlora">Measure the air temperature</label>
-                <div for="airTemperature" class="input-group mb-2">
-                  <input formControlName="airTemperature" type="text" value='' class="form-control activityDate "
-                    placeholder="Temperature">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">°C</div>
+</button>
+<div class="title-div xrow modal-title w-100">
+<span class="cp2 title">River Image</span>
+</div>
+</div>
+<div class="modal-body">
+
+<div class="file-upload-div">
+<mdb-file-upload [height]="318" (fileRemoved)="removeImageFile()"
+(fileAdded)="addImageFile($event)"></mdb-file-upload>
+</div>
+</div>
+
+<div class="modal-footer">
+<button type="button"
+[ngClass]="this.imageFileTemp != null && this.imageFileErrorMessage == '' ? 'btn-set-image':'btn-set-image-disabled'"
+class="waves-light mr-auto" aria-label="Close" (click)="setImageURL()" mdbWavesEffect>Set
+Image</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+
+<div class="mt-2">
+<button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
+(click)="stepper.next()">CONTINUE</button>
+<button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
+(click)="stepper.previous()">BACK</button>
+</div>
+</mdb-step>
+
+<mdb-step name="Observe your Surroundings">
+<div>
+<mat-form-field class="example-full-width">
+<input type="text" placeholder="Select Users" aria-label="Select Users" matInput [matAutocomplete]="auto"
+[formControl]="userControl">
+
+</mat-form-field>
+
+<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+<mat-option *ngFor="let user of filteredUsers | async" [value]="selectedUsers">
+<div (click)="optionClicked($event, user)">
+<mat-checkbox [checked]="user.selected" (change)="toggleSelection(user)"
+(click)="$event.stopPropagation()">
+{{ user.firstname }} {{ user.lastname }}
+</mat-checkbox>
+</div>
+</mat-option>
+</mat-autocomplete>
+
+<br><br>
+
+</div>
+<div class="checkbox-two">
+<div *ngFor="let obj of data">
+<mdb-checkbox [checked]="true" [default]="true">{{obj.name}}</mdb-checkbox>
+</div>
+</div>
+<div class="mt-2">
+<button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
+(click)="stepper.next()">CONTINUE</button>
+<button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
+(click)="stepper.previous()">BACK</button>
+</div>
+</mdb-step>
+
+<mdb-step name="Water Quality Testing">
+
+<div class="row mt-3" formGroupName="waterTesting">
+<label for="waterTemperature" class="addFlora">Water Temperature</label>
+<div class="input-group mb-2">
+<input formControlName="waterTemperature" type="text" value='' class="form-control activityDate "
+placeholder="Water Temperature">
+<div class="input-group-prepend">
+<div class="input-group-text">°C</div>
+</div>
+</div>
+</div>
+
+<div class="row mt-3" formGroupName="waterTesting">
+<div class="col-xs-6">
+<label for="pH" class="addFlora">pH</label>
+<div class="input-group mb-2">
+<input formControlName="pH" type="text" value='' class="form-control activityDate " placeholder="pH">
+<div class="input-group-prepend">
+<div class="input-group-text">units</div>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<label for="alkalinity" class="addFlora">Alkalinity</label>
+<div class="input-group mb-2">
+<input formControlName="alkalinity" type="text" value='' class="form-control activityDate"
+placeholder="Temperature">
+<div class="input-group-prepend">
+<div class="input-group-text">mg/L</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row mt-3" formGroupName="waterTesting">
+<div class="col-xs-6">
+<label for="nitrate" class="addFlora">Nitrate</label>
+<div class="input-group mb-2">
+<input formControlName="nitrate" type="text" value='' class="form-control activityDate "
+placeholder="nitrate">
+<div class="input-group-prepend">
+<div class="input-group-text">mg/L</div>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<label for="nitrite" class="addFlora">Nitrite</label>
+<div class="input-group mb-2">
+<input formControlName="nitrite" type="text" value='' class="form-control activityDate "
+placeholder="nitrite">
+<div class="input-group-prepend">
+<div class="input-group-text">mg/L</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="row mt-3" formGroupName="waterTesting">
+<label for="hardness" class="addFlora">Hardness</label>
+<div class="input-group mb-2">
+<input formControlName="hardness" type="text" value='' class="form-control activityDate "
+placeholder="Water Temperature">
+<div class="input-group-prepend">
+<div class="input-group-text">mg/L</div>
+</div>
+</div>
+</div>
+
+<div class="row mt-3" formGroupName="waterTesting">
+<div class="col-xs-6">
+<label for="chlorine" class="addFlora">Chlorine</label>
+<div class="input-group mb-2">
+<input formControlName="chlorine" type="text" value='' class="form-control activityDate "
+placeholder="chlorine">
+<div class="input-group-prepend">
+<div class="input-group-text">mg/L</div>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<label for="iron" class="addFlora">Iron</label>
+<div class="input-group mb-2">
+<input formControlName="iron" type="text" value='' class="form-control activityDate "
+placeholder="iron">
+<div class="input-group-prepend">
+<div class="input-group-text">mg/L</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row mt-3" formGroupName="waterTesting">
+<label for="dissolvedOxygen" class="addFlora">Dissolved Oxygen</label>
+<div class="input-group mb-2">
+<input formControlName="dissolvedOxygen" type="text" value='' class="form-control activityDate "
+placeholder="Dissolved Oxygen">
+<div class="input-group-prepend">
+<div class="input-group-text">mg/L</div>
+</div>
+</div>
+</div>
+<div class="row mt-3">
+<label class="addFlora">E Coli/Coliform Bacteria</label>
+<div class="input-group mb-2">
+<button mdbBtn type="button" *ngFor="let item of items; let i = index" class="ml-4 click-property"
+[ngClass]="(lastClickedIndex == i) ? 'activeBtn': ''" (click)="changeActive(i)" #disable
+mdbWavesEffect>{{item.name}}</button>
+</div>
+
+</div>
+
+<div class="row mt-3" formGroupName="waterTesting">
+<label for="turbidity" class="addFlora">Turbidity</label>
+<div class="input-group mb-2">
+<input formControlName="turbidity" type="text" value='' class="form-control activityDate "
+placeholder="turbidity">
+<div class="input-group-prepend">
+<div class="input-group-text">NTU</div>
+</div>
+</div>
+</div>
+
+<div class="row mt-3" formGroupName="waterTesting">
+<label for="phosphate" class="addFlora">Phosphate</label>
+<div class="input-group mb-2">
+<input formControlName="phosphate" type="text" value='' class="form-control activityDate "
+placeholder="phosphate">
+<div class="input-group-prepend">
+<div class="input-group-text">mg/L</div>
+</div>
+</div>
+</div>
+
+<div class="row mt-3" formGroupName="waterTesting">
+<label for="ammonia" class="addFlora">Ammonia</label>
+<div class="input-group mb-2">
+<input formControlName="ammonia" type="text" value='' class="form-control activityDate "
+placeholder="ammonia">
+<div class="input-group-prepend">
+<div class="input-group-text">mg/L</div>
+</div>
+</div>
+</div>
+
+<div class="row mt-3" formGroupName="waterTesting">
+<label for="lead" class="addFlora">Lead</label>
+<div class="input-group mb-2">
+<input formControlName="lead" type="text" value='' class="form-control activityDate "
+placeholder="lead">
+<div class="input-group-prepend">
+<div class="input-group-text">mg/L</div>
+</div>
+</div>
+</div>
+<div class="mt-2">
+<button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
+(click)="stepper.next()">CONTINUE</button>
+<button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
+(click)="stepper.previous()">BACK</button>
+</div>
+</mdb-step>
+
+<mdb-step name="Flora & Fauna">
+<div>
+<div class='row'>
+<img src="../../../assets/scalable-vector-graphics/flora.svg">
+<label class="ml-2">Flora</label>
+</div>
+<span class="flora-fauna">Record the vegetation you can see around you. This
+could include grasses,
+shrubs, plants
+and trees</span>
+
+<div class="image_container">
+
+<div class="form-group">
+<div style="height:55px; display:flex; overflow-x: auto;">
+<img *ngFor='let url of images' [src]="url" height="50px" width="50px" style="margin: 3px;">
+</div>
+<button mdbBtn type="button" color="primary" rounded="true" outline="true" mdbWavesEffect>
+<input id="file" type="file" class="form-control" multiple (change)="onFileChange($event)">
+</button>
+</div>
+</div>
+</div>
+
+<div formGroupName="fauna">
+<div class='row'>
+<img src="../../../assets/scalable-vector-graphics/fauna.svg">
+<label class="ml-2">Fauna</label>
+</div>
+<span class="flora-fauna">Record fish, amphibians, reptiles, birds, insects and mammals that you see
+around you.</span>
+
+<div class="form-group">
+<div style="height:55px; display:flex; overflow-x: auto;">
+<img *ngFor='let url of imageUrl' [src]="url" height="50px" width="50px" style="margin: 3px;">
+</div>
+<button mdbBtn type="button" color="primary" rounded="true" outline="true" mdbWavesEffect>
+
+<input id="file" type="file" class="form-control" multiple (change)="onFileChanges($event)">
+</button>
+</div>
+</div>
+<div class="mt-2">
+<button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
+(click)="stepper.next()">CONTINUE</button>
+<button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
+(click)="stepper.previous()">BACK</button>
+</div>
+</mdb-step>
+
+<mdb-step name="Picture">
+
+<div>
+<div class="col-xs-12">
+<label class="addFlora">Picture (Optional)</label>
+<div class="form-group">
+<div class="flexbox">
+<div class="flexbox1"
+style="height:176px; width:176px; background-color: #F7F7F7; line-height:54px;">
+<div class="frame">
+<img [src]=defaultImageURL class="img-list" height="auto" width="176px">
+</div>
+</div>
+<div class="flexbox2">
+<div class="flex">
+<button type="button" color="primary" rounded="true" outline="true" mdbBtn
+class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>Picture
+(Optional)</button>
+</div>
+
+<div mdbModal id="basicModal" #basicModal="mdbModal" class="modal fade" tabindex="-1"
+role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close pull-right" aria-label="Close"
+(click)="basicModal.hide()">
+<img class="modal_close_icon"
+src="../../../assets/scalable-vector-graphics/modal_close_icon.svg">
+
+</button>
+<div class="title-div xrow modal-title w-100">
+<span class="cp2 title">River Image</span>
+</div>
+</div>
+<div class="modal-body">
+
+<div class="file-upload-div">
+<mdb-file-upload [height]="318" (fileRemoved)="removeImageFile()"
+(fileAdded)="addImageFile($event)"></mdb-file-upload>
+</div>
+</div>
+
+<div class="modal-footer">
+<button type="button"
+[ngClass]="this.imageFileTemp != null && this.imageFileErrorMessage == '' ? 'btn-set-image':'btn-set-image-disabled'"
+class="waves-light mr-auto" aria-label="Close" (click)="setImageURL()"
+mdbWavesEffect>Set
+Image</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="col-xs-12">
+<label class="addFlora">Upload Activity Pictures</label>
+<div class="form-group">
+<div class="flexbox">
+<div class="flexbox1"
+style="height:176px; width:176px; background-color: #F7F7F7; line-height:54px;">
+<div class="frame">
+<img [src]=defaultImageURL class="img-list" height="auto" width="176px">
+</div>
+</div>
+<div class="flexbox2">
+<div class="flex">
+<button type="button" color="primary" rounded="true" outline="true" mdbBtn
+class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>Upload Activity
+Pictures</button>
+</div>
+
+<div mdbModal id="basicModal" #basicModal="mdbModal" class="modal fade" tabindex="-1"
+role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close pull-right" aria-label="Close"
+(click)="basicModal.hide()">
+<img class="modal_close_icon"
+src="../../../assets/scalable-vector-graphics/modal_close_icon.svg">
+
+</button>
+<div class="title-div xrow modal-title w-100">
+<span class="cp2 title">Upload Activity Pictures</span>
+</div>
+</div>
+<div class="modal-body">
+
+<div class="file-upload-div">
+<mdb-file-upload [height]="318" (fileRemoved)="removeImageFile()"
+(fileAdded)="addImageFile($event)"></mdb-file-upload>
+</div>
+</div>
+
+<div class="modal-footer">
+<button type="button"
+[ngClass]="this.imageFileTemp != null && this.imageFileErrorMessage == '' ? 'btn-set-image':'btn-set-image-disabled'"
+class="waves-light mr-auto" aria-label="Close" (click)="setImageURL()"
+mdbWavesEffect>Set
+Image</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="col-xs-12">
+<label class="addFlora">Upload ArtWork</label>
+<div class="form-group">
+<div class="flexbox">
+<div class="flexbox1"
+style="height:176px; width:176px; background-color: #F7F7F7; line-height:54px;">
+<div class="frame">
+<img [src]=defaultImageURL class="img-list" height="auto" width="176px">
+</div>
+</div>
+<div class="flexbox2">
+<div class="flex">
+
+<button mdbBtn type="button" color="primary" rounded="true" outline="true"
+class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>Upload
+ArtWork</button>
+</div>
+
+<div mdbModal id="basicModal" #basicModal="mdbModal" class="modal fade" tabindex="-1"
+role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close pull-right" aria-label="Close"
+(click)="basicModal.hide()">
+<img class="modal_close_icon"
+src="../../../assets/scalable-vector-graphics/modal_close_icon.svg">
+
+</button>
+<div class="title-div xrow modal-title w-100">
+<span class="cp2 title">River Image</span>
+</div>
+</div>
+<div class="modal-body">
+
+<div class="file-upload-div">
+<mdb-file-upload [height]="318" (fileRemoved)="removeImageFile()"
+(fileAdded)="addImageFile($event)"></mdb-file-upload>
+</div>
+</div>
+
+<div class="modal-footer">
+<button type="button"
+[ngClass]="this.imageFileTemp != null && this.imageFileErrorMessage == '' ? 'btn-set-image':'btn-set-image-disabled'"
+class="waves-light mr-auto" aria-label="Close" (click)="setImageURL()"
+mdbWavesEffect>Set
+Image</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="step-actions">
+<div class="mt-2">
+<button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
+(click)="stepper.next()">CONTINUE</button>
+</div>
+</div>
+</mdb-step>
+
+</mdb-stepper>
+</form>
+</mdb-tab>
+<mdb-tab heading="Report">
+</mdb-tab>
+</mdb-tabset>
+</div> -->
+
+<div class="content">
+  <div>
+    <mdb-tabset id="river_monitoring_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'"
+      [contentClass]="'card'" class="classic-tabs text-center">
+
+      <mdb-tab heading="Create Report">
+        <div class="row bg-white" style="height:500px; margin-left:-35px; margin-right:-35px">
+          <mdb-stepper #river_monitoring_stepper id="river_monitoring_stepper" class="col-12">
+            <mdb-step name="General Information" xstepForm="firstFormGroup">
+
+              <form [formGroup]="activityForm" style="padding-left:200px; padding-right:200px">
+                <div class="row" formGroupName="generalInformation">
+                  <div class="col-md-6">
+                    <label for="rm_dp" class="text-left">Activity Date</label>
+                    <mdb-date-picker id="rm_dp" [inline]="true" name="mydate" [options]="myDatePickerOptions"
+                      [placeholder]="'Selected date'" xngModel="model" required></mdb-date-picker>
+                    <!-- <label class="addFlora" class="col-md-3">Activity Date</label>
+                    <mdb-date-picker name="mydate" auto formControlName="activityDate" [options]="myDatePickerOptions"
+                    for="activityDate" id="mydp" [placeholder]="'Select date'" value='' required
+                    class="form-control activityDate col-md-9">
+                  </mdb-date-picker> -->
+
+                  </div>
+                  <div class="col-md-6">
+                    <!-- <mdb-time-picker #timepicker formControlName="activityTime" class="form-control activityDate " id="mytp"
+                  value='' [placeholder]="'Selected time'"></mdb-time-picker> -->
+                    <label for="rm_tp" class="text-left">Activity Time</label>
+                    <mdb-time-picker id="rm_tp" [buttonLabel]="'Done'" [twelvehour]="false" [darktheme]="true"
+                      [placeholder]="'Selected time'" xngModel="darkClock"></mdb-time-picker>
+
+                  </div>
+                </div>
+                <div class="row" formGroupName="generalInformation">
+                  <div class="col-md-12">
+                    <label for="rm_testerName" class="text-left">Name</label>
+                    <input mdbInput id="rm_testerName" type="text" id="form1" class="form-control"
+                      formControlName="testerName" placeholder="Name">
+                  </div>
+                </div>
+                <div class="row" formGroupName="generalInformation">
+                  <div class="col-md-12">
+                    <label for="rm_location" class="text-left">Location</label>
+                    <input mdbInput id="rm_location" type="text" id="form1" class="form-control"
+                      formControlName="location" placeholder="Location">
+                  </div>
+                </div>
+                <div class="row" formGroupName="generalInformation">
+                  <div class="col-md-6">
+                    <label for="rm_latitude" class="text-left">Latitude</label>
+                    <input mdbInput id="rm_latitude" type="text" id="form1" class="form-control"
+                      formControlName="latitude" placeholder="Location">
+
+
+                  </div>
+                  <div class="col-md-6">
+
+                    <label for="rm_longitude" class="text-left">Longitude</label>
+                    <input mdbInput id="rm_longitude" type="text" id="form1" class="form-control"
+                      formControlName="longitude" placeholder="Location">
+
                   </div>
                 </div>
 
-              </div>
-            </div>
-            <!-- <div class="row mt-3"> -->
-            <div class="col-xs-12">
-              <label class="addFlora">Observe the Water Level</label>
-              <div class="d-flex">
-                <div *ngFor="let wl of waterLevels">
-                  <img [src]="wl.imageUrl" class="mr-2">
-                  <label class="text-center">{{wl.name}}</label>
+                <agm-map style="height: 300px;" [latitude]="lat" [longitude]="lng" [zoom]="zoom"
+                  (mapClick)="mapClicked($event)">
+                  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                </agm-map>
+
+              </form>
+              <button mdbBtn size="sm" color="primary" (click)="river_monitoring_stepper.next()">CONTINUE</button>
+            </mdb-step>
+            <mdb-step name="Water Level & Weather" xstepForm="secondFormGroup">
+              <form xformGroup="secondFormGroup">
+
+              </form>
+              <button mdbBtn size="sm" color="primary" (click)="river_monitoring_stepper.next()">CONTINUE</button>
+              <button mdbBtn size="sm" color="secondary" (click)="river_monitoring_stepper.previous()">BACK</button>
+            </mdb-step>
+            <mdb-step name="Observe your Surroundings" xstepForm="secondFormGroup">
+              <form xformGroup="secondFormGroup">
+                <div class="md-form">
+                  <!-- <input type="password" class="form-control" mdbInput mdbValidate xformControlName="password"> -->
+                  <!-- <label for="">Password</label> -->
+                  <!-- <mdb-error ngIf="password.invalid && (password.dirty || password.touched)">Input invalid</mdb-error> -->
+                  <!-- <mdb-success *ngIf="password.valid && (password.dirty || password.touched)">Input valid</mdb-success> -->
                 </div>
-              </div>
-            </div>
-            <!-- </div> -->
-            <div class="col-xs-12">
-              <label class="addFlora">Weather Conditions</label>
-              <div class="d-flex">
-                <div *ngFor="let wc of weatherCodition">
-                  <img [src]="wc.imageUrl" class="mr-2">
-                  <label class="text-center">{{wc.name}}</label>
+              </form>
+              <button mdbBtn size="sm" color="primary" (click)="river_monitoring_stepper.next()">CONTINUE</button>
+              <button mdbBtn size="sm" color="secondary" (click)="river_monitoring_stepper.previous()">BACK</button>
+            </mdb-step>
+            <mdb-step name="Water Quality Testing" xstepForm="secondFormGroup">
+              <form xformGroup="secondFormGroup">
+                <div class="md-form">
+                  <!-- <input type="password" class="form-control" mdbInput mdbValidate xformControlName="password"> -->
+                  <!-- <label for="">Password</label> -->
+                  <!-- <mdb-error ngIf="password.invalid && (password.dirty || password.touched)">Input invalid</mdb-error> -->
+                  <!-- <mdb-success *ngIf="password.valid && (password.dirty || password.touched)">Input valid</mdb-success> -->
                 </div>
-              </div>
-            </div>
-
-            <div class="col-xs-12">
-              <label class="addFlora">River Picture</label>
-              <div class="form-group">
-                <div class="flexbox">
-                  <div class="flexbox1" style="height:176px; width:176px; background-color: #F7F7F7; line-height:54px;">
-                    <div class="frame">
-                      <img [src]=defaultImageURL class="img-list" height="auto" width="176px">
-                    </div>
-                  </div>
-                  <div class="flexbox2">
-                    <div class="flex">
-                      <button type="button" mdbBtn color="primary" rounded="true" outline="true"
-                        class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>River Picture</button>
-                    </div>
-
-                    <div mdbModal id="basicModal" #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog"
-                      aria-labelledby="myBasicModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close pull-right" aria-label="Close"
-                              (click)="basicModal.hide()">
-                              <img class="modal_close_icon"
-                                src="../../../assets/scalable-vector-graphics/modal_close_icon.svg">
-
-                            </button>
-                            <div class="title-div xrow modal-title w-100">
-                              <span class="cp2 title">River Image</span>
-                            </div>
-                          </div>
-                          <div class="modal-body">
-
-                            <div class="file-upload-div">
-                              <mdb-file-upload [height]="318" (fileRemoved)="removeImageFile()"
-                                (fileAdded)="addImageFile($event)"></mdb-file-upload>
-                            </div>
-                          </div>
-
-                          <div class="modal-footer">
-                            <button type="button"
-                              [ngClass]="this.imageFileTemp != null && this.imageFileErrorMessage == '' ? 'btn-set-image':'btn-set-image-disabled'"
-                              class="waves-light mr-auto" aria-label="Close" (click)="setImageURL()" mdbWavesEffect>Set
-                              Image</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              </form>
+              <button mdbBtn size="sm" color="primary" (click)="river_monitoring_stepper.next()">CONTINUE</button>
+              <button mdbBtn size="sm" color="secondary" (click)="river_monitoring_stepper.previous()">BACK</button>
+            </mdb-step>
+            <mdb-step name="Flora & Fauna" xstepForm="secondFormGroup">
+              <form xformGroup="secondFormGroup">
+                <div class="md-form">
+                  <!-- <input type="password" class="form-control" mdbInput mdbValidate xformControlName="password"> -->
+                  <!-- <label for="">Password</label> -->
+                  <!-- <mdb-error ngIf="password.invalid && (password.dirty || password.touched)">Input invalid</mdb-error> -->
+                  <!-- <mdb-success *ngIf="password.valid && (password.dirty || password.touched)">Input valid</mdb-success> -->
                 </div>
-
+              </form>
+              <button mdbBtn size="sm" color="primary" (click)="river_monitoring_stepper.next()">CONTINUE</button>
+              <button mdbBtn size="sm" color="secondary" (click)="river_monitoring_stepper.previous()">BACK</button>
+            </mdb-step>
+            <mdb-step name="Pictures" xlabel="Step 3 label">
+              <p class="pl-2">Finish!</p>
+              <div class="step-actions">
+                <button mdbBtn size="sm" color="primary" xclick="onSubmit()">SUBMIT</button>
               </div>
-            </div>
+            </mdb-step>
+          </mdb-stepper>
+        </div>
+      </mdb-tab>
+
+      <mdb-tab heading="View Reports">
+        <div class="bg-white" style="height:500px">
+          asd
+        </div>
+      </mdb-tab>
 
 
-
-            <!-- </form> -->
-
-            <div class="mt-2">
-              <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
-                (click)="stepper.next()">CONTINUE</button>
-              <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
-                (click)="stepper.previous()">BACK</button>
-            </div>
-          </mdb-step>
-
-          <mdb-step name="Observe your Surroundings">
-            <!-- <form [formGroup]="activityForm"> -->
-            <div>
-              <!-- <mat-form-field class="example-full-width">
-              <input type="text" placeholder="Select Users" aria-label="Select Users" matInput [matAutocomplete]="auto"
-                [formControl]="userControl">
-  
-            </mat-form-field> -->
-
-              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                <mat-option *ngFor="let user of filteredUsers | async" [value]="selectedUsers">
-                  <div (click)="optionClicked($event, user)">
-                    <mat-checkbox [checked]="user.selected" (change)="toggleSelection(user)"
-                      (click)="$event.stopPropagation()">
-                      {{ user.firstname }} {{ user.lastname }}
-                    </mat-checkbox>
-                  </div>
-                </mat-option>
-              </mat-autocomplete>
-
-              <br><br>
-
-            </div>
-            <div class="checkbox-two">
-              <div *ngFor="let obj of data">
-                <mdb-checkbox [checked]="true" [default]="true">{{obj.name}}</mdb-checkbox>
-              </div>
-            </div>
-            <!-- </form> -->
-            <div class="mt-2">
-              <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
-                (click)="stepper.next()">CONTINUE</button>
-              <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
-                (click)="stepper.previous()">BACK</button>
-            </div>
-          </mdb-step>
-
-          <mdb-step name="Water Quality Testing">
-
-            <div class="row mt-3" formGroupName="waterTesting">
-              <label for="waterTemperature" class="addFlora">Water Temperature</label>
-              <div class="input-group mb-2">
-                <input formControlName="waterTemperature" type="text" value='' class="form-control activityDate "
-                  placeholder="Water Temperature">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">°C</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row mt-3" formGroupName="waterTesting">
-              <div class="col-xs-6">
-                <label for="pH" class="addFlora">pH</label>
-                <div class="input-group mb-2">
-                  <input formControlName="pH" type="text" value='' class="form-control activityDate " placeholder="pH">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">units</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <label for="alkalinity" class="addFlora">Alkalinity</label>
-                <div class="input-group mb-2">
-                  <input formControlName="alkalinity" type="text" value='' class="form-control activityDate"
-                    placeholder="Temperature">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">mg/L</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row mt-3" formGroupName="waterTesting">
-              <div class="col-xs-6">
-                <label for="nitrate" class="addFlora">Nitrate</label>
-                <div class="input-group mb-2">
-                  <input formControlName="nitrate" type="text" value='' class="form-control activityDate "
-                    placeholder="nitrate">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">mg/L</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <label for="nitrite" class="addFlora">Nitrite</label>
-                <div class="input-group mb-2">
-                  <input formControlName="nitrite" type="text" value='' class="form-control activityDate "
-                    placeholder="nitrite">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">mg/L</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="row mt-3" formGroupName="waterTesting">
-              <label for="hardness" class="addFlora">Hardness</label>
-              <div class="input-group mb-2">
-                <input formControlName="hardness" type="text" value='' class="form-control activityDate "
-                  placeholder="Water Temperature">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">mg/L</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row mt-3" formGroupName="waterTesting">
-              <div class="col-xs-6">
-                <label for="chlorine" class="addFlora">Chlorine</label>
-                <div class="input-group mb-2">
-                  <input formControlName="chlorine" type="text" value='' class="form-control activityDate "
-                    placeholder="chlorine">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">mg/L</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <label for="iron" class="addFlora">Iron</label>
-                <div class="input-group mb-2">
-                  <input formControlName="iron" type="text" value='' class="form-control activityDate "
-                    placeholder="iron">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">mg/L</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row mt-3" formGroupName="waterTesting">
-              <label for="dissolvedOxygen" class="addFlora">Dissolved Oxygen</label>
-              <div class="input-group mb-2">
-                <input formControlName="dissolvedOxygen" type="text" value='' class="form-control activityDate "
-                  placeholder="Dissolved Oxygen">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">mg/L</div>
-                </div>
-              </div>
-            </div>
-            <div class="row mt-3">
-              <label class="addFlora">E Coli/Coliform Bacteria</label>
-              <div class="input-group mb-2">
-                <button mdbBtn type="button" *ngFor="let item of items; let i = index" class="ml-4 click-property"
-                  [ngClass]="(lastClickedIndex == i) ? 'activeBtn': ''" (click)="changeActive(i)" #disable
-                  mdbWavesEffect>{{item.name}}</button>
-              </div>
-
-            </div>
-
-            <div class="row mt-3" formGroupName="waterTesting">
-              <label for="turbidity" class="addFlora">Turbidity</label>
-              <div class="input-group mb-2">
-                <input formControlName="turbidity" type="text" value='' class="form-control activityDate "
-                  placeholder="turbidity">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">NTU</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row mt-3" formGroupName="waterTesting">
-              <label for="phosphate" class="addFlora">Phosphate</label>
-              <div class="input-group mb-2">
-                <input formControlName="phosphate" type="text" value='' class="form-control activityDate "
-                  placeholder="phosphate">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">mg/L</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row mt-3" formGroupName="waterTesting">
-              <label for="ammonia" class="addFlora">Ammonia</label>
-              <div class="input-group mb-2">
-                <input formControlName="ammonia" type="text" value='' class="form-control activityDate "
-                  placeholder="ammonia">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">mg/L</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row mt-3" formGroupName="waterTesting">
-              <label for="lead" class="addFlora">Lead</label>
-              <div class="input-group mb-2">
-                <input formControlName="lead" type="text" value='' class="form-control activityDate "
-                  placeholder="lead">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">mg/L</div>
-                </div>
-              </div>
-            </div>
-            <div class="mt-2">
-              <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
-                (click)="stepper.next()">CONTINUE</button>
-              <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
-                (click)="stepper.previous()">BACK</button>
-            </div>
-          </mdb-step>
-
-          <mdb-step name="Flora & Fauna">
-            <div>
-              <div class='row'>
-                <img src="../../../assets/scalable-vector-graphics/flora.svg">
-                <label class="ml-2">Flora</label>
-              </div>
-              <span class="flora-fauna">Record the vegetation you can see around you. This
-                could include grasses,
-                shrubs, plants
-                and trees</span>
-
-              <div class="image_container">
-
-                <div class="form-group">
-                  <!-- <label for="file">File</label> -->
-                  <div style="height:55px; display:flex; overflow-x: auto;">
-                    <img *ngFor='let url of images' [src]="url" height="50px" width="50px" style="margin: 3px;">
-                  </div>
-                  <button mdbBtn type="button" color="primary" rounded="true" outline="true" mdbWavesEffect>
-                    <input id="file" type="file" class="form-control" multiple (change)="onFileChange($event)">
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div formGroupName="fauna">
-              <div class='row'>
-                <img src="../../../assets/scalable-vector-graphics/fauna.svg">
-                <label class="ml-2">Fauna</label>
-              </div>
-              <span class="flora-fauna">Record fish, amphibians, reptiles, birds, insects and mammals that you see
-                around you.</span>
-
-              <div class="form-group">
-                <div style="height:55px; display:flex; overflow-x: auto;">
-                  <img *ngFor='let url of imageUrl' [src]="url" height="50px" width="50px" style="margin: 3px;">
-                </div>
-                <button mdbBtn type="button" color="primary" rounded="true" outline="true" mdbWavesEffect>
-
-                  <input id="file" type="file" class="form-control" multiple (change)="onFileChanges($event)">
-                </button>
-              </div>
-            </div>
-            <div class="mt-2">
-              <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
-                (click)="stepper.next()">CONTINUE</button>
-              <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
-                (click)="stepper.previous()">BACK</button>
-            </div>
-          </mdb-step>
-
-          <mdb-step name="Picture">
-
-            <div>
-              <div class="col-xs-12">
-                <label class="addFlora">Picture (Optional)</label>
-                <div class="form-group">
-                  <div class="flexbox">
-                    <div class="flexbox1"
-                      style="height:176px; width:176px; background-color: #F7F7F7; line-height:54px;">
-                      <div class="frame">
-                        <img [src]=defaultImageURL class="img-list" height="auto" width="176px">
-                      </div>
-                    </div>
-                    <div class="flexbox2">
-                      <div class="flex">
-                        <button type="button" color="primary" rounded="true" outline="true" mdbBtn
-                          class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>Picture
-                          (Optional)</button>
-                      </div>
-
-                      <div mdbModal id="basicModal" #basicModal="mdbModal" class="modal fade" tabindex="-1"
-                        role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <button type="button" class="close pull-right" aria-label="Close"
-                                (click)="basicModal.hide()">
-                                <img class="modal_close_icon"
-                                  src="../../../assets/scalable-vector-graphics/modal_close_icon.svg">
-
-                              </button>
-                              <div class="title-div xrow modal-title w-100">
-                                <span class="cp2 title">River Image</span>
-                              </div>
-                            </div>
-                            <div class="modal-body">
-
-                              <div class="file-upload-div">
-                                <mdb-file-upload [height]="318" (fileRemoved)="removeImageFile()"
-                                  (fileAdded)="addImageFile($event)"></mdb-file-upload>
-                              </div>
-                            </div>
-
-                            <div class="modal-footer">
-                              <button type="button"
-                                [ngClass]="this.imageFileTemp != null && this.imageFileErrorMessage == '' ? 'btn-set-image':'btn-set-image-disabled'"
-                                class="waves-light mr-auto" aria-label="Close" (click)="setImageURL()"
-                                mdbWavesEffect>Set
-                                Image</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="col-xs-12">
-                <label class="addFlora">Upload Activity Pictures</label>
-                <div class="form-group">
-                  <div class="flexbox">
-                    <div class="flexbox1"
-                      style="height:176px; width:176px; background-color: #F7F7F7; line-height:54px;">
-                      <div class="frame">
-                        <img [src]=defaultImageURL class="img-list" height="auto" width="176px">
-                      </div>
-                    </div>
-                    <div class="flexbox2">
-                      <div class="flex">
-                        <button type="button" color="primary" rounded="true" outline="true" mdbBtn
-                          class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>Upload Activity
-                          Pictures</button>
-                      </div>
-
-                      <div mdbModal id="basicModal" #basicModal="mdbModal" class="modal fade" tabindex="-1"
-                        role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <button type="button" class="close pull-right" aria-label="Close"
-                                (click)="basicModal.hide()">
-                                <img class="modal_close_icon"
-                                  src="../../../assets/scalable-vector-graphics/modal_close_icon.svg">
-
-                              </button>
-                              <div class="title-div xrow modal-title w-100">
-                                <span class="cp2 title">Upload Activity Pictures</span>
-                              </div>
-                            </div>
-                            <div class="modal-body">
-
-                              <div class="file-upload-div">
-                                <mdb-file-upload [height]="318" (fileRemoved)="removeImageFile()"
-                                  (fileAdded)="addImageFile($event)"></mdb-file-upload>
-                              </div>
-                            </div>
-
-                            <div class="modal-footer">
-                              <button type="button"
-                                [ngClass]="this.imageFileTemp != null && this.imageFileErrorMessage == '' ? 'btn-set-image':'btn-set-image-disabled'"
-                                class="waves-light mr-auto" aria-label="Close" (click)="setImageURL()"
-                                mdbWavesEffect>Set
-                                Image</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="col-xs-12">
-                <label class="addFlora">Upload ArtWork</label>
-                <div class="form-group">
-                  <div class="flexbox">
-                    <div class="flexbox1"
-                      style="height:176px; width:176px; background-color: #F7F7F7; line-height:54px;">
-                      <div class="frame">
-                        <img [src]=defaultImageURL class="img-list" height="auto" width="176px">
-                      </div>
-                    </div>
-                    <div class="flexbox2">
-                      <div class="flex">
-
-                        <button mdbBtn type="button" color="primary" rounded="true" outline="true"
-                          class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>Upload
-                          ArtWork</button>
-                      </div>
-
-                      <div mdbModal id="basicModal" #basicModal="mdbModal" class="modal fade" tabindex="-1"
-                        role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <button type="button" class="close pull-right" aria-label="Close"
-                                (click)="basicModal.hide()">
-                                <img class="modal_close_icon"
-                                  src="../../../assets/scalable-vector-graphics/modal_close_icon.svg">
-
-                              </button>
-                              <div class="title-div xrow modal-title w-100">
-                                <span class="cp2 title">River Image</span>
-                              </div>
-                            </div>
-                            <div class="modal-body">
-
-                              <div class="file-upload-div">
-                                <mdb-file-upload [height]="318" (fileRemoved)="removeImageFile()"
-                                  (fileAdded)="addImageFile($event)"></mdb-file-upload>
-                              </div>
-                            </div>
-
-                            <div class="modal-footer">
-                              <button type="button"
-                                [ngClass]="this.imageFileTemp != null && this.imageFileErrorMessage == '' ? 'btn-set-image':'btn-set-image-disabled'"
-                                class="waves-light mr-auto" aria-label="Close" (click)="setImageURL()"
-                                mdbWavesEffect>Set
-                                Image</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="step-actions">
-              <div class="mt-2">
-                <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
-                  (click)="stepper.next()">CONTINUE</button>
-              </div>
-            </div>
-          </mdb-step>
-
-        </mdb-stepper>
-      </form>
-    </mdb-tab>
-  </mdb-tabset>
+    </mdb-tabset>
+  </div>
 </div>

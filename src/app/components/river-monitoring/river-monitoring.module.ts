@@ -9,6 +9,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MdbFileUploadModule } from 'mdb-file-upload';
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -22,12 +23,15 @@ import { MdbFileUploadModule } from 'mdb-file-upload';
     TabsModule,
     WavesModule,
     StepperModule,
-    RiverMonitoringRoutingModule
-    , MatListModule,
+    RiverMonitoringRoutingModule,
+     MatListModule,
     MatAutocompleteModule,
     MatCheckboxModule,
     MatFormFieldModule,
-
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyALR2ZDTTyZXGBRFeCV0AHd0S-TV_GWYm8",
+      libraries: ["places"]
+    }),
 
   ],
   exports: [

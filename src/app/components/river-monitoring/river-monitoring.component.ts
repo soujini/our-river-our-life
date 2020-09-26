@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { IMyOptions } from 'ng-uikit-pro-standard';
 import { ModalDirective } from 'ng-uikit-pro-standard';
+import { MapsAPILoader, AgmMap, MouseEvent} from '@agm/core';
 
 
 export class User {
@@ -17,6 +18,7 @@ export class User {
   styleUrls: ['./river-monitoring.component.scss']
 })
 export class RiverMonitoringComponent implements OnInit {
+  @ViewChild(AgmMap,{static: true}) public agmMap: AgmMap;
   defaultImageURL: string = "../../../assets/icons/default_image_upload.jpg";
   @ViewChild('basicModal') basicModal: ModalDirective;
   defaultImageURLTemp: string = "../../../assets/icons/default_image_upload.jpg";
@@ -142,16 +144,44 @@ export class RiverMonitoringComponent implements OnInit {
 
 
   activityForm: FormGroup;
-  constructor(private fb: FormBuilder) {
+  latitude: number;
+  longitude: number;
+  zoom: number;
+  getAddress: any;
+  lat: number;
+  lng: number;
+  constructor(private fb: FormBuilder, private apiloader:MapsAPILoader) {
     this.createForm();
   }
   ngOnInit() {
-
+    this.get()
+    this.agmMap.triggerResize(true);
+     this.zoom = 16;
     this.filteredUsers = this.userControl.valueChanges.pipe(
       startWith<string | User[]>(''),
       map(value => typeof value === 'string' ? value : this.lastFilter),
       map(filter => this.filter(filter))
     );
+  }
+  mapClicked($event: MouseEvent) {
+
+    this.latitude= $event.coords.lat,
+    this.longitude= $event.coords.lng
+  
+    
+    this.apiloader.load().then(() => {
+      let geocoder = new google.maps.Geocoder;
+      let latlng = {lat: this.latitude, lng: this.longitude};
+    
+      geocoder.geocode({'location': latlng}, function(results) {
+          if (results[0]) {
+            this.currentLocation = results[0].formatted_address;
+          console.log(this.currentLocation);
+          } else {
+            console.log('Not found');
+          }
+      });
+    });
   }
 
   filter(filter: string): User[] {
@@ -377,12 +407,45 @@ export class RiverMonitoringComponent implements OnInit {
       );
     }
   }
-  getBase64(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
-    });
+  
+  // getBase64(file) {
+  //   return new Promise((resolve, reject) => {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     reader.onload = () => resolve(reader.result);
+  //     reader.onerror = error => reject(error);
+  //   });
+  // }
+
+  get(){
+   
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position: Position) => {
+        if (position) {
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
+        this.getAddress=(this.lat,this.lng)
+        console.log(position)
+  
+        this.apiloader.load().then(() => {
+          let geocoder = new google.maps.Geocoder;
+          let latlng = {lat: this.lat, lng: this.lng};
+         
+          geocoder.geocode({'location': latlng}, function(results) {
+              if (results[0]) {
+                this.currentLocation= results[0].formatted_address;
+               
+              console.log(this.assgin);
+              } else {
+                console.log('Not found');
+              }
+          });
+        });
+  
+      }
+    })
+  }
+  
   }
 }
