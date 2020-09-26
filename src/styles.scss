@@ -290,10 +290,10 @@ input:-ms-input-placeholder {
   border-color: #00BCD4;
   box-shadow: none;
 }
-
-.form-control {
-  font-size: 14px;
-}
+//
+// .form-control {
+//   font-size: 14px;
+// }
 
 .bg-dark {
   background-color: #3F51B5 !important;
@@ -623,27 +623,6 @@ body .table thead th {
   }
 }
 
-
-
-
-
-ul.stepper.horizontal {
-  height: 1650px !important;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 // @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
@@ -904,7 +883,7 @@ mdb-card-img img {
     font-weight: bold;
     font-size: 10px !important;
     text-transform:uppercase !important;
-    color:#4f85b8 !important;
+    color:#1C3764 !important;
     // padding-right:5px;
 }
 #river_monitoring_stepper ul.stepper .step-title {
@@ -913,6 +892,18 @@ mdb-card-img img {
       text-transform:uppercase !important;
       padding-right:0px;
 }
+#river_monitoring_stepper ul.stepper.horizontal .step {
+  // align-items:flex-end !important;
+  width: inherit !important;
+}
+.card-body ul.stepper.horizontal .step.active .step-title:before {
+    background-color: #1C3764 !important;
+}
+.card-body ul.stepper.horizontal .step-title:before {
+    background-color: gray !important;
+    // content:"" !important;
+}
+
 .md-form .form-control {
   padding:0.5rem !important;
   border:1px solid #D8D8D8 !important;
@@ -920,3 +911,35 @@ mdb-card-img img {
 .tp .md-form{
   margin:0px !important;
 }
+mdb-checkbox.checkbox-coco-filled [type="checkbox"][class*='filled-in']:checked+label:after {
+  border-color: #66A19C !important;
+  background-color: #66A19C !important;
+  height: 24px !important;
+  width: 24px !important;
+}
+
+mdb-checkbox.checkbox-coco-filled [type="checkbox"][class*='filled-in']:checked+label:after {
+  border-color: #66A19C !important;
+  background-color: #66A19C !important;
+  height: 18px !important;
+  width: 18px !important;
+}
+.form-check-input[type=checkbox].filled-in:not(:checked)+label:after, label.btn input[type=checkbox].filled-in:not(:checked)+label:after {
+  height: 18px !important;
+  width: 18px !important;
+  background-color: white !important;
+  border: 1px solid #E1E1E1 !important;
+  top: 0 !important;
+  z-index: 0 !important;
+}
+.form-check-input[type=checkbox].filled-in:checked+label:before, label.btn input[type=checkbox].filled-in:checked+label:before {
+  left:0px !important;
+   top:0px !important;
+}
+.bold{
+  font-weight:bold;
+}
+// ul.stepper.horizontal {
+//   max-height: 1000px !important;
+//     // height: 600px !important;
+// }

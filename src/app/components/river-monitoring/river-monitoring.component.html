@@ -50,7 +50,7 @@ class="form-control activityDate" placeholder="Longitude">
 
 
 <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
-(click)="stepper.next()">CONTINUE</button>
+(click)="stepper.next()">NEXT</button>
 </mdb-step>
 
 <mdb-step name="Water Level & Weather">
@@ -145,7 +145,7 @@ Image</button>
 
 <div class="mt-2">
 <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
-(click)="stepper.next()">CONTINUE</button>
+(click)="stepper.next()">NEXT</button>
 <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
 (click)="stepper.previous()">BACK</button>
 </div>
@@ -180,7 +180,7 @@ Image</button>
 </div>
 <div class="mt-2">
 <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
-(click)="stepper.next()">CONTINUE</button>
+(click)="stepper.next()">NEXT</button>
 <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
 (click)="stepper.previous()">BACK</button>
 </div>
@@ -344,7 +344,7 @@ placeholder="lead">
 </div>
 <div class="mt-2">
 <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
-(click)="stepper.next()">CONTINUE</button>
+(click)="stepper.next()">NEXT</button>
 <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
 (click)="stepper.previous()">BACK</button>
 </div>
@@ -394,7 +394,7 @@ around you.</span>
 </div>
 <div class="mt-2">
 <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
-(click)="stepper.next()">CONTINUE</button>
+(click)="stepper.next()">NEXT</button>
 <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
 (click)="stepper.previous()">BACK</button>
 </div>
@@ -576,7 +576,7 @@ Image</button>
 <div class="step-actions">
 <div class="mt-2">
 <button mdbBtn type="button" color="info" rounded="true" outline="true" mdbWavesEffect
-(click)="stepper.next()">CONTINUE</button>
+(click)="stepper.next()">NEXT</button>
 </div>
 </div>
 </mdb-step>
@@ -592,133 +592,407 @@ Image</button>
 <div class="content">
   <div>
     <mdb-tabset id="river_monitoring_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'"
-      [contentClass]="'card'" class="classic-tabs text-center">
+    [contentClass]="'card'" class="classic-tabs text-center">
 
-      <mdb-tab heading="Create Report">
-        <div class="row bg-white" style="height:500px; margin-left:-35px; margin-right:-35px">
-          <mdb-stepper #river_monitoring_stepper id="river_monitoring_stepper" class="col-12">
-            <mdb-step name="General Information" xstepForm="firstFormGroup">
+    <mdb-tab heading="Create Report"  style="xheight:500px;margin-left:-35px; margin-right:-35px">
+      <div class="row" class="bg-white" style="xheight:600px">
 
-              <form [formGroup]="activityForm" style="padding-left:200px; padding-right:200px">
-                <div class="row" formGroupName="generalInformation">
-                  <div class="col-md-6">
-                    <label for="rm_dp" class="text-left">Activity Date</label>
-                    <mdb-date-picker id="rm_dp" [inline]="true" name="mydate" [options]="myDatePickerOptions"
-                      [placeholder]="'Selected date'" xngModel="model" required></mdb-date-picker>
-                    <!-- <label class="addFlora" class="col-md-3">Activity Date</label>
-                    <mdb-date-picker name="mydate" auto formControlName="activityDate" [options]="myDatePickerOptions"
-                    for="activityDate" id="mydp" [placeholder]="'Select date'" value='' required
-                    class="form-control activityDate col-md-9">
-                  </mdb-date-picker> -->
-
-                  </div>
-                  <div class="col-md-6">
-                    <!-- <mdb-time-picker #timepicker formControlName="activityTime" class="form-control activityDate " id="mytp"
-                  value='' [placeholder]="'Selected time'"></mdb-time-picker> -->
-                    <label for="rm_tp" class="text-left">Activity Time</label>
-                    <mdb-time-picker id="rm_tp" [buttonLabel]="'Done'" [twelvehour]="false" [darktheme]="true"
-                      [placeholder]="'Selected time'" xngModel="darkClock"></mdb-time-picker>
-
-                  </div>
-                </div>
-                <div class="row" formGroupName="generalInformation">
-                  <div class="col-md-12">
-                    <label for="rm_testerName" class="text-left">Name</label>
-                    <input mdbInput id="rm_testerName" type="text" id="form1" class="form-control"
-                      formControlName="testerName" placeholder="Name">
-                  </div>
-                </div>
-                <div class="row" >
-                  <div class="col-md-12">
-                    <label for="rm_location" class="text-left">Location</label>
-                      <input for="location" id="rm_location" id="form1" formControlName="location" placeholder="Search by location" autocorrect="off"
-                    autocapitalize="off" spellcheck="off" type="text" class="form-control input-searchmt-2" #search
-                    [formControl]="searchControl">
-                  </div>
-                </div>
-             
-                <div class="row" formGroupName="generalInformation">
-                  <div class="col-md-6">
-                    <label for="rm_latitude" class="text-left">Latitude</label>
-                    <input mdbInput id="rm_latitude" type="text" id="form1" class="form-control"
-                      formControlName="latitude" placeholder="Location" (change)="bla()">
-                  </div>
-                  <div class="col-md-6">
-
-                    <label for="rm_longitude" class="text-left">Longitude</label>
-                    <input mdbInput id="rm_longitude" type="text" id="form1" class="form-control"
-                      formControlName="longitude" placeholder="Location" (change)="bla()">
-                  </div>
-                </div>
-
-                <agm-map style="height: 300px;" [mapTypeId]="'hybrid'" [latitude]="lat" [longitude]="lng" [zoom]="zoom"
-                  (mapClick)="mapClicked($event)">
-                  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-                </agm-map>
-
-              </form>
-              <button mdbBtn size="sm" color="primary" (click)="river_monitoring_stepper.next()">CONTINUE</button>
-            </mdb-step>
-            <mdb-step name="Water Level & Weather" xstepForm="secondFormGroup">
-              <form xformGroup="secondFormGroup">
-
-              </form>
-              <button mdbBtn size="sm" color="primary" (click)="river_monitoring_stepper.next()">CONTINUE</button>
-              <button mdbBtn size="sm" color="secondary" (click)="river_monitoring_stepper.previous()">BACK</button>
-            </mdb-step>
-            <mdb-step name="Observe your Surroundings" xstepForm="secondFormGroup">
-              <form xformGroup="secondFormGroup">
-                <div class="md-form">
-                  <!-- <input type="password" class="form-control" mdbInput mdbValidate xformControlName="password"> -->
-                  <!-- <label for="">Password</label> -->
-                  <!-- <mdb-error ngIf="password.invalid && (password.dirty || password.touched)">Input invalid</mdb-error> -->
-                  <!-- <mdb-success *ngIf="password.valid && (password.dirty || password.touched)">Input valid</mdb-success> -->
-                </div>
-              </form>
-              <button mdbBtn size="sm" color="primary" (click)="river_monitoring_stepper.next()">CONTINUE</button>
-              <button mdbBtn size="sm" color="secondary" (click)="river_monitoring_stepper.previous()">BACK</button>
-            </mdb-step>
-            <mdb-step name="Water Quality Testing" xstepForm="secondFormGroup">
-              <form xformGroup="secondFormGroup">
-                <div class="md-form">
-                  <!-- <input type="password" class="form-control" mdbInput mdbValidate xformControlName="password"> -->
-                  <!-- <label for="">Password</label> -->
-                  <!-- <mdb-error ngIf="password.invalid && (password.dirty || password.touched)">Input invalid</mdb-error> -->
-                  <!-- <mdb-success *ngIf="password.valid && (password.dirty || password.touched)">Input valid</mdb-success> -->
-                </div>
-              </form>
-              <button mdbBtn size="sm" color="primary" (click)="river_monitoring_stepper.next()">CONTINUE</button>
-              <button mdbBtn size="sm" color="secondary" (click)="river_monitoring_stepper.previous()">BACK</button>
-            </mdb-step>
-            <mdb-step name="Flora & Fauna" xstepForm="secondFormGroup">
-              <form xformGroup="secondFormGroup">
-                <div class="md-form">
-                  <!-- <input type="password" class="form-control" mdbInput mdbValidate xformControlName="password"> -->
-                  <!-- <label for="">Password</label> -->
-                  <!-- <mdb-error ngIf="password.invalid && (password.dirty || password.touched)">Input invalid</mdb-error> -->
-                  <!-- <mdb-success *ngIf="password.valid && (password.dirty || password.touched)">Input valid</mdb-success> -->
-                </div>
-              </form>
-              <button mdbBtn size="sm" color="primary" (click)="river_monitoring_stepper.next()">CONTINUE</button>
-              <button mdbBtn size="sm" color="secondary" (click)="river_monitoring_stepper.previous()">BACK</button>
-            </mdb-step>
-            <mdb-step name="Pictures" xlabel="Step 3 label">
-              <p class="pl-2">Finish!</p>
-              <div class="step-actions">
-                <button mdbBtn size="sm" color="primary" xclick="onSubmit()">SUBMIT</button>
+        <mdb-stepper #river_monitoring_stepper id="river_monitoring_stepper" class="col-12">
+          <mdb-step name="General Information" xstepForm="firstFormGroup">
+            <form [formGroup]="activityForm" style="padding-left:200px; padding-right:200px">
+              <div class="row" formGroupName="generalInformation">
+                <div class="col-md-6">
+                  <label for="rm_dp" class="text-left">Activity Date</label>
+                  <mdb-date-picker id="rm_dp" [inline]="true" name="mydate" [options]="myDatePickerOptions"
+                  [placeholder]="'Selected date'" xngModel="model" required></mdb-date-picker>
+                  <!-- <label class="addFlora" class="col-md-3">Activity Date</label>
+                  <mdb-date-picker name="mydate" auto formControlName="activityDate" [options]="myDatePickerOptions"
+                  for="activityDate" id="mydp" [placeholder]="'Select date'" value='' required
+                  class="form-control activityDate col-md-9">
+                </mdb-date-picker> -->
               </div>
-            </mdb-step>
-          </mdb-stepper>
+              <div class="col-md-6">
+                <!-- <mdb-time-picker #timepicker formControlName="activityTime" class="form-control activityDate " id="mytp"
+                value='' [placeholder]="'Selected time'"></mdb-time-picker> -->
+                <label for="rm_tp" class="text-left">Activity Time</label>
+                <mdb-time-picker id="rm_tp" [buttonLabel]="'Done'" [twelvehour]="false" [darktheme]="true"
+                [placeholder]="'Selected time'" xngModel="darkClock"></mdb-time-picker>
+
+              </div>
+            </div>
+            <div class="row" formGroupName="generalInformation">
+              <div class="col-md-12">
+                <label for="rm_testerName" class="text-left">Name</label>
+                <input mdbInput id="rm_testerName" type="text" id="form1" class="form-control"
+                formControlName="testerName" placeholder="Name">
+              </div>
+            </div>
+            <div class="row" >
+              <div class="col-md-12" formGroupName="generalInformation">
+                <label for="rm_location" class="text-left">Location</label>
+                <input for="location" id="rm_location" id="form1" formControlName="location" placeholder="Search by location" autocorrect="off"
+                autocapitalize="off" spellcheck="off" type="text" class="form-control input-searchmt-2" #search
+                [formControl]="searchControl">
+              </div>
+            </div>
+
+            <div class="row" formGroupName="generalInformation">
+              <div class="col-md-6">
+                <label for="rm_latitude" class="text-left">Latitude</label>
+                <input mdbInput id="rm_latitude" type="text" id="form1" class="form-control"
+                formControlName="latitude" placeholder="Location" (change)="bla()">
+              </div>
+              <div class="col-md-6">
+                <label for="rm_longitude" class="text-left">Longitude</label>
+                <input mdbInput id="rm_longitude" type="text" id="form1" class="form-control"
+                formControlName="longitude" placeholder="Location" (change)="bla()">
+              </div>
+            </div>
+            <div class="mt-3">
+            <agm-map class="mt-3" style="height: 300px;" [mapTypeId]="'hybrid'" [latitude]="lat" [longitude]="lng" [zoom]="zoom"
+            (mapClick)="mapClicked($event)">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+          </agm-map>
+          </div>
+
+        </form>
+        <hr class="hr-line" />
+        <div class="text-right">
+        <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">CONTINUE</button>
         </div>
-      </mdb-tab>
-
-      <mdb-tab heading="View Reports">
-        <div class="bg-white" style="height:500px">
-          asd
+      </mdb-step>
+      <mdb-step name="Water Level & Weather" xstepForm="secondFormGroup">
+        <form [formGroup]="activityForm" style="padding-left:200px; padding-right:200px">
+          <div class="row" formGroupName="waterLevelAndWeather">
+            <div class="col-md-12" >
+              <label for="rm_airTemperature" class="text-left">Measure the air temperature</label>
+              <div class="input-group mb-2">
+                <input mdbInput formControlName="airTemperature" type="text" class="form-control"
+                placeholder="Air Temperature">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bl-0">°C</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" formGroupName="waterLevelAndWeather">
+            <div class="col-md-12" >
+              <label for="rm_airTemperature" class="text-left">Observe the Water Level</label>
+              <div class="d-flex">
+                <div *ngFor="let wl of waterLevels" class="mr-50">
+                  <img [src]="wl.imageUrl" >
+                  <label class="text-center light mt-2">{{wl.name}}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" formGroupName="waterLevelAndWeather">
+            <div class="col-md-12" >
+              <label for="rm_airTemperature" class="text-left">Weather Conditions</label>
+              <div class="d-flex">
+                <div *ngFor="let wc of weatherCodition" class="mr-50">
+                  <img [src]="wc.imageUrl" >
+                  <label class="text-center light mt-2">{{wc.name}}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-left" fxormGroupName="generalInformation">
+            <label for="rm_location" class="text-left">River Pictures</label>
+            <div xclass="row">
+              <label class="custom-file-upload">
+                <input id="file" type="file" class="form-control" multiple (change)="onFileChanges($event)">Upload
+              </label>
+            </div>
+          </div>
+        </form>
+        <hr class="hr-line" />
+        <div class="text-right">
+          <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
+          <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">CONTINUE</button>
         </div>
-      </mdb-tab>
+      </mdb-step>
 
+      <mdb-step name="Observe your Surroundings" xstepForm="secondFormGroup">
+        <form xformGroupx="surroundings" class="container-stepper-form">
+          <div class="row" >
+            <div class="col-md-12" >
+              <label for="rm_searchSurroundings" class="text-left">Search</label>
+              <input mdbInput id="rm_searchSurroundings" type="text" id="rm_searchSurroundings" class="form-control"
+              xformControlName="airTemperature" placeholder="Search">
+            </div>
 
-    </mdb-tabset>
+            <div class="col-md-12 mt-3 text-left" xformGroupName="waterLevelAndWeather">
+              <div *ngFor="let obj of data" class="col-md-3 text-left" style="display:inline-block">
+                <mdb-checkbox class="checkbox-coco-filled" [checked]="false" [default]="true">{{obj.name}}</mdb-checkbox>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 text-left" fxormGroupName="generalInformation">
+            <label for="rm_location" class="text-left">Surroundings Pictures</label>
+            <div xclass="row">
+              <label class="custom-file-upload">
+                <input id="file" type="file" class="form-control" multiple (change)="onFileChanges($event)">Upload
+              </label>
+            </div>
+          </div>
+        </form>
+        <hr class="hr-line" />
+        <div class="text-right">
+          <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
+          <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
+        </div>
+      </mdb-step>
+      <mdb-step name="Water Quality Testing" xstepForm="secondFormGroup">
+        <form [formGroup]="activityForm" class="container-stepper-form">
+          <div class="row" formGroupName="waterTesting">
+            <div class="col-md-12">
+              <label for="rm_airTemperature" class="text-left">Water Temperature</label>
+              <div class="input-group mb-2">
+                <input mdbInput formControlName="waterTemperature" type="text" class="form-control"
+                placeholder="Water Temperature">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bl-0">°C</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" formGroupName="waterTesting">
+            <div class="col-md-6">
+              <label for="rm_airTemperature" class="text-left">pH</label>
+              <!-- <input mdbInput id="rm_waterTemperature" type="text" id="form1" class="form-control"
+              formControlName="waterTemperature" placeholder="Water Temperature"> -->
+              <div class="input-group mb-2">
+                <input mdbInput formControlName="waterTemperature" type="text" class="form-control"
+                placeholder="Water Temperature">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bl-0">°C</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="rm_airTemperature" class="text-left">Alkalinity</label>
+              <!-- <input mdbInput id="rm_waterTemperature" type="text" id="form1" class="form-control"
+              formControlName="waterTemperature" placeholder="Water Temperature"> -->
+              <div class="input-group mb-2">
+                <input mdbInput formControlName="waterTemperature" type="text" class="form-control"
+                placeholder="Water Temperature">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bl-0">°C</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" formGroupName="waterTesting">
+            <div class="col-md-6">
+              <label for="rm_airTemperature" class="text-left">Nitrate</label>
+              <!-- <input mdbInput id="rm_waterTemperature" type="text" id="form1" class="form-control"
+              formControlName="waterTemperature" placeholder="Water Temperature"> -->
+              <div class="input-group mb-2">
+                <input mdbInput formControlName="nitrate" type="text" class="form-control"
+                placeholder="Nitrate">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bl-0">mg/L</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="rm_airTemperature" class="text-left">Nitrite</label>
+              <div class="input-group mb-2">
+                <input mdbInput formControlName="nitrite" type="text" class="form-control"
+                placeholder="Nitrite">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bl-0">mg/L</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" formGroupName="waterTesting">
+            <div class="col-md-12">
+              <label for="rm_airTemperature" class="text-left">Hardness</label>
+              <div class="input-group mb-2">
+                <input mdbInput formControlName="hardness" type="text" class="form-control"
+                placeholder="Water Temperature">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bl-0">mg/L</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" formGroupName="waterTesting">
+            <div class="col-md-6">
+              <label for="rm_airTemperature" class="text-left">Chlorine</label>
+              <div class="input-group mb-2">
+                <input mdbInput formControlName="chlorine" type="text" class="form-control"
+                placeholder="Chlorine">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bl-0">mg/L</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="rm_airTemperature" class="text-left">Iron</label>
+              <div class="input-group mb-2">
+                <input mdbInput formControlName="iron" type="text" class="form-control"
+                placeholder="Iron">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bl-0">mg/L</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" formGroupName="waterTesting">
+            <div class="col-md-12">
+              <label for="rm_airTemperature" class="text-left">Dissolved Oxygen</label>
+              <div class="input-group mb-2">
+                <input mdbInput formControlName="dissolvedOxygen" type="text" class="form-control"
+                placeholder="Dissolved Oxygen">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bl-0">mg/L</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" formGroupName="waterTesting">
+            <div class="col-md-12">
+              <label for="rm_airTemperature" class="text-left">E-Coli/Coliform Bacteria</label>
+              <div class="input-group" style="margin-left:-6px;">
+                <button mdbBtn type="button" class="custom-btn" *ngFor="let item of items; let i = index"
+                [ngClass]="(lastClickedIndex == i) ? 'custom-btn-active': 'custom-btn'" (click)="changeActive(i)" #disable
+                mdbWavesEffect>{{item.name}}</button>
+              </div>
+            </div>
+          </div>
+          <div class="row" formGroupName="waterTesting">
+            <div class="col-md-12">
+              <label for="rm_airTemperature" class="text-left">Turbidity</label>
+              <div class="input-group mb-2">
+                <input mdbInput formControlName="turbidity" type="text" class="form-control"
+                placeholder="Turbidity">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bl-0">NTU</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" formGroupName="waterTesting">
+            <div class="col-md-12">
+              <label for="rm_airTemperature" class="text-left">Phosphate</label>
+              <div class="input-group mb-2">
+                <input mdbInput formControlName="phosphate" type="text" class="form-control"
+                placeholder="Phosphate">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bl-0">mg/L</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" formGroupName="waterTesting">
+            <div class="col-md-12">
+              <label for="rm_airTemperature" class="text-left">Ammonia</label>
+              <div class="input-group mb-2">
+                <input mdbInput formControlName="ammonia" type="text" class="form-control"
+                placeholder="Ammonia">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bl-0">mg/L</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" formGroupName="waterTesting">
+            <div class="col-md-12">
+              <label for="rm_airTemperature" class="text-left">Lead</label>
+              <div class="input-group mb-2">
+                <input mdbInput formControlName="lead" type="text" class="form-control"
+                placeholder="Lead">
+                <div class="input-group-prepend">
+                  <div class="input-group-text bl-0">mg/L</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <hr class="hr-line" />
+        <div class="text-right">
+          <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
+          <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
+        </div>
+      </mdb-step>
+      <mdb-step name="Flora & Fauna" xstepForm="secondFormGroup">
+        <form xformGroup="secondFormGroup" class="container-stepper-form">
+          <div class="col-md-12">
+            <div class="row">
+            <img src="../../../assets/scalable-vector-graphics/flora.svg" height="28px" width="28px">
+            <label class="ml-2 mt-1 bold">Flora</label>
+            </div>
+            <p class="row">Record the vegetation you can see around you. This
+            could include grasses,
+            shrubs, plants
+            and trees.</p>
+            <div class="text-left mt-2" fxormGroupName="generalInformation">
+              <div class="row ">
+                <label class="custom-file-upload">
+                  <input id="file" type="file" class="form-control" multiple (change)="onFileChanges($event)">Upload
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="row">
+            <img src="../../../assets/scalable-vector-graphics/fauna.svg" height="35px" width="35px">
+            <label class="ml-2 mt-2 bold">Fauna</label>
+            </div>
+            <p class="row">Record fish, amphibians, reptiles, birds, insects and mammals that you see
+            around you.</p>
+            <div class="text-left mt-2" fxormGroupName="generalInformation">
+              <div class="row">
+                <label class="custom-file-upload">
+                  <input id="file" type="file" class="form-control" multiple (change)="onFileChanges($event)">Upload
+                </label>
+              </div>
+            </div>
+          </div>
+        </form>
+        <hr class="hr-line" />
+        <div class="text-right">
+          <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
+          <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
+        </div>
+      </mdb-step>
+      <mdb-step name="Pictures">
+        <form xformGroup="secondFormGroup" class="container-stepper-form">
+            <label class="ml-2 mt-2 bold">Pictures</label>
+          <div class="row">
+            <label class="custom-file-upload">
+              <input id="file" type="file" class="form-control" multiple (change)="onFileChanges($event)">Upload Group Picture
+            </label>
+          </div>
+          <div class="row">
+            <label class="custom-file-upload">
+              <input id="file" type="file" class="form-control" multiple (change)="onFileChanges($event)">Upload Activity Picture
+            </label>
+          </div>
+          <div class="row">
+            <label class="custom-file-upload">
+              <input id="file" type="file" class="form-control" multiple (change)="onFileChanges($event)">Upload Artwork
+            </label>
+          </div>
+          </form>
+        <hr class="hr-line" />
+        <div class="xstep-actions text-right">
+          <button mdbBtn size="sm" class="custom-btn-blue" xclick="onSubmit()">SUBMIT</button>
+        </div>
+      </mdb-step>
+    </mdb-stepper>
   </div>
+</mdb-tab>
+
+<mdb-tab heading="View Reports" xstyle="height:500px">
+  <div class="bg-white">
+    asd
+  </div>
+</mdb-tab>
+</mdb-tabset>
+</div>
 </div>

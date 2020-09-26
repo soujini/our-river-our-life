@@ -7,12 +7,12 @@ import { ModalDirective } from 'ng-uikit-pro-standard';
 import { MapsAPILoader, AgmMap, MouseEvent} from '@agm/core';
 import { NgZone } from '@angular/core';
 
-
-export class User {
-  constructor(public name: string, public selected?: boolean) {
-    if (selected === undefined) selected = false;
-  }
-}
+//
+// export class User {
+//   constructor(public name: string, public selected?: boolean) {
+//     if (selected === undefined) selected = false;
+//   }
+// }
 @Component({
   selector: 'app-river-monitoring',
   templateUrl: './river-monitoring.component.html',
@@ -125,28 +125,40 @@ export class RiverMonitoringComponent implements OnInit {
       name: "Industry",
     },
   ];
-  users = [
-    new User('Clothers Washing'),
-    new User('Vehicles'),
-    new User('Agricultural Land'),
-    new User('Irrigation Pump'),
-    new User('Cattle Grazing'),
-    new User('Plantation'),
-    new User('Bridge'),
-    new User('Industry'),
-    new User('Effluent Discharge'),
-    new User('Places of Workship'),
-    new User('Village'),
-    new User('Town'),
-    new User('Industry')
+  // users = [
+  //   new User('Clothes Washing'),
+  //   new User('Vehicles'),
+  //   new User('Agricultural Land'),
+  //   new User('Irrigation Pump'),
+  //   new User('Cattle Grazing'),
+  //   new User('Plantation'),
+  //   new User('Bridge'),
+  //   new User('Industry'),
+  //   new User('Effluent Discharge'),
+  //   new User('Places of Workship'),
+  //   new User('Village'),
+  //   new User('Town'),
+  //   new User('Industry')
+  // ];
+  surroundings = [
+    'Clothes washing',
+    'Cattle grazing',
+    'Vehicles',
+    'Agricultural Land',
+    'Plantation',
+    'Bridge',
+    'Industry',
+    'Places of worship',
+    'Village',
+    'Town',
+    'Effluent discharge',
+    'Sewage discharge',
+    'Irrigation Pump',
   ];
 
-
-  selectedUsers: User[] = new Array<User>();
-
-  filteredUsers: Observable<User[]>;
+  // selectedUsers: User[] = new Array<User>();
+  // filteredUsers: Observable<User[]>;
   lastFilter: string = '';
-
 
   activityForm: FormGroup;
   latitude: number;
@@ -155,7 +167,7 @@ export class RiverMonitoringComponent implements OnInit {
   getAddress: any;
   lat: number;
   lng: number;
-  constructor(private fb: FormBuilder, 
+  constructor(private fb: FormBuilder,
     private mapsAPILoader: MapsAPILoader,private apiloader:MapsAPILoader,private ngZone: NgZone) {
     this.createForm();
   }
@@ -186,63 +198,62 @@ export class RiverMonitoringComponent implements OnInit {
     });
     this.get()
     this.agmMap.triggerResize(true);
-     this.zoom = 16;
-    this.filteredUsers = this.userControl.valueChanges.pipe(
-      startWith<string | User[]>(''),
-      map(value => typeof value === 'string' ? value : this.lastFilter),
-      map(filter => this.filter(filter))
-    );
+    this.zoom = 16;
+    // this.filteredUsers = this.userControl.valueChanges.pipe(
+    //   startWith<string | User[]>(''),
+    //   map(value => typeof value === 'string' ? value : this.lastFilter),
+    //   map(filter => this.filter(filter))
+    // );
   }
   mapClicked($event: MouseEvent) {
 
     this.latitude= $event.coords.lat,
     this.longitude= $event.coords.lng
-  
-    
+
+
     this.apiloader.load().then(() => {
       let geocoder = new google.maps.Geocoder;
       let latlng = {lat: this.latitude, lng: this.longitude};
-    
+
       geocoder.geocode({'location': latlng}, function(results) {
-          if (results[0]) {
-            this.currentLocation = results[0].formatted_address;
+        if (results[0]) {
+          this.currentLocation = results[0].formatted_address;
           console.log(this.currentLocation);
-          } else {
-            console.log('Not found');
-          }
+        } else {
+          console.log('Not found');
+        }
       });
     });
   }
 
-  filter(filter: string): User[] {
-    this.lastFilter = filter;
-    if (filter) {
-      return this.users.filter(option => {
-        return option.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0;
-      })
-    } else {
-      return this.users.slice();
-    }
-  }
-  displayFn(value: User[] | string): string | undefined {
-    let displayValue: string;
-    if (Array.isArray(value)) {
-      value.forEach((user, index) => {
-        if (index === 0) {
-          displayValue = user.name;
-        } else {
-          displayValue += ', ' + user.name;
-        }
-      });
-    } else {
-      displayValue = value;
-    }
-    return displayValue;
-  }
+  // filter(filter: string): User[] {
+  //   this.lastFilter = filter;
+  //   if (filter) {
+  //     return this.users.filter(option => {
+  //       return option.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0;
+  //     })
+  //   } else {
+  //     return this.users.slice();
+  //   }
+  // }
+  // displayFn(value: User[] | string): string | undefined {
+  //   let displayValue: string;
+  //   if (Array.isArray(value)) {
+  //     value.forEach((user, index) => {
+  //       if (index === 0) {
+  //         displayValue = user.name;
+  //       } else {
+  //         displayValue += ', ' + user.name;
+  //       }
+  //     });
+  //   } else {
+  //     displayValue = value;
+  //   }
+  //   return displayValue;
+  // }
   items = [
     { name: 'Present' },
     { name: 'Absent' },
-
   ];
   createForm() {
     this.activityForm = this.fb.group({
@@ -250,8 +261,8 @@ export class RiverMonitoringComponent implements OnInit {
       generalInformation: this.fb.group({
         activityDate: ['03 Aug 2020'],
         activityTime: [' 6:06 PM'],
-        testerName: ['Aravind'],
-        location: ['Hebbal, Karnataka'],
+        testerName: [''],
+        location: [''],
         latitude: [''],
         longitude: [' '],
       }),
@@ -260,11 +271,7 @@ export class RiverMonitoringComponent implements OnInit {
         waterLevel: [' '],
         weather: ['Partly Cloudy'],
       }),
-      surroundings: this.fb.group({
-        agriculturalLand: [''],
-        Plantation: [' '],
-
-      }),
+      surroundings: this.fb.array([]),
       waterTesting: this.fb.group({
         waterTemperature: ['21'],
         pH: ['11 '],
@@ -306,22 +313,22 @@ export class RiverMonitoringComponent implements OnInit {
   onSubmit() {
     // do something here
   }
-  optionClicked(event: Event, user: User) {
-    event.stopPropagation();
-    this.toggleSelection(user);
-  }
+  // optionClicked(event: Event, user: User) {
+  //   event.stopPropagation();
+  //   this.toggleSelection(user);
+  // }
 
-  toggleSelection(user: User) {
-    user.selected = !user.selected;
-    if (user.selected) {
-      this.selectedUsers.push(user);
-    } else {
-      const i = this.selectedUsers.findIndex(value => value.name === user.name);
-      this.selectedUsers.splice(i, 1);
-    }
-
-    this.userControl.setValue(this.selectedUsers);
-  }
+  // toggleSelection(user: User) {
+  //   user.selected = !user.selected;
+  //   if (user.selected) {
+  //     this.selectedUsers.push(user);
+  //   } else {
+  //     const i = this.selectedUsers.findIndex(value => value.name === user.name);
+  //     this.selectedUsers.splice(i, 1);
+  //   }
+  //
+  //   this.userControl.setValue(this.selectedUsers);
+  // }
   onFileChange(event) {
     if (event.target.files && event.target.files[0]) {
       var length = event.target.files.length;
@@ -437,7 +444,7 @@ export class RiverMonitoringComponent implements OnInit {
       );
     }
   }
-  
+
   // getBase64(file) {
   //   return new Promise((resolve, reject) => {
   //     const reader = new FileReader();
@@ -448,35 +455,30 @@ export class RiverMonitoringComponent implements OnInit {
   // }
 
   get(){
-   
-
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position: Position) => {
         if (position) {
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
-        this.getAddress=(this.lat,this.lng)
-        console.log(position)
-  
-        this.apiloader.load().then(() => {
-          let geocoder = new google.maps.Geocoder;
-          let latlng = {lat: this.lat, lng: this.lng};
-         
-          geocoder.geocode({'location': latlng}, function(results) {
+          this.lat = position.coords.latitude;
+          this.lng = position.coords.longitude;
+          this.getAddress=(this.lat,this.lng)
+          console.log(position)
+
+          this.apiloader.load().then(() => {
+            let geocoder = new google.maps.Geocoder;
+            let latlng = {lat: this.lat, lng: this.lng};
+
+            geocoder.geocode({'location': latlng}, function(results) {
               if (results[0]) {
                 this.currentLocation= results[0].formatted_address;
-               
-              console.log(this.assgin);
+
               } else {
                 console.log('Not found');
               }
+            });
           });
-        });
-  
-      }
-    })
-  }
-  
+        }
+      })
+    }
   }
 
   private setCurrentPosition() {
@@ -501,7 +503,7 @@ export class RiverMonitoringComponent implements OnInit {
     this.centerLoc = { lat: this.activityForm.get('generalInformation').get('latitude').value, lng: this.activityForm.get('generalInformation').get('longitude').value };
     //this.recenterMap();
   }
-  
+
   async getAddressByLatitudeAndLongitude(lat, lng, form) {
     var address;
     this.geocoder = new google.maps.Geocoder();
@@ -516,6 +518,7 @@ export class RiverMonitoringComponent implements OnInit {
         });
       } else {
         console.log("Geocoder failed due to: " + status);
+        alert("Geocoder failed due to: " + status+". Please enter a valid latitide and longitude.")
       }
     });
   }
