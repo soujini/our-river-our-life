@@ -20,7 +20,11 @@
 
               </mdb-card-text>
               <a [href]="item.url" target="_bank">
-              <button mdbBtn type="button" class="custom-btn" rounded="true" mdbWavesEffect>View <mdb-icon far icon="file-pdf"></mdb-icon></button>
+              <button mdbBtn type="button" class="custom-btn" rounded="true" mdbWavesEffect>View
+                <mdb-icon *ngIf="item.type == 'pdf'" far icon="file-pdf"></mdb-icon>
+                <mdb-icon *ngIf="item.type == 'html'" fas icon="link"></mdb-icon>
+
+              </button>
               </a>
             </mdb-card-body>
           </mdb-card>
@@ -61,7 +65,11 @@
                 <p class="card-description">{{item.description}}</p>
               </mdb-card-text>
               <a [href]="item.url" target="_bank">
-              <button mdbBtn type="button" class="custom-btn" rounded="true" mdbWavesEffect>View <mdb-icon far icon="file-pdf"></mdb-icon></button>
+              <button mdbBtn type="button" class="custom-btn" rounded="true" mdbWavesEffect>View
+                <mdb-icon *ngIf="item.type == 'pdf'" far icon="file-pdf"></mdb-icon>
+                <mdb-icon *ngIf="item.type == 'html'" fas icon="link"></mdb-icon>
+              </button>
+
               </a>
             </mdb-card-body>
           </mdb-card>
@@ -86,8 +94,10 @@
                   <p class="card-description">{{item.description}}</p>
                 </mdb-card-text>
                 <a [href]="item.url" target="_bank">
-                <button mdbBtn type="button" class="custom-btn" rounded="true" mdbWavesEffect>View <mdb-icon far icon="file-pdf"></mdb-icon></button>
-                </a>
+                  <button mdbBtn type="button" class="custom-btn" rounded="true" mdbWavesEffect>View
+                    <mdb-icon *ngIf="item.type == 'pdf'" far icon="file-pdf"></mdb-icon>
+                    <mdb-icon *ngIf="item.type == 'html'" fas icon="link"></mdb-icon>
+                  </button>                </a>
               </mdb-card-body>
             </mdb-card>
           </div>
@@ -111,8 +121,10 @@
                     <p class="card-description">{{item.description}}</p>
                   </mdb-card-text>
                   <a [href]="item.url" target="_bank">
-                  <button mdbBtn type="button" class="custom-btn" rounded="true" mdbWavesEffect>View <mdb-icon far icon="file-pdf"></mdb-icon></button>
-                  </a>
+                    <button mdbBtn type="button" class="custom-btn" rounded="true" mdbWavesEffect>View
+                      <mdb-icon *ngIf="item.type == 'pdf'" far icon="file-pdf"></mdb-icon>
+                      <mdb-icon *ngIf="item.type == 'html'" fas icon="link"></mdb-icon>
+                    </button>                  </a>
                 </mdb-card-body>
               </mdb-card>
             </div>
