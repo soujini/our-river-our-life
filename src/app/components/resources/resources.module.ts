@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MDBBootstrapModulesPro, ButtonsModule, WavesModule, CardsModule} from 'ng-uikit-pro-standard';
 
 import { ResourcesRoutingModule } from './resources-routing.module';
 import { ResourcesComponent } from './resources.component';
@@ -9,7 +10,11 @@ import { ResourcesComponent } from './resources.component';
   declarations: [ResourcesComponent],
   imports: [
     CommonModule,
-    ResourcesRoutingModule
+    ResourcesRoutingModule,
+    ButtonsModule,
+    WavesModule,
+    CardsModule,
+    MDBBootstrapModulesPro.forRoot()
   ],
   exports:[
     ResourcesComponent

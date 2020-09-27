@@ -1,1 +1,118 @@
-<p style="margin-top:150px;height:405px; padding:50px">Resources Content !</p>
+<div class="resources">
+  <div class="section">
+    <div class="banner text-center">
+    <h2><span style="color:#357ba0;font-weight: 800; color:#116bb5">WATER MONITORING TOOLKIT</span>
+    </h2>
+    </div>
+
+    <div class="row content" >
+      <div class="col-lg-4 col-md-4 mt-4" *ngFor="let item of waterMonitoringToolkit">
+        <mdb-card cascade="true" wider="true">
+
+          <div class="view view-cascade gradient-card-header blue-gradient">
+            <h5 class="card-header-title mb-2" style="font-size:14px">{{item.name}}</h5>
+            <p class="">
+            </div>
+
+            <mdb-card-body cascade="true" class="text-center">
+
+              <mdb-card-text>
+
+              </mdb-card-text>
+              <a [href]="item.url" target="_bank">
+              <button mdbBtn type="button" class="custom-btn" rounded="true" mdbWavesEffect>View <mdb-icon far icon="file-pdf"></mdb-icon></button>
+              </a>
+            </mdb-card-body>
+          </mdb-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="banner text-center">
+      <h2><span style="color:#357ba0;font-weight: 800; color:#116bb5">BIO MONITORING TOOLKIT</span>
+      </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6" *ngFor="let item of bioMonitoringToolkit">
+          <iframe [src]='photoURL(item.url)' width="100%" height="400" frameborder="0"
+          webkitallowfullscreen mozallowfullscreen allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="banner text-center">
+    <h2><span style="color:#357ba0;font-weight: 800; color:#116bb5">IMPORTANT LINKS</span>
+    </h2>
+    </div>
+    <div class="outer-block">
+      <div class="items xmt-4" *ngFor="let item of importantLinks">
+        <mdb-card cascade="true" wider="true">
+          <div class="view view-cascade gradient-card-header aqua-gradient">
+            <h5 class="card-header-title mb-2" style="font-size:14px">{{item.name}}</h5>
+            <p class="">
+            </div>
+            <mdb-card-body cascade="true" class="text-center">
+              <mdb-card-text>
+                <p class="card-description">{{item.description}}</p>
+              </mdb-card-text>
+              <a [href]="item.url" target="_bank">
+              <button mdbBtn type="button" class="custom-btn" rounded="true" mdbWavesEffect>View <mdb-icon far icon="file-pdf"></mdb-icon></button>
+              </a>
+            </mdb-card-body>
+          </mdb-card>
+        </div>
+      </div>
+
+    </div>
+    <div class="section">
+      <div class="banner text-center">
+      <h2><span style="color:#357ba0;font-weight: 800; color:#116bb5">EDUCATION & OUTREACH MATERIAL</span>
+      </h2>
+      </div>
+      <div class="outer-block">
+        <div class="items xmt-4" *ngFor="let item of educationAndOutreachLinks">
+          <mdb-card cascade="true" wider="true">
+            <div class="view view-cascade gradient-card-header blue-gradient">
+              <h5 class="card-header-title mb-2" style="font-size:14px">{{item.name}}</h5>
+              <p class="">
+              </div>
+              <mdb-card-body cascade="true" class="text-center">
+                <mdb-card-text>
+                  <p class="card-description">{{item.description}}</p>
+                </mdb-card-text>
+                <a [href]="item.url" target="_bank">
+                <button mdbBtn type="button" class="custom-btn" rounded="true" mdbWavesEffect>View <mdb-icon far icon="file-pdf"></mdb-icon></button>
+                </a>
+              </mdb-card-body>
+            </mdb-card>
+          </div>
+        </div>
+
+      </div>
+      <div class="section">
+        <div class="banner text-center">
+        <h2><span style="color:#357ba0;font-weight: 800; color:#116bb5">GOVERNMENT WEBSITES</span>
+        </h2>
+        </div>
+        <div class="outer-block">
+          <div class="items xmt-4" *ngFor="let item of governmentWebsites">
+            <mdb-card cascade="true" wider="true">
+              <div class="view view-cascade gradient-card-header aqua-gradient">
+                <h5 class="card-header-title mb-2" style="font-size:14px">{{item.name}}</h5>
+                <p class="">
+                </div>
+                <mdb-card-body cascade="true" class="text-center">
+                  <mdb-card-text>
+                    <p class="card-description">{{item.description}}</p>
+                  </mdb-card-text>
+                  <a [href]="item.url" target="_bank">
+                  <button mdbBtn type="button" class="custom-btn" rounded="true" mdbWavesEffect>View <mdb-icon far icon="file-pdf"></mdb-icon></button>
+                  </a>
+                </mdb-card-body>
+              </mdb-card>
+            </div>
+          </div>
+
+        </div>

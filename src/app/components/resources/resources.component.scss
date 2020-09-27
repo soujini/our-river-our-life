@@ -1,0 +1,44 @@
+.resources{
+    margin-top: 100px;
+    background:url(../../../assets/jpg/banner/bg_waves2.webp);
+    background-attachment: scroll;
+    -webkit-transform: translate3d(0,0,0);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.content{
+  padding-left:50px;
+  padding-right:50px;
+}
+
+.banner{
+  font-family: 'Open Sans', sans-serif;
+  padding-top:35px;
+  padding-bottom:35px;
+}
+.custom-btn{
+  background-image: url(../../../assets/scalable-vector-graphics/banner_header2.svg) !important;
+}
+.aqua-gradient {
+    background: linear-gradient(40deg,#2096ff,#8cc641)!important;
+}
+.card-description{
+  padding:25px !important;
+}
+.view{
+  font-size: 14px;
+}
+.outer-block {
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+    column-count: 3;
+    -moz-column-gap: 1em;
+    -webkit-column-gap: 1em;
+    column-gap: 1em;
+}
+.items {
+    display: inline-block;
+    margin: 0 0 1em;
+    width: 100%;
+}

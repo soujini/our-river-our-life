@@ -25,7 +25,7 @@ import { AgmCoreModule } from '@agm/core';
     WavesModule,
     FormsModule,
     ButtonsModule,
-     ReactiveFormsModule,
+    ReactiveFormsModule,
     FloodWatchRoutingModule,
     GoogleMapsModule,
     AgmCoreModule.forRoot({
@@ -35,7 +35,7 @@ import { AgmCoreModule } from '@agm/core';
   ],
   exports:[
     FloodWatchComponent,
-    MapsComponent
+    MapsComponent,
   ]
 })
 export class FloodWatchModule { }

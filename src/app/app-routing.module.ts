@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./components/voices-from-the-river/voices-from-the-river.module').then(m => m.VoicesFromTheRiverModule)
   },
   {
+    path: 'resources',
+    loadChildren: () => import('./components/resources/resources.module').then(m => m.ResourcesModule)
+  },
+  {
     path: 'ongoing-campaigns',
     loadChildren: () => import('./components/ongoing-campaigns/ongoing-campaigns.module').then(m => m.OngoingCampaignsModule)
   },
@@ -35,7 +39,7 @@ const routes: Routes = [
     path: 'privacy-policy',
     loadChildren: () => import('./components/privacy-policy/privacy-policy.module').then(m => m.PrivacyPolicyModule)
   },
- 
+
   {
 	path: '',
 	redirectTo: 'home',
