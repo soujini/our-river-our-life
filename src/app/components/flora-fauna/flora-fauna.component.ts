@@ -144,6 +144,10 @@ export class FloraFaunaComponent implements OnInit {
                 this.fauna.push({
                   img: data['rows'][i].fauna[j].imageURL,
                   thumb:data['rows'][i].fauna[j].imageURL,
+                  commonName:data['rows'][i].commonName,
+                  scientificName:data['rows'][i].scientificName,
+                  localName:data['rows'][i].localName,
+                  location:data['rows'][i].location,
                 });
               }
             }
@@ -152,6 +156,10 @@ export class FloraFaunaComponent implements OnInit {
                 this.flora.push({
                   img: data['rows'][i].flora[j].imageURL,
                   thumb:data['rows'][i].flora[j].imageURL,
+                  commonName:data['rows'][i].commonName,
+                  scientificName:data['rows'][i].scientificName,
+                  localName:data['rows'][i].localName,
+                  location:data['rows'][i].location,
                 });
               }
             }
@@ -171,6 +179,7 @@ export class FloraFaunaComponent implements OnInit {
                 this.fauna.push({
                   img: data['rows'][i].fauna[j].imageURL,
                   thumb:data['rows'][i].fauna[j].imageURL,
+                  location:data['rows'][i].location,
                 });
               }
             }
@@ -179,6 +188,7 @@ export class FloraFaunaComponent implements OnInit {
                 this.flora.push({
                   img: data['rows'][i].flora[j].imageURL,
                   thumb:data['rows'][i].flora[j].imageURL,
+                  location:data['rows'][i].location,
                 });
               }
             }
@@ -211,5 +221,5 @@ export class FloraFaunaComponent implements OnInit {
         this.orolService.addFauna(this.floraFaunaForm.value, this.imageFile);
       }
     }
-  
+
   }

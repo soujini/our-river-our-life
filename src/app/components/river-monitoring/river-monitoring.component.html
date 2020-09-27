@@ -723,8 +723,8 @@ Image</button>
             </div>
 
             <div class="col-md-12 mt-3 text-left" xformGroupName="waterLevelAndWeather">
-              <div *ngFor="let obj of data" class="col-md-3 text-left" style="display:inline-block">
-                <mdb-checkbox class="checkbox-coco-filled" [checked]="false" [default]="true">{{obj.name}}</mdb-checkbox>
+              <div *ngFor="let obj of surroundings" class="col-md-3 text-left" style="display:inline-block">
+                <mdb-checkbox class="checkbox-coco-filled" [checked]="false" [default]="true">{{obj}}</mdb-checkbox>
               </div>
             </div>
           </div>
@@ -990,7 +990,13 @@ Image</button>
 
 <mdb-tab heading="View Reports" xstyle="height:500px">
   <div class="bg-white">
-    asd
+    <div class="row mt-2" style="height:300px; background-color:white;margin-left: -35px;margin-right: -35px;">
+      <div class="col-12 text-center mt-5">
+        <!-- <div class="feature-card-img"><img src="../../assets/scalable-vector-graphics/flora_fauna_white_icon.svg" alt="River Monitoring" height="50px" style="margin-left: -5px;"></div> -->
+        <p class="mt-4">Sorry! We don't have any reports to view at the moment. Would you like to contribute and create a new report?</p>
+        <p class="mt-4">Please click on <strong>'CREATE REPORT'</strong> to add a new report.</p>
+      </div>
+    </div>
   </div>
 </mdb-tab>
 </mdb-tabset>

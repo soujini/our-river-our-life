@@ -84,47 +84,47 @@ export class RiverMonitoringComponent implements OnInit {
       imageUrl: "../../../assets/scalable-vector-graphics/heavy_rain_icon.svg",
     },
   ];
-  data: any = [
-    {
-      name: "Clothers Washing",
-    },
-    {
-      name: "Vehicles",
-    },
-    {
-      name: "Agricultural Land",
-    },
-    {
-      name: "Irrigation Pump",
-    },
-    {
-      name: "Cattle Grazing",
-    },
-    {
-      name: "Plantation",
-    },
-    {
-      name: "Bridge",
-    },
-    {
-      name: "Industry",
-    },
-    {
-      name: "Effluent Discharge",
-    },
-    {
-      name: "Places of Workship",
-    },
-    {
-      name: "Village",
-    },
-    {
-      name: "Town",
-    },
-    {
-      name: "Industry",
-    },
-  ];
+  // data: any = [
+  //   {
+  //     name: "Clothers Washing",
+  //   },
+  //   {
+  //     name: "Vehicles",
+  //   },
+  //   {
+  //     name: "Agricultural Land",
+  //   },
+  //   {
+  //     name: "Irrigation Pump",
+  //   },
+  //   {
+  //     name: "Cattle Grazing",
+  //   },
+  //   {
+  //     name: "Plantation",
+  //   },
+  //   {
+  //     name: "Bridge",
+  //   },
+  //   {
+  //     name: "Industry",
+  //   },
+  //   {
+  //     name: "Effluent Discharge",
+  //   },
+  //   {
+  //     name: "Places of Workship",
+  //   },
+  //   {
+  //     name: "Village",
+  //   },
+  //   {
+  //     name: "Town",
+  //   },
+  //   {
+  //     name: "Industry",
+  //   },
+  // ];
   // users = [
   //   new User('Clothes Washing'),
   //   new User('Vehicles'),
@@ -148,7 +148,7 @@ export class RiverMonitoringComponent implements OnInit {
     'Plantation',
     'Bridge',
     'Industry',
-    'Places of worship',
+    'Place of worship',
     'Village',
     'Town',
     'Effluent discharge',

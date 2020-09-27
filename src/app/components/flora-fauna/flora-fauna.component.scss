@@ -147,3 +147,18 @@ right: 133px;
     height: 100%;
     vertical-align: middle;
 }
+.ng-thumb:hover {
+    opacity: .85;
+}
+.ng-thumb {
+    width: 100%;
+    height: 100%;
+    float: none;
+    display: block;
+    cursor: zoom-in;
+    transition: .3s ease-in-out;
+}
+.card{
+  margin-left: -15px !important;
+  margin-right: -15px !important;
+}

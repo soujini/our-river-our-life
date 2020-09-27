@@ -27,7 +27,26 @@
       <div *ngIf="this.flora.length > 0" class="row row mt-2" style="background-color:white">
         <div class="col-12">
           <br>
-          <mdb-image-modal [modalImages]="flora" type="margin"></mdb-image-modal>
+          <!-- <mdb-image-modal [modalImages]="flora" type="margin"></mdb-image-modal> -->
+          <div class="margin mdb-lightbox ng-gallery row">
+            <figure class="ng-thumb col-md-4" *ngFor="let f of flora">
+            <img class="ng-thumb" [src]= "f.img" alt="Image">
+
+            <!-- add desc from water test details -->
+            <div *ngIf="f.location != ''" class="d-flex mt-1">
+                <label>Location : </label>&nbsp;<label>{{ f.location}}</label>
+            </div>
+              <div *ngIf="f.commonName != ''" class="d-flex mt-1">
+                  <label>Common Name : </label>&nbsp;<label>{{ f.commonName}}</label>
+              </div>
+              <div *ngIf="f.scientificName != ''" class="d-flex">
+                  <label>Scientific Name : </label>&nbsp;<label>{{f.scientificName}}</label>
+              </div>
+              <div *ngIf="f.localName != ''" class="d-flex">
+                  <label>Local Name : </label>&nbsp;<label>{{f.localName}}</label>
+              </div>
+            </figure>
+        </div>
         </div>
       </div>
       <div *ngIf="this.flora.length == 0" class="row row mt-2" style="height:300px; background-color:white;margin-left: -35px;margin-right: -35px;">
@@ -40,10 +59,29 @@
     </mdb-tab>
 
     <mdb-tab heading="Fauna">
-      <div *ngIf="this.fauna.length > 0" class="row row mt-2" >
+      <div *ngIf="this.fauna.length > 0" class="row row mt-2" style="background-color:white;">
         <div class="col-12">
           <br>
-          <mdb-image-modal [modalImages]="fauna" type="margin"></mdb-image-modal>
+          <!-- <mdb-image-modal [modalImages]="fauna" type="margin"></mdb-image-modal> -->
+          <div class="margin mdb-lightbox ng-gallery row">
+            <figure class="ng-thumb col-md-4" *ngFor="let f of fauna">
+            <img class="ng-thumb" [src]= "f.img" alt="Image">
+
+            <!-- add desc from water test details -->
+            <div *ngIf="f.location != ''" class="d-flex mt-1">
+                <label>Location : </label>&nbsp;<label>{{ f.location}}</label>
+            </div>
+              <div *ngIf="f.commonName != ''" class="d-flex mt-1">
+                  <label>Common Name : </label>&nbsp;<label>{{ f.commonName}}</label>
+              </div>
+              <div *ngIf="f.scientificName != ''" class="d-flex">
+                  <label>Scientific Name : </label>&nbsp;<label>{{f.scientificName}}</label>
+              </div>
+              <div *ngIf="f.localName != ''" class="d-flex">
+                  <label>Local Name : </label>&nbsp;<label>{{f.localName}}</label>
+              </div>
+            </figure>
+        </div>
         </div>
       </div>
       <div *ngIf="this.fauna.length == 0" class="row mt-2" style="height:300px; background-color:white;margin-left: -35px;margin-right: -35px;">
