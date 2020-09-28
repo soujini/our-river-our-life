@@ -41,13 +41,13 @@ export class ResourcesComponent implements OnInit {
   ];
   bioMonitoringToolkit = [
     {
-      name:'Macro-Invertebrate Factsheet',
+      name:'Macro-Invertebrate Key',
       url:'https://our-river-our-life-images.s3.ap-south-1.amazonaws.com/resources/resources_macro_invertebrate_factsheet.pdf',
       thumb:'',
       type:"pdf"
     },
     {
-      name:'Macro-Invertebrate Key',
+      name:'Macro-Invertebrate Factsheet',
       url:'https://our-river-our-life-images.s3.ap-south-1.amazonaws.com/resources/resources_macro_invertebrate_key.pdf',
       thumb:'',
       type:"pdf"
