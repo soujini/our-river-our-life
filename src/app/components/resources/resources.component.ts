@@ -175,7 +175,20 @@ export class ResourcesComponent implements OnInit {
       description:"",
       type:"pdf"
     },
-
+    {
+      name:'Education on Conservation of Freshwater Biodiversity of Western Ghats',
+      url:"http://zooreach.org/ZOO_WILD_Activities/2012/Aug2012_Edu_Cons_FWBWG.htm",
+      thumb:'',
+      description:"The Sahyadri Freshwater Biodiversity Conservation education materials created by Zoo Outreach Organization and Wildlife Information Liaison Development",
+      type:"html"
+    },
+    {
+      name:'Guide to Preparing River Basin Management Plans for Medium and Minor Rivers (Making Rivers Flow)',
+      url:"",
+      thumb:'',
+      description:"",
+      type:"html"
+    },
   ];
   governmentWebsites=[
     {
@@ -214,7 +227,63 @@ export class ResourcesComponent implements OnInit {
       description:""
     },
   ];
-
+  citizensPortal=[
+    {
+      name:'India Biodiversity Portal',
+      url:"https://indiabiodiversity.org/",
+      thumb:'',
+      type:"html",
+      description:"Free and open access to India’s biodiversity information"
+    },
+    {
+      name:'Odonata of India',
+      url:"https://www.indianodonata.org/",
+      thumb:'',
+      type:"html",
+      description:"Approximately 503 species of odonates occur in India, with approx. 186 species being endemic. The endemic odonate fauna of India is largely concentrated in two biodiversity hotspots of India, viz, Western Ghats and Northeast India. This website is designed as a central database on Indian Odonata which includes photographic records, distributional and population data, natural history information, and ecology"
+    },
+    {
+      name:'iNaturalist',
+      url:"https://www.inaturalist.org/",
+      thumb:'',
+      type:"html",
+      description:"iNaturalist is an online social network of naturalists, citizen scientists, and biologists built on the concept of mapping and sharing observations of biodiversity across the globe."
+    },
+    {
+      name:'KURMA- Tracking Indian Turtles',
+      url:"https://play.google.com/store/apps/details?id=tsa.kurma_tracking_indian_turtles",
+      thumb:'',
+      type:"html",
+      description:"A nation-wide citizen science initiative via the Indian Turtle Conservation Action Network, with a built in digital field guide, covering 29 species of freshwater turtles and tortoises found in India."
+    },
+    {
+      name:'Mira- Bangalore Lakes Dashboard',
+      url:"http://blrlakesdashboard.org/atree/lakes/#/app/welcome",
+      thumb:'',
+      type:"html",
+      description:"Water Quality Monitoring for Bangalore Lakes."
+    },
+    {
+      name:'eBird India',
+      url:"https://ebird.org/india/home",
+      thumb:'',
+      type:"html",
+      description:"The eBird India portal is managed by Bird Count India, a partnership of a large number of organizations and groups working to increase our collective understanding of the distribution, abundance, and population trends of Indian birds. We do this by encouraging birders to maintain complete birdlists and uploading them to eBird; by conducting periodic bird events and projects; by offering support and resources to birding groups conducting their own projects; and by putting together useful information on bird monitoring."
+    },
+    {
+      name:'Season Watch',
+      url:"https://www.seasonwatch.in/",
+      thumb:'',
+      type:"html",
+      description:"India- wide program that studies the changing seasons by monitoring the seasonal cycles of flowering, fruiting and leaf- flush of common trees. Anybody- children and adults, interested in trees and in the rapidly changing climate can participate. It’s very easy!"
+    }, {
+      name:'Butterflies of India',
+      url:"https://www.ifoundbutterflies.org/",
+      thumb:'',
+      type:"html",
+      description:"Butterflies of India is a model of 'citizen science', where ordinary citizens participate in gathering scientific data and building this free resource on Indian butterflies. So get involved! "
+    },
+  ];
   constructor(private sanitizer: DomSanitizer) { }
 
   photoURL(url) {

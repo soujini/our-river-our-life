@@ -287,6 +287,8 @@ export class RiverMonitoringComponent implements OnInit {
         phosphate: ['23 '],
         ammonia: ['11'],
         lead: ['34 '],
+        dissolvedSolids:['10'],
+        conductivity:['15'],
       }),
       flora: this.fb.group({
         imageURL: ['https://our-river-our-life-images.s3.ap-south-1.amazonaws.com/flora/IMG-20200803-WA0011.jpg'],
