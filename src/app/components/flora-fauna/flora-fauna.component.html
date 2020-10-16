@@ -1,25 +1,4 @@
 <div class="content">
-  <!-- <div class="search-box" id="searchUser">
-  <form>
-  <mat-form-field id="searchUser" class="example-full-width " appearance="outline">
-  <input style="border:none" matInput placeholder="Search For a common/biology name" aria-label="User"
-  [matAutocomplete]="auto" (keyup)="valueChange()" [formControl]="myControl ">
-  <mat-autocomplete #auto="matAutocomplete">
-  <mat-option *ngFor="let user of resource" [value]="user.name" class="card-search mat-option">
-  <div class="mat-option-text">
-  <div style="display:flex;">
-  <div>
-</div>
-<div class="ml-3">
-<span [innerHTML]="user.name" class="operator-name"></span> <br />
-</div>
-</div>
-</div>
-</mat-option>
-</mat-autocomplete>
-</mat-form-field>
-</form>
-</div> -->
 <div>
   <mdb-tabset id="flora_fauna_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'" [contentClass]="'card'" class="classic-tabs">
 
@@ -92,6 +71,7 @@
         </div>
       </div>
     </mdb-tab>
+    
     <mdb-tab heading="+ New">
       <div class="overlay form-group mt-2" style="background-color:white;margin-left: -35px;margin-right: -35px;">
         <div class="alert-box " [formGroup]="floraFaunaForm">

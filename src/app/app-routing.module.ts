@@ -39,7 +39,10 @@ const routes: Routes = [
     path: 'privacy-policy',
     loadChildren: () => import('./components/privacy-policy/privacy-policy.module').then(m => m.PrivacyPolicyModule)
   },
-
+  {
+    path: 'edit-profile',
+    loadChildren: () => import('./components/edit-profile/edit-profile.module').then(m => m.EditProfileModule)
+  },
   {
 	path: '',
 	redirectTo: 'home',

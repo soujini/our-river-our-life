@@ -34,6 +34,7 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { NgOtpInputModule } from 'ng-otp-input';
+// import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 // import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 // import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -51,6 +52,7 @@ import { NgOtpInputModule } from 'ng-otp-input';
     VerifyOTPComponent,
     ImgLoadedDirective,
     NotFoundComponent,
+    // EditProfileComponent,
     // MapsFloodWatchComponent,
     // MapsRiverMonitoringComponent,
     // MapsFloraComponent,
