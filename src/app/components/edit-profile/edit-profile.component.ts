@@ -9,21 +9,20 @@ import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
 export class EditProfileComponent implements OnInit {
   profileForm: FormGroup;
 
-  // constructor(private fb: FormBuilder) {
-  //   this.createForm();
-
-  //  }
+ 
   constructor(private fb: FormBuilder,) {
       this.createForm();
     }
 
 
   ngOnInit(): void {
+    this.profileForm.valueChanges.subscribe(val=>{
+    });
   }
   createForm() {
     this.profileForm = this.fb.group({
-      firstName:['Paritosh'],
-      lastName:['Joshi'],
+      firstName:[''],
+      lastName:[''],
       email:['joshi.paritosh07@gmail.com'],
       mobileNumber:['9548214301'],
       password:['pari@123'],
