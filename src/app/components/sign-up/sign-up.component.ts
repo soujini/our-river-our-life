@@ -45,7 +45,7 @@ export class SignUpComponent implements AfterViewInit {
       this.isRegister.emit(false);
       this.isLogin.emit(true);
     }
-    signUp(userEmail:string, userPwd:string, userPhone:string ){
-      this.authService.SignUp(userEmail, userPwd, userPhone);
+    signUp(userEmail:string, userPwd:string, userPhone:string, firstName:string, lastName:string ){
+      this.authService.SignUp(userEmail, userPwd, userPhone, firstName, lastName);
     }
   }

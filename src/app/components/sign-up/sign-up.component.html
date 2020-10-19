@@ -18,10 +18,10 @@
           <p class="red-text text-center" style="font-size:11px;min-height:10px">{{errorMessage}}</p>
           <div class="row">
             <div class="formGroup col-sm-6">
-              <input type="firstName" class="form-control" placeholder="First Name">
+              <input type="firstName" class="form-control" placeholder="First Name" #userFirstName required>
             </div>
             <div class="formGroup col-sm-6">
-              <input type="lastName" class="form-control" placeholder="Last Name">
+              <input type="lastName" class="form-control" placeholder="Last Name" #userLastName required>
             </div>
           </div>
           <div class="formGroup">
@@ -36,7 +36,7 @@
           </div>
 
           <div class="formGroup text-center">
-            <button (click)="signUp(userEmail.value, userPwd.value, userPhone.value)" type="button"
+            <button (click)="signUp(userEmail.value, userPwd.value, userPhone.value, userFirstName.value, userLastName.value)" type="button"
               class="btn btn-primary btn-rounded">Sign Up</button>
           </div>
           <div class="text-center" style="font-size:12px;color:#6c6666">

@@ -39,31 +39,30 @@ export class VerifyOTPComponent implements AfterViewInit {
     .confirm(this.otp)
     .then(result => {
       this.spinnerService.setSpinner(false);
-      console.log(result.user);
       this.isVerifyOTP.emit(false);
       this.router.navigate(['./home']);
       // this.login();
-       this.getAccessToken();
-      // this.user = result.user;
+       this.getAccessToken("phone");
     })
     .catch( error => {
       this.spinnerService.setSpinner(false);
-      this.errorMessage="Incorrect code entered?";
-      console.log(error, "Incorrect code entered?")
+      this.errorMessage="Incorrect code entered";
+      console.log(error, "Incorrect code entered")
     });
   }
 
-  loginWithEmail(){
-    // this.orolService.getAccessToken(this.userName).subscribe((data)=>{
-    //   alert(data);
-    //   console.log(data);
-    // });
-  }
-
-  getAccessToken(){
-    this.orolService.getAccessToken(this.userName).subscribe((data)=>{
-      localStorage.setItem('accessToken',data['accessToken']);
-      console.log(data);
+  getAccessToken(mode){
+    this.orolService.getAccessToken(this.userName, mode).subscribe((data)=>{
+      const User: any = {
+        'id':data['user'].id,
+        'accessToken':data['accessToken'],
+        'firstName':data['user'].firstName,
+        'lastName':data['user'].lastName,
+        'phoneNumber':data['user'].phoneNumber,
+        'email':data['user'].email,
+      }
+      localStorage.setItem('User', JSON.stringify(User));
+      this.orolService.userDetailsSubject.next(JSON.stringify(User));
     });
   }
 }

@@ -25,18 +25,18 @@ export class AuthService {
     public ngZone: NgZone,
     public orolService:OrolService,
     public spinnerService:SpinnerService
-     // NgZone service to remove outside scope warning
+    // NgZone service to remove outside scope warning
   ) {
     /* Saving user data in localstorage when
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user'));
+        // localStorage.setItem('user', JSON.stringify(this.userData));
+        // JSON.parse(localStorage.getItem('user'));
       } else {
-        localStorage.setItem('user', null);
-        JSON.parse(localStorage.getItem('user'));
+        // localStorage.setItem('user', null);
+        // JSON.parse(localStorage.getItem('user'));
       }
     })
   }
@@ -46,26 +46,52 @@ export class AuthService {
     return this.afAuth.signInWithEmailAndPassword(email, password);
   }
 
-  // Sign up with email/password
-  SignUp(email, password, phoneNumber) {
-      this.spinnerService.setSpinner(true);
+  // Sign up with email/password (Sign up to firebase and save user details in the user table)
+  SignUp(email, password, phoneNumber, firstName, lastName) {
+    this.spinnerService.setSpinner(true);
     return this.afAuth.createUserWithEmailAndPassword(email, password)
-    .then((result) => {
-      localStorage.setItem('phone', phoneNumber);
-      /* Call the SendVerificaitonMail() function when new user sign
-      up and returns promise */
-      // this.orolService.signIn(email, phoneNumber).subscribe((res)=>{
-      //     alert(res.id);
-      //   localStorage.setItem('userId', res.id);
-      // });
-      this.SendVerificationMail();
-      this.SetUserData(result.user);
+    .then(u => {
+      this.orolService.signInWeb(email, phoneNumber, firstName, lastName);// Save Data in the User Table
+        this.SendVerificationMail();
+        // this.SetUserData(result.user);
         this.spinnerService.setSpinner(false);
-    }).catch((error) => {
-        this.spinnerService.setSpinner(false);
-      this.errorMessageSubject.next(error.message);
+      // localStorage.setItem('phone', phoneNumber);
     })
-  }
+    .catch(error => {
+      this.spinnerService.setSpinner(false);
+      switch (error.code) {
+        case 'auth/email-already-in-use':
+        this.errorMessageSubject.next(`Email address ${email} already in use.`);
+        break;
+        case 'auth/invalid-email':
+        this.errorMessageSubject.next(`Email address ${email} is invalid.`);
+        break;
+        case 'auth/operation-not-allowed':
+        this.errorMessageSubject.next(`Error during sign up.`);
+        break;
+        case 'auth/weak-password':
+        this.errorMessageSubject.next('Password is not strong enough. Add additional characters including special characters and numbers.');
+        break;
+        default:
+        this.errorMessageSubject.next(error.message);
+        break;
+      }});
+    }
+    // .then((result) => {
+    //   localStorage.setItem('phone', phoneNumber);
+    //   /* Call the SendVerificaitonMail() function when new user sign
+    //   up and returns promise */
+    //   // this.orolService.signIn(email, phoneNumber).subscribe((res)=>{
+    //   //     alert(res.id);
+    //   //   localStorage.setItem('userId', res.id);
+    //   // });
+    //   this.SendVerificationMail();
+    //   this.SetUserData(result.user);
+    //     this.spinnerService.setSpinner(false);
+    // }).catch((error) => {
+    //     this.spinnerService.setSpinner(false);
+    //   this.errorMessageSubject.next(error.message);
+    // })
 
   // Send email verfificaiton when new user sign up
   async SendVerificationMail() {
@@ -101,7 +127,7 @@ export class AuthService {
       this.ngZone.run(() => {
         this.router.navigate(['home']);
       })
-      this.SetUserData(result.user);
+      // this.SetUserData(result.user);
     }).catch((error) => {
       this.errorMessageSubject.next(error);
     })
@@ -127,8 +153,8 @@ export class AuthService {
   // Sign out
   SignOut() {
     return this.afAuth.signOut().then(() => {
-      localStorage.removeItem('user');
-
+      localStorage.removeItem('User');
+      this.orolService.userDetailsSubject.next({});
     })
   }
 }

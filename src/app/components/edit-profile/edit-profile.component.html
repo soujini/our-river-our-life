@@ -1,72 +1,64 @@
 <div class="profile">
-    <div>
-        <mdb-tabset id="flora_fauna_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'"
-            [contentClass]="'card'" class="classic-tabs">
+  <div>
+    <mdb-tabset id="flora_fauna_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'"
+    [contentClass]="'card'" class="classic-tabs">
+    <mdb-tab heading="Edit Profile">
+      <div >
+        <div class="row mt-2" style="background-color:white;">
+          <form class="col-12">
+            <div class="row formGroup">
+              <div class="col-md-6">
+                <label for="firstName" class="text-left">First Name</label>
+                <input mdbInput id="first_name" type="text" class="form-control"
+                formControlName="firstName" placeholder="First Name">
+              </div>
+              <div class="col-md-6">
+                <label for="lastname" class="text-left">Last Name (optional)</label>
+                <input mdbInput id="last_name" type="text" class="form-control"
+                formControlName="lastname" placeholder="Last Name">
+              </div>
+            </div>
 
-            <mdb-tab heading="Draft">
-
-            </mdb-tab>
-
-            <mdb-tab heading="Participation Certification">
-
-            </mdb-tab>
-
-            <mdb-tab heading="Edit Profile">
-                <div >
-                    <div class="row row mt-2"  style="background-color:white;">
-                    <div class="col-12">
-                     
-                        <div class="row formGroup">
-                            <div class="col-md-6">
-                                <label for="firstName" class="text-left">First Name</label>
-                                <input mdbInput id="first_name" type="text" class="form-control"
-                                formControlName="firstName" placeholder="First Name">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="lastname" class="text-left">Last Name (optional)</label>
-                                <input mdbInput id="last_name" type="text" class="form-control"
-                                    formControlName="lastname" placeholder="Last Name">
-                            </div>
-                        </div>
-
-                        <div class="row formGroup">
-                            <div class="col-md-12">
-                                <label for="mobileNumber" class="text-left">Mobile Number</label>
-                                <div class="input-group mb-2">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">+91</div>
-                                    </div>
-                                    <input type="mobilenumber" class="form-control py-0" class="form-control"
-                                        placeholder="Mobile Number" formControlName="mobileNumber" #userPhone required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row formGroup">
-                            <div class="col-md-12">
-                                <label for="email" class="text-left">Email</label>
-                                <input mdbInput id="email" type="text" class="form-control" formControlName="email"
-                                    placeholder="Email">
-                            </div>
-                        </div>
-
-                        <div class="row formGroup">
-                            <div class="col-md-12">
-                                <label for="password" class="text-left">Password</label>
-                                <input mdbInput type="password" class="form-control" formControlName="password"
-                                    placeholder="Password">
-                            </div>
-                        </div>
-                    </div>
+            <div class="row formGroup">
+              <div class="col-md-12">
+                <label for="mobileNumber" class="text-left">Mobile Number</label>
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">+91</div>
+                  </div>
+                  <input type="mobilenumber" class="form-control py-0" class="form-control"
+                  placeholder="Mobile Number" formControlName="mobileNumber" required>
                 </div>
-                </div>
-                <div class="row mt-2"
-                    style="height:300px; background-color:white;margin-left: -35px;margin-right: -35px;">
+              </div>
+            </div>
 
-                </div>
-            
-            </mdb-tab>
+            <div class="row formGroup">
+              <div class="col-md-12">
+                <label for="email" class="text-left">Email</label>
+                <input mdbInput id="email" type="text" class="form-control" formControlName="email"
+                placeholder="Email">
+              </div>
+            </div>
 
-        </mdb-tabset>
-    </div>
+            <div class="row formGroup">
+              <div class="col-md-12">
+                <label for="password" class="text-left">Password</label>
+                <input mdbInput type="password" class="form-control" formControlName="password"
+                placeholder="Password">
+              </div>
+            </div>
+            <div>
+              <button (click)="updateUser()">SAVE</button>
+              </div>
+          </form>
+        </div>
+      </div>
+
+  </mdb-tab>
+  <mdb-tab heading="Draft">
+  </mdb-tab>
+  <mdb-tab heading="Participation Certification">
+  </mdb-tab>
+</mdb-tabset>
+</div>
 </div>

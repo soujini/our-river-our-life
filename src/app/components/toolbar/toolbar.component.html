@@ -34,17 +34,17 @@
         <a class="nav-link waves-light" mdbWavesEffect><span class="heading" [routerLink]="'/ongoing-campaigns'">Ongoing
             Campaigns</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="this.name == ''">
         <a class="nav-link waves-light" (click)="this.isLogin = true" mdbWavesEffect><span
             class="heading">Login/Register</span></a>
       </li>
 
-      <li class="nav-item dropdown" dropdown>
+      <li class="nav-item dropdown" dropdown  *ngIf="this.name != ''">
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link waves-light" mdbWavesEffect>
-          <img height="40px" width="40px" class="profile-image"
-            src="../../assets/scalable-vector-graphics/user-profile.svg">
+          <!-- <img height="40px" width="40px" class="profile-image"
+            src="../../assets/scalable-vector-graphics/user-profile.svg"> -->
 
-          <span class="heading">Paritosh Joshi</span><span class="dropdown-toggle "></span></a>
+          <span class="heading">{{name}}</span><span class="dropdown-toggle "></span></a>
         <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown" role="menu">
           <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="'/edit-profile'"
             routerLinkActive="router-link-active"><img src="../../assets/scalable-vector-graphics/user.svg">

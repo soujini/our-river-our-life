@@ -4,19 +4,29 @@ import { Route, Router, NavigationStart, ActivatedRoute } from '@angular/router'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SpinnerService } from '../services/spinner.service';
 declare var Orol:any;
-
-
+import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrolService {
+  public userDetailsSubject = new BehaviorSubject({});
+  userDetails = this.userDetailsSubject.asObservable();
   constructor( private router: Router, public httpClient: HttpClient,  private spinnerService: SpinnerService) { }
 
-  public getAccessToken(phone){
-    var obj = {
-      "phoneNumber":phone
-    };
+  public getAccessToken(username, mode){ //Username can be email or phone number
+    var obj;
+    if(mode == "phone"){
+      obj = {
+        "phoneNumber":username
+      };
+    }
+    else{//email
+      obj = {
+        "email":username
+      };
+    }
     this.spinnerService.setSpinner(true);
     return this.httpClient.post("https://our-river-our-life-api.herokuapp.com/user/auth", obj);
   }
@@ -27,13 +37,21 @@ export class OrolService {
     };
     return this.httpClient.post("https://our-river-our-life-api.herokuapp.com/user/sign-in", obj);
   }
-  public signInWeb(email, phone){
+  public signInWeb(email, phone, firstName, lastName){//create user in the user table
     this.spinnerService.setSpinner(true);
     var obj = {
       "email":email,
-      "phoneNumber":phone
+      "phoneNumber":phone,
+      "firstName":firstName,
+      "lastName":lastName
     };
-    return this.httpClient.post("https://our-river-our-life-api.herokuapp.com/user/sign-in-web", obj);
+    return this.httpClient.post("https://our-river-our-life-api.herokuapp.com/user/sign-in-web", obj)
+    .toPromise()
+    .then((res) => {
+      // this.user = res;
+      console.log(res);
+    })
+    .catch(err=> { console.log("Oops! Sign In Web "+ err) });
   }
 
   public addAlert(x, images:File[]){
@@ -64,9 +82,11 @@ export class OrolService {
   }
 
   public addFlora(x, images:File[]){
+    var user = JSON.parse(localStorage.getItem('User'));
+
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization: 'Bearer '+localStorage.getItem('accessToken')
+      Authorization: 'Bearer '+user.accessToken
     });
     const form = new FormData;
     for(var i=0; i<images.length;i++){
@@ -95,9 +115,10 @@ export class OrolService {
   }
 
   public addFauna(x, images:File[]){
+    var user = JSON.parse(localStorage.getItem('User'));
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization: 'Bearer '+localStorage.getItem('accessToken')
+      Authorization: 'Bearer '+user.accessToken
     });
     const form = new FormData;
     for(var i=0; i<images.length;i++){
@@ -127,44 +148,47 @@ export class OrolService {
   public getFloodAlerts(){
     this.spinnerService.setSpinner(true);
     return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/flood-alert");
-
   }
   public getWaterTestDetails(){
+    var user = JSON.parse(localStorage.getItem('User'));
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization: 'Bearer '+localStorage.getItem('accessToken')
+      Authorization: 'Bearer '+user.accessToken
     });
     return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/water-test-details", { headers: httpHeaders });
   }
   public getFloraFauna(){
+    var user = JSON.parse(localStorage.getItem('User'));
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization: 'Bearer '+localStorage.getItem('accessToken')
+      Authorization: 'Bearer '+user.accessToken
     });
     return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/flora-fauna", { headers: httpHeaders });
   }
 
   public getUser(id){
+    var user = JSON.parse(localStorage.getItem('User'));
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization: 'Bearer '+localStorage.getItem('accessToken')
+      Authorization: 'Bearer '+user.accessToken
     });
-    return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/user/5f8d634e3b3f8d1918e1d3c6", { headers: httpHeaders });
+    return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/user/"+user.id, { headers: httpHeaders });
   }
 
-
   public updateUser(){
+    var user = JSON.parse(localStorage.getItem('User'));
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization: 'Bearer '+localStorage.getItem('accessToken')
+      Authorization: 'Bearer '+user.accessToken
     });
-    return this.httpClient.put("https://our-river-our-life-api.herokuapp.com/user/5f8d634e3b3f8d1918e1d3c6", { headers: httpHeaders });
+    return this.httpClient.put("https://our-river-our-life-api.herokuapp.com/user/"+user.id, { headers: httpHeaders });
   }
 
   public errorHandler(error:any){
     if(error){
       if (error == 'Error: Session expired'){ //401 Unauthorized
         Orol.login();
+        //emit login page
       }
       else if (error.status == 404){
         this.router.navigate(['/', '404']);

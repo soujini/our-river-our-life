@@ -9,6 +9,9 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { SpinnerService } from '../../services/spinner.service';
 import { OrolService } from '../../services/orol.service';
+
+
+
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -86,10 +89,7 @@ export class SignInComponent implements AfterViewInit {
     signInWithEmailAndPassword(userName:String, password?:string){
       this.authService.SignIn(userName, password).then((result) => {
         if(result.user.emailVerified == true){
-          this.orolService.signInWeb(userName, localStorage.getItem('phone')).subscribe((res)=>{
-            localStorage.setItem('userId', res['id']);
-            this.getAccessToken();
-          });
+          this.getAccessToken(userName, "email");
           this.spinnerService.setSpinner(false);
           this.ngZone.run(() => {
             this.router.navigate(['home']);
@@ -107,11 +107,20 @@ export class SignInComponent implements AfterViewInit {
         this.errorMessage = error.message;
       });
     }
-    getAccessToken(){
+    getAccessToken(userName, mode){
       this.spinnerService.setSpinner(true);
-      this.orolService.getAccessToken(localStorage.getItem('phone')).subscribe((data)=>{
-        localStorage.setItem('accessToken',data['accessToken']);
-        console.log(data);
+      this.orolService.getAccessToken(userName, mode).subscribe((data)=>{
+        const User: any = {
+          'id':data['user'].id,
+          'accessToken':data['accessToken'],
+          'firstName':data['user'].firstName,
+          'lastName':data['user'].lastName,
+          'phoneNumber':data['user'].phoneNumber,
+          'email':data['user'].email,
+        }
+
+        localStorage.setItem('User', JSON.stringify(User));
+        this.orolService.userDetailsSubject.next(JSON.stringify(User));
       });
     }
 
@@ -121,7 +130,7 @@ export class SignInComponent implements AfterViewInit {
       this.afAuth.signInWithPhoneNumber("+91"+phone, appVerifier)
       .then(result => {
         this.orolService.signInPhone(phone).subscribe((res)=>{
-          localStorage.setItem('userId', res['id']);
+          // localStorage.setItem('userId', res['id']);
         });
         this.spinnerService.setSpinner(false);
         this.windowRef.confirmationResult = result;

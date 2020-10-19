@@ -198,9 +198,10 @@ export class FloraFaunaComponent implements OnInit {
       });
     }
     createForm() {
+      var user = JSON.parse(localStorage.getItem('User'));
       this.floraFaunaForm = this.fb.group({
         type:['',[Validators.required]],
-        userId:[localStorage.getItem('userId')],
+        userId:[user.id],
         location: ['',[Validators.required]],
         commonName: ['',[Validators.required]],
         localName: ['',[Validators.required]],

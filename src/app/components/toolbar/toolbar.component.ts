@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from "../../shared/services/auth.service";
-
+import { OrolService } from "../../services/orol.service";
 import { ModalDirective } from 'ng-uikit-pro-standard';
 // import { RegisterComponent } from '../../components/register/register.component';
 @Component({
@@ -13,6 +13,7 @@ import { ModalDirective } from 'ng-uikit-pro-standard';
 export class ToolbarComponent implements OnInit {
   @ViewChild('phone') phone: ElementRef
   loginForm: FormGroup;
+  name:any="";
   userName :any = "";
   password :any = "";
   phoneNumber :any = "";
@@ -20,16 +21,25 @@ export class ToolbarComponent implements OnInit {
   isRegister:boolean=false;
   isRecoverPassword:boolean=false;
   isVerifyOTP:boolean=false;
-
   loading = false;
   submitted = false;
   isEyeHidden:boolean=true;
 
-  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute, private router: Router,public authService: AuthService,
-    ) { }
+  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute, private router: Router,public authService: AuthService, public orolService:OrolService
+  ) {
+
+    this.orolService.userDetailsSubject.subscribe(data => {
+      if(JSON.stringify(data) === '{}'){
+        this.name = "";
+      }
+      else{
+        var user = JSON.parse(localStorage.getItem('User'));
+        this.name = user.firstName + ' '+user.lastName;
+      }
+    });
+  }
 
   ngOnInit()  {
-
   }
 
   setIsRegister(event){
@@ -56,5 +66,5 @@ export class ToolbarComponent implements OnInit {
   }
   logout(){
     this.authService.SignOut();
-    }
+  }
 }
