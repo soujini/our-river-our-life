@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from "../../shared/services/auth.service";
+
 import { ModalDirective } from 'ng-uikit-pro-standard';
 // import { RegisterComponent } from '../../components/register/register.component';
 @Component({
@@ -23,7 +25,8 @@ export class ToolbarComponent implements OnInit {
   submitted = false;
   isEyeHidden:boolean=true;
 
-  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute, private router: Router) { }
+  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute, private router: Router,public authService: AuthService,
+    ) { }
 
   ngOnInit()  {
 
@@ -51,5 +54,7 @@ export class ToolbarComponent implements OnInit {
   setPhoneNumber(event){
     this.phoneNumber=event;
   }
-
+  logout(){
+    this.authService.SignOut();
+    }
 }

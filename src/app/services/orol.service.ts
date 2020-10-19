@@ -144,6 +144,23 @@ export class OrolService {
     return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/flora-fauna", { headers: httpHeaders });
   }
 
+  public getUser(id){
+    this.spinnerService.setSpinner(true);
+    const httpHeaders: HttpHeaders = new HttpHeaders({
+      Authorization: 'Bearer '+localStorage.getItem('accessToken')
+    });
+    return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/user/5f8d634e3b3f8d1918e1d3c6", { headers: httpHeaders });
+  }
+
+
+  public updateUser(){
+    this.spinnerService.setSpinner(true);
+    const httpHeaders: HttpHeaders = new HttpHeaders({
+      Authorization: 'Bearer '+localStorage.getItem('accessToken')
+    });
+    return this.httpClient.put("https://our-river-our-life-api.herokuapp.com/user/5f8d634e3b3f8d1918e1d3c6", { headers: httpHeaders });
+  }
+
   public errorHandler(error:any){
     if(error){
       if (error == 'Error: Session expired'){ //401 Unauthorized
