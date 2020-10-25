@@ -3,19 +3,20 @@
     <mdb-tabset id="flora_fauna_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'"
     [contentClass]="'card'" class="classic-tabs">
     <mdb-tab heading="Edit Profile">
-      <div >
-        <div class="row mt-2" style="background-color:white;">
-          <form class="col-12">
+      <form class="content form form-horizontal" [formGroup]="profileForm" >
+        <div class="row mt-2"  style="background-color:white;">
+          <div class="col-12">
+
             <div class="row formGroup">
               <div class="col-md-6">
                 <label for="firstName" class="text-left">First Name</label>
-                <input mdbInput id="first_name" type="text" class="form-control"
+                <input mdbInput id="first_name"  value=''  type="text" class="form-control"
                 formControlName="firstName" placeholder="First Name">
               </div>
               <div class="col-md-6">
-                <label for="lastname" class="text-left">Last Name (optional)</label>
+                <label for="lastName" class="text-left">Last Name (optional)</label>
                 <input mdbInput id="last_name" type="text" class="form-control"
-                formControlName="lastname" placeholder="Last Name">
+                formControlName="lastName" placeholder="Last Name">
               </div>
             </div>
 
@@ -27,7 +28,7 @@
                     <div class="input-group-text">+91</div>
                   </div>
                   <input type="mobilenumber" class="form-control py-0" class="form-control"
-                  placeholder="Mobile Number" formControlName="mobileNumber" required>
+                  placeholder="Mobile Number" formControlName="mobileNumber">
                 </div>
               </div>
             </div>
@@ -47,18 +48,15 @@
                 placeholder="Password">
               </div>
             </div>
-            <div>
-              <button (click)="updateUser()">SAVE</button>
-              </div>
-          </form>
+          </div>
+          <button class="w-206">UPDATE</button>
         </div>
-      </div>
-
-  </mdb-tab>
-  <mdb-tab heading="Draft">
-  </mdb-tab>
-  <mdb-tab heading="Participation Certification">
-  </mdb-tab>
-</mdb-tabset>
+      </form>
+    </mdb-tab>
+    <mdb-tab heading="Draft">
+    </mdb-tab>
+    <mdb-tab heading="Participation Certification">
+    </mdb-tab>
+  </mdb-tabset>
 </div>
 </div>
