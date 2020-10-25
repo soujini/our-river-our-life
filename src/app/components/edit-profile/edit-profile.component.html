@@ -27,8 +27,8 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">+91</div>
                   </div>
-                  <input type="mobilenumber" class="form-control py-0" class="form-control"
-                  placeholder="Mobile Number" formControlName="mobileNumber">
+                  <input type="text" class="form-control py-0" class="form-control"
+                  placeholder="Mobile Number" formControlName="phoneNumber" disabled>
                 </div>
               </div>
             </div>
@@ -37,26 +37,31 @@
               <div class="col-md-12">
                 <label for="email" class="text-left">Email</label>
                 <input mdbInput id="email" type="text" class="form-control" formControlName="email"
-                placeholder="Email">
+                placeholder="Email" disabled>
               </div>
             </div>
 
-            <div class="row formGroup">
-              <div class="col-md-12">
-                <label for="password" class="text-left">Password</label>
-                <input mdbInput type="password" class="form-control" formControlName="password"
-                placeholder="Password">
-              </div>
-            </div>
+            <!-- <div class="row formGroup">
+            <div class="col-md-12">
+            <label for="password" class="text-left">Password</label>
+            <input mdbInput type="password" class="form-control" formControlName="password"
+            placeholder="Password">
           </div>
-          <button class="w-206">UPDATE</button>
-        </div>
-      </form>
-    </mdb-tab>
-    <mdb-tab heading="Draft">
-    </mdb-tab>
-    <mdb-tab heading="Participation Certification">
-    </mdb-tab>
-  </mdb-tabset>
+        </div> -->
+      </div>
+      <button class="w-206" (click)="updateUser()">UPDATE</button>
+    </div>
+  </form>
+
+</mdb-tab>
+<mdb-tab heading="Draft">
+
+</mdb-tab>
+
+<mdb-tab heading="Participation Certification">
+
+</mdb-tab>
+
+</mdb-tabset>
 </div>
 </div>
