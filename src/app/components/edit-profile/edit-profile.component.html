@@ -2,8 +2,9 @@
   <div>
     <mdb-tabset id="flora_fauna_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'"
     [contentClass]="'card'" class="classic-tabs">
-    <mdb-tab heading="Edit Profile">
-      <form class="content form form-horizontal" [formGroup]="profileForm" >
+    <mdb-tab heading="Edit Profile" style="margin-left:-35px; margin-right:-35px">
+<div class="row" class="bg-white" style="height:460px;">
+      <form class="content form form-horizontal" [formGroup]="profileForm" style="padding-left:350px; padding-right:350px; padding-top:50px; padding-bottom:50px;" >
         <div class="row mt-2"  style="background-color:white;">
           <div class="col-12">
 
@@ -49,9 +50,12 @@
           </div>
         </div> -->
       </div>
-      <button class="w-206" (click)="updateUser()">UPDATE</button>
+      <div class="text-right">
+      <button mdbBtn size="sm" class="custom-btn-blue btn" (click)="updateUser()">UPDATE</button>
+      </div>
     </div>
   </form>
+  </div>
 
 </mdb-tab>
 <mdb-tab heading="Draft">

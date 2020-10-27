@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
 import {OrolService} from '../../services/orol.service';
+import {SpinnerService} from '../../services/spinner.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -10,7 +11,7 @@ import {OrolService} from '../../services/orol.service';
 export class EditProfileComponent implements OnInit {
   profileForm: FormGroup;
 
-  constructor(private fb: FormBuilder, public orolService: OrolService) {
+  constructor(private fb: FormBuilder, public orolService: OrolService, private spinnerService:SpinnerService) {
     this.createForm();
   }
 
@@ -45,7 +46,19 @@ export class EditProfileComponent implements OnInit {
   }
 
   updateUser(){
-    this.orolService.updateUser().subscribe((data)=>{
+      var user = JSON.parse(localStorage.getItem('User'));
+    this.orolService.updateUser(this.profileForm.value).subscribe((data)=>{
+      const User: any = {
+        'id':user.id,
+        'accessToken':user.accessToken,
+        'firstName':this.profileForm.get('firstName').value,
+        'lastName':this.profileForm.get('lastName').value,
+        'phoneNumber':user.phoneNumber,
+        'email':user.email,
+      }
+      localStorage.setItem('User', JSON.stringify(User));
+      this.orolService.userDetailsSubject.next(User);
+      this.spinnerService.setSpinner(false);
       console.log(data);
     });
   }

@@ -7,8 +7,8 @@
   <div class="campaigns" *ngFor="let campaign of campaigns_list; let i=index">
     <div>
       <div class="row" style="margin-right:0px;margin-left:0px;">
-        <div class="vid-container col-9" height="300px" >
-          <iframe id="vid_frame" [src]="campaign.defaultVideo" frameborder="0" title="video"></iframe>
+        <div class="vid-container col-9">
+          <iframe id="vid_frame" [src]="campaign.defaultVideo" frameborder="0" title="video" style="postition:relative"></iframe>
         </div>
 
         <div class="col-3 videos-list">

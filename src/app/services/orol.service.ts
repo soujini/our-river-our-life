@@ -175,13 +175,13 @@ export class OrolService {
     return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/user/"+user.id, { headers: httpHeaders });
   }
 
-  public updateUser(){
+  public updateUser(userObj){
     var user = JSON.parse(localStorage.getItem('User'));
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({
       Authorization: 'Bearer '+user.accessToken
     });
-    return this.httpClient.put("https://our-river-our-life-api.herokuapp.com/user/"+user.id, { headers: httpHeaders });
+    return this.httpClient.put("https://our-river-our-life-api.herokuapp.com/user/"+user.id, userObj, { headers: httpHeaders });
   }
 
   public errorHandler(error:any){
