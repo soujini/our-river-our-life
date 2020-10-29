@@ -11,7 +11,7 @@ import {SpinnerService} from '../../services/spinner.service';
 export class EditProfileComponent implements OnInit {
   profileForm: FormGroup;
   public imageFile: File[]=[];
-  imageURL:any = "";
+  imageURL:any = "../../assets/jpg/profile.png";
   show: boolean = false;
   images = [];
 

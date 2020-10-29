@@ -26,7 +26,7 @@ export class FloraFaunaComponent implements OnInit {
   resource: any;
   fauna :any =[];
   flora :any =[];
-  imageURL:any;
+  imageURL:any = "../../../assets/scalable-vector-graphics/flood-watch.svg";
   images = [
   ];
   geocoder: any;
