@@ -1,71 +1,109 @@
 <div class="profile">
   <div>
     <mdb-tabset id="flora_fauna_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'"
-    [contentClass]="'card'" class="classic-tabs">
-    <mdb-tab heading="Edit Profile" style="margin-left:-35px; margin-right:-35px">
-<div class="row" class="bg-white" style="height:460px;">
-      <form class="content form form-horizontal" [formGroup]="profileForm" style="padding-left:350px; padding-right:350px; padding-top:50px; padding-bottom:50px;" >
-        <div class="row mt-2"  style="background-color:white;">
-          <div class="col-12">
+      [contentClass]="'card'" class="classic-tabs">
+      <mdb-tab heading="Edit Profile" style="margin-left:-35px; margin-right:-35px">
+        <div class="row" class="bg-white" xstyle="height:460px;">
+          <form class="content form form-horizontal" [formGroup]="profileForm"
+            style="padding-left:350px; padding-right:350px; padding-top:50px; padding-bottom:50px;">
+            <div class="row mt-2" style="background-color:white;">
+              <div class="col-12">
+                <div class="row formGroup">
+                  <div class="col-md-12">
+                    <label for="mobileNumber" class="text-left">Profile Image</label>
+                    <div class="row">
+                      <div class="col-md-3 mt-0">
+                        <div style="height:150px; background-color:#f7f7f7">
+                          <span class="helper"></span><img [src]="imageURL" style="margin: 3px;"
+                            style="width:100%; height:auto; vertical-align:middle">
+                        </div>
+                      </div>
+                      <div class="image_container mt-0 col-md-9">
+                        <div class="form-group ">
+                          <label class="custom-file-upload">
+                            <input id="file" type="file" class="form-control" (change)="onSelectFile($event)">Upload
+                          </label>
+                          <div class="error-message-div mt-1">
+                            <!-- && this.submitted == true  -->
+                            <p *ngIf="imageFile == null " class="errorMessage"><img class="img-add"
+                                src="../../../assets/scalable-vector-graphics/exclamation.svg"> Please select a photo.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
-            <div class="row formGroup">
-              <div class="col-md-6">
-                <label for="firstName" class="text-left">First Name</label>
-                <input mdbInput id="first_name"  value=''  type="text" class="form-control"
-                formControlName="firstName" placeholder="First Name">
-              </div>
-              <div class="col-md-6">
-                <label for="lastName" class="text-left">Last Name (optional)</label>
-                <input mdbInput id="last_name" type="text" class="form-control"
-                formControlName="lastName" placeholder="Last Name">
-              </div>
-            </div>
-
-            <div class="row formGroup">
-              <div class="col-md-12">
-                <label for="mobileNumber" class="text-left">Mobile Number</label>
-                <div class="input-group mb-2">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">+91</div>
                   </div>
-                  <input type="text" class="form-control py-0" class="form-control"
-                  placeholder="Mobile Number" formControlName="phoneNumber" disabled>
                 </div>
-              </div>
-            </div>
 
-            <div class="row formGroup">
-              <div class="col-md-12">
-                <label for="email" class="text-left">Email</label>
-                <input mdbInput id="email" type="text" class="form-control" formControlName="email"
-                placeholder="Email" disabled>
-              </div>
-            </div>
 
-            <!-- <div class="row formGroup">
+
+
+
+
+                <div class="row formGroup">
+                  <div class="col-md-6">
+                    <label for="firstName" class="text-left">First Name</label>
+                    <input mdbInput id="first_name" value='' type="text" class="form-control"
+                      formControlName="firstName" placeholder="First Name">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="lastName" class="text-left">Last Name (optional)</label>
+                    <input mdbInput id="last_name" type="text" class="form-control" formControlName="lastName"
+                      placeholder="Last Name">
+                  </div>
+                </div>
+
+                <div class="row formGroup">
+                  <div class="col-md-12">
+                    <label for="mobileNumber" class="text-left">Mobile Number</label>
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">+91</div>
+                      </div>
+                      <input type="text" class="form-control py-0" class="form-control" placeholder="Mobile Number"
+                        formControlName="phoneNumber" disabled>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row formGroup">
+                  <div class="col-md-12">
+                    <label for="email" class="text-left">Email</label>
+                    <input mdbInput id="email" type="text" class="form-control" formControlName="email"
+                      placeholder="Email" disabled>
+                  </div>
+                </div>
+
+                <!-- <div class="row formGroup">
             <div class="col-md-12">
             <label for="password" class="text-left">Password</label>
             <input mdbInput type="password" class="form-control" formControlName="password"
             placeholder="Password">
           </div>
         </div> -->
-      </div>
-      <div class="text-right">
-      <button mdbBtn size="sm" class="custom-btn-blue btn" (click)="updateUser()">UPDATE</button>
-      </div>
-    </div>
-  </form>
+              </div>
+              <div class="text-right">
+                <button mdbBtn size="sm" class="custom-btn-blue btn" (click)="updateUser()">UPDATE</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </mdb-tab>
+      <mdb-tab heading="Draft">
+
+      </mdb-tab>
+
+      <mdb-tab heading="Participation Certification">
+
+      </mdb-tab>
+
+    </mdb-tabset>
   </div>
-
-</mdb-tab>
-<mdb-tab heading="Draft">
-
-</mdb-tab>
-
-<mdb-tab heading="Participation Certification">
-
-</mdb-tab>
-
-</mdb-tabset>
 </div>
-</div>
+
+
+
+
+

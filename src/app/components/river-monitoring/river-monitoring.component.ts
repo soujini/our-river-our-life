@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl,Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { IMyOptions } from 'ng-uikit-pro-standard';

@@ -184,6 +184,33 @@ export class OrolService {
     return this.httpClient.put("https://our-river-our-life-api.herokuapp.com/user/"+user.id, userObj, { headers: httpHeaders });
   }
 
+  public updateProfile(userInfo, images:File[]){
+    this.spinnerService.setSpinner(true);
+    const form = new FormData;
+    for(var i=0; i<images.length;i++){
+      form.append('avatar', images[i]);
+    }
+    form.append("firstName", userInfo.firstName);
+    form.append("lastName", userInfo.lastName);
+    form.append("email", userInfo.email);
+    form.append("phoneNumber", userInfo.phoneNumber);
+    form.append("avatarURL", userInfo.avatarURL);
+
+
+    this.httpClient.post("https://our-river-our-life-api.herokuapp.com/user/update-profile", form).subscribe(
+      (res) => {
+        this.spinnerService.setSpinner(false);
+        this.router.navigate(['./edit-profile']);
+
+      },
+      (err) => {
+        this.spinnerService.setSpinner(false);
+        window.alert(err)
+      },
+    );
+  }
+
+
   public errorHandler(error:any){
     if(error){
       if (error == 'Error: Session expired'){ //401 Unauthorized

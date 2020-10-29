@@ -17,11 +17,7 @@ export class SecureInnerPagesGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if(this.authService.isLoggedIn) {
       window.alert("You are not allowed to access this URL!");
-<<<<<<< Updated upstream
-       this.router.navigate(['Home'])
-=======
        // this.router.navigate(['dashboard'])
->>>>>>> Stashed changes
     }
     return true;
   }

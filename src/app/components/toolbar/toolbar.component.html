@@ -39,6 +39,10 @@
                   </li>
                   <li class="nav-item dropdown" dropdown *ngIf="this.name != ''">
                     <a dropdownToggle mdbWavesEffect type="button" class="nav-link waves-light" mdbWavesEffect>
+
+                      <!-- <img height="40px" width="40px" class="profile-image" *ngIf="this.userDetails['profileImageURL']"
+                      [src]="this.userDetails['profileImageURL']" height="54px" width="54px">  *ngIf="this.userDetails['profileImageURL'] == ''"-->
+                    <img src="../../assets/jpg/profile.png" height="45px" width="45px">
                       <span class="heading">{{name}}</span><span class="dropdown-toggle "></span></a>
                       <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown" role="menu">
                         <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="'/edit-profile'"
