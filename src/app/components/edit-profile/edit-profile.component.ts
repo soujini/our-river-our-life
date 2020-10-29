@@ -11,7 +11,7 @@ import {SpinnerService} from '../../services/spinner.service';
 export class EditProfileComponent implements OnInit {
   profileForm: FormGroup;
   public imageFile: File[]=[];
-  imageURL:any;
+  imageURL:any = "";
   show: boolean = false;
   images = [];
 
@@ -25,6 +25,7 @@ export class EditProfileComponent implements OnInit {
 
   createForm() {
     this.profileForm = this.fb.group({
+      id:[],
       firstName:[''],
       lastName:[''],
       email:[''],
@@ -33,7 +34,7 @@ export class EditProfileComponent implements OnInit {
     });
   }
   async updateProfile() {
-    await this.orolService.updateProfile(JSON.stringify(this.profileForm.value), this.imageFile);
+    await this.orolService.updateProfile(this.profileForm.value, this.imageFile);
     this.show = false;
     this.images=[];
     this.imageFile=[];
@@ -42,12 +43,14 @@ export class EditProfileComponent implements OnInit {
     this.orolService.getUser().subscribe((data)=>{
       if(JSON.stringify(data) != '{}')
       {
+        this.imageURL = data['avatarURL'][0];
         this.profileForm.patchValue({
+          id:data['id'],
           firstName:data['firstName'],
           lastName:data['lastName'],
           email:data['email'],
           phoneNumber:data['phoneNumber'],
-          avatarURL:data['avatarURL'][0],
+          // avatarURL:data.avatarURL[0],
         });
       }
       else{
@@ -82,14 +85,14 @@ export class EditProfileComponent implements OnInit {
         'lastName':this.profileForm.get('lastName').value,
         'phoneNumber':user.phoneNumber,
         'email':user.email,
-        'avatarURL' :user.avatarURL[0],
-        
+        'avatarURL' : user.avatarURL ? user.avatarURL[0] : [],
+
       }
       localStorage.setItem('User', JSON.stringify(User));
       this.orolService.userDetailsSubject.next(User);
       this.spinnerService.setSpinner(false);
       console.log(data);
     });
-    
+
   }
 }

@@ -25,6 +25,7 @@ export class ToolbarComponent implements OnInit {
   submitted = false;
   isEyeHidden:boolean=true;
   isGetInvolved:boolean=false;
+  avatarURL:String="../../assets/jpg/profile.png";
 
   constructor(private formBuilder: FormBuilder,public router: Router, public route: ActivatedRoute, public authService: AuthService, public orolService:OrolService
   ) {
@@ -41,6 +42,9 @@ export class ToolbarComponent implements OnInit {
   }
 
   ngOnInit()  {
+    var user = JSON.parse(localStorage.getItem('User'));
+    console.log(user.avatarURL);
+    this.avatarURL = user.avatarURL;
   }
 
   setIsRegister(event){

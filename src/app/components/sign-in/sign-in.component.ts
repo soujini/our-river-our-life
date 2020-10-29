@@ -117,6 +117,7 @@ export class SignInComponent implements AfterViewInit {
           'lastName':data['user'].lastName,
           'phoneNumber':data['user'].phoneNumber,
           'email':data['user'].email,
+          'avatarURL':data['user'].avatarURL[0],
         }
 
         localStorage.setItem('User', JSON.stringify(User));

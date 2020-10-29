@@ -186,18 +186,25 @@ export class OrolService {
 
   public updateProfile(userInfo, images:File[]){
     this.spinnerService.setSpinner(true);
+    const httpHeaders: HttpHeaders = new HttpHeaders({
+      // Authorization: 'Bearer '+user.accessToken
+    });
+
     const form = new FormData;
     for(var i=0; i<images.length;i++){
       form.append('avatar', images[i]);
     }
+    form.append("id", userInfo.id);
     form.append("firstName", userInfo.firstName);
     form.append("lastName", userInfo.lastName);
     form.append("email", userInfo.email);
     form.append("phoneNumber", userInfo.phoneNumber);
-    form.append("avatarURL", userInfo.avatarURL);
+    // form.append("avatarURL", userInfo.avatarURL);
+
+    console.log(form);
 
 
-    this.httpClient.post("https://our-river-our-life-api.herokuapp.com/user/update-profile", form).subscribe(
+    this.httpClient.post("https://our-river-our-life-api.herokuapp.com/user/update-profile", form, { headers: httpHeaders }).subscribe(
       (res) => {
         this.spinnerService.setSpinner(false);
         this.router.navigate(['./edit-profile']);
