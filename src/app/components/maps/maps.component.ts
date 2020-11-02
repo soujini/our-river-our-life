@@ -5,7 +5,7 @@ import { IMyOptions } from 'ng-uikit-pro-standard';
 import { timer } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { OrolService } from '../../services/orol.service';
-import { Event, Route, Router, ActivatedRoute,RoutesRecognized } from '@angular/router';
+import { Event, Route, Router, ActivatedRoute, RoutesRecognized } from '@angular/router';
 
 
 declare var google;
@@ -18,11 +18,11 @@ declare var google;
 export class MapsComponent implements OnInit {
 
   public iconUrl = '../../../assets/scalable-vector-graphics/flood-watch.svg';
-  public imageFiles: File[]=[];
+  public imageFiles: File[] = [];
   @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
   public myDatePickerOptions: IMyOptions = {
     dateFormat: 'dd mmm yyyy',
-    closeAfterSelect:true
+    closeAfterSelect: true
   };
   apps: any;
   images = [];
@@ -35,12 +35,12 @@ export class MapsComponent implements OnInit {
   show: boolean = false;
   buttonName = 'Show';
   hide: any;
-  centerLoc:any={};
-  selectedImage:any=[];
+  centerLoc: any = {};
+  selectedImage: any = [];
 
-  toggle(mode:string) {
+  toggle(mode: string) {
     this.show = !this.show;
-    if(mode == ''){
+    if (mode == '') {
       this.setCurrentPosition();
     }
   }
@@ -82,8 +82,8 @@ export class MapsComponent implements OnInit {
 
           //set latitude, longitude and zoom
           this.mapsForm.patchValue({
-            latitude:  place.geometry.location.lat(),
-            longitude:  place.geometry.location.lng(),
+            latitude: place.geometry.location.lat(),
+            longitude: place.geometry.location.lng(),
             location: place.formatted_address,
           });
           this.centerLoc = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() };
@@ -92,7 +92,7 @@ export class MapsComponent implements OnInit {
     });
   }
 
-  setCurrentTime(){
+  setCurrentTime() {
     let dt = new Date();
     let normalizeHour = dt.getHours() >= 13 ? dt.getHours() - 12 : dt.getHours()
     var formattedTime = dt.getHours() >= 13 ? normalizeHour + ':' + dt.getMinutes() + 'PM' : normalizeHour + ':' + dt.getMinutes() + 'AM';
@@ -101,7 +101,7 @@ export class MapsComponent implements OnInit {
     });
   }
 
-  bla(){
+  bla() {
     this.getAddressByLatitudeAndLongitude(this.mapsForm.get('latitude').value, this.mapsForm.get('longitude').value, this.mapsForm);
     this.centerLoc = { lat: this.mapsForm.get('latitude').value, lng: this.mapsForm.get('longitude').value };
     //this.recenterMap();
@@ -164,25 +164,25 @@ export class MapsComponent implements OnInit {
   }
 
   async addAlert() {
-      await this.orolService.addAlert(this.mapsForm.value, this.imageFiles);
-      this.show = false;
-      this.setCurrentPosition();
-      this.images=[];
-      this.imageFiles=[];
+    await this.orolService.addAlert(this.mapsForm.value, this.imageFiles);
+    this.show = false;
+    this.setCurrentPosition();
+    this.images = [];
+    this.imageFiles = [];
   }
 
   onFileChange(event) {
-      if (event.target.files && event.target.files[0]) {
-        var length = event.target.files.length;
-        for (let i = 0; i < event.target.files.length; i++) {
-          this.imageFiles.push(event.target.files[i]);
-          var reader = new FileReader();
-          reader.onload = (event:any) => {
+    if (event.target.files && event.target.files[0]) {
+      var length = event.target.files.length;
+      for (let i = 0; i < event.target.files.length; i++) {
+        this.imageFiles.push(event.target.files[i]);
+        var reader = new FileReader();
+        reader.onload = (event: any) => {
           this.images.push(event.target.result);
         }
         reader.readAsDataURL(event.target.files[i]);
       }
     }
 
-}
+  }
 }

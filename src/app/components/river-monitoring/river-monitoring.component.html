@@ -60,8 +60,7 @@
               </form>
               <hr class="hr-line" />
               <div class="text-right">
-                <button mdbBtn size="sm" class="custom-btn-blue"
-                  (click)="createWaterTestDetails();river_monitoring_stepper.next()">NEXT</button>
+                <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
               </div>
             </mdb-step>
             <mdb-step name="Water Level & Weather" xstepForm="secondFormGroup">
@@ -102,9 +101,11 @@
                 </div>
                 <div class="text-left" fxormGroupName="generalInformation">
                   <label for="rm_location" class="text-left">River Pictures</label>
+                  <img *ngFor='let url of imageUrlRiver' [src]="url" height="50px" width="50px" style="margin: 3px;">
                   <div xclass="row">
                     <label class="custom-file-upload">
-                      <input id="file" type="file" class="form-control" multiple (change)="onFileChanges($event)">Upload
+                      <input id="file" type="file" class="form-control" multiple
+                        (change)="onFileChangesRiver($event)">Upload
                     </label>
                   </div>
                 </div>
@@ -112,8 +113,7 @@
               <hr class="hr-line" />
               <div class="text-right">
                 <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
-                <button mdbBtn size="sm" class="custom-btn-blue"
-                  (click)="createWaterTestDetails();river_monitoring_stepper.next()">NEXT</button>
+                <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
               </div>
             </mdb-step>
 
@@ -133,22 +133,22 @@
                  </mdb-checkbox> -->
 
                   <div class="col-md-12 mt-3 text-left" xformGroupName="waterLevelAndWeather">
-                    <div *ngFor="let obj of surroundings ; let i=index" class="col-md-3 text-left" style="display:inline-block">
-                      <mdb-checkbox class="checkbox-coco-filled" [checked]="checkSelectedSurroundings(obj._id) == obj._id"
-                       (change)="this.getSelectedSurroundings($event)" 
-                      [default]="true">{{obj}}
-                      <span>{{obj.name}}</span>
-
+                    <div *ngFor="let obj of surroundings ; let i=index" class="col-md-3 text-left"
+                      style="display:inline-block">
+                      <mdb-checkbox class="checkbox-coco-filled" [checked]="false"
+                        (change)="this.getSelectedSurroundings($event,obj)" [default]="true">{{obj}}
                       </mdb-checkbox>
                     </div>
                   </div>
                 </div>
-
                 <div class="col-md-12 text-left" fxormGroupName="generalInformation">
                   <label for="rm_location" class="text-left">Surroundings Pictures</label>
+                  <img *ngFor='let url of imageUrlSurrounding' [src]="url" height="50px" width="50px"
+                    style="margin: 3px;">
                   <div xclass="row">
                     <label class="custom-file-upload">
-                      <input id="file" type="file" class="form-control" multiple (change)="onFileChanges($event)">Upload
+                      <input id="file" type="file" class="form-control" multiple
+                        (change)="onFileChangesSurrounding($event)">Upload
                     </label>
                   </div>
                 </div>
@@ -156,8 +156,7 @@
               <hr class="hr-line" />
               <div class="text-right">
                 <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
-                <button mdbBtn size="sm" class="custom-btn-blue"
-                  (click)="createWaterTestDetails();river_monitoring_stepper.next()">NEXT</button>
+                <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
               </div>
             </mdb-step>
             <mdb-step name="Water Quality Testing" xstepForm="secondFormGroup">
@@ -267,7 +266,7 @@
                     <div class="input-group" style="margin-left:-6px;">
                       <button mdbBtn type="button" class="custom-btn" *ngFor="let item of items; let i = index"
                         [ngClass]="(lastClickedIndex == i) ? 'custom-btn-active': 'custom-btn'"
-                        (click)="changeActive(i); setEcoil(item.name)" #disable mdbWavesEffect>{{item.name}}</button>
+                        (click)="changeActive(i); setBacteria(item.name)" #disable mdbWavesEffect>{{item.name}}</button>
                     </div>
                   </div>
                 </div>
@@ -345,8 +344,7 @@
               <hr class="hr-line" />
               <div class="text-right">
                 <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
-                <button mdbBtn size="sm" class="custom-btn-blue"
-                  (click)="createWaterTestDetails();river_monitoring_stepper.next()">NEXT</button>
+                <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
               </div>
             </mdb-step>
             <mdb-step name="Flora & Fauna" xstepForm="secondFormGroup">
@@ -362,9 +360,11 @@
                     and trees.</p>
                   <div class="text-left mt-2" fxormGroupName="generalInformation">
                     <div class="row ">
+                      <img *ngFor='let url of imageUrlFlora' [src]="url" height="50px" width="50px"
+                        style="margin: 3px;">
                       <label class="custom-file-upload">
                         <input id="file" type="file" class="form-control" multiple
-                          (change)="onFileChanges($event)">Upload
+                          (change)="onFileChangesFlora($event)">Upload
                       </label>
                     </div>
                   </div>
@@ -378,9 +378,11 @@
                     around you.</p>
                   <div class="text-left mt-2" fxormGroupName="generalInformation">
                     <div class="row">
+                      <img *ngFor='let url of imageUrlFauna' [src]="url" height="50px" width="50px"
+                        style="margin: 3px;">
                       <label class="custom-file-upload">
                         <input id="file" type="file" class="form-control" multiple
-                          (change)="onFileChanges($event)">Upload
+                          (change)="onFileChangesFauna($event)">Upload
                       </label>
                     </div>
                   </div>
@@ -389,35 +391,40 @@
               <hr class="hr-line" />
               <div class="text-right">
                 <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
-                <button mdbBtn size="sm" class="custom-btn-blue"
-                  (click)="createWaterTestDetails();river_monitoring_stepper.next()">NEXT</button>
+                <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
               </div>
             </mdb-step>
             <mdb-step name="Pictures">
               <form xformGroup="secondFormGroup" class="container-stepper-form">
                 <label class="ml-2 mt-2 bold">Pictures</label>
                 <div class="row">
+                  <img *ngFor='let url of imageUrlGroup' [src]="url" height="50px" width="50px" style="margin: 3px;">
                   <label class="custom-file-upload">
-                    <input id="file" type="file" class="form-control" multiple (change)="onFileChanges($event)">Upload
+                    <input id="file" type="file" class="form-control" multiple
+                      (change)="onFileChangesGroup($event)">Upload
                     Group Picture
                   </label>
                 </div>
                 <div class="row">
+                  <img *ngFor='let url of imageUrlActivity' [src]="url" height="50px" width="50px" style="margin: 3px;">
                   <label class="custom-file-upload">
-                    <input id="file" type="file" class="form-control" multiple (change)="onFileChanges($event)">Upload
+                    <input id="file" type="file" class="form-control" multiple
+                      (change)="onFileChangesActivity($event)">Upload
                     Activity Picture
                   </label>
                 </div>
                 <div class="row">
+                  <img *ngFor='let url of imageUrlAtwork' [src]="url" height="50px" width="50px" style="margin: 3px;">
                   <label class="custom-file-upload">
-                    <input id="file" type="file" class="form-control" multiple (change)="onFileChanges($event)">Upload
+                    <input id="file" type="file" class="form-control" multiple
+                      (change)="onFileChangesAtwork($event)">Upload
                     Artwork
                   </label>
                 </div>
               </form>
               <hr class="hr-line" />
               <div class="xstep-actions text-right">
-                <button mdbBtn size="sm" class="custom-btn-blue" xclick="onSubmit()">SUBMIT</button>
+                <button mdbBtn size="sm" class="custom-btn-blue" (click)="createWaterTestDetails()">SUBMIT</button>
               </div>
             </mdb-step>
           </mdb-stepper>

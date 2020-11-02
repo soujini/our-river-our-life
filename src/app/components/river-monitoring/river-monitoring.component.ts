@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FormBuilder, FormGroup,FormArray, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { IMyOptions } from 'ng-uikit-pro-standard';
 import { ModalDirective } from 'ng-uikit-pro-standard';
 import { MapsAPILoader, AgmMap, MouseEvent } from '@agm/core';
 import { NgZone } from '@angular/core';
+import { OrolService } from '../../services/orol.service';
 
 
 @Component({
@@ -26,8 +27,7 @@ export class RiverMonitoringComponent implements OnInit {
   info = "(Max. size 250KB)";
   public searchControl: FormControl;
   geocoder: any;
-  surroundingArray:any;
-
+  surroundingArray: any;
   lastClickedIndex;
   public myDatePickerOptions: IMyOptions = {
     dateFormat: 'dd mmm yyyy',
@@ -35,8 +35,23 @@ export class RiverMonitoringComponent implements OnInit {
   };
   images = [];
   centerLoc: any = {};
-  public imageFiles: File[] = [];
-  imageUrl = [];
+
+  public imageFilesRiver: File[] = [];
+  imageUrlRiver = [];
+  public imageFilesSurrounding: File[] = [];
+  imageUrlSurrounding = [];
+  public imageFilesFlora: File[] = [];
+  imageUrlFlora = [];
+  public imageFilesFauna: File[] = [];
+  imageUrlFauna = [];
+  public imageFilesGroup: File[] = [];
+  imageUrlGroup = [];
+  public imageFilesActivity: File[] = [];
+  imageUrlActivity = [];
+  public imageFilesAtwork: File[] = [];
+  imageUrlAtwork = [];
+
+
   userControl = new FormControl();
   items = [
     { name: "Present" },
@@ -99,11 +114,7 @@ export class RiverMonitoringComponent implements OnInit {
     'Sewage discharge',
     'Irrigation Pump',
   ];
-
-  // selectedUsers: User[] = new Array<User>();
-  // filteredUsers: Observable<User[]>;
   lastFilter: string = '';
-
   activityForm: FormGroup;
   latitude: number;
   longitude: number;
@@ -111,10 +122,10 @@ export class RiverMonitoringComponent implements OnInit {
   getAddress: any;
   lat: number;
   lng: number;
-  constructor(private fb: FormBuilder,
+  constructor(private fb: FormBuilder, private orolService: OrolService,
     private mapsAPILoader: MapsAPILoader, private apiloader: MapsAPILoader, private ngZone: NgZone) {
     this.createForm();
-    this.surroundingArray = this.activityForm.controls.surroundings as FormArray;     
+    this.surroundingArray = this.activityForm.controls.surroundings as FormArray;
 
   }
   ngOnInit() {
@@ -172,32 +183,6 @@ export class RiverMonitoringComponent implements OnInit {
     });
   }
 
-  // filter(filter: string): User[] {
-  //   this.lastFilter = filter;
-  //   if (filter) {
-  //     return this.users.filter(option => {
-  //       return option.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0;
-  //     })
-  //   } else {
-  //     return this.users.slice();
-  //   }
-  // }
-  // displayFn(value: User[] | string): string | undefined {
-  //   let displayValue: string;
-  //   if (Array.isArray(value)) {
-  //     value.forEach((user, index) => {
-  //       if (index === 0) {
-  //         displayValue = user.name;
-  //       } else {
-  //         displayValue += ', ' + user.name;
-  //       }
-  //     });
-  //   } else {
-  //     displayValue = value;
-  //   }
-  //   return displayValue;
-  // }
- 
   createForm() {
     this.activityForm = this.fb.group({
       userId: [''],
@@ -232,111 +217,128 @@ export class RiverMonitoringComponent implements OnInit {
         lead: [''],
         dissolvedSolids: [''],
         conductivity: [''],
-        coliform: [''],
-
       }),
       flora: this.fb.group({
-        imageURL: ['https://our-river-our-life-images.s3.ap-south-1.amazonaws.com/flora/IMG-20200803-WA0011.jpg'],
-        description: [' '],
-
+        imageURL: [''],
+        description: [''],
       }),
       fauna: this.fb.array([]),
-      network: this.fb.array([]),
+      artwork: this.fb.array([]),
       groupPicture: this.fb.array([]),
       activity: this.fb.array([]),
-
       river: this.fb.group({
-        imageURL: ['https://our-river-our-life-images.s3.amazonaws.com/river/IMG-20200803-WA0014.jpeg'],
-        description: [' '],
-
+        imageURL: [''],
+        description: [''],
       }),
-
-      "certificateURL": "https://our-river-our-life-images.s3.ap-south-1.amazonaws.com/certificate/certificate_5f2806d31dbb0700178e94bf"
-
+      certificateURL: ['']
     });
   }
 
 
   onSubmit() {
-    // do something here
-  }
-  // optionClicked(event: Event, user: User) {
-  //   event.stopPropagation();
-  //   this.toggleSelection(user);
-  // }
 
-  // toggleSelection(user: User) {
-  //   user.selected = !user.selected;
-  //   if (user.selected) {
-  //     this.selectedUsers.push(user);
-  //   } else {
-  //     const i = this.selectedUsers.findIndex(value => value.name === user.name);
-  //     this.selectedUsers.splice(i, 1);
-  //   }
-  //
-  //   this.userControl.setValue(this.selectedUsers);
-  // }
+  }
+
+
   createWaterTestDetails() {
-    console.log(this.activityForm.value);
+    this.orolService.createWaterTestDetails(this.activityForm.value, this.imageFilesRiver,
+      this.imageFilesSurrounding, this.imageFilesFlora, this.imageFilesFauna, this.imageFilesGroup, this.imageFilesActivity, this.imageFilesAtwork);
+
   }
 
-  onFileChange(event) {
+
+  onFileChangesRiver(event) {
     if (event.target.files && event.target.files[0]) {
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
-        this.imageFiles.push(event.target.files[i]);
+        this.imageFilesRiver.push(event.target.files[i]);
         var reader = new FileReader();
         reader.onload = (event: any) => {
-          this.images.push(event.target.result);
+          this.imageUrlRiver.push(event.target.result);
         }
         reader.readAsDataURL(event.target.files[i]);
       }
     }
-
   }
-  onFileChanges(event) {
+  onFileChangesSurrounding(event) {
     if (event.target.files && event.target.files[0]) {
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
-        this.imageFiles.push(event.target.files[i]);
+        this.imageFilesSurrounding.push(event.target.files[i]);
         var reader = new FileReader();
         reader.onload = (event: any) => {
-          this.imageUrl.push(event.target.result);
+          this.imageUrlSurrounding.push(event.target.result);
         }
         reader.readAsDataURL(event.target.files[i]);
       }
     }
-
   }
- 
-  handleReaderLoadImage(readerEvent: any) {
-    let binaryString = readerEvent.target.result;
-    this.defaultImageURLTemp = 'data:image/png;base64,' + btoa(binaryString);
-  }
-  addImageFile(file: File) {
-    this.imageFileTemp = file;
-
-    if (this.imageFileTemp) {
-      var mimeType = ["/"];
-      mimeType = this.imageFileTemp.type.split('/');
-      if (mimeType.length == 1) {
-        this.imageFileErrorMessage = "Please choose a .jpg, .jpeg or a .png image";
-      }
-
-      else if (mimeType[1] != "jpg" && mimeType[1] != "png" && mimeType[1] != "jpeg") {
-        this.imageFileErrorMessage = "Please choose a .jpg, .jpeg or a .png image";
-      }
-      else if (this.imageFileTemp.size > 256000) {
-        this.imageFileErrorMessage = "File is too big!";
-      }
-      else {
-        this.imageFileErrorMessage = "";
-        let reader = new FileReader();
-        reader.onload = this.handleReaderLoadImage.bind(this);
-        reader.readAsBinaryString(this.imageFileTemp);
+  onFileChangesFlora(event) {
+    if (event.target.files && event.target.files[0]) {
+      var length = event.target.files.length;
+      for (let i = 0; i < event.target.files.length; i++) {
+        this.imageFilesFlora.push(event.target.files[i]);
+        var reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.imageUrlFlora.push(event.target.result);
+        }
+        reader.readAsDataURL(event.target.files[i]);
       }
     }
   }
+  onFileChangesFauna(event) {
+    if (event.target.files && event.target.files[0]) {
+      var length = event.target.files.length;
+      for (let i = 0; i < event.target.files.length; i++) {
+        this.imageFilesFauna.push(event.target.files[i]);
+        var reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.imageUrlFauna.push(event.target.result);
+        }
+        reader.readAsDataURL(event.target.files[i]);
+      }
+    }
+  }
+  onFileChangesGroup(event) {
+    if (event.target.files && event.target.files[0]) {
+      var length = event.target.files.length;
+      for (let i = 0; i < event.target.files.length; i++) {
+        this.imageFilesGroup.push(event.target.files[i]);
+        var reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.imageUrlGroup.push(event.target.result);
+        }
+        reader.readAsDataURL(event.target.files[i]);
+      }
+    }
+  }
+  onFileChangesActivity(event) {
+    if (event.target.files && event.target.files[0]) {
+      var length = event.target.files.length;
+      for (let i = 0; i < event.target.files.length; i++) {
+        this.imageFilesActivity.push(event.target.files[i]);
+        var reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.imageUrlActivity.push(event.target.result);
+        }
+        reader.readAsDataURL(event.target.files[i]);
+      }
+    }
+  }
+  onFileChangesAtwork(event) {
+    if (event.target.files && event.target.files[0]) {
+      var length = event.target.files.length;
+      for (let i = 0; i < event.target.files.length; i++) {
+        this.imageFilesAtwork.push(event.target.files[i]);
+        var reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.imageUrlAtwork.push(event.target.result);
+        }
+        reader.readAsDataURL(event.target.files[i]);
+      }
+    }
+  }
+
   validate() {
 
   }
@@ -394,14 +396,6 @@ export class RiverMonitoringComponent implements OnInit {
     }
   }
 
-  // getBase64(file) {
-  //   return new Promise((resolve, reject) => {
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(file);
-  //     reader.onload = () => resolve(reader.result);
-  //     reader.onerror = error => reject(error);
-  //   });
-  // }
 
   get() {
     if (navigator.geolocation) {
@@ -489,35 +483,36 @@ export class RiverMonitoringComponent implements OnInit {
     });
     console.log(this.activityForm.value);
   }
-  setEcoil(name){
+  setBacteria(name) {
     this.activityForm.patchValue({
       waterTesting: {
-        coliform:name
+        bacteria: name
       }
     });
-   console.log(this.activityForm.value)
+    console.log(this.activityForm.value)
   }
   changeActive(i) {
     this.lastClickedIndex = i;
   }
 
-  checkSelectedSurroundings(capability){
-    let value ="-1";
+  checkSelectedSurroundings(capability) {
+    let value = "-1";
     let index = this.surroundingArray.value.findIndex(record => record === capability);
-    if(index != -1){
-      value=this.surroundingArray.value[index];
+    if (index != -1) {
+      value = this.surroundingArray.value[index];
     }
     return value;
   }
 
-  getSelectedSurroundings(event){
-    if(event.element.checked == true)
-    {
-      this.surroundingArray.push(this.fb.control(parseInt(event.element.value)));
+  getSelectedSurroundings(event, obj) {
+    console.log(event);
+    console.log(obj);
+    if (event.element.checked == true) {
+      this.surroundingArray.push(this.fb.control(obj));
     }
-    else{
-      let index = this.surroundingArray.value.findIndex( record => record === parseInt(event.element.value));
-      if(index != -1){
+    else {
+      let index = this.surroundingArray.value.findIndex(record => record === (obj));
+      if (index != -1) {
         this.surroundingArray.removeAt(index);
       }
     }
