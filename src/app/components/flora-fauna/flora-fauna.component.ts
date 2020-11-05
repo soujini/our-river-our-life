@@ -22,7 +22,7 @@ export class FloraFaunaComponent implements OnInit {
     { value: '1', label: 'Flora' },
     { value: '2', label: 'Fauna' },
   ];
-
+  public waterTestDetails:any;
   resource: any;
   fauna :any =[];
   flora :any =[];
@@ -32,6 +32,7 @@ export class FloraFaunaComponent implements OnInit {
   geocoder: any;
   centerLoc:any={};
   floraFaunaForm: FormGroup;
+
   constructor(private fb: FormBuilder,private orolService: OrolService, private spinnerService:SpinnerService,
     public router: Router, private http: HttpClient,
     private mapsAPILoader: MapsAPILoader,
@@ -148,6 +149,7 @@ export class FloraFaunaComponent implements OnInit {
                   scientificName:data['rows'][i].scientificName,
                   localName:data['rows'][i].localName,
                   location:data['rows'][i].location,
+                  contributorName:data['rows'][i].contributorName,
                 });
               }
             }
@@ -160,6 +162,7 @@ export class FloraFaunaComponent implements OnInit {
                   scientificName:data['rows'][i].scientificName,
                   localName:data['rows'][i].localName,
                   location:data['rows'][i].location,
+                  contributorName:data['rows'][i].contributorName,
                 });
               }
             }
@@ -180,6 +183,7 @@ export class FloraFaunaComponent implements OnInit {
                   img: data['rows'][i].fauna[j].imageURL,
                   thumb:data['rows'][i].fauna[j].imageURL,
                   location:data['rows'][i].location,
+                  contributorName:data['rows'][i].contributorName,
                 });
               }
             }
@@ -189,6 +193,7 @@ export class FloraFaunaComponent implements OnInit {
                   img: data['rows'][i].flora[j].imageURL,
                   thumb:data['rows'][i].flora[j].imageURL,
                   location:data['rows'][i].location,
+                  contributorName:data['rows'][i].contributorName,
                 });
               }
             }
