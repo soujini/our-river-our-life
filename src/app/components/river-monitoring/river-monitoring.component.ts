@@ -239,11 +239,12 @@ export class RiverMonitoringComponent implements OnInit {
 
   }
 
+ 
 
   createWaterTestDetails() {
     this.orolService.createWaterTestDetails(this.activityForm.value, this.imageFilesRiver,
       this.imageFilesSurrounding, this.imageFilesFlora, this.imageFilesFauna, this.imageFilesGroup, this.imageFilesActivity, this.imageFilesAtwork);
-
+// console.log(this.activityForm)
   }
 
 
@@ -342,7 +343,6 @@ export class RiverMonitoringComponent implements OnInit {
   validate() {
 
   }
-
   removeImageFile() {
     this.imageFileErrorMessage = "";
     this.imageFile = null;
@@ -505,8 +505,8 @@ export class RiverMonitoringComponent implements OnInit {
   }
 
   getSelectedSurroundings(event, obj) {
-    console.log(event);
-    console.log(obj);
+    // console.log(event);
+    // console.log(obj);
     if (event.element.checked == true) {
       this.surroundingArray.push(this.fb.control(obj));
     }

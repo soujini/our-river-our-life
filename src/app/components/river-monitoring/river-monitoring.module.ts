@@ -10,11 +10,13 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MdbFileUploadModule } from 'mdb-file-upload';
 import { AgmCoreModule } from '@agm/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
   declarations: [RiverMonitoringComponent],
   imports: [
+    FlexLayoutModule,
     CommonModule,
     MDBBootstrapModulesPro.forRoot(),
     FormsModule,

@@ -116,7 +116,6 @@
                 <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
               </div>
             </mdb-step>
-
             <mdb-step name="Observe your Surroundings" xstepForm="secondFormGroup">
               <form xformGroupx="surroundings" class="container-stepper-form">
                 <div class="row">
@@ -125,12 +124,6 @@
                     <input mdbInput id="rm_searchSurroundings" type="text" id="rm_searchSurroundings"
                       class="form-control" xformControlName="airTemperature" placeholder="Search">
                   </div>
-
-                  <!-- <mdb-checkbox [disabled]="isApplicationCapabilitiesDisabled" class="checkbox-coco-filled"
-                  [checked]="checkSelectedCapabilities(capability._id) == capability._id"
-                   [filledIn]="true" style="margin-left: -1.25rem;" value={{capability._id}} (change)="this.getSelectedCapabilties($event)">
-                   <span [ngClass]="checkSelectedCapabilities(capability._id) == capability._id ? 'checked-checkbox-text': 'unchecked-checkbox-text'">{{capability.name}}</span>
-                 </mdb-checkbox> -->
 
                   <div class="col-md-12 mt-3 text-left" xformGroupName="waterLevelAndWeather">
                     <div *ngFor="let obj of surroundings ; let i=index" class="col-md-3 text-left"
@@ -423,6 +416,133 @@
                 </div>
               </form>
               <hr class="hr-line" />
+              <div class="text-right">
+                <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
+                <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
+              </div>
+            </mdb-step>
+            <mdb-step name="Preview">
+              <form class="container-stepper-form">
+                <h2>Preview before Submit </h2>
+                <div class="box" fxLayoutAlign="stretch">
+                  <div class="item">
+                    <span>General Information </span>
+                    <img src="../../../assets/scalable-vector-graphics/pencil.svg"  height="20px" width="20px">
+                    <hr class="hr-line1" />
+                    <label for="activityDate" class="text-left ml-2">Activity Date <span>:</span>
+                      <span class="ml-2">{{activityForm.get('generalInformation').get('activityDate').value}}</span></label>
+                    <label class="text-left ml-2">Activity Time <span>:</span>
+                      <span>{{activityForm.get('generalInformation').get('activityTime').value}}</span></label>
+                    <label class="text-left ml-2">Name <span>:</span>
+                      <span>{{activityForm.get('generalInformation').get('testerName').value}}</span> </label>
+                    <label for="rm_dp" class="text-left ml-2">Location <span>:</span>
+                      <span>{{activityForm.get('generalInformation').get('location').value}}</span></label>
+                    <label for="rm_dp" class="text-left ml-2">Latitude <span>:</span>
+                      <span>{{activityForm.get('generalInformation').get('latitude').value}}</span></label>
+                    <label for="rm_dp" class="text-left ml-2">Longitude <span>:</span>
+                      <span>{{activityForm.get('generalInformation').get('latitude').value}}</span></label>
+                  </div>
+                  <div class="item">
+                    <span> Water Level & Weather </span>
+                    <hr class="hr-line1" />
+                    <label for="rm_dp" class="text-left ml-2">Measure the air temperature <span>:</span>
+                      <span>{{activityForm.get('waterLevelAndWeather').get('airTemperature').value}}</span></label>
+                    <label for="rm_dp" class="text-left ml-2"> Observe the Water Level <span>:</span>
+                      <span>{{activityForm.get('waterLevelAndWeather').get('waterLevel').value}}</span> </label>
+                    <label for="rm_dp" class="text-left ml-2">Weather Conditions <span>:</span>
+                      <span>{{activityForm.get('waterLevelAndWeather').get('weather').value}}</span></label>
+                    <label for="rm_dp" class="text-left ml-2">River Pictures <span>:</span>
+                  <img *ngFor='let url of imageUrlRiver' [src]="url" height="50px" width="50px" style="margin: 3px;">
+                </label>
+                  </div>
+                </div>
+                <div class="box" fxLayoutAlign="stretch" style="height:300px;">
+                  <div class="item1">
+                    <span> Observe the Surroundings </span>
+                    <hr class="hr-line1" />
+                    <div class="container">
+                    <span *ngFor="let obj of surroundingArray.value" >{{obj}}</span>
+                  </div>
+                  
+                  <label for="rm_dp" class="text-left ml-2">River Pictures <span>:</span> 
+                    <img *ngFor='let url of imageUrlSurrounding'[src]="url" height="50px" width="50px" style="margin: 3px;">
+                  </label>
+                  </div>
+                </div>
+                <div class="box" fxLayoutAlign="stretch">
+                  <div class="item2">
+                    <span>Water Testing </span>
+                    <hr class="hr-line1" />
+                    <label for="rm_airTemperature" class="text-left ml-2">Water Temperature <span>:</span>
+                      <span>{{activityForm.get('waterTesting').get('waterTemperature').value}}</span></label>
+                    <label for="rm_airTemperature" class="text-left ml-2">pH <span>:</span>
+                      <span>{{activityForm.get('waterTesting').get('pH').value}}</span></label>
+                    <label for="rm_airTemperature" class="text-left ml-2">Alkalinity <span>:</span>
+                      <span>{{activityForm.get('waterTesting').get('alkalinity').value}}</span></label>
+                    <label for="rm_airTemperature" class="text-left ml-2">Nitrate <span>:</span>
+                      <span>{{activityForm.get('waterTesting').get('nitrate').value}}</span></label>
+                    <label for="rm_airTemperature" class="text-left ml-2">Nitrite <span>:</span>
+                      <span>{{activityForm.get('waterTesting').get('nitrite').value}}</span> </label>
+                    <label for="rm_airTemperature" class="text-left ml-2">Hardness <span>:</span>
+                      <span>{{activityForm.get('waterTesting').get('hardness').value}}</span> </label>
+                    <label for="rm_airTemperature" class="text-left ml-2">Chlorine <span>:</span>
+                      <span>{{activityForm.get('waterTesting').get('chlorine').value}}</span> </label>
+                    <label for="rm_airTemperature" class="text-left ml-2">Iron <span>:</span>
+                      <span>{{activityForm.get('waterTesting').get('iron').value}}</span></label>
+                    <label for="rm_airTemperature" class="text-left ml-2">Dissolved Oxygen <span>:</span>
+                      <span>{{activityForm.get('waterTesting').get('dissolvedOxygen').value}}</span></label>
+                    <label for="rm_airTemperature" class="text-left ml-2">E-Coli/Coliform Bacteria<span>:</span>
+                      <span>{{activityForm.get('waterTesting').get('bacteria').value}}</span></label>
+                    <label for="rm_airTemperature" class="text-left ml-2">Turbidity <span>:</span>
+                      <span>{{activityForm.get('waterTesting').get('turbidity').value}}</span></label>
+                    <label for="rm_airTemperature" class="text-left ml-2">Phosphate <span>:</span>
+                      <span>{{activityForm.get('waterTesting').get('phosphate').value}}</span></label>
+                    <label for="rm_airTemperature" class="text-left ml-2">Ammonia <span>:</span>
+                      <span>{{activityForm.get('waterTesting').get('ammonia').value}}</span> </label>
+                    <label for="rm_airTemperature" class="text-left ml-2">Lead <span>:</span>
+                      <span>{{activityForm.get('waterTesting').get('lead').value}}</span></label>
+                    <label for="rm_airTemperature" class="text-left ml-2">Total Dissolved Solids <span>:</span>
+                      <span>{{activityForm.get('waterTesting').get('dissolvedSolids').value}}</span> </label>
+                    <label for="rm_airTemperature" class="text-left ml-2">Conductivity <span>:</span>
+                      <span>{{activityForm.get('waterTesting').get('conductivity').value}}</span></label>
+                  </div>
+                  <div class="item2">
+                    <span>Flora & Fauna </span>
+                    <hr class="hr-line1" />
+
+                    <div class="row ml-2">
+                      <img src="../../../assets/scalable-vector-graphics/flora.svg" height="28px" width="28px">
+                      <label class="ml-2 mt-1 bold">Flora</label>
+                      <img *ngFor='let url of imageUrlFlora'[src]="url" height="50px" width="50px" style="margin: 3px;">
+                    </div>
+
+                    <div class="row ml-2">
+                      <img src="../../../assets/scalable-vector-graphics/fauna.svg" height="35px" width="35px">
+                      <label class="ml-2 mt-2 bold">Fauna</label>
+                      <img *ngFor='let url of imageUrlFauna'[src]="url" height="50px" width="50px" style="margin: 3px;">
+                    </div>
+
+                  </div>
+                </div>
+                <div class="box" fxLayoutAlign="stretch" style="height:300px;">
+                  <div class="item3">
+                    <span> Picture</span>
+                    <hr class="hr-line1" />  
+                    <label for="rm_dp" class="text-left ml-2">Group Pictures <span>:</span> 
+                      <img *ngFor='let url of imageUrlGroup'[src]="url" height="50px" width="50px" style="margin: 3px;">
+                    </label>
+                    <label for="rm_dp" class="text-left ml-2">Activity Pictures <span>:</span> 
+                      <img *ngFor='let url of imageUrlActivity'[src]="url" height="50px" width="50px" style="margin: 3px;">
+                    </label>
+                    <label for="rm_dp" class="text-left ml-2">Artwork Pictures <span>:</span> 
+                      <img *ngFor='let url of imageUrlAtwork'[src]="url" height="50px" width="50px" style="margin: 3px;">
+                    </label>
+                  </div>
+                </div>
+
+              </form>
+              <hr class="hr-line" />
+
               <div class="xstep-actions text-right">
                 <button mdbBtn size="sm" class="custom-btn-blue" (click)="createWaterTestDetails()">SUBMIT</button>
               </div>
