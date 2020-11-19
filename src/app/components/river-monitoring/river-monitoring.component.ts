@@ -239,7 +239,10 @@ export class RiverMonitoringComponent implements OnInit {
 
   }
 
- 
+  setSteep(){
+    
+    alert('hi');
+  }
 
   createWaterTestDetails() {
     this.orolService.createWaterTestDetails(this.activityForm.value, this.imageFilesRiver,

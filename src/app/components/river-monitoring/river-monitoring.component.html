@@ -427,7 +427,7 @@
                 <div class="box" fxLayoutAlign="stretch">
                   <div class="item">
                     <span>General Information </span>
-                    <img src="../../../assets/scalable-vector-graphics/pencil.svg"  height="20px" width="20px">
+                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()" ></mdb-icon>
                     <hr class="hr-line1" />
                     <label for="activityDate" class="text-left ml-2">Activity Date <span>:</span>
                       <span class="ml-2">{{activityForm.get('generalInformation').get('activityDate').value}}</span></label>
@@ -444,6 +444,7 @@
                   </div>
                   <div class="item">
                     <span> Water Level & Weather </span>
+                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()" ></mdb-icon>
                     <hr class="hr-line1" />
                     <label for="rm_dp" class="text-left ml-2">Measure the air temperature <span>:</span>
                       <span>{{activityForm.get('waterLevelAndWeather').get('airTemperature').value}}</span></label>
@@ -459,6 +460,7 @@
                 <div class="box" fxLayoutAlign="stretch" style="height:300px;">
                   <div class="item1">
                     <span> Observe the Surroundings </span>
+                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()" ></mdb-icon>
                     <hr class="hr-line1" />
                     <div class="container">
                     <span *ngFor="let obj of surroundingArray.value" >{{obj}}</span>
@@ -472,6 +474,7 @@
                 <div class="box" fxLayoutAlign="stretch">
                   <div class="item2">
                     <span>Water Testing </span>
+                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()" ></mdb-icon>
                     <hr class="hr-line1" />
                     <label for="rm_airTemperature" class="text-left ml-2">Water Temperature <span>:</span>
                       <span>{{activityForm.get('waterTesting').get('waterTemperature').value}}</span></label>
@@ -508,6 +511,7 @@
                   </div>
                   <div class="item2">
                     <span>Flora & Fauna </span>
+                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()" ></mdb-icon>
                     <hr class="hr-line1" />
 
                     <div class="row ml-2">
@@ -527,6 +531,7 @@
                 <div class="box" fxLayoutAlign="stretch" style="height:300px;">
                   <div class="item3">
                     <span> Picture</span>
+                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()" ></mdb-icon>
                     <hr class="hr-line1" />  
                     <label for="rm_dp" class="text-left ml-2">Group Pictures <span>:</span> 
                       <img *ngFor='let url of imageUrlGroup'[src]="url" height="50px" width="50px" style="margin: 3px;">
