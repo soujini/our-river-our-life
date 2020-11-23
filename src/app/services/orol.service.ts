@@ -17,31 +17,32 @@ export class OrolService {
 
 
   public createWaterTestDetails(x, imageFilesRiver: File[], imageFilesSurrounding: File[], imageFilesFlora: File[], imageFilesFauna: File[], imageFilesGroup: File[], imageFilesActivity: File[], imageFilesAtwork: File[]) {
-    this.spinnerService.setSpinner(true);
+    // this.spinnerService.setSpinner(true);
+    var user = JSON.parse(localStorage.getItem('User'));
     const httpHeaders: HttpHeaders = new HttpHeaders({
       Authorization: 'Bearer ' + user.accessToken
     });
     const form = new FormData;
     for (var i = 0; i < imageFilesRiver.length; i++) {
-      form.append('imagesFilesRiver', imageFilesRiver[i]);
+      form.append('river', imageFilesRiver[i]);
     }
-    for (var i = 0; i < imageFilesSurrounding.length; i++) {
-      form.append('imagesFilesSurrounding', imageFilesSurrounding[i]);
-    }
+    // for (var i = 0; i < imageFilesSurrounding.length; i++) {
+    //   form.append('imagesFilesSurrounding', imageFilesSurrounding[i]);
+    // }
     for (var i = 0; i < imageFilesFlora.length; i++) {
-      form.append('imagesFilesFlora', imageFilesFlora[i]);
+      form.append('flora', imageFilesFlora[i]);
     }
     for (var i = 0; i < imageFilesFauna.length; i++) {
-      form.append('imagesFilesFauna', imageFilesFauna[i]);
+      form.append('fauna', imageFilesFauna[i]);
     }
     for (var i = 0; i < imageFilesGroup.length; i++) {
-      form.append('imagesFilesGroup', imageFilesGroup[i]);
+      form.append('groupPicture', imageFilesGroup[i]);
     }
     for (var i = 0; i < imageFilesActivity.length; i++) {
-      form.append('imagesFilesActivity', imageFilesActivity[i]);
+      form.append('activity', imageFilesActivity[i]);
     }
     for (var i = 0; i < imageFilesAtwork.length; i++) {
-      form.append('imagesFilesAtwork', imageFilesAtwork[i]);
+      form.append('artwork', imageFilesAtwork[i]);
     }
     form.append("userId", x.userId);
     form.append("generalInformation", x.generalInformation);
@@ -54,8 +55,8 @@ export class OrolService {
     form.append("groupPicture", x.groupPicture);
     form.append("activity", x.activity);
     form.append("river", x.river);
-    form.append("certificateURL", x.certificateURL);
-
+    // form.append("certificateURL", x.certificateURL);
+    console.log(form);    
     return this.httpClient.post("https://our-river-our-life-api.herokuapp.com/water-test-details/create-web", form, { headers: httpHeaders });
 
 
@@ -71,8 +72,30 @@ export class OrolService {
     //   },
     // );
   }
+  // public generateReport(x, ) {
+  //   var user = JSON.parse(localStorage.getItem('User'));
+  //   this.spinnerService.setSpinner(true);
+  //   const httpHeaders: HttpHeaders = new HttpHeaders({
+  //     Authorization: 'Bearer ' + user.accessToken
+  //   });
+  //   const form = new FormData;
+  //   console.log(form);
+  //   // form.append("userId", x.userId);
+  //   // form.append("location", x.location);
 
 
+  //   this.httpClient.post("https://our-river-our-life-api.herokuapp.com/flora-fauna/create-flora", form, { headers: httpHeaders }).subscribe(
+  //     (res) => {
+  //       this.spinnerService.setSpinner(false);
+  //       this.router.navigate(['./home']);
+
+  //     },
+  //     (err) => {
+  //       this.spinnerService.setSpinner(false);
+  //       window.alert(err)
+  //     },
+  //   );
+  // }
 
 
   public getAccessToken(username, mode) { //Username can be email or phone number

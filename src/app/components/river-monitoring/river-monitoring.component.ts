@@ -249,13 +249,12 @@ export class RiverMonitoringComponent implements OnInit {
       this.imageFilesSurrounding, this.imageFilesFlora, this.imageFilesFauna, this.imageFilesGroup, this.imageFilesActivity, this.imageFilesAtwork).
       subscribe((data)=>{
         console.log(data);
-
         //Call Generate REPORT
-        this.orolService.generateReport().subscribe((data)=>{
-  //  https://our-river-our-life-api.herokuapp.com/pdf/generateReport
       });
-
-      });
+    //   this.orolService.generateReport(x).subscribe((data)=>{
+    //     console.log(data);
+    //     //  https://our-river-our-life-api.herokuapp.com/pdf/generateReport
+    // });
   }
 
 
