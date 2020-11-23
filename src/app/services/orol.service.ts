@@ -18,6 +18,9 @@ export class OrolService {
 
   public createWaterTestDetails(x, imageFilesRiver: File[], imageFilesSurrounding: File[], imageFilesFlora: File[], imageFilesFauna: File[], imageFilesGroup: File[], imageFilesActivity: File[], imageFilesAtwork: File[]) {
     this.spinnerService.setSpinner(true);
+    const httpHeaders: HttpHeaders = new HttpHeaders({
+      Authorization: 'Bearer ' + user.accessToken
+    });
     const form = new FormData;
     for (var i = 0; i < imageFilesRiver.length; i++) {
       form.append('imagesFilesRiver', imageFilesRiver[i]);
@@ -52,6 +55,8 @@ export class OrolService {
     form.append("activity", x.activity);
     form.append("river", x.river);
     form.append("certificateURL", x.certificateURL);
+
+    return this.httpClient.post("https://our-river-our-life-api.herokuapp.com/water-test-details/create-web", form, { headers: httpHeaders });
 
 
     // this.httpClient.post("https://our-river-our-life-api.herokuapp.com/flood-alert/create-alert", form).subscribe(

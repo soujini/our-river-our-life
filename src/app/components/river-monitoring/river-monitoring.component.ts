@@ -240,14 +240,22 @@ export class RiverMonitoringComponent implements OnInit {
   }
 
   setSteep(){
-    
+
     alert('hi');
   }
 
   createWaterTestDetails() {
     this.orolService.createWaterTestDetails(this.activityForm.value, this.imageFilesRiver,
-      this.imageFilesSurrounding, this.imageFilesFlora, this.imageFilesFauna, this.imageFilesGroup, this.imageFilesActivity, this.imageFilesAtwork);
-// console.log(this.activityForm)
+      this.imageFilesSurrounding, this.imageFilesFlora, this.imageFilesFauna, this.imageFilesGroup, this.imageFilesActivity, this.imageFilesAtwork).
+      subscribe((data)=>{
+        console.log(data);
+
+        //Call Generate REPORT
+        this.orolService.generateReport().subscribe((data)=>{
+  //  https://our-river-our-life-api.herokuapp.com/pdf/generateReport
+      });
+
+      });
   }
 
 
