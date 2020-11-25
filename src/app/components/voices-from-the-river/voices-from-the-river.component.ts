@@ -2,6 +2,8 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ModalDirective } from 'ng-uikit-pro-standard';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-voices-from-the-river',
@@ -9,99 +11,36 @@ import { ModalDirective } from 'ng-uikit-pro-standard';
   styleUrls: ['./voices-from-the-river.component.scss']
 })
 export class VoicesFromTheRiverComponent implements OnInit {
-  @ViewChild('previewVideoURLModal') previewVideoURLModal: ModalDirective;
+  blogs =[
+    {
+    featuredTitle :'Title of the news',
+    featureDescription:'Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impeditquo minus id quod maxime placeat facere possimus voluptas',
+    featuredPhoto:'https://mdbootstrap.com/img/Photos/Others/images/81.jpg',
+    createdAt:'15/07/2018',
+    blogerName:'Billy Forester'
+},
+{
+  featuredTitle :'Title of the news',
+  featureDescription:'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis voluptatum deleniti atque corrupti quos dolores.',
+  featuredPhoto:'https://mdbootstrap.com/img/Photos/Others/images/43.jpg',
+  createdAt:'13/07/2018',
+  blogerName:'Billy Forester'
+},
+{
+  featuredTitle :'Title of the news',
+  featureDescription:'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.',
+  featuredPhoto:'https://mdbootstrap.com/img/Photos/Others/images/13.jpg',
+  createdAt:'11/07/2018',
+  blogerName:'Billy Forester'
+},
+  ] ;
 
-  blogForm: FormGroup;
-  AdditionalVideoArray:any=[];
-  featuredVideo = []
-  public imageFile: File[] = [];
-  imageURL: any = [];
-  images = [];
-  trustedVideoURL:any;
-
-  featuredPhoto = [];
-  public imagefeaturedPhoto: File[] = [];
-
-  featuredAdditionalPhotos = [];
-  public imagefeaturedAdditionalPhotos: File[] = [];
-
-  constructor(private fb: FormBuilder,private sanitizer: DomSanitizer,) {
-    this.createForm();
-    this.AdditionalVideoArray = this.blogForm.controls.featuredAdditionalVideos as FormArray;
-
-  }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-
-  createForm() {
-    this.blogForm = this.fb.group({
-      userId: [],
-      featuredTitle: [''],
-      featureDescription: [''],
-      featuredPhoto: this.fb.array([]),
-      featuredAdditionalPhotos: this.fb.array([]),
-      featuredVideo: this.fb.array([]),
-
-      featuredAdditionalVideos: this.fb.array([]),
-    });
+  gotoList() {
+    this.router.navigate(['/add']);
   }
-
-
-
-  createblog() {
-    console.log(this.blogForm);
-  }
-
- previewVideoUrl(){
-      const videoId=this.getId(this.blogForm.get('featuredAdditionalVideos').value);
-      this.trustedVideoURL="'//www.youtube.com/embed/"+ videoId +"'";
-      this.trustedVideoURL=this.sanitizer.bypassSecurityTrustResourceUrl(this.trustedVideoURL.replace(/\'/gi,''));
-
-      this.previewVideoURLModal.show();
-    }
-    removeScreenshotURL(index){
-      this.AdditionalVideoArray.removeAt(index);
-    }
-
-    getId(url) {
-      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-      const match = url.match(regExp);
-
-      return (match && match[2].length === 11)
-      ? match[2]
-      : null;
-    }
-
-  onFeaturedPhoto(event) {
-    if (event.target.files && event.target.files[0]) {
-      var length = event.target.files.length;
-      for (let i = 0; i < event.target.files.length; i++) {
-        this.imageFile.push(event.target.files[i]);
-        var reader = new FileReader();
-        reader.onload = (event: any) => {
-          this.imageURL = event.target.result;
-          // this.image.push(event.target.result);
-        }
-        reader.readAsDataURL(event.target.files[i]);
-      }
-    }
-
-  }
-
-  onFeaturedAdditionalPhoto(event) {
-    if (event.target.files && event.target.files[0]) {
-      var length = event.target.files.length;
-      for (let i = 0; i < event.target.files.length; i++) {
-        this.imagefeaturedAdditionalPhotos.push(event.target.files[i]);
-        var reader = new FileReader();
-        reader.onload = (event: any) => {
-          this.featuredAdditionalPhotos.push(event.target.result);
-        }
-        reader.readAsDataURL(event.target.files[i]);
-      }
-    }
-  }
-
 
 }

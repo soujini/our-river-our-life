@@ -7,7 +7,7 @@ import { ModalDirective } from 'ng-uikit-pro-standard';
 import { MapsAPILoader, AgmMap, MouseEvent } from '@agm/core';
 import { NgZone } from '@angular/core';
 import { OrolService } from '../../services/orol.service';
-
+import {MatStepper} from '@angular/material/stepper';
 
 @Component({
   selector: 'app-river-monitoring',
@@ -15,6 +15,8 @@ import { OrolService } from '../../services/orol.service';
   styleUrls: ['./river-monitoring.component.scss']
 })
 export class RiverMonitoringComponent implements OnInit {
+  @ViewChild('river_monitoring_stepper', { static: false }) river_monitoring_stepper: MatStepper;
+
   @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
   @ViewChild(AgmMap, { static: true }) public agmMap: AgmMap;
   defaultImageURL: string = "../../../assets/icons/default_image_upload.jpg";
@@ -50,7 +52,9 @@ export class RiverMonitoringComponent implements OnInit {
   imageUrlActivity = [];
   public imageFilesAtwork: File[] = [];
   imageUrlAtwork = [];
-
+  submitStep1 :boolean =false;
+  submitStep2 :boolean =false;
+  submitStep3 :boolean =false;
 
   userControl = new FormControl();
   items = [
@@ -103,7 +107,7 @@ export class RiverMonitoringComponent implements OnInit {
     'Clothes washing',
     'Cattle grazing',
     'Vehicles',
-    'Agricultural Land',
+    'Agricultural land',
     'Plantation',
     'Bridge',
     'Industry',
@@ -112,8 +116,9 @@ export class RiverMonitoringComponent implements OnInit {
     'Town',
     'Effluent discharge',
     'Sewage discharge',
-    'Irrigation Pump',
+    'Irrigation pump',
   ];
+
   lastFilter: string = '';
   activityForm: FormGroup;
   latitude: number;
@@ -122,6 +127,7 @@ export class RiverMonitoringComponent implements OnInit {
   getAddress: any;
   lat: number;
   lng: number;
+
   constructor(private fb: FormBuilder, private orolService: OrolService,
     private mapsAPILoader: MapsAPILoader, private apiloader: MapsAPILoader, private ngZone: NgZone) {
     this.createForm();
@@ -187,17 +193,17 @@ export class RiverMonitoringComponent implements OnInit {
     this.activityForm = this.fb.group({
       userId: [''],
       generalInformation: this.fb.group({
-        activityDate: [''],
-        activityTime: [''],
-        testerName: [''],
-        location: [''],
-        latitude: [''],
-        longitude: [' '],
+        activityDate: ['' ,[Validators.required]],
+        activityTime: ['',[Validators.required]],
+        testerName: ['',[Validators.required]],
+        location: ['',[Validators.required]],
+        latitude: ['',[Validators.required]],
+        longitude: ['',[Validators.required]],
       }),
       waterLevelAndWeather: this.fb.group({
-        airTemperature: [''],
-        waterLevel: [' '],
-        weather: [''],
+        airTemperature: ['',[Validators.required]],
+        waterLevel: ['',[Validators.required]],
+        weather: ['',[Validators.required]],
       }),
       surroundings: this.fb.array([]),
       waterTesting: this.fb.group({
@@ -208,7 +214,7 @@ export class RiverMonitoringComponent implements OnInit {
         nitrate: [''],
         nitrite: [''],
         chlorine: [''],
-        alkalinity: [' '],
+        alkalinity: [''],
         iron: [''],
         bacteria: [''],
         turbidity: [''],
@@ -218,19 +224,19 @@ export class RiverMonitoringComponent implements OnInit {
         dissolvedSolids: [''],
         conductivity: [''],
       }),
-      flora: this.fb.group({
-        imageURL: [''],
-        description: [''],
-      }),
-      fauna: this.fb.array([]),
-      artwork: this.fb.array([]),
-      groupPicture: this.fb.array([]),
-      activity: this.fb.array([]),
-      river: this.fb.group({
-        imageURL: [''],
-        description: [''],
-      }),
-      certificateURL: ['']
+      // flora: this.fb.group({
+      //   imageURL: [''],
+      //   description: [''],
+      // }),
+      // fauna: this.fb.array([]),
+      // artwork: this.fb.array([]),
+      // groupPicture: this.fb.array([]),
+      // activity: this.fb.array([]),
+      // river: this.fb.group({
+      //   imageURL: [''],
+      //   description: [''],
+      // }),
+      // certificateURL: ['']
     });
   }
 
@@ -238,10 +244,41 @@ export class RiverMonitoringComponent implements OnInit {
   onSubmit() {
 
   }
+  validateStep1(){
+    this.submitStep1 =true;
+    if(this.activityForm.get('generalInformation').get('activityDate').valid && 
+    this.activityForm.get('generalInformation').get('activityTime').valid &&
+    this.activityForm.get('generalInformation').get('testerName').valid  &&
+    this.activityForm.get('generalInformation').get('location').valid  &&
+    this.activityForm.get('generalInformation').get('latitude').valid  &&
+    this.activityForm.get('generalInformation').get('longitude').valid 
+    
+    ){
+      this.river_monitoring_stepper.next();
+    }
+  }
+  validateStep2(){
+    this.submitStep2 =true;
+    if(this.activityForm.get('waterLevelAndWeather').get('airTemperature').valid && 
+    this.activityForm.get('waterLevelAndWeather').get('waterLevel').valid &&
+    this.activityForm.get('waterLevelAndWeather').get('weather').valid &&
+    this.activityForm.get('imageUrlRiver')['length'] > 0
+    
+    ){
+      this.river_monitoring_stepper.next();
+    }
+  }
+  validateStep4(){   
+    this.submitStep3= true;  
+    if(  this.activityForm.get('surroundings')['length'] > 0
+      ){
+        this.river_monitoring_stepper.next();
+      }
+    }
+  
 
   setSteep(){
 
-    alert('hi');
   }
 
   createWaterTestDetails() {
@@ -385,6 +422,14 @@ export class RiverMonitoringComponent implements OnInit {
     const blob = new Blob([int8Array], { type: 'image/' + extension });
     return blob;
   }
+  // validateStep1(){
+  //   this.submitted1=true;
+  //     if(this.activityForm.get('generalInformation').value != ''
+  //     && this.activityForm.get('generalInformation').get('testerName').value != ''){
+  //       this.stepper.next();
+  //     }
+
+  // }
   convertBase64toImage() {
     var x = this['imageURL'].split(";")[0];
     var extension = x.split('/')[1];

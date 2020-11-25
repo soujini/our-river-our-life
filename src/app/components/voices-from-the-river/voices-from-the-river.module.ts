@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { VoicesFromTheRiverRoutingModule } from './voices-from-the-river-routing.module';
 import { VoicesFromTheRiverComponent } from './voices-from-the-river.component';
-import {  ModalModule, WavesModule ,} from 'ng-uikit-pro-standard';
+import {  ModalModule, WavesModule ,  ButtonsModule} from 'ng-uikit-pro-standard';
 
 
 @NgModule({
@@ -14,7 +14,8 @@ import {  ModalModule, WavesModule ,} from 'ng-uikit-pro-standard';
     ReactiveFormsModule,
     FormsModule,
     ModalModule,
-    WavesModule
+    WavesModule,
+    ButtonsModule
   ],
   exports:[
     VoicesFromTheRiverComponent

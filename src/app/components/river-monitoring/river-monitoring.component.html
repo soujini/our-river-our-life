@@ -6,7 +6,7 @@
         <div class="row" class="bg-white" style="xheight:600px">
           <mdb-stepper #river_monitoring_stepper id="river_monitoring_stepper" class="col-12">
 
-            <mdb-step name="General Information" xstepForm="firstFormGroup">
+            <mdb-step name="General Information" xstepForm="activityForm">
               <form [formGroup]="activityForm" style="padding-left:350px; padding-right:350px">
                 <div class="row" formGroupName="generalInformation">
                   <div class="col-md-6">
@@ -14,12 +14,24 @@
                     <mdb-date-picker id="rm_dp" [inline]="true" name="mydate" formControlName="activityDate"
                       [options]="myDatePickerOptions" [placeholder]="'Selected date'" xngModel="model" required>
                     </mdb-date-picker>
+                    <div class="mt-1 error-message-div">
+                      <p *ngIf="activityForm.get('generalInformation').get('activityDate').errors?.required  && this.submitStep1==true"
+                        class="errorMessage">
+                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                        is required.</p>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <label for="rm_tp" class="text-left">Activity Time</label>
                     <mdb-time-picker id="rm_tp" [buttonLabel]="'Done'" [twelvehour]="false"
                       formControlName="activityTime" [darktheme]="true" [placeholder]="'Selected time'"
                       xngModel="darkClock"></mdb-time-picker>
+                    <div class="mt-1 error-message-div">
+                      <p *ngIf="activityForm.get('generalInformation').get('activityTime').errors?.required  && this.submitStep1==true"
+                        class="errorMessage">
+                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                        is required.</p>
+                    </div>
                   </div>
                 </div>
                 <div class="row" formGroupName="generalInformation">
@@ -27,6 +39,12 @@
                     <label for="rm_testerName" class="text-left">Name</label>
                     <input mdbInput id="rm_testerName" type="text" id="form1" class="form-control"
                       formControlName="testerName" placeholder="Name">
+                  </div>
+                  <div class="mt-1 error-message-div">
+                    <p *ngIf="activityForm.get('generalInformation').get('testerName').errors?.required  && this.submitStep1==true"
+                      class="errorMessage">
+                      <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is
+                      required.</p>
                   </div>
                 </div>
                 <div class="row">
@@ -36,45 +54,73 @@
                       placeholder="Search by location" autocorrect="off" autocapitalize="off" spellcheck="off"
                       type="text" class="form-control input-searchmt-2" #search [formControl]="searchControl">
                   </div>
+                  <div class="mt-1 error-message-div">
+                    <p *ngIf="activityForm.get('generalInformation').get('location').errors?.required  && this.submitStep1==true"
+                      class="errorMessage">
+                      <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is
+                      required.</p>
+                  </div>
                 </div>
-
                 <div class="row" formGroupName="generalInformation">
                   <div class="col-md-6">
                     <label for="rm_latitude" class="text-left">Latitude</label>
                     <input mdbInput id="rm_latitude" type="text" id="form1" class="form-control"
-                      formControlName="latitude" placeholder="Location" (change)="bla()">
+                      formControlName="latitude" placeholder="Latitude" (change)="bla()">
+                    <div class="mt-1 error-message-div">
+                      <p *ngIf="activityForm.get('generalInformation').get('latitude').errors?.required  && this.submitStep1==true"
+                        class="errorMessage">
+                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                        is required.</p>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     <label for="rm_longitude" class="text-left">Longitude</label>
                     <input mdbInput id="rm_longitude" type="text" id="form1" class="form-control"
-                      formControlName="longitude" placeholder="Location" (change)="bla()">
+                      formControlName="longitude" placeholder="Longitude" (change)="bla()">
+                    <div class="mt-1 error-message-div">
+                      <p *ngIf="activityForm.get('generalInformation').get('longitude').errors?.required  && this.submitStep1==true"
+                        class="errorMessage">
+                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                        is required.</p>
+                    </div>
                   </div>
                 </div>
                 <div class="mt-3">
-                  <agm-map class="mt-3" style="height: 300px;" [mapTypeId]="'hybrid'" [latitude]="lat" [longitude]="lng"
-                    [zoom]="zoom" (mapClick)="mapClicked($event)">
-                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                  <agm-map class="mt-3" style="height: 300px;" [mapTypeId]="'hybrid'"  [fitBounds]="true" accuracy=100
+                    [latitude]="this.activityForm.get('generalInformation').get('latitude').value"
+                    [longitude]="this.activityForm.get('generalInformation').get('longitude').value" [zoom]="zoom" [scrollwheel]="false"
+                    (mapClick)="mapClicked($event)" [usePanning]='true' [draggable]=false>
+                    <agm-marker [agmFitBounds]="true" [latitude]="this.activityForm.get('generalInformation').get('latitude').value"
+                      [longitude]="this.activityForm.get('generalInformation').get('longitude').value"></agm-marker>
                   </agm-map>
                 </div>
+
+               
 
               </form>
               <hr class="hr-line" />
               <div class="text-right">
-                <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
+                <button mdbBtn size="sm" class="custom-btn-blue" (click)="validateStep1()">NEXT</button>
               </div>
             </mdb-step>
-            <mdb-step name="Water Level & Weather" xstepForm="secondFormGroup">
+            <mdb-step name="Water Level & Weather" xstepForm="activityForm">
               <form [formGroup]="activityForm" style="padding-left:350px; padding-right:350px">
                 <div class="row" formGroupName="waterLevelAndWeather">
                   <div class="col-md-12">
                     <label for="rm_airTemperature" class="text-left">Measure the air temperature</label>
                     <div class="input-group mb-2">
-                      <input mdbInput formControlName="airTemperature" type="text" class="form-control"
+                      <input mdbInput formControlName="airTemperature" type="number" class="form-control"
                         placeholder="Air Temperature">
                       <div class="input-group-prepend">
                         <div class="input-group-text bl-0">°C</div>
                       </div>
                     </div>
+                  </div>
+                  <div class="mt-1 error-message-div">
+                    <p *ngIf="activityForm.get('waterLevelAndWeather').get('airTemperature').errors?.required  && this.submitStep2==true"
+                      class="errorMessage">
+                      <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                      is required.</p>
                   </div>
                 </div>
                 <div class="row">
@@ -87,6 +133,12 @@
                       </div>
                     </div>
                   </div>
+                  <div class="mt-1 error-message-div">
+                    <p *ngIf="activityForm.get('waterLevelAndWeather').get('waterLevel').errors?.required  && this.submitStep2==true"
+                      class="errorMessage">
+                      <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                      is required.</p>
+                  </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
@@ -98,6 +150,12 @@
                       </div>
                     </div>
                   </div>
+                  <div class="mt-1 error-message-div">
+                    <p *ngIf="activityForm.get('waterLevelAndWeather').get('weather').errors?.required  && this.submitStep2==true"
+                      class="errorMessage">
+                      <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                      is required.</p>
+                  </div>
                 </div>
                 <div class="text-left" fxormGroupName="generalInformation">
                   <label for="rm_location" class="text-left">River Pictures</label>
@@ -108,15 +166,19 @@
                         (change)="onFileChangesRiver($event)">Upload
                     </label>
                   </div>
+                  <div *ngIf="imageUrlRiver == null && this.submitStep2 == true" class="image-error-message">
+                    <p class="errorMessage"><img class="img-add" src="../../../assets/scalableVectorGraphics/exclamation.svg">
+                      This image is required.</p>
+                    </div>
                 </div>
               </form>
               <hr class="hr-line" />
               <div class="text-right">
                 <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
-                <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
+                <button mdbBtn size="sm" class="custom-btn-blue" (click)="validateStep2()">NEXT</button>
               </div>
             </mdb-step>
-            <mdb-step name="Observe your Surroundings" xstepForm="secondFormGroup">
+            <mdb-step name="Observe your Surroundings" xstepForm="activityForm">
               <form xformGroupx="surroundings" class="container-stepper-form">
                 <div class="row">
                   <div class="col-md-12">
@@ -128,9 +190,15 @@
                   <div class="col-md-12 mt-3 text-left" xformGroupName="waterLevelAndWeather">
                     <div *ngFor="let obj of surroundings ; let i=index" class="col-md-3 text-left"
                       style="display:inline-block">
-                      <mdb-checkbox class="checkbox-coco-filled" [checked]="false"
+                      <mdb-checkbox class="checkbox-coco-filled" [checked]="false" value={{obj}}
                         (change)="this.getSelectedSurroundings($event,obj)" [default]="true">{{obj}}
                       </mdb-checkbox>
+                    </div>
+                    <div class="mt-1 error-message-div">
+                      <p *ngIf="activityForm.get('surroundings')['length'] == 0 && this.submitStep3 == true"
+                        class="errorMessage"><img class="img-add"
+                          src="../../../assets/scalable-vector-graphics/exclamation.svg"> Please select at least
+                        1 Category.</p>
                     </div>
                   </div>
                 </div>
@@ -149,16 +217,16 @@
               <hr class="hr-line" />
               <div class="text-right">
                 <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
-                <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
+                <button mdbBtn size="sm" class="custom-btn-blue" (click)="validateStep4()">NEXT</button>
               </div>
             </mdb-step>
-            <mdb-step name="Water Quality Testing" xstepForm="secondFormGroup">
+            <mdb-step name="Water Quality Testing">
               <form [formGroup]="activityForm" class="container-stepper-form">
                 <div class="row" formGroupName="waterTesting">
                   <div class="col-md-12">
                     <label for="rm_airTemperature" class="text-left">Water Temperature</label>
                     <div class="input-group mb-2">
-                      <input mdbInput formControlName="waterTemperature" type="text" class="form-control"
+                      <input mdbInput formControlName="waterTemperature" type="number" class="form-control"
                         placeholder="Water Temperature">
                       <div class="input-group-prepend">
                         <div class="input-group-text bl-0">°C</div>
@@ -170,7 +238,7 @@
                   <div class="col-md-6">
                     <label for="rm_airTemperature" class="text-left">pH</label>
                     <div class="input-group mb-2">
-                      <input mdbInput formControlName="pH" type="text" class="form-control"
+                      <input mdbInput formControlName="pH" type="number" class="form-control"
                         placeholder="Water Temperature">
                       <div class="input-group-prepend">
                         <div class="input-group-text bl-0">°C</div>
@@ -192,7 +260,8 @@
                   <div class="col-md-6">
                     <label for="rm_airTemperature" class="text-left">Nitrate</label>
                     <div class="input-group mb-2">
-                      <input mdbInput formControlName="nitrate" type="text" class="form-control" placeholder="Nitrate">
+                      <input mdbInput formControlName="nitrate" type="number" class="form-control"
+                        placeholder="Nitrate">
                       <div class="input-group-prepend">
                         <div class="input-group-text bl-0">mg/L</div>
                       </div>
@@ -212,7 +281,7 @@
                   <div class="col-md-12">
                     <label for="rm_airTemperature" class="text-left">Hardness</label>
                     <div class="input-group mb-2">
-                      <input mdbInput formControlName="hardness" type="text" class="form-control"
+                      <input mdbInput formControlName="hardness" type="number" class="form-control"
                         placeholder="Water Temperature">
                       <div class="input-group-prepend">
                         <div class="input-group-text bl-0">mg/L</div>
@@ -224,11 +293,17 @@
                   <div class="col-md-6">
                     <label for="rm_airTemperature" class="text-left">Chlorine</label>
                     <div class="input-group mb-2">
-                      <input mdbInput formControlName="chlorine" type="text" class="form-control"
+                      <input mdbInput formControlName="chlorine" type="number" class="form-control"
                         placeholder="Chlorine">
                       <div class="input-group-prepend">
                         <div class="input-group-text bl-0">mg/L</div>
                       </div>
+                    </div>
+                    <div class="mt-1 error-message-div">
+                      <p *ngIf="activityForm.get('waterTesting').get('chlorine').errors?.required  && this.submitStep3==true"
+                        class="errorMessage">
+                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                        is required.</p>
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -239,17 +314,29 @@
                         <div class="input-group-text bl-0">mg/L</div>
                       </div>
                     </div>
+                    <div class="mt-1 error-message-div">
+                      <p *ngIf="activityForm.get('waterTesting').get('iron').errors?.required  && this.submitStep3==true"
+                        class="errorMessage">
+                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                        is required.</p>
+                    </div>
                   </div>
                 </div>
                 <div class="row" formGroupName="waterTesting">
                   <div class="col-md-12">
                     <label for="rm_airTemperature" class="text-left">Dissolved Oxygen</label>
                     <div class="input-group mb-2">
-                      <input mdbInput formControlName="dissolvedOxygen" type="text" class="form-control"
+                      <input mdbInput formControlName="dissolvedOxygen" type="number" class="form-control"
                         placeholder="Dissolved Oxygen">
                       <div class="input-group-prepend">
                         <div class="input-group-text bl-0">mg/L</div>
                       </div>
+                    </div>
+                    <div class="mt-1 error-message-div">
+                      <p *ngIf="activityForm.get('waterTesting').get('dissolvedOxygen').errors?.required  && this.submitStep3==true"
+                        class="errorMessage">
+                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                        is required.</p>
                     </div>
                   </div>
                 </div>
@@ -261,29 +348,47 @@
                         [ngClass]="(lastClickedIndex == i) ? 'custom-btn-active': 'custom-btn'"
                         (click)="changeActive(i); setBacteria(item.name)" #disable mdbWavesEffect>{{item.name}}</button>
                     </div>
+                    <div class="mt-1 error-message-div">
+                      <p *ngIf="activityForm.get('waterTesting').get('bacteria').errors?.required  && this.submitStep3==true"
+                        class="errorMessage">
+                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                        is required.</p>
+                    </div>
                   </div>
                 </div>
                 <div class="row" formGroupName="waterTesting">
                   <div class="col-md-12">
                     <label for="rm_airTemperature" class="text-left">Turbidity</label>
                     <div class="input-group mb-2">
-                      <input mdbInput formControlName="turbidity" type="text" class="form-control"
+                      <input mdbInput formControlName="turbidity" type="number" class="form-control"
                         placeholder="Turbidity">
                       <div class="input-group-prepend">
                         <div class="input-group-text bl-0">NTU</div>
                       </div>
                     </div>
                   </div>
+                  <div class="mt-1 error-message-div">
+                    <p *ngIf="activityForm.get('waterTesting').get('turbidity').errors?.required  && this.submitStep3==true"
+                      class="errorMessage">
+                      <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                      is required.</p>
+                  </div>
                 </div>
                 <div class="row" formGroupName="waterTesting">
                   <div class="col-md-12">
                     <label for="rm_airTemperature" class="text-left">Phosphate</label>
                     <div class="input-group mb-2">
-                      <input mdbInput formControlName="phosphate" type="text" class="form-control"
+                      <input mdbInput formControlName="phosphate" type="number" class="form-control"
                         placeholder="Phosphate">
                       <div class="input-group-prepend">
                         <div class="input-group-text bl-0">mg/L</div>
                       </div>
+                    </div>
+                    <div class="mt-1 error-message-div">
+                      <p *ngIf="activityForm.get('waterTesting').get('phosphate').errors?.required  && this.submitStep3==true"
+                        class="errorMessage">
+                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                        is required.</p>
                     </div>
                   </div>
                 </div>
@@ -291,10 +396,17 @@
                   <div class="col-md-12">
                     <label for="rm_airTemperature" class="text-left">Ammonia</label>
                     <div class="input-group mb-2">
-                      <input mdbInput formControlName="ammonia" type="text" class="form-control" placeholder="Ammonia">
+                      <input mdbInput formControlName="ammonia" type="number" class="form-control"
+                        placeholder="Ammonia">
                       <div class="input-group-prepend">
                         <div class="input-group-text bl-0">mg/L</div>
                       </div>
+                    </div>
+                    <div class="mt-1 error-message-div">
+                      <p *ngIf="activityForm.get('waterTesting').get('ammonia').errors?.required  && this.submitStep3==true"
+                        class="errorMessage">
+                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                        is required.</p>
                     </div>
                   </div>
                 </div>
@@ -302,10 +414,16 @@
                   <div class="col-md-12">
                     <label for="rm_airTemperature" class="text-left">Lead</label>
                     <div class="input-group mb-2">
-                      <input mdbInput formControlName="lead" type="text" class="form-control" placeholder="Lead">
+                      <input mdbInput formControlName="lead" type="number" class="form-control" placeholder="Lead">
                       <div class="input-group-prepend">
                         <div class="input-group-text bl-0">mg/L</div>
                       </div>
+                    </div>
+                    <div class="mt-1 error-message-div">
+                      <p *ngIf="activityForm.get('waterTesting').get('lead').errors?.required  && this.submitStep3==true"
+                        class="errorMessage">
+                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                        is required.</p>
                     </div>
                   </div>
                 </div>
@@ -313,11 +431,17 @@
                   <div class="col-md-12">
                     <label for="rm_airTemperature" class="text-left">Total Dissolved Solids</label>
                     <div class="input-group mb-2">
-                      <input mdbInput formControlName="dissolvedSolids" type="text" class="form-control"
+                      <input mdbInput formControlName="dissolvedSolids" type="number" class="form-control"
                         placeholder="Total Dissolved Solids">
                       <div class="input-group-prepend">
                         <div class="input-group-text bl-0">ppm</div>
                       </div>
+                    </div>
+                    <div class="mt-1 error-message-div">
+                      <p *ngIf="activityForm.get('waterTesting').get('dissolvedSolids').errors?.required  && this.submitStep3==true"
+                        class="errorMessage">
+                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                        is required.</p>
                     </div>
                   </div>
                 </div>
@@ -325,7 +449,7 @@
                   <div class="col-md-12">
                     <label for="rm_airTemperature" class="text-left">Conductivity</label>
                     <div class="input-group mb-2">
-                      <input mdbInput formControlName="conductivity" type="text" class="form-control"
+                      <input mdbInput formControlName="conductivity" type="number" class="form-control"
                         placeholder="Conductivity">
                       <div class="input-group-prepend">
                         <div class="input-group-text bl-0">µs</div>
@@ -340,7 +464,7 @@
                 <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
               </div>
             </mdb-step>
-            <mdb-step name="Flora & Fauna" xstepForm="secondFormGroup">
+            <mdb-step name="Flora & Fauna">
               <form xformGroup="secondFormGroup" class="container-stepper-form">
                 <div class="col-md-12">
                   <div class="row">
@@ -427,10 +551,11 @@
                 <div class="box" fxLayoutAlign="stretch">
                   <div class="item">
                     <span>General Information </span>
-                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()" ></mdb-icon>
+                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()"></mdb-icon>
                     <hr class="hr-line1" />
                     <label for="activityDate" class="text-left ml-2">Activity Date <span>:</span>
-                      <span class="ml-2">{{activityForm.get('generalInformation').get('activityDate').value}}</span></label>
+                      <span
+                        class="ml-2">{{activityForm.get('generalInformation').get('activityDate').value}}</span></label>
                     <label class="text-left ml-2">Activity Time <span>:</span>
                       <span>{{activityForm.get('generalInformation').get('activityTime').value}}</span></label>
                     <label class="text-left ml-2">Name <span>:</span>
@@ -444,7 +569,7 @@
                   </div>
                   <div class="item">
                     <span> Water Level & Weather </span>
-                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()" ></mdb-icon>
+                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()"></mdb-icon>
                     <hr class="hr-line1" />
                     <label for="rm_dp" class="text-left ml-2">Measure the air temperature <span>:</span>
                       <span>{{activityForm.get('waterLevelAndWeather').get('airTemperature').value}}</span></label>
@@ -453,28 +578,30 @@
                     <label for="rm_dp" class="text-left ml-2">Weather Conditions <span>:</span>
                       <span>{{activityForm.get('waterLevelAndWeather').get('weather').value}}</span></label>
                     <label for="rm_dp" class="text-left ml-2">River Pictures <span>:</span>
-                  <img *ngFor='let url of imageUrlRiver' [src]="url" height="50px" width="50px" style="margin: 3px;">
-                </label>
+                      <img *ngFor='let url of imageUrlRiver' [src]="url" height="50px" width="50px"
+                        style="margin: 3px;">
+                    </label>
                   </div>
                 </div>
                 <div class="box" fxLayoutAlign="stretch" style="height:300px;">
                   <div class="item1">
                     <span> Observe the Surroundings </span>
-                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()" ></mdb-icon>
+                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()"></mdb-icon>
                     <hr class="hr-line1" />
                     <div class="container">
-                    <span *ngFor="let obj of surroundingArray.value" >{{obj}}</span>
-                  </div>
-                  
-                  <label for="rm_dp" class="text-left ml-2">River Pictures <span>:</span> 
-                    <img *ngFor='let url of imageUrlSurrounding'[src]="url" height="50px" width="50px" style="margin: 3px;">
-                  </label>
+                      <span *ngFor="let obj of surroundingArray.value">{{obj}}</span>
+                    </div>
+
+                    <label for="rm_dp" class="text-left ml-2">River Pictures <span>:</span>
+                      <img *ngFor='let url of imageUrlSurrounding' [src]="url" height="50px" width="50px"
+                        style="margin: 3px;">
+                    </label>
                   </div>
                 </div>
                 <div class="box" fxLayoutAlign="stretch">
                   <div class="item2">
                     <span>Water Testing </span>
-                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()" ></mdb-icon>
+                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()"></mdb-icon>
                     <hr class="hr-line1" />
                     <label for="rm_airTemperature" class="text-left ml-2">Water Temperature <span>:</span>
                       <span>{{activityForm.get('waterTesting').get('waterTemperature').value}}</span></label>
@@ -511,19 +638,21 @@
                   </div>
                   <div class="item2">
                     <span>Flora & Fauna </span>
-                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()" ></mdb-icon>
+                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()"></mdb-icon>
                     <hr class="hr-line1" />
 
                     <div class="row ml-2">
                       <img src="../../../assets/scalable-vector-graphics/flora.svg" height="28px" width="28px">
                       <label class="ml-2 mt-1 bold">Flora</label>
-                      <img *ngFor='let url of imageUrlFlora'[src]="url" height="50px" width="50px" style="margin: 3px;">
+                      <img *ngFor='let url of imageUrlFlora' [src]="url" height="50px" width="50px"
+                        style="margin: 3px;">
                     </div>
 
                     <div class="row ml-2">
                       <img src="../../../assets/scalable-vector-graphics/fauna.svg" height="35px" width="35px">
                       <label class="ml-2 mt-2 bold">Fauna</label>
-                      <img *ngFor='let url of imageUrlFauna'[src]="url" height="50px" width="50px" style="margin: 3px;">
+                      <img *ngFor='let url of imageUrlFauna' [src]="url" height="50px" width="50px"
+                        style="margin: 3px;">
                     </div>
 
                   </div>
@@ -531,16 +660,19 @@
                 <div class="box" fxLayoutAlign="stretch" style="height:300px;">
                   <div class="item3">
                     <span> Picture</span>
-                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()" ></mdb-icon>
-                    <hr class="hr-line1" />  
-                    <label for="rm_dp" class="text-left ml-2">Group Pictures <span>:</span> 
-                      <img *ngFor='let url of imageUrlGroup'[src]="url" height="50px" width="50px" style="margin: 3px;">
+                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()"></mdb-icon>
+                    <hr class="hr-line1" />
+                    <label for="rm_dp" class="text-left ml-2">Group Pictures <span>:</span>
+                      <img *ngFor='let url of imageUrlGroup' [src]="url" height="50px" width="50px"
+                        style="margin: 3px;">
                     </label>
-                    <label for="rm_dp" class="text-left ml-2">Activity Pictures <span>:</span> 
-                      <img *ngFor='let url of imageUrlActivity'[src]="url" height="50px" width="50px" style="margin: 3px;">
+                    <label for="rm_dp" class="text-left ml-2">Activity Pictures <span>:</span>
+                      <img *ngFor='let url of imageUrlActivity' [src]="url" height="50px" width="50px"
+                        style="margin: 3px;">
                     </label>
-                    <label for="rm_dp" class="text-left ml-2">Artwork Pictures <span>:</span> 
-                      <img *ngFor='let url of imageUrlAtwork'[src]="url" height="50px" width="50px" style="margin: 3px;">
+                    <label for="rm_dp" class="text-left ml-2">Artwork Pictures <span>:</span>
+                      <img *ngFor='let url of imageUrlAtwork' [src]="url" height="50px" width="50px"
+                        style="margin: 3px;">
                     </label>
                   </div>
                 </div>
