@@ -23,9 +23,8 @@
                   </div>
                   <div class="col-md-6">
                     <label for="rm_tp" class="text-left">Activity Time</label>
-                    <mdb-time-picker id="rm_tp" [buttonLabel]="'Done'" [twelvehour]="false"
-                      formControlName="activityTime" [darktheme]="true" [placeholder]="'Selected time'"
-                      xngModel="darkClock"></mdb-time-picker>
+                    <mdb-time-picker id="rm_tp" [buttonLabel]="'Done'" [twelvehour]="true"
+                      formControlName="activityTime" [darktheme]="true" [placeholder]="'Selected time'"></mdb-time-picker>
                     <div class="mt-1 error-message-div">
                       <p *ngIf="activityForm.get('generalInformation').get('activityTime').errors?.required  && this.submitStep1==true"
                         class="errorMessage">
