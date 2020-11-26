@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { IMyOptions } from 'ng-uikit-pro-standard';
 import { ModalDirective } from 'ng-uikit-pro-standard';
-import { MapsAPILoader, AgmMap, MouseEvent } from '@agm/core';
+import { MapsAPILoader } from '@agm/core';
 import { NgZone } from '@angular/core';
 import { OrolService } from '../../services/orol.service';
-import {MatStepper} from '@angular/material/stepper';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-river-monitoring',
@@ -16,9 +16,7 @@ import {MatStepper} from '@angular/material/stepper';
 })
 export class RiverMonitoringComponent implements OnInit {
   @ViewChild('river_monitoring_stepper', { static: false }) river_monitoring_stepper: MatStepper;
-
   @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
-  @ViewChild(AgmMap, { static: true }) public agmMap: AgmMap;
   defaultImageURL: string = "../../../assets/icons/default_image_upload.jpg";
   @ViewChild('basicModal') basicModal: ModalDirective;
   defaultImageURLTemp: string = "../../../assets/icons/default_image_upload.jpg";
@@ -27,7 +25,6 @@ export class RiverMonitoringComponent implements OnInit {
   imageFileErrorMessage: String = "";
   note = ".jpg, .jpeg, .png, files accepted";
   info = "(Max. size 250KB)";
-  public searchControl: FormControl;
   geocoder: any;
   surroundingArray: any;
   lastClickedIndex;
@@ -52,9 +49,9 @@ export class RiverMonitoringComponent implements OnInit {
   imageUrlActivity = [];
   public imageFilesAtwork: File[] = [];
   imageUrlAtwork = [];
-  submitStep1 :boolean =false;
-  submitStep2 :boolean =false;
-  submitStep3 :boolean =false;
+  submitStep1: boolean = false;
+  submitStep2: boolean = false;
+  submitStep3: boolean = false;
 
   userControl = new FormControl();
   items = [
@@ -129,13 +126,17 @@ export class RiverMonitoringComponent implements OnInit {
   lng: number;
 
   constructor(private fb: FormBuilder, private orolService: OrolService,
-    private mapsAPILoader: MapsAPILoader, private apiloader: MapsAPILoader, private ngZone: NgZone) {
-    this.createForm();
+    private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
+    this.createForm(); 
     this.surroundingArray = this.activityForm.controls.surroundings as FormArray;
 
   }
+  mapReady(event) {
+    this.setCurrentPosition();
+  }
+
   ngOnInit() {
-    this.searchControl = new FormControl();
+    this.zoom = 13;
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
         types: ["address"]
@@ -159,69 +160,52 @@ export class RiverMonitoringComponent implements OnInit {
         });
       });
     });
-    this.get()
-    this.agmMap.triggerResize(true);
-    this.zoom = 16;
-    // this.filteredUsers = this.userControl.valueChanges.pipe(
-    //   startWith<string | User[]>(''),
-    //   map(value => typeof value === 'string' ? value : this.lastFilter),
-    //   map(filter => this.filter(filter))
-    // );
-  }
-  mapClicked($event: MouseEvent) {
-    this.latitude = $event.coords.lat,
-      this.longitude = $event.coords.lng
-
-    this.apiloader.load().then(() => {
-      let geocoder = new google.maps.Geocoder;
-      let latlng = { lat: this.latitude, lng: this.longitude };
-
-      geocoder.geocode({ 'location': latlng }, function (results) {
-        if (results[0]) {
-          this.currentLocation = results[0].formatted_address;
-          console.log(this.currentLocation);
-        } else {
-          console.log('Not found');
-        }
-      });
-    });
   }
 
-  getCurrentDate(){
+
+  getCurrentDate() {
     var dt = new Date();
-    alert(dt.getDate());
     return dt.getDate();
   }
 
-   getCurrentTime() {
-  	var d = new Date( );
-  	d.setHours( d.getHours() + 2 ); // offset from local time
-  	var h = (d.getHours() % 12) || 12; // show midnight & noon as 12
-  	return (
-  		( h < 10 ? '0' : '') + h +
-  		( d.getMinutes() < 10 ? ':0' : ':') + d.getMinutes() +
+  getCurrentTime() {
+    var d = new Date();
+    d.setHours(d.getHours() + 2); // offset from local time
+    var h = (d.getHours() % 12) || 12; // show midnight & noon as 12
+    return (
+      (h < 10 ? '0' : '') + h +
+      (d.getMinutes() < 10 ? ':0' : ':') + d.getMinutes() +
       // optional seconds display
-  		// ( d.getSeconds() < 10 ? ':0' : ':') + d.getSeconds() +
-  		( d.getHours() < 12 ? ' AM' : ' PM' )
-  	);
+      // ( d.getSeconds() < 10 ? ':0' : ':') + d.getSeconds() +
+      (d.getHours() < 12 ? ' AM' : ' PM')
+    );
 
   }
+  bla() {
+    this.getAddressByLatitudeAndLongitude(this.activityForm.get('generalInformation').get('latitude').value,
+      this.activityForm.get('generalInformation').get('longitude').value, this.activityForm.get('generalInformation'));
+    this.centerLoc = {
+      lat: this.activityForm.get('generalInformation').get('latitude').value, lng:
+        this.activityForm.get('generalInformation').get('longitude').value
+    };
+  }
+ 
 
   createForm() {
     this.activityForm = this.fb.group({
       userId: [''],
       generalInformation: this.fb.group({
-        activityDate: [this.getCurrentDate() ,[Validators.required]],
-        activityTime: [this.getCurrentTime(),[Validators.required]],
-        testerName: ['',[Validators.required]],
-        location: ['',[Validators.required]],
-        latitude: ['',[Validators.required]],
-        longitude: ['',[Validators.required]],
+        activityDate: [this.getCurrentDate(), [Validators.required]],
+        activityTime: [this.getCurrentTime(), [Validators.required]],
+        testerName: ['', [Validators.required]],
+        latitude: [''],
+        longitude: [''],
+        location: [''],
       }),
       waterLevelAndWeather: this.fb.group({
-        airTemperature: ['',[Validators.required]],
-        waterLevel: ['',[Validators.required]],
-        weather: ['',[Validators.required]],
+        airTemperature: ['', [Validators.required]],
+        waterLevel: ['', [Validators.required]],
+        weather: ['', [Validators.required]],
       }),
       surroundings: this.fb.array([]),
       waterTesting: this.fb.group({
@@ -259,50 +243,51 @@ export class RiverMonitoringComponent implements OnInit {
   }
 
 
+
   onSubmit() {
 
   }
-  validateStep1(){
-    this.submitStep1 =true;
-    if(this.activityForm.get('generalInformation').get('activityDate').valid &&
-    this.activityForm.get('generalInformation').get('activityTime').valid &&
-    this.activityForm.get('generalInformation').get('testerName').valid  &&
-    this.activityForm.get('generalInformation').get('location').valid  &&
-    this.activityForm.get('generalInformation').get('latitude').valid  &&
-    this.activityForm.get('generalInformation').get('longitude').valid
+  validateStep1() {
+    this.submitStep1 = true;
+    if (this.activityForm.get('generalInformation').get('activityDate').valid &&
+      this.activityForm.get('generalInformation').get('activityTime').valid &&
+      this.activityForm.get('generalInformation').get('testerName').valid &&
+      this.activityForm.get('generalInformation').get('location').valid &&
+      this.activityForm.get('generalInformation').get('latitude').valid &&
+      this.activityForm.get('generalInformation').get('longitude').valid
 
-    ){
+    ) {
       this.river_monitoring_stepper.next();
     }
   }
-  validateStep2(){
-    this.submitStep2 =true;
-    if(this.activityForm.get('waterLevelAndWeather').get('airTemperature').valid &&
-    this.activityForm.get('waterLevelAndWeather').get('waterLevel').valid &&
-    this.activityForm.get('waterLevelAndWeather').get('weather').valid &&
-    this.activityForm.get('imageUrlRiver')['length'] > 0
+  validateStep2() {
+    this.submitStep2 = true;
+    if (this.activityForm.get('waterLevelAndWeather').get('airTemperature').valid &&
+      this.activityForm.get('waterLevelAndWeather').get('waterLevel').valid &&
+      this.activityForm.get('waterLevelAndWeather').get('weather').valid &&
+      this.activityForm.get('imageUrlRiver')['length'] > 0
 
-    ){
+    ) {
       this.river_monitoring_stepper.next();
     }
   }
-  validateStep4(){
-    this.submitStep3= true;
-    if(  this.activityForm.get('surroundings')['length'] > 0
-      ){
-        this.river_monitoring_stepper.next();
-      }
+  validateStep4() {
+    this.submitStep3 = true;
+    if (this.activityForm.get('surroundings')['length'] > 0
+    ) {
+      this.river_monitoring_stepper.next();
     }
+  }
 
 
-  setSteep(){
+  setSteep() {
 
   }
 
   createWaterTestDetails() {
     this.orolService.createWaterTestDetails(this.activityForm.value, this.imageFilesRiver,
       this.imageFilesSurrounding, this.imageFilesFlora, this.imageFilesFauna, this.imageFilesGroup, this.imageFilesActivity, this.imageFilesAtwork).
-      subscribe((data)=>{
+      subscribe((data) => {
         console.log(data);
         //Call Generate REPORT
       });
@@ -440,14 +425,7 @@ export class RiverMonitoringComponent implements OnInit {
     const blob = new Blob([int8Array], { type: 'image/' + extension });
     return blob;
   }
-  // validateStep1(){
-  //   this.submitted1=true;
-  //     if(this.activityForm.get('generalInformation').value != ''
-  //     && this.activityForm.get('generalInformation').get('testerName').value != ''){
-  //       this.stepper.next();
-  //     }
 
-  // }
   convertBase64toImage() {
     var x = this['imageURL'].split(";")[0];
     var extension = x.split('/')[1];
@@ -469,39 +447,11 @@ export class RiverMonitoringComponent implements OnInit {
     }
   }
 
-
-  get() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position: Position) => {
-        if (position) {
-          this.lat = position.coords.latitude;
-          this.lng = position.coords.longitude;
-          this.getAddress = (this.lat, this.lng)
-          console.log(position)
-
-          this.apiloader.load().then(() => {
-            let geocoder = new google.maps.Geocoder;
-            let latlng = { lat: this.lat, lng: this.lng };
-
-            geocoder.geocode({ 'location': latlng }, function (results) {
-              if (results[0]) {
-                this.currentLocation = results[0].formatted_address;
-
-              } else {
-                console.log('Not found');
-              }
-            });
-          });
-        }
-      })
-    }
-  }
-
   private setCurrentPosition() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         var accuracy = position.coords.accuracy;
-        this.activityForm.patchValue({
+        this.activityForm.get('generalInformation').patchValue({
           latitude: +position.coords.latitude,
           longitude: +position.coords.longitude,
         });
@@ -514,27 +464,20 @@ export class RiverMonitoringComponent implements OnInit {
     }
   }
 
-  bla() {
-    this.getAddressByLatitudeAndLongitude(this.activityForm.get('generalInformation').get('latitude').value, this.activityForm.get('generalInformation').get('longitude').value, this.activityForm);
-    this.centerLoc = { lat: this.activityForm.get('generalInformation').get('latitude').value, lng: this.activityForm.get('generalInformation').get('longitude').value };
-    //this.recenterMap();
-  }
-
   async getAddressByLatitudeAndLongitude(lat, lng, form) {
     var address;
     this.geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(lat, lng);
-
     await this.geocoder.geocode({ latLng: latlng }, function (results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         var arrAddress = results;
         address = results[0].formatted_address;
-        form.patchValue({
+        form.get('generalInformation').patchValue({
           location: address
         });
       } else {
         console.log("Geocoder failed due to: " + status);
-        alert("Geocoder failed due to: " + status + ". Please enter a valid latitide and longitude.")
+        // alert("Geocoder failed due to: " + status + ". Please enter a valid latitide and longitude.")
       }
     });
   }

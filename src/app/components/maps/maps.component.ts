@@ -115,8 +115,8 @@ export class MapsComponent implements OnInit {
   createForm() {
     this.mapsForm = this.fb.group({
       location: [''],
-      latitude: [23.074290],
-      longitude: [79.134113],
+      latitude: [''],
+      longitude: [''],
       activityDate: [(new Date())],
       activityTime: [''],
       photos: this.fb.array([]),

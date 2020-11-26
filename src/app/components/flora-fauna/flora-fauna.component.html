@@ -9,7 +9,7 @@
           <!-- <mdb-image-modal [modalImages]="flora" type="margin"></mdb-image-modal> -->
           <div class="margin mdb-lightbox ng-gallery row">
             <figure class="ng-thumb col-md-4" *ngFor="let f of flora">
-            <img *ngIf="f.img" class="ng-thumb" [src]= "f.img" alt="Image">
+            <img *ngIf="f.img" class="ng-thumb" [src]= "f.img" alt="Image" >
             <div *ngIf="!f.img" class="spinner"></div>
 
             <!-- add desc from water test details -->

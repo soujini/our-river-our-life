@@ -33,6 +33,20 @@ export class VoicesFromTheRiverComponent implements OnInit {
   createdAt:'11/07/2018',
   blogerName:'Billy Forester'
 },
+{
+  featuredTitle :'Title of the news',
+  featureDescription:'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.',
+  featuredPhoto:'https://mdbootstrap.com/img/Photos/Others/images/13.jpg',
+  createdAt:'11/07/2018',
+  blogerName:'Billy Forester'
+},
+{
+  featuredTitle :'Title of the news',
+  featureDescription:'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.',
+  featuredPhoto:'https://mdbootstrap.com/img/Photos/Others/images/13.jpg',
+  createdAt:'11/07/2018',
+  blogerName:'Billy Forester'
+},
   ] ;
 
   constructor(private router: Router) { }

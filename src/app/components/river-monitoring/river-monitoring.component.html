@@ -24,7 +24,8 @@
                   <div class="col-md-6">
                     <label for="rm_tp" class="text-left">Activity Time</label>
                     <mdb-time-picker id="rm_tp" [buttonLabel]="'Done'" [twelvehour]="true"
-                      formControlName="activityTime" [darktheme]="true" [placeholder]="'Selected time'"></mdb-time-picker>
+                      formControlName="activityTime" [darktheme]="true" [placeholder]="'Selected time'">
+                    </mdb-time-picker>
                     <div class="mt-1 error-message-div">
                       <p *ngIf="activityForm.get('generalInformation').get('activityTime').errors?.required  && this.submitStep1==true"
                         class="errorMessage">
@@ -48,10 +49,9 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12" formGroupName="generalInformation">
-                    <label for="rm_location" class="text-left">Location</label>
-                    <input for="location" id="rm_location" id="form1" formControlName="location"
-                      placeholder="Search by location" autocorrect="off" autocapitalize="off" spellcheck="off"
-                      type="text" class="form-control input-searchmt-2" #search [formControl]="searchControl">
+                    <label for="location" class="text-left">Location</label>
+                    <input for="location" formControlName="location" placeholder="Search by location" autocorrect="off"
+                      autocapitalize="off" spellcheck="off" type="text" class="form-control input-search mt-2" #search>
                   </div>
                   <div class="mt-1 error-message-div">
                     <p *ngIf="activityForm.get('generalInformation').get('location').errors?.required  && this.submitStep1==true"
@@ -63,8 +63,8 @@
                 <div class="row" formGroupName="generalInformation">
                   <div class="col-md-6">
                     <label for="rm_latitude" class="text-left">Latitude</label>
-                    <input mdbInput id="rm_latitude" type="text" id="form1" class="form-control"
-                      formControlName="latitude" placeholder="Latitude" (change)="bla()">
+                    <input for="latitude" formControlName="latitude" type="text" class="form-control"
+                      placeholder="Latitude" (change)="bla()">
                     <div class="mt-1 error-message-div">
                       <p *ngIf="activityForm.get('generalInformation').get('latitude').errors?.required  && this.submitStep1==true"
                         class="errorMessage">
@@ -73,9 +73,9 @@
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <label for="rm_longitude" class="text-left">Longitude</label>
-                    <input mdbInput id="rm_longitude" type="text" id="form1" class="form-control"
-                      formControlName="longitude" placeholder="Longitude" (change)="bla()">
+                    <label for="longitude" class="text-left">Longitude</label>
+                    <input for="longitude" formControlName="longitude" type="text" class="form-control"
+                      placeholder="Longitude" (change)="bla()">
                     <div class="mt-1 error-message-div">
                       <p *ngIf="activityForm.get('generalInformation').get('longitude').errors?.required  && this.submitStep1==true"
                         class="errorMessage">
@@ -85,11 +85,12 @@
                   </div>
                 </div>
                 <div class="mt-3">
-                  <agm-map class="mt-3" style="height: 300px;" [mapTypeId]="'hybrid'"  [fitBounds]="true" accuracy=100
+                  <agm-map class="mt-3" style="height: 300px;" [mapTypeId]="'hybrid'" [fitBounds]="true" accuracy=100
                     [latitude]="this.activityForm.get('generalInformation').get('latitude').value"
-                    [longitude]="this.activityForm.get('generalInformation').get('longitude').value" [zoom]="zoom" [scrollwheel]="false"
-                    (mapClick)="mapClicked($event)" [usePanning]='true' [draggable]=false>
-                    <agm-marker [agmFitBounds]="true" [latitude]="this.activityForm.get('generalInformation').get('latitude').value"
+                    [longitude]="this.activityForm.get('generalInformation').get('longitude').value" [zoom]="zoom"
+                    [scrollwheel]="false" (mapReady)="mapReady($event)"  [usePanning]='true' [draggable]=false>
+                    <agm-marker [agmFitBounds]="true"
+                      [latitude]="this.activityForm.get('generalInformation').get('latitude').value"
                       [longitude]="this.activityForm.get('generalInformation').get('longitude').value"></agm-marker>
                   </agm-map>
                 </div>
@@ -166,9 +167,10 @@
                     </label>
                   </div>
                   <div *ngIf="imageUrlRiver == null && this.submitStep2 == true" class="image-error-message">
-                    <p class="errorMessage"><img class="img-add" src="../../../assets/scalableVectorGraphics/exclamation.svg">
+                    <p class="errorMessage"><img class="img-add"
+                        src="../../../assets/scalableVectorGraphics/exclamation.svg">
                       This image is required.</p>
-                    </div>
+                  </div>
                 </div>
               </form>
               <hr class="hr-line" />
