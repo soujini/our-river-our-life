@@ -9,8 +9,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MdbFileUploadModule } from 'mdb-file-upload';
-import { AgmCoreModule } from '@agm/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { GoogleMapsModule } from '@angular/google-maps'
+import { AgmCoreModule } from '@agm/core';
+import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 
 
 @NgModule({
@@ -30,10 +32,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatAutocompleteModule,
     MatCheckboxModule,
     MatFormFieldModule,
+    AgmJsMarkerClustererModule,
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyALR2ZDTTyZXGBRFeCV0AHd0S-TV_GWYm8",
       libraries: ["places"]
-    }),
+    })
 
   ],
   exports: [

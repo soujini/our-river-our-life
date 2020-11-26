@@ -169,10 +169,8 @@ export class RiverMonitoringComponent implements OnInit {
     // );
   }
   mapClicked($event: MouseEvent) {
-
     this.latitude = $event.coords.lat,
       this.longitude = $event.coords.lng
-
 
     this.apiloader.load().then(() => {
       let geocoder = new google.maps.Geocoder;
@@ -189,12 +187,32 @@ export class RiverMonitoringComponent implements OnInit {
     });
   }
 
+  getCurrentDate(){
+    var dt = new Date();
+    alert(dt.getDate());
+    return dt.getDate();
+  }
+
+   getCurrentTime() {
+  	var d = new Date( );
+  	d.setHours( d.getHours() + 2 ); // offset from local time
+  	var h = (d.getHours() % 12) || 12; // show midnight & noon as 12
+  	return (
+  		( h < 10 ? '0' : '') + h +
+  		( d.getMinutes() < 10 ? ':0' : ':') + d.getMinutes() +
+      // optional seconds display
+  		// ( d.getSeconds() < 10 ? ':0' : ':') + d.getSeconds() +
+  		( d.getHours() < 12 ? ' AM' : ' PM' )
+  	);
+
+  }
+
   createForm() {
     this.activityForm = this.fb.group({
       userId: [''],
       generalInformation: this.fb.group({
-        activityDate: ['' ,[Validators.required]],
-        activityTime: ['',[Validators.required]],
+        activityDate: [this.getCurrentDate() ,[Validators.required]],
+        activityTime: [this.getCurrentTime(),[Validators.required]],
         testerName: ['',[Validators.required]],
         location: ['',[Validators.required]],
         latitude: ['',[Validators.required]],
@@ -246,36 +264,36 @@ export class RiverMonitoringComponent implements OnInit {
   }
   validateStep1(){
     this.submitStep1 =true;
-    if(this.activityForm.get('generalInformation').get('activityDate').valid && 
+    if(this.activityForm.get('generalInformation').get('activityDate').valid &&
     this.activityForm.get('generalInformation').get('activityTime').valid &&
     this.activityForm.get('generalInformation').get('testerName').valid  &&
     this.activityForm.get('generalInformation').get('location').valid  &&
     this.activityForm.get('generalInformation').get('latitude').valid  &&
-    this.activityForm.get('generalInformation').get('longitude').valid 
-    
+    this.activityForm.get('generalInformation').get('longitude').valid
+
     ){
       this.river_monitoring_stepper.next();
     }
   }
   validateStep2(){
     this.submitStep2 =true;
-    if(this.activityForm.get('waterLevelAndWeather').get('airTemperature').valid && 
+    if(this.activityForm.get('waterLevelAndWeather').get('airTemperature').valid &&
     this.activityForm.get('waterLevelAndWeather').get('waterLevel').valid &&
     this.activityForm.get('waterLevelAndWeather').get('weather').valid &&
     this.activityForm.get('imageUrlRiver')['length'] > 0
-    
+
     ){
       this.river_monitoring_stepper.next();
     }
   }
-  validateStep4(){   
-    this.submitStep3= true;  
+  validateStep4(){
+    this.submitStep3= true;
     if(  this.activityForm.get('surroundings')['length'] > 0
       ){
         this.river_monitoring_stepper.next();
       }
     }
-  
+
 
   setSteep(){
 

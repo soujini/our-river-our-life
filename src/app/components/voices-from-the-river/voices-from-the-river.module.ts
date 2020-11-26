@@ -5,7 +5,6 @@ import { VoicesFromTheRiverRoutingModule } from './voices-from-the-river-routing
 import { VoicesFromTheRiverComponent } from './voices-from-the-river.component';
 import {  ModalModule, WavesModule ,  ButtonsModule} from 'ng-uikit-pro-standard';
 
-
 @NgModule({
   declarations: [VoicesFromTheRiverComponent],
   imports: [
