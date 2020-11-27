@@ -128,7 +128,8 @@
                     <label for="rm_airTemperature" class="text-left">Observe the Water Level</label>
                     <div class="d-flex">
                       <div *ngFor="let wl of waterLevels" class="mr-50">
-                        <img (click)=setWaterLevel(wl.name); [src]="wl.imageUrl">
+                        <img (click)=setWaterLevel(wl.name);
+                         [src]="this.activityForm.get('waterLevelAndWeather').get('waterLevel').value == wl.name ? wl.imageUrlEnable : wl.imageUrl">
                         <label class="text-center light mt-2">{{wl.name}}</label>
                       </div>
                     </div>
@@ -145,7 +146,10 @@
                     <label for="rm_airTemperature" class="text-left">Weather Conditions</label>
                     <div class="d-flex">
                       <div *ngFor="let wc of weatherCodition" class="mr-50">
-                        <img (click)=setWeather(wc.name); [src]="wc.imageUrl">
+                        <img (click)=setWeather(wc.name);
+                         [src]="this.activityForm.get('waterLevelAndWeather').get('weather').value == wc.name ? wc.imageUrlEnable : wc.imageUrl">
+
+                        <!-- <img (click)=setWeather(wc.name); [src]="wc.imageUrl"> -->
                         <label class="text-center light mt-2">{{wc.name}}</label>
                       </div>
                     </div>
@@ -166,9 +170,9 @@
                         (change)="onFileChangesRiver($event)">Upload
                     </label>
                   </div>
-                  <div *ngIf="imageUrlRiver == null && this.submitStep2 == true" class="image-error-message">
-                    <p class="errorMessage"><img class="img-add"
-                        src="../../../assets/scalableVectorGraphics/exclamation.svg">
+                  <div class="mt-1 error-message-div">
+                    <p *ngIf="imageFilesRiver.length == 0 && this.submitStep2 == true" class="errorMessage"><img class="img-add"
+                      src="../../../assets/scalable-vector-graphics/exclamation.svg">
                       This image is required.</p>
                   </div>
                 </div>
@@ -182,11 +186,11 @@
             <mdb-step name="Observe your Surroundings" xstepForm="activityForm">
               <form xformGroupx="surroundings" class="container-stepper-form">
                 <div class="row">
-                  <div class="col-md-12">
+                  <!-- <div class="col-md-12">
                     <label for="rm_searchSurroundings" class="text-left">Search</label>
                     <input mdbInput id="rm_searchSurroundings" type="text" id="rm_searchSurroundings"
                       class="form-control" xformControlName="airTemperature" placeholder="Search">
-                  </div>
+                  </div> -->
 
                   <div class="col-md-12 mt-3 text-left" xformGroupName="waterLevelAndWeather">
                     <div *ngFor="let obj of surroundings ; let i=index" class="col-md-3 text-left"

@@ -62,42 +62,59 @@ export class RiverMonitoringComponent implements OnInit {
     {
       name: "Low",
       imageUrl: "../../../assets/scalable-vector-graphics/water_level_low_icon.svg",
+      imageUrlEnable: "../../../assets/scalable-vector-graphics/water_level_low_icon_enable.svg",
+
     },
     {
       name: "Normal",
       imageUrl: "../../../assets/scalable-vector-graphics/water_level_normal_icon.svg",
+      imageUrlEnable: "../../../assets/scalable-vector-graphics/water_level_normal_icon_enable.svg",
+
     },
 
     {
       name: "High",
       imageUrl: "../../../assets/scalable-vector-graphics/water_level_high_icon.svg",
+      imageUrlEnable: "../../../assets/scalable-vector-graphics/water_level_high_icon_enable.svg",
+
     },
     {
       name: "Flooded",
       imageUrl: "../../../assets/scalable-vector-graphics/water_level_flooded_icon.svg",
+      imageUrlEnable: "../../../assets/scalable-vector-graphics/water_level_flooded_enable.svg",
+
     },
   ];
   weatherCodition = [
     {
       name: "Sunny",
       imageUrl: "../../../assets/scalable-vector-graphics/sunny_icon.svg",
+      imageUrlEnable: "../../../assets/scalable-vector-graphics/sunny_icon_enable.svg",
     },
     {
       name: "Partly Cloudy",
       imageUrl: "../../../assets/scalable-vector-graphics/partly_cloudy_icon.svg",
+      imageUrlEnable: "../../../assets/scalable-vector-graphics/partly_cloudy_icon_enable.svg",
+
     },
 
     {
       name: "Cloudy",
       imageUrl: "../../../assets/scalable-vector-graphics/cloudy_icon.svg",
+      imageUrlEnable: "../../../assets/scalable-vector-graphics/cloudy_icon_enable.svg",
+
     },
     {
       name: "Light Rain",
       imageUrl: "../../../assets/scalable-vector-graphics/light_rain_icon.svg",
+      imageUrlEnable: "../../../assets/scalable-vector-graphics/light_rain_icon_enable.svg",
+
     },
     {
       name: "Heavy Rain",
       imageUrl: "../../../assets/scalable-vector-graphics/heavy_rain_icon.svg",
+      imageUrlEnable: "../../../assets/scalable-vector-graphics/heavy_rain_icon_enable.svg",
+
     },
   ];
   surroundings = [
@@ -265,7 +282,7 @@ export class RiverMonitoringComponent implements OnInit {
     if (this.activityForm.get('waterLevelAndWeather').get('airTemperature').valid &&
       this.activityForm.get('waterLevelAndWeather').get('waterLevel').valid &&
       this.activityForm.get('waterLevelAndWeather').get('weather').valid &&
-      this.activityForm.get('imageUrlRiver')['length'] > 0
+      this.imageFilesRiver.length > 0 
 
     ) {
       this.river_monitoring_stepper.next();
