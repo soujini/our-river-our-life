@@ -25,7 +25,7 @@
                           </label>
                           <div class="error-message-div mt-1">
                             <!-- && this.submitted == true  -->
-                            <p *ngIf="imageFile == null " class="errorMessage"><img class="img-add"
+                            <p   *ngIf="imageFile == null && this.submitted == true" class="errorMessage"><img class="img-add"
                                 src="../../../assets/scalable-vector-graphics/exclamation.svg"> Please select a photo.
                             </p>
                           </div>
@@ -37,9 +37,18 @@
                 </div>
                 <div class="row formGroup">
                   <div class="col-md-6">
+                    <div>
                     <label for="firstName" class="text-left">First Name</label>
                     <input mdbInput id="first_name" value='' type="text" class="form-control"
-                      formControlName="firstName" placeholder="First Name">
+                      formControlName="firstName" placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && profileForm.get('firstName').errors }">
+                    </div>
+                      <div class="mt-1 error-message-div">
+                        <p *ngIf="profileForm.get('firstName').errors?.required  && this.submitted==true"
+                          class="errorMessage">
+                          <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is
+                          required.</p>
+                      </div>
+                      
                   </div>
                   <div class="col-md-6">
                     <label for="lastName" class="text-left">Last Name (optional)</label>
@@ -55,8 +64,14 @@
                       <div class="input-group-prepend">
                         <div class="input-group-text">+91</div>
                       </div>
-                      <input type="text" class="form-control py-0" class="form-control" placeholder="Mobile Number"
-                        formControlName="phoneNumber" disabled>
+                      <input type="number" class="form-control py-0" class="form-control" placeholder="Mobile Number" 
+                      [ngClass]="{ 'is-invalid': submitted && profileForm.get('phoneNumber').errors }"  formControlName="phoneNumber" disabled>
+                    </div>
+                    <div class="mt-1 error-message-div">
+                      <p *ngIf="profileForm.get('phoneNumber').errors?.required  && this.submitted==true"
+                        class="errorMessage">
+                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is
+                        required.</p>
                     </div>
                   </div>
                 </div>
@@ -64,9 +79,14 @@
                 <div class="row formGroup">
                   <div class="col-md-12">
                     <label for="email" class="text-left">Email</label>
-                    <input mdbInput id="email" type="text" class="form-control" formControlName="email"
-                      placeholder="Email" disabled>
+                    <input mdbInput id="email" type="text" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': submitted && profileForm.get('email').errors }"
+                      placeholder="Email">
+                      <div *ngIf="submitted && profileForm.get('email').errors" class="invalid-feedback">
+                        <div *ngIf="profileForm.get('email').errors.required">Email is required</div>
+                        <div *ngIf="profileForm.get('email').errors.email">Email must be a valid email address</div>
+                    </div>
                   </div>
+                  
                 </div>
 
                 <!-- <div class="row formGroup">
@@ -78,7 +98,7 @@
         </div> -->
               </div>
               <div class="text-right">
-                <button mdbBtn size="sm" class="custom-btn-blue btn" (click)="updateProfile()">UPDATE</button>
+                <button mdbBtn size="sm" class="custom-btn-blue btn" (click)="validate();updateProfile()">UPDATE</button>
               </div>
             </div>
           </form>

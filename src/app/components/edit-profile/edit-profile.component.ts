@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormArray,Validators } from '@angular/forms';
 import {OrolService} from '../../services/orol.service';
 import {SpinnerService} from '../../services/spinner.service';
 
@@ -14,6 +14,7 @@ export class EditProfileComponent implements OnInit {
   imageURL:any = "../../assets/jpg/profile.png";
   show: boolean = false;
   images = [];
+  submitted: boolean = false;
 
   constructor(private fb: FormBuilder, public orolService: OrolService, private spinnerService:SpinnerService) {
     this.createForm();
@@ -26,18 +27,43 @@ export class EditProfileComponent implements OnInit {
   createForm() {
     this.profileForm = this.fb.group({
       id:[],
-      firstName:[''],
+      firstName:['', [Validators.required]],
       lastName:[''],
-      email:[''],
-      phoneNumber:[''],
+      email:['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      phoneNumber:['' ,[Validators.required]],
       avatarURL: this.fb.array([]),
     });
   }
+  validate() {
+    this.submitted = true;
+    if (this.profileForm.get('firstName').valid &&
+      this.profileForm.get('lastName').valid &&
+      this.profileForm.get('phoneNumber').valid &&
+      this.profileForm.get('email').valid &&
+      this.imageFile.length > 0 
+    ) {
+    }
+  }
   async updateProfile() {
+
     await this.orolService.updateProfile(this.profileForm.value, this.imageFile);
     this.show = false;
     this.images=[];
     this.imageFile=[];
+
+    // var user = JSON.parse(localStorage.getItem('User'));
+    // this.orolService.updateProfile(this.profileForm.value,this.imageFile).subscribe((data)=>{
+    //   const User: any = {
+    //     'id':user.id,
+    //     'accessToken':user.accessToken,
+    //     'firstName':this.profileForm.get('firstName').value,
+    //     'lastName':this.profileForm.get('lastName').value,
+    //     'phoneNumber':user.phoneNumber,
+    //     'email':user.email,
+    //     'avatarURL' : user.avatarURL ? user.avatarURL[0] : [],
+
+    //   }
+     
 }
   getUser(){
     this.orolService.getUser().subscribe((data)=>{
@@ -76,6 +102,7 @@ export class EditProfileComponent implements OnInit {
 
 //old update
   updateUser(){
+    alert("update User");
       var user = JSON.parse(localStorage.getItem('User'));
     this.orolService.updateUser(this.profileForm.value).subscribe((data)=>{
       const User: any = {

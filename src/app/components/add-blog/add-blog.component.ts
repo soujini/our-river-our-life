@@ -14,7 +14,8 @@ export class AddBlogComponent implements OnInit {
 
   blogForm: FormGroup;
   AdditionalVideoArray:any=[];
-  featuredVideo = []
+  featuredVideoArray:any=[];
+
   public imageFile: File[] = [];
   imageURL: any = [];
   images = [];
@@ -29,6 +30,7 @@ export class AddBlogComponent implements OnInit {
   constructor(private fb: FormBuilder,private sanitizer: DomSanitizer,) {
     this.createForm();
     this.AdditionalVideoArray = this.blogForm.controls.featuredAdditionalVideos as FormArray;
+    this. featuredVideoArray= this.blogForm.controls.featuredVideo as FormArray;
 
   }
 
