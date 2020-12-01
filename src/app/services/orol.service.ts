@@ -242,7 +242,7 @@ export class OrolService {
   }
   public getFloraFauna() {
     var user = JSON.parse(localStorage.getItem('User'));
-    this.spinnerService.setSpinner(true);
+    // this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({
       Authorization: 'Bearer ' + user.accessToken
     });

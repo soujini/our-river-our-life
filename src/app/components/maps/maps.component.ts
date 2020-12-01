@@ -37,8 +37,11 @@ export class MapsComponent implements OnInit {
   hide: any;
   centerLoc: any = {};
   selectedImage: any = [];
+  submitted: boolean = false;
+
 
   toggle(mode: string) {
+    this.validate();
     this.show = !this.show;
     if (mode == '') {
       this.setCurrentPosition();
@@ -114,14 +117,27 @@ export class MapsComponent implements OnInit {
 
   createForm() {
     this.mapsForm = this.fb.group({
-      location: [''],
-      latitude: [''],
-      longitude: [''],
-      activityDate: [(new Date())],
-      activityTime: [''],
+      location: ['',[Validators.required]],
+      latitude: ['',[Validators.required]],
+      longitude: ['',[Validators.required]],
+      activityDate: [(new Date()),[Validators.required]],
+      activityTime: ['',[Validators.required]],
       photos: this.fb.array([]),
       experience: ['']
     });
+  }
+
+  validate() {
+    this.submitted = true;
+    if (this.mapsForm.get('location').valid &&
+      this.mapsForm.get('latitude').valid &&
+      this.mapsForm.get('longitude').valid &&
+      this.mapsForm.get('activityDate').valid &&
+      this.mapsForm.get('activityTime').valid &&
+
+      this.imageFiles.length > 0 
+    ) {
+    }
   }
 
   async getAddressByLatitudeAndLongitude(lat, lng, form) {
@@ -164,6 +180,7 @@ export class MapsComponent implements OnInit {
   }
 
   async addAlert() {
+    this.validate()
     await this.orolService.addAlert(this.mapsForm.value, this.imageFiles);
     this.show = false;
     this.setCurrentPosition();

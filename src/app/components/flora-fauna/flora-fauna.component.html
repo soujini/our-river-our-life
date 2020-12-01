@@ -9,7 +9,7 @@
           <!-- <mdb-image-modal [modalImages]="flora" type="margin"></mdb-image-modal> -->
           <div class="margin mdb-lightbox ng-gallery row">
             <figure class="ng-thumb col-md-4" *ngFor="let f of flora">
-            <img *ngIf="f.img" class="ng-thumb" [src]= "f.img" alt="Image" style="-webkit-transform: rotate(360deg);
+            <img *ngIf="f.img" class="ng-thumb" [src]= "f.img" alt="Image" style="-webkit-transform: rotate(360deg);image-orientation: none;
             -moz-transform: rotate(360deg);-ms-transform: rotate(360deg);-o-transform: rotate(360deg);transform: rotate(360deg);" >
             <div *ngIf="!f.img" class="spinner"></div>
 
@@ -49,7 +49,7 @@
           <!-- <mdb-image-modal [modalImages]="fauna" type="margin"></mdb-image-modal> -->
           <div class="margin mdb-lightbox ng-gallery row">
             <figure class="ng-thumb col-md-4" *ngFor="let f of fauna">
-              <img *ngIf="f.img" class="ng-thumb" [src]= "f.img" alt="Image">
+              <img *ngIf="f.img" style="image-orientation: none;" class="ng-thumb" [src]= "f.img" alt="Image">
               <div *ngIf="!f.img" class="spinner"></div>
 
             <!-- add desc from water test details -->
@@ -162,7 +162,7 @@
           <div class="row">
             <div class="col-md-3 mt-0">
               <div style="height:150px; background-color:#f7f7f7">
-                <span class="helper"></span><img [src]="imageURL"  style="margin: 3px;" style="width:100%; height:auto; vertical-align:middle">
+                <span class="helper"></span><img [src]="imageURL"  style="margin: 3px;" style="image-orientation: none;width:100%; height:auto; vertical-align:middle">
               </div>
             </div>
             <div class="image_container mt-0 col-md-9">

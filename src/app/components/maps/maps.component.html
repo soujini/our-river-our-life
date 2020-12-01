@@ -19,10 +19,21 @@
         <input for="location" formControlName="location" placeholder="Search by location" autocorrect="off"
           autocapitalize="off" spellcheck="off" type="text" class="input-search col-md-12 mt-3" #search
           [formControl]="searchControl">
-        <input for="latitude" formControlName="latitude" type="text" class="input-latitude col-md-6 mt-3"
-          placeholder="Latitude" (change)="bla()">
-        <input for="longitude" formControlName="longitude" type="text" class="input-latitude col-md-6 mt-3"
-          placeholder="Longitude" (change)="bla()">
+        <p *ngIf="mapsForm.get('location').errors?.required  && this.submitted==true" class="errorMessage">
+          <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+          is required.</p>
+        <div class="d-flex">
+          <input for="latitude" formControlName="latitude" type="text" class="input-latitude col-md-6 mt-3"
+            placeholder="Latitude" (change)="bla()">
+          <p *ngIf="mapsForm.get('latitude').errors?.required  && this.submitted==true" class="errorMessage">
+            <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+            is required.</p>
+          <input for="longitude" formControlName="longitude" type="text" class="input-latitude col-md-6 mt-3"
+            placeholder="Longitude" (change)="bla()">
+          <p *ngIf="mapsForm.get('longitude').errors?.required  && this.submitted==true" class="errorMessage">
+            <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+            is required.</p>
+        </div>
       </div>
       <div class="alert-div mt-3 text-center">
         <span class="textAddflood">Did you observe flooding in the above location ?</span> <br />
@@ -50,10 +61,16 @@
         <mdb-date-picker name="mydate" auto formControlName="activityDate" [options]="myDatePickerOptions" id="mydp"
           [placeholder]="'Selected date'" required>
         </mdb-date-picker>
+        <p *ngIf="mapsForm.get('activityDate').errors?.required  && this.submitted==true" class="errorMessage">
+          <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+          is required.</p>
       </div>
       <div>
         <label class="alert-date" for='activityTime'>Time</label>
         <mdb-time-picker #timepicker formControlName="activityTime" id="mytp"></mdb-time-picker>
+        <p *ngIf="mapsForm.get('activityTime').errors?.required  && this.submitted==true" class="errorMessage">
+          <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+          is required.</p>
       </div>
 
       <div class="image_container">
@@ -61,7 +78,12 @@
         <div class="form-group">
           <!-- <label for="file">File</label> -->
           <div style="height:55px; display:flex; overflow-x: auto;">
-          <img *ngFor='let url of images' [src]="url" height="50px" width="50px" style="margin: 3px;">
+            <img *ngFor='let url of images' [src]="url" height="50px" width="50px" style="margin: 3px;">
+          </div>
+          <div class="mt-1 error-message-div">
+            <p *ngIf="imageFiles.length == 0 && this.submitted == true" class="errorMessage"><img class="img-add"
+                src="../../../assets/scalable-vector-graphics/exclamation.svg">
+              This image is required.</p>
           </div>
           <input id="file" type="file" class="form-control" multiple (change)="onFileChange($event)"
             style="height:45px;">
