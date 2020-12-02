@@ -45,7 +45,6 @@ export class AddBlogComponent implements OnInit {
       featuredPhoto: this.fb.array([]),
       featuredAdditionalPhotos: this.fb.array([]),
       featuredVideo: this.fb.array([]),
-
       featuredAdditionalVideos: this.fb.array([]),
     });
   }

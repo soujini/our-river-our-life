@@ -38,7 +38,7 @@
 
     <div class="text-left">
       <label for="featuredAdditionalPhotos" class="text-left">Featured Additional Photos </label>
-      <img *ngFor='let url of featuredAdditionalPhotos' [src]="url" height="50px" width="50px" style="margin: 3px;">
+      <!-- <img *ngFor='let url of featuredAdditionalPhotos' [src]="url" height="50px" width="50px" style="margin: 3px;"> -->
       <div xclass="row">
         <label class="custom-file-upload">
           <input id="file" type="file" class="form-control" multiple (change)="onFeaturedAdditionalPhoto($event)">Upload

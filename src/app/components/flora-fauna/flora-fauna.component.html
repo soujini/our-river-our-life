@@ -1,188 +1,229 @@
 <div class="content">
-<div>
-  <mdb-tabset id="flora_fauna_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'" [contentClass]="'card'" class="classic-tabs">
+  <div>
+    <mdb-tabset id="flora_fauna_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'"
+      [contentClass]="'card'" class="classic-tabs">
 
-    <mdb-tab heading="Flora" style="margin-left: -35px; margin-right: -35px;">
-      <div *ngIf="this.flora.length > 0" class="row mt-2" style="background-color:white;padding:50px">
-        <div class="col-12">
-          <br>
-          <!-- <mdb-image-modal [modalImages]="flora" type="margin"></mdb-image-modal> -->
-          <div class="margin mdb-lightbox ng-gallery row">
-            <figure class="ng-thumb col-md-4" *ngFor="let f of flora">
-            <img *ngIf="f.img" class="ng-thumb" [src]= "f.img" alt="Image" style="-webkit-transform: rotate(360deg);image-orientation: none;
-            -moz-transform: rotate(360deg);-ms-transform: rotate(360deg);-o-transform: rotate(360deg);transform: rotate(360deg);" >
-            <div *ngIf="!f.img" class="spinner"></div>
+      <mdb-tab heading="Flora" style="margin-left: -35px; margin-right: -35px;">
 
-            <!-- add desc from water test details -->
-            <div *ngIf="f.location != ''" class="d-flex mt-1">
-                <label class="label-ff">Location : </label>&nbsp;<label class="label-value">{{ f.location}}</label>
-            </div>
-              <div *ngIf="f.commonName != ''" class="d-flex">
-                  <label class="label-ff">Common Name : </label>&nbsp;<label class="label-value">{{ f.commonName}}</label>
-              </div>
-              <div *ngIf="f.scientificName != ''" class="d-flex">
-                  <label class="label-ff">Scientific Name : </label>&nbsp;<label class="label-value">{{f.scientificName}}</label>
-              </div>
-              <div *ngIf="f.localName != ''" class="d-flex">
-                  <label class="label-ff">Local Name : </label>&nbsp;<label class="label-value">{{f.localName}}</label>
-              </div>
-              <div *ngIf="f.contributorName != ''" class="d-flex">
-                  <label class="label-ff">Contributor : </label>&nbsp;<label class="label-value">{{f.contributorName}}</label>
-              </div>
-            </figure>
-        </div>
-        </div>
-      </div>
-      <div *ngIf="this.flora.length == 0" class="row row mt-2" style="height:300px; background-color:white;margin-left: -35px;margin-right: -35px;">
-        <div class="col-12 text-center mt-5">
-          <div _ngcontent-lpk-c225="" class="feature-card-img"><img _ngcontent-lpk-c225="" src="../../assets/scalable-vector-graphics/flora_fauna_white_icon.svg" alt="River Monitoring" height="50px" style="margin-left: -5px;"></div>
-          <p class="mt-4">Oops! We don’t seem to have any items on our list, do contribute by sharing with us and spread knowledge. </p>
-          <p class="mt-4">Please click on <strong>'+ NEW'</strong> to add a Flora.</p>
-        </div>
-      </div>
-    </mdb-tab>
 
-    <mdb-tab heading="Fauna" style="margin-left: -35px; margin-right: -35px; ">
-      <div *ngIf="this.fauna.length > 0" class="row row mt-2" style="background-color:white;padding:50px">
-        <div class="col-12">
-          <br>
-          <!-- <mdb-image-modal [modalImages]="fauna" type="margin"></mdb-image-modal> -->
-          <div class="margin mdb-lightbox ng-gallery row">
-            <figure class="ng-thumb col-md-4" *ngFor="let f of fauna">
-              <img *ngIf="f.img" style="image-orientation: none;" class="ng-thumb" [src]= "f.img" alt="Image">
-              <div *ngIf="!f.img" class="spinner"></div>
-
-            <!-- add desc from water test details -->
-            <div *ngIf="f.location != ''" class="d-flex mt-1">
-                <label class="label-ff">Location : </label>&nbsp;<label class="label-value">{{ f.location}}</label>
-            </div>
-              <div *ngIf="f.commonName != ''" class="d-flex mt-1">
-                  <label class="label-ff">Common Name : </label>&nbsp;<label class="label-value">{{ f.commonName}}</label>
-              </div>
-              <div *ngIf="f.scientificName != ''" class="d-flex">
-                  <label class="label-ff">Scientific Name : </label>&nbsp;<label class="label-value">{{f.scientificName}}</label>
-              </div>
-              <div *ngIf="f.localName != ''" class="d-flex">
-                  <label class="label-ff">Local Name : </label>&nbsp;<label class="label-value">{{f.localName}}</label>
-              </div>
-              <div *ngIf="f.contributorName != ''" class="d-flex">
-                  <label class="label-ff">Contributor : </label>&nbsp;<label class="label-value">{{f.contributorName}}</label>
-              </div>
-            </figure>
-        </div>
-        </div>
-      </div>
-      <div *ngIf="this.fauna.length == 0" class="row mt-2" style="height:300px; background-color:white;">
-        <div class="col-12 text-center mt-5">
-          <div class="feature-card-img"><img src="../../assets/scalable-vector-graphics/flora_fauna_white_icon.svg" alt="River Monitoring" height="50px" style="margin-left: -5px;"></div>
-          <p class="mt-4">Oops! We don’t seem to have any items on our list, do contribute by sharing with us and spread knowledge. </p>
-          <p class="mt-4">Please click on <strong>'+ NEW'</strong> to add a Fauna.</p>
-        </div>
-      </div>
-    </mdb-tab>
-    <mdb-tab heading="+ New" style="margin-left: -35px; margin-right: -35px;">
-      <div class="overlay form-group mt-2" style="background-color:white;padding-left:350px;padding-right:350px">
-        <div class="alert-box " [formGroup]="floraFaunaForm">
-          <div class="row" >
-            <label for="type" class="col-md-3 mt-2 addFlora">Type <span>*</span></label>
-            <div class="col-md-9 mt-2 p-0">
-              <select id="drop" class="custom-select" formControlName="type">
-                <option value="" selected disabled>Select Type</option>
-                <option value="1">Flora</option>
-                <option value="2">Fauna</option>
-              </select><br />
-              <div class="error-message-div mt-1">
-                <p *ngIf="floraFaunaForm.get('type').errors?.required && this.submitted == true" class="errorMessage"><img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is required.</p>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <label class="col-md-3 mt-2 addFlora">Name of Place <span>*</span></label>
-            <div class="col-md-9 mt-2 p-0">
-              <input for="location" formControlName="location" placeholder="Search by location" autocorrect="off"
-              autocapitalize="off" spellcheck="off" type="text" class="form-control input-searchmt-2" #search
-              [formControl]="searchControl">
-              <div class="error-message-div mt-1">
-                <p *ngIf="floraFaunaForm.get('location').errors?.required && this.submitted == true" class="errorMessage"><img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is required.</p>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <label for="localName" class="col-md-3 mt-2 addFlora">Latitude / Longitude <span>*</span></label>
-            <div class="col-md-9 mt-2 pl-0 pr-0 d-flex">
-              <div class="col-md-6 m-0 p-0">
-                <input for="latitude" type="text" class="form-control input-latitude " id="latitude"
-                formControlName="latitude" placeholder="Latitude" style="width:99%" (change)="bla()">
-                <div class="error-message-div mt-1">
-                  <p *ngIf="floraFaunaForm.get('latitude').errors?.required && this.submitted == true" class="errorMessage"><img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is required.</p>
+        <div class="outer-block" *ngIf="this.flora.length > 0" style="background-color:white;padding:50px">
+          <div class="items" *ngFor="let f of flora">
+            <mdb-card cascade="true" wider="true">
+              <mdb-card-body cascade="true" class="text-center">
+                <img *ngIf="f.img" class="ng-thumb" [src]="f.img" alt="Image"
+                  style="-webkit-transform: rotate(360deg);image-orientation: none;
+                -moz-transform: rotate(360deg);-ms-transform: rotate(360deg);-o-transform: rotate(360deg);transform: rotate(360deg);">
+                <div *ngIf="!f.img" class="spinner"></div>
+                <mdb-card-text>
+                  <div class="card-text">
+                  <div *ngIf="f.location != ''" class="d-flex mt-1">
+                    <label class="label-ff">Location : </label>&nbsp;<label class="label-value">{{ f.location}}</label>
+                  </div>
+                  <div *ngIf="f.commonName != ''" class="d-flex">
+                    <label class="label-ff">Common Name : </label>&nbsp;<label
+                      class="label-value">{{ f.commonName}}</label>
+                  </div>
+                  <div *ngIf="f.scientificName != ''" class="d-flex">
+                    <label class="label-ff">Scientific Name : </label>&nbsp;<label
+                      class="label-value">{{f.scientificName}}</label>
+                  </div>
+                  <div *ngIf="f.localName != ''" class="d-flex">
+                    <label class="label-ff">Local Name : </label>&nbsp;<label
+                      class="label-value">{{f.localName}}</label>
+                  </div>
+                  <div *ngIf="f.contributorName != ''" class="d-flex">
+                    <label class="label-ff">Contributor : </label>&nbsp;<label
+                      class="label-value">{{f.contributorName}}</label>
+                  </div>
                 </div>
-              </div>
+                </mdb-card-text>
 
-              <div class="col-md-6 m-0 p-0">
-                <input for="scientificName" type="text" class="form-control input-latitude" id="scientificName"
-                formControlName="longitude" placeholder="Longitude" style="width:99%" (change)="bla()">
+              </mdb-card-body>
+            </mdb-card>
+          </div>
+        </div>
+        <div *ngIf="this.flora.length == 0" class="row row mt-2"
+          style="height:300px; background-color:white;margin-left: -35px;margin-right: -35px;">
+          <div class="col-12 text-center mt-5">
+            <div _ngcontent-lpk-c225="" class="feature-card-img"><img _ngcontent-lpk-c225=""
+                src="../../assets/scalable-vector-graphics/flora_fauna_white_icon.svg" alt="River Monitoring"
+                height="50px" style="margin-left: -5px;"></div>
+            <p class="mt-4">Oops! We don’t seem to have any items on our list, do contribute by sharing with us and
+              spread knowledge. </p>
+            <p class="mt-4">Please click on <strong>'+ NEW'</strong> to add a Flora.</p>
+          </div>
+        </div>
+      </mdb-tab>
+
+      <mdb-tab heading="Fauna" style="margin-left: -35px; margin-right: -35px; ">
+
+        <div class="outer-block" *ngIf="this.fauna.length > 0" style="background-color:white;padding:50px">
+          <div class="items" *ngFor="let f of fauna">
+            <mdb-card cascade="true" wider="true">
+              <mdb-card-body cascade="true" class="text-center">
+                <img *ngIf="f.img" style="image-orientation: none;"
+                  style="-webkit-transform: rotate(360deg);image-orientation: none;
+                -moz-transform: rotate(360deg);-ms-transform: rotate(360deg);-o-transform: rotate(360deg);transform: rotate(360deg);" class="ng-thumb" [src]="f.img"
+                  alt="Image">
+                <div *ngIf="!f.img" class="spinner"></div>
+                <mdb-card-text>
+                  <div class="card-text">
+                  <div *ngIf="f.location != ''" class="d-flex mt-1">
+                    <label class="label-ff">Location : </label>&nbsp;<label class="label-value">{{ f.location}}</label>
+                  </div>
+                  <div *ngIf="f.commonName != ''" class="d-flex mt-1">
+                    <label class="label-ff">Common Name : </label>&nbsp;<label
+                      class="label-value">{{ f.commonName}}</label>
+                  </div>
+                  <div *ngIf="f.scientificName != ''" class="d-flex">
+                    <label class="label-ff">Scientific Name : </label>&nbsp;<label
+                      class="label-value">{{f.scientificName}}</label>
+                  </div>
+                  <div *ngIf="f.localName != ''" class="d-flex">
+                    <label class="label-ff">Local Name : </label>&nbsp;<label
+                      class="label-value">{{f.localName}}</label>
+                  </div>
+                  <div *ngIf="f.contributorName != ''" class="d-flex">
+                    <label class="label-ff">Contributor : </label>&nbsp;<label
+                      class="label-value">{{f.contributorName}}</label>
+                  </div>
+                  </div>
+                </mdb-card-text>
+
+              </mdb-card-body>
+            </mdb-card>
+          </div>
+        </div>
+        <div *ngIf="this.fauna.length == 0" class="row mt-2" style="height:300px; background-color:white;">
+          <div class="col-12 text-center mt-5">
+            <div class="feature-card-img"><img src="../../assets/scalable-vector-graphics/flora_fauna_white_icon.svg"
+                alt="River Monitoring" height="50px" style="margin-left: -5px;"></div>
+            <p class="mt-4">Oops! We don’t seem to have any items on our list, do contribute by sharing with us and
+              spread knowledge. </p>
+            <p class="mt-4">Please click on <strong>'+ NEW'</strong> to add a Fauna.</p>
+          </div>
+        </div>
+      </mdb-tab>
+      <mdb-tab heading="+ New" style="margin-left: -35px; margin-right: -35px;">
+        <div class="overlay form-group mt-2" style="background-color:white;padding-left:350px;padding-right:350px">
+          <div class="alert-box " [formGroup]="floraFaunaForm">
+            <div class="row">
+              <label for="type" class="col-md-3 mt-2 addFlora">Type <span>*</span></label>
+              <div class="col-md-9 mt-2 p-0">
+                <select id="drop" class="custom-select" formControlName="type">
+                  <option value="" selected disabled>Select Type</option>
+                  <option value="1">Flora</option>
+                  <option value="2">Fauna</option>
+                </select><br />
                 <div class="error-message-div mt-1">
-                  <p *ngIf="floraFaunaForm.get('longitude').errors?.required && this.submitted == true" class="errorMessage"><img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is required.</p>
+                  <p *ngIf="floraFaunaForm.get('type').errors?.required && this.submitted == true" class="errorMessage">
+                    <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is
+                    required.</p>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <label for="localName" class="col-md-3 mt-2 addFlora">Local / Scientific Name <span>*</span></label>
-            <div class="col-md-9 mt-2 pl-0 pr-0 d-flex">
-              <div class="col-md-6 m-0 p-0">
-                <input for="localName" type="text" class="form-control input-latitude " id="localName"
-                formControlName="localName" placeholder="Local Name" style="width:99%">
+            <div class="row">
+              <label class="col-md-3 mt-2 addFlora">Name of Place <span>*</span></label>
+              <div class="col-md-9 mt-2 p-0">
+                <input for="location" formControlName="location" placeholder="Search by location" autocorrect="off"
+                  autocapitalize="off" spellcheck="off" type="text" class="form-control input-searchmt-2" #search
+                  [formControl]="searchControl">
                 <div class="error-message-div mt-1">
-                  <p *ngIf="floraFaunaForm.get('localName').errors?.required && this.submitted == true" class="errorMessage"><img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is required.</p>
-                </div>
-              </div>
-              <div class="col-md-6 m-0 p-0">
-                <input for="scientificName" type="text" class="form-control input-latitude" id="scientificName"
-                formControlName="scientificName" placeholder="Scientific Name" style="width:99%">
-                <div class="error-message-div mt-1">
-                  <p *ngIf="floraFaunaForm.get('scientificName').errors?.required && this.submitted == true" class="errorMessage"><img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is required.</p>
+                  <p *ngIf="floraFaunaForm.get('location').errors?.required && this.submitted == true"
+                    class="errorMessage"><img class="img-add"
+                      src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is required.</p>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <label for="commonName" class="col-md-3 mt-2 addFlora">Common Name <span>*</span></label>
-            <div class="col-md-9 mt-2 p-0">
-              <input for="commonName" type="text" value='' class="form-control input-latitude" id="commonName"
-              formControlName="commonName" placeholder="Common Name">
-              <div class="error-message-div mt-1">
-                <p *ngIf="floraFaunaForm.get('commonName').errors?.required && this.submitted == true" class="errorMessage"><img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is required.</p>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <label class="col-md-3 mt-2 addFlora">Upload Image *</label>
-          </div>
-          <div class="row">
-            <div class="col-md-3 mt-0">
-              <div style="height:150px; background-color:#f7f7f7">
-                <span class="helper"></span><img [src]="imageURL"  style="margin: 3px;" style="image-orientation: none;width:100%; height:auto; vertical-align:middle">
-              </div>
-            </div>
-            <div class="image_container mt-0 col-md-9">
-              <div class="form-group ">
-                <input type='file' class="form-control w-100" (change)="onSelectFile($event)" style="height:45px;">
-                <div class="error-message-div mt-1">
-                  <p *ngIf="imageFile == null && this.submitted == true" class="errorMessage"><img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> Please select a photo.</p>
+            <div class="row">
+              <label for="localName" class="col-md-3 mt-2 addFlora">Latitude / Longitude <span>*</span></label>
+              <div class="col-md-9 mt-2 pl-0 pr-0 d-flex">
+                <div class="col-md-6 m-0 p-0">
+                  <input for="latitude" type="text" class="form-control input-latitude " id="latitude"
+                    formControlName="latitude" placeholder="Latitude" style="width:99%" (change)="bla()">
+                  <div class="error-message-div mt-1">
+                    <p *ngIf="floraFaunaForm.get('latitude').errors?.required && this.submitted == true"
+                      class="errorMessage"><img class="img-add"
+                        src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is required.</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6 m-0 p-0">
+                  <input for="scientificName" type="text" class="form-control input-latitude" id="scientificName"
+                    formControlName="longitude" placeholder="Longitude" style="width:99%" (change)="bla()">
+                  <div class="error-message-div mt-1">
+                    <p *ngIf="floraFaunaForm.get('longitude').errors?.required && this.submitted == true"
+                      class="errorMessage"><img class="img-add"
+                        src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is required.</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <label class="col-md-3 mt-2 addFlora"></label>
-            <div class="col-md-9 text-center">
-              <button type="button" class="btn xmt-2 btn-primary btn-rounded" (click)="addFloraFauna()" style="width:200px">Submit</button>
+            <div class="row">
+              <label for="localName" class="col-md-3 mt-2 addFlora">Local / Scientific Name <span>*</span></label>
+              <div class="col-md-9 mt-2 pl-0 pr-0 d-flex">
+                <div class="col-md-6 m-0 p-0">
+                  <input for="localName" type="text" class="form-control input-latitude " id="localName"
+                    formControlName="localName" placeholder="Local Name" style="width:99%">
+                  <div class="error-message-div mt-1">
+                    <p *ngIf="floraFaunaForm.get('localName').errors?.required && this.submitted == true"
+                      class="errorMessage"><img class="img-add"
+                        src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is required.</p>
+                  </div>
+                </div>
+                <div class="col-md-6 m-0 p-0">
+                  <input for="scientificName" type="text" class="form-control input-latitude" id="scientificName"
+                    formControlName="scientificName" placeholder="Scientific Name" style="width:99%">
+                  <div class="error-message-div mt-1">
+                    <p *ngIf="floraFaunaForm.get('scientificName').errors?.required && this.submitted == true"
+                      class="errorMessage"><img class="img-add"
+                        src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is required.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <label for="commonName" class="col-md-3 mt-2 addFlora">Common Name <span>*</span></label>
+              <div class="col-md-9 mt-2 p-0">
+                <input for="commonName" type="text" value='' class="form-control input-latitude" id="commonName"
+                  formControlName="commonName" placeholder="Common Name">
+                <div class="error-message-div mt-1">
+                  <p *ngIf="floraFaunaForm.get('commonName').errors?.required && this.submitted == true"
+                    class="errorMessage"><img class="img-add"
+                      src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is required.</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <label class="col-md-3 mt-2 addFlora">Upload Image *</label>
+            </div>
+            <div class="row">
+              <div class="col-md-3 mt-0">
+                <div style="height:150px; background-color:#f7f7f7">
+                  <span class="helper"></span><img [src]="imageURL" style="margin: 3px;"
+                    style="image-orientation: none;width:100%; height:auto; vertical-align:middle">
+                </div>
+              </div>
+              <div class="image_container mt-0 col-md-9">
+                <div class="form-group ">
+                  <input type='file' class="form-control w-100" (change)="onSelectFile($event)" style="height:45px;">
+                  <div class="error-message-div mt-1">
+                    <p *ngIf="imageFile == null && this.submitted == true" class="errorMessage"><img class="img-add"
+                        src="../../../assets/scalable-vector-graphics/exclamation.svg"> Please select a photo.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <label class="col-md-3 mt-2 addFlora"></label>
+              <div class="col-md-9 text-center">
+                <button type="button" class="btn xmt-2 btn-primary btn-rounded" (click)="addFloraFauna()"
+                  style="width:200px">Submit</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </mdb-tab>
-  </mdb-tabset>
-</div>
+      </mdb-tab>
+    </mdb-tabset>
+  </div>
 </div>
