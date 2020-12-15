@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { Route, Router, NavigationStart, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { IMyOptions } from 'ng-uikit-pro-standard';
@@ -9,6 +10,7 @@ import { NgZone } from '@angular/core';
 import { OrolService } from '../../services/orol.service';
 import { MatStepper } from '@angular/material/stepper';
 import { SpinnerService } from '../../services/spinner.service';
+
 @Component({
   selector: 'app-river-monitoring',
   templateUrl: './river-monitoring.component.html',
@@ -143,8 +145,8 @@ export class RiverMonitoringComponent implements OnInit {
   lat: number;
   lng: number;
 
-  constructor(private spinnerService: SpinnerService, private fb: FormBuilder, private orolService: OrolService,
-    private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
+  constructor(private fb: FormBuilder, private orolService: OrolService,private router: Router,
+    private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private spinnerService: SpinnerService) {
     this.createForm();
     this.surroundingArray = this.activityForm.controls.surroundings as FormArray;
 
@@ -323,8 +325,7 @@ export class RiverMonitoringComponent implements OnInit {
           (res) => {
             this.spinnerService.setSpinner(false);
             console.log(res);
-            // this.router.navigate(['./home']);
-
+             this.router.navigate(['./home']);
           },
           (err) => {
             this.spinnerService.setSpinner(false);
@@ -333,7 +334,6 @@ export class RiverMonitoringComponent implements OnInit {
         );
       });
   }
-
 
   onFileChangesRiver(event) {
     if (event.target.files && event.target.files[0]) {
