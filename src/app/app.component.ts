@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SpinnerService } from './services/spinner.service';
 import { ActivatedRoute, Router, NavigationEnd ,NavigationStart, Event } from '@angular/router';
 import { OrolService } from './services/orol.service';
@@ -7,7 +7,7 @@ import { OrolService } from './services/orol.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit {
   title = 'our-river-our-life';
   isLoading:boolean=false;
   timeout;
@@ -45,8 +45,7 @@ export class AppComponent implements AfterViewInit {
   //   // this.errorMessage=data;
   // });
 }
-
-  ngAfterViewInit(){
-
-  }
+ngOnInit(){
+}
+ 
 }

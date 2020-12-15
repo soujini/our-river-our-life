@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy } from '@angular/compiler/src/compiler_facade_interface';
+import { ChangeDetectorRef, Component, EventEmitter,Output,OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-maps-view',
   templateUrl: './maps-view.component.html',
   styleUrls: ['./maps-view.component.scss']
 })
-export class MapsViewComponent  {
+export class MapsViewComponent implements OnInit {
   mapsMode:number=1;
 
-  constructor() {}
+  constructor(public cd:ChangeDetectorRef) {}
+
+  ngOnInit(){
+  }
   selectMap(mode:number){
     this.mapsMode=mode;
-
   }
+
 }

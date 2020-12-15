@@ -52,7 +52,7 @@ export class AddBlogComponent implements OnInit {
 
 
   createblog() {
-    console.log(this.blogForm);
+    // console.log(this.blogForm.value);
   }
 
  previewVideoUrl(){
