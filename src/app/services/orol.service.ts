@@ -45,7 +45,9 @@ export class OrolService {
       form.append('artwork', imageFilesAtwork[i]);
     }
     form.append("userId", user.id);
-    form.append("generalInformation", x.generalInformation);
+    form.append("generalInformation[activityDate]", x.generalInformation.activityDate);
+    form.append("generalInformation[activityTime]", x.generalInformation.activityTime);
+
     form.append("waterLevelAndWeather", x.waterLevelAndWeather);
     form.append("surroundings", x.surroundings);
     form.append("waterTesting[pH]", x.waterTesting.pH);
@@ -73,29 +75,29 @@ export class OrolService {
     //   },
     // );
   }
-  public generateReport(x, ) {
+  public generateReport(x) {
     var user = JSON.parse(localStorage.getItem('User'));
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({
       Authorization: 'Bearer ' + user.accessToken
     });
-    const form = new FormData;
-    console.log(form);
+    // const form = new FormData;
     // form.append("userId", x.userId);
     // form.append("location", x.location);
 
 
-    this.httpClient.post("https://our-river-our-life-api.herokuapp.com/flora-fauna/create-flora", form, { headers: httpHeaders }).subscribe(
-      (res) => {
-        this.spinnerService.setSpinner(false);
-        this.router.navigate(['./home']);
-
-      },
-      (err) => {
-        this.spinnerService.setSpinner(false);
-        window.alert(err)
-      },
-    );
+    return this.httpClient.post("https://our-river-our-life-api.herokuapp.com/pdf/generateReportWeb", x, { headers: httpHeaders });
+    // .subscribe(
+    //   (res) => {
+    //     this.spinnerService.setSpinner(false);
+    //     // this.router.navigate(['./home']);
+    //
+    //   },
+    //   (err) => {
+    //     this.spinnerService.setSpinner(false);
+    //     window.alert(err)
+    //   },
+    // );
   }
 
 

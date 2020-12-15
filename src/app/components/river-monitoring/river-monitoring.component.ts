@@ -8,7 +8,7 @@ import { MapsAPILoader } from '@agm/core';
 import { NgZone } from '@angular/core';
 import { OrolService } from '../../services/orol.service';
 import { MatStepper } from '@angular/material/stepper';
-
+import { SpinnerService } from '../../services/spinner.service';
 @Component({
   selector: 'app-river-monitoring',
   templateUrl: './river-monitoring.component.html',
@@ -27,6 +27,7 @@ export class RiverMonitoringComponent implements OnInit {
   info = "(Max. size 250KB)";
   geocoder: any;
   surroundingArray: any;
+  reports:any=[];
   lastClickedIndex;
   public myDatePickerOptions: IMyOptions = {
     dateFormat: 'dd mmm yyyy',
@@ -142,9 +143,9 @@ export class RiverMonitoringComponent implements OnInit {
   lat: number;
   lng: number;
 
-  constructor(private fb: FormBuilder, private orolService: OrolService,
+  constructor(private spinnerService: SpinnerService, private fb: FormBuilder, private orolService: OrolService,
     private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
-    this.createForm(); 
+    this.createForm();
     this.surroundingArray = this.activityForm.controls.surroundings as FormArray;
 
   }
@@ -154,6 +155,7 @@ export class RiverMonitoringComponent implements OnInit {
 
   ngOnInit() {
     this.zoom = 13;
+    this.getWaterTestDetails();
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
         types: ["address"]
@@ -206,7 +208,7 @@ export class RiverMonitoringComponent implements OnInit {
         this.activityForm.get('generalInformation').get('longitude').value
     };
   }
- 
+
 
   createForm() {
     this.activityForm = this.fb.group({
@@ -282,7 +284,7 @@ export class RiverMonitoringComponent implements OnInit {
     if (this.activityForm.get('waterLevelAndWeather').get('airTemperature').valid &&
       this.activityForm.get('waterLevelAndWeather').get('waterLevel').valid &&
       this.activityForm.get('waterLevelAndWeather').get('weather').valid &&
-      this.imageFilesRiver.length > 0 
+      this.imageFilesRiver.length > 0
 
     ) {
       this.river_monitoring_stepper.next();
@@ -300,18 +302,36 @@ export class RiverMonitoringComponent implements OnInit {
   setSteep() {
 
   }
+  getWaterTestDetails() {
+      var user = JSON.parse(localStorage.getItem('User'));
+    this.spinnerService.setSpinner(true);
+    this.orolService.getWaterTestDetails().subscribe((data)=>{
+      if(data['count']){
+        this.reports=data['rows'].filter(r => r.userId == user.id);
+      }
+      this.spinnerService.setSpinner(false);
+    });
+  }
 
   createWaterTestDetails() {
     this.orolService.createWaterTestDetails(this.activityForm.value, this.imageFilesRiver,
       this.imageFilesSurrounding, this.imageFilesFlora, this.imageFilesFauna, this.imageFilesGroup, this.imageFilesActivity, this.imageFilesAtwork).
       subscribe((data) => {
         console.log(data);
-        //Call Generate REPORT
+          //Call Generate REPORT
+        this.orolService.generateReport(data).subscribe(
+          (res) => {
+            this.spinnerService.setSpinner(false);
+            console.log(res);
+            // this.router.navigate(['./home']);
+
+          },
+          (err) => {
+            this.spinnerService.setSpinner(false);
+            console.log(err);
+          },
+        );
       });
-    //   this.orolService.generateReport(x).subscribe((data)=>{
-    //     console.log(data);
-    //     //  https://our-river-our-life-api.herokuapp.com/pdf/generateReport
-    // });
   }
 
 

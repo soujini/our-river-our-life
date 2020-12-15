@@ -695,14 +695,21 @@
 
       <mdb-tab heading="View Reports" xstyle="height:500px">
         <div class="bg-white">
-          <div class="row mt-2" style="height:300px; background-color:white;margin-left: -35px;margin-right: -35px;">
+          <div *ngIf="this.reports.length == 0" class="row mt-2" style="height:450px; background-color:white;margin-left: -35px;margin-right: -35px;">
             <div class="col-12 text-center mt-5">
-              <!-- <div class="feature-card-img"><img src="../../assets/scalable-vector-graphics/flora_fauna_white_icon.svg" alt="River Monitoring" height="50px" style="margin-left: -5px;"></div> -->
               <p class="mt-4">Sorry! We don't have any reports to view at the moment. Would you like to contribute and
                 create a new report?</p>
               <p class="mt-4">Please click on <strong>'CREATE REPORT'</strong> to add a new report.</p>
             </div>
           </div>
+          <div *ngIf="this.reports.length != 0" class="row mt-2" style="min-height:450px; background-color:white;margin-left: -35px;margin-right: -35px;">
+            <div class="col-12 mt-5 text-left">
+              <ul style="list-style-type:none" *ngFor="let report of reports">
+                <li><a [href]="report.certificateURL" target="_blank">{{report.certificateURL}}</a></li>
+                </ul>
+            </div>
+            </div>
+
         </div>
       </mdb-tab>
     </mdb-tabset>
