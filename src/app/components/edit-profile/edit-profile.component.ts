@@ -102,7 +102,7 @@ export class EditProfileComponent implements OnInit {
 
 //old update
   updateUser(){
-    alert("update User");
+    // alert("update User");
       var user = JSON.parse(localStorage.getItem('User'));
     this.orolService.updateUser(this.profileForm.value).subscribe((data)=>{
       const User: any = {

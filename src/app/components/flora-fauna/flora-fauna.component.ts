@@ -219,7 +219,7 @@ export class FloraFaunaComponent implements OnInit {
     async addFloraFauna() {
       this.spinnerService.setSpinner(true);
       this.submitted = true;
-      // console.log(this.floraFaunaForm.value);
+      console.log(this.floraFaunaForm.value);
       if(this.floraFaunaForm.get('type').value == 1){
         this.orolService.addFlora(this.floraFaunaForm.value, this.imageFile);
       }

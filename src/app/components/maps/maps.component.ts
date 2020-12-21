@@ -134,7 +134,6 @@ export class MapsComponent implements OnInit {
       this.mapsForm.get('longitude').valid &&
       this.mapsForm.get('activityDate').valid &&
       this.mapsForm.get('activityTime').valid &&
-
       this.imageFiles.length > 0 
     ) {
     }
@@ -180,7 +179,7 @@ export class MapsComponent implements OnInit {
   }
 
   async addAlert() {
-    this.validate()
+    this.validate();
     await this.orolService.addAlert(this.mapsForm.value, this.imageFiles);
     this.show = false;
     this.setCurrentPosition();
