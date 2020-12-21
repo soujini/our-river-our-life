@@ -49,7 +49,7 @@ export class OrolService {
     this.httpClient.post("https://our-river-our-life-api.herokuapp.com/blogs/create-blog", form, { headers: httpHeaders }).subscribe(
       (res) => {
         this.spinnerService.setSpinner(false);
-        this.router.navigate(['./home']);
+        this.router.navigate(['./voices-from-the-river']);
 
       },
       (err) => {
@@ -158,6 +158,9 @@ export class OrolService {
     //   },
     // );
   }
+
+  
+  
   public getAccessToken(username, mode) { //Username can be email or phone number
     var obj;
     if (mode == "phone") {

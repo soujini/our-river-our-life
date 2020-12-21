@@ -13,7 +13,7 @@ export class AddBlogComponent implements OnInit {
 
   featuredAdditionalVideosArray:any=[];
   featuredAdditionalVideos= [];
-  featuredPhoto= [];
+  featuredPhoto= "../../../assets/scalable-vector-graphics/flood-watch.svg";
   public imagefeaturedPhoto: File[] = [];
 
   featuredAdditionalPhotos = [];

@@ -334,6 +334,7 @@ export class RiverMonitoringComponent implements OnInit {
         );
       });
   }
+ 
 
   onFileChangesRiver(event) {
     if (event.target.files && event.target.files[0]) {
