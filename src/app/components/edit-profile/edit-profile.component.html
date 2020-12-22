@@ -79,7 +79,7 @@
                 <div class="row formGroup">
                   <div class="col-md-12">
                     <label for="email" class="text-left">Email</label>
-                    <input mdbInput id="email" type="text" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': submitted && profileForm.get('email').errors }"
+                    <input mdbInput id="email" type="text" class="form-control" formControlName="email" disabled [ngClass]="{ 'is-invalid': submitted && profileForm.get('email').errors }"
                       placeholder="Email">
                       <div *ngIf="submitted && profileForm.get('email').errors" class="invalid-feedback">
                         <div *ngIf="profileForm.get('email').errors.required">Email is required</div>
