@@ -3,12 +3,12 @@ import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@ang
 import { Route, Router, NavigationStart, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { IMyOptions } from 'ng-uikit-pro-standard';
+import { IMyOptions, MdbStepperComponent } from 'ng-uikit-pro-standard';
 import { ModalDirective } from 'ng-uikit-pro-standard';
 import { MapsAPILoader } from '@agm/core';
 import { NgZone } from '@angular/core';
 import { OrolService } from '../../services/orol.service';
-import { MatStepper } from '@angular/material/stepper';
+
 import { SpinnerService } from '../../services/spinner.service';
 
 @Component({
@@ -17,7 +17,7 @@ import { SpinnerService } from '../../services/spinner.service';
   styleUrls: ['./river-monitoring.component.scss']
 })
 export class RiverMonitoringComponent implements OnInit {
-  @ViewChild('river_monitoring_stepper', { static: false }) river_monitoring_stepper: MatStepper;
+  @ViewChild('river_monitoring_stepper', { static: true }) river_monitoring_stepper: MdbStepperComponent 
   @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
   defaultImageURL: string = "../../../assets/icons/default_image_upload.jpg";
   @ViewChild('basicModal') basicModal: ModalDirective;
@@ -299,11 +299,21 @@ export class RiverMonitoringComponent implements OnInit {
       this.river_monitoring_stepper.next();
     }
   }
-
-
   setSteep() {
 
   }
+  move(index: number) {
+    // this.river_monitoring_stepper.setNewActiveStep(1)
+    // this.river_monitoring_stepper.selectedIndex = index;
+  }
+
+  // setSteep(tabName: string) {
+  //   for (let i =0; i< document.querySelectorAll('.mdb-step-label-content').length; i++) {
+  //     if ((<HTMLElement>document.querySelectorAll('.mdb-step-label-content')[i]).innerText == tabName) {
+  //       (<HTMLElement>document.querySelectorAll('.mdb-step-label')[i]).click();
+  //     }
+  //   }
+  // }
   getWaterTestDetails() {
       var user = JSON.parse(localStorage.getItem('User'));
     this.spinnerService.setSpinner(true);

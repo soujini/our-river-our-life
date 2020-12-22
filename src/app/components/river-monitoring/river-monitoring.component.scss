@@ -8,8 +8,13 @@
   border-radius: 10px;
   line-height: 3;
 }
+// .preview{
+//     font-size: 1rem;
+//     color: gray;
+//     font-weight: 500;  
+//   }
 .img-add{
-  margin-right:15px;
+  margin-left:15px;
 }
 .item1 {
   width: 550px;
@@ -84,7 +89,6 @@ input[type="file"] {
 }
 .custom-file-upload, .custom-btn {
     border: 1px solid #1C3764;
-    display: inline-block;
     padding: 10px;
     cursor: pointer;
     font-size: 12px;

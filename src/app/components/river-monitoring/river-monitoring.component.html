@@ -1,37 +1,25 @@
 <div class="content">
   <div>
     <mdb-tabset id="river_monitoring_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'"
-      [contentClass]="'card'" class="classic-tabs text-center">
+      [contentClass]="'card'" class="classic-tabs xtext-center">
       <mdb-tab heading="Create Report" style="xheight:500px;margin-left:-35px; margin-right:-35px">
         <div class="row" class="bg-white" style="xheight:600px">
           <mdb-stepper #river_monitoring_stepper id="river_monitoring_stepper" class="col-12">
 
             <mdb-step name="General Information" xstepForm="activityForm">
-              <form [formGroup]="activityForm" style="padding-left:350px; padding-right:350px">
+              <form class="container-stepper-form" [formGroup]="activityForm" style="padding-left:350px; padding-right:350px">
                 <div class="row" formGroupName="generalInformation">
                   <div class="col-md-6">
                     <label for="rm_dp" class="text-left">Activity Date</label>
                     <mdb-date-picker id="rm_dp" [inline]="true" name="mydate" formControlName="activityDate"
                       [options]="myDatePickerOptions" [placeholder]="'Selected date'" xngModel="model" required>
                     </mdb-date-picker>
-                    <div class="mt-1 error-message-div">
-                      <p *ngIf="activityForm.get('generalInformation').get('activityDate').errors?.required  && this.submitStep1==true"
-                        class="errorMessage">
-                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
-                        is required.</p>
-                    </div>
                   </div>
                   <div class="col-md-6">
                     <label for="rm_tp" class="text-left">Activity Time</label>
-                    <mdb-time-picker id="rm_tp" [buttonLabel]="'Done'" [twelvehour]="true"
+                    <mdb-time-picker id="rm_tp" [buttonLabel]="'Done'" [twelvehour]="true" 
                       formControlName="activityTime" [darktheme]="true" [placeholder]="'Selected time'">
                     </mdb-time-picker>
-                    <div class="mt-1 error-message-div">
-                      <p *ngIf="activityForm.get('generalInformation').get('activityTime').errors?.required  && this.submitStep1==true"
-                        class="errorMessage">
-                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
-                        is required.</p>
-                    </div>
                   </div>
                 </div>
                 <div class="row" formGroupName="generalInformation">
@@ -104,7 +92,7 @@
               </div>
             </mdb-step>
             <mdb-step name="Water Level & Weather" xstepForm="activityForm">
-              <form [formGroup]="activityForm" style="padding-left:350px; padding-right:350px">
+              <form class="container-stepper-form" [formGroup]="activityForm" style="padding-left:350px; padding-right:350px">
                 <div class="row" formGroupName="waterLevelAndWeather">
                   <div class="col-md-12">
                     <label for="rm_airTemperature" class="text-left">Measure the air temperature</label>
@@ -161,10 +149,12 @@
                       is required.</p>
                   </div>
                 </div>
-                <div class="text-left" fxormGroupName="generalInformation">
+                <div class="row">
+                  <div class="col-md-12">
                   <label for="rm_location" class="text-left">River Pictures</label>
+                  </div>
+                  <div class="col-md-12">
                   <img *ngFor='let url of imageUrlRiver' [src]="url" height="50px" width="50px" style="margin: 3px;">
-                  <div xclass="row">
                     <label class="custom-file-upload">
                       <input id="file" type="file" class="form-control" multiple
                         (change)="onFileChangesRiver($event)">Upload
@@ -186,12 +176,6 @@
             <mdb-step name="Observe your Surroundings" xstepForm="activityForm">
               <form xformGroupx="surroundings" class="container-stepper-form">
                 <div class="row">
-                  <!-- <div class="col-md-12">
-                    <label for="rm_searchSurroundings" class="text-left">Search</label>
-                    <input mdbInput id="rm_searchSurroundings" type="text" id="rm_searchSurroundings"
-                      class="form-control" xformControlName="airTemperature" placeholder="Search">
-                  </div> -->
-
                   <div class="col-md-12 mt-3 text-left" xformGroupName="waterLevelAndWeather">
                     <div *ngFor="let obj of surroundings ; let i=index" class="col-md-3 text-left"
                       style="display:inline-block">
@@ -207,11 +191,13 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-12 text-left" fxormGroupName="generalInformation">
+                <div class="row" >
+                  <div class="col-md-12">
                   <label for="rm_location" class="text-left">Surroundings Pictures</label>
+                  </div>
+                  <div class="col-md-12">
                   <img *ngFor='let url of imageUrlSurrounding' [src]="url" height="50px" width="50px"
                     style="margin: 3px;">
-                  <div xclass="row">
                     <label class="custom-file-upload">
                       <input id="file" type="file" class="form-control" multiple
                         (change)="onFileChangesSurrounding($event)">Upload
@@ -304,12 +290,6 @@
                         <div class="input-group-text bl-0">mg/L</div>
                       </div>
                     </div>
-                    <div class="mt-1 error-message-div">
-                      <p *ngIf="activityForm.get('waterTesting').get('chlorine').errors?.required  && this.submitStep3==true"
-                        class="errorMessage">
-                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
-                        is required.</p>
-                    </div>
                   </div>
                   <div class="col-md-6">
                     <label for="rm_airTemperature" class="text-left">Iron</label>
@@ -318,12 +298,6 @@
                       <div class="input-group-prepend">
                         <div class="input-group-text bl-0">mg/L</div>
                       </div>
-                    </div>
-                    <div class="mt-1 error-message-div">
-                      <p *ngIf="activityForm.get('waterTesting').get('iron').errors?.required  && this.submitStep3==true"
-                        class="errorMessage">
-                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
-                        is required.</p>
                     </div>
                   </div>
                 </div>
@@ -337,12 +311,6 @@
                         <div class="input-group-text bl-0">mg/L</div>
                       </div>
                     </div>
-                    <div class="mt-1 error-message-div">
-                      <p *ngIf="activityForm.get('waterTesting').get('dissolvedOxygen').errors?.required  && this.submitStep3==true"
-                        class="errorMessage">
-                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
-                        is required.</p>
-                    </div>
                   </div>
                 </div>
                 <div class="row" formGroupName="waterTesting">
@@ -352,12 +320,6 @@
                       <button mdbBtn type="button" class="custom-btn" *ngFor="let item of items; let i = index"
                         [ngClass]="(lastClickedIndex == i) ? 'custom-btn-active': 'custom-btn'"
                         (click)="changeActive(i); setBacteria(item.name)" #disable mdbWavesEffect>{{item.name}}</button>
-                    </div>
-                    <div class="mt-1 error-message-div">
-                      <p *ngIf="activityForm.get('waterTesting').get('bacteria').errors?.required  && this.submitStep3==true"
-                        class="errorMessage">
-                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
-                        is required.</p>
                     </div>
                   </div>
                 </div>
@@ -372,12 +334,6 @@
                       </div>
                     </div>
                   </div>
-                  <div class="mt-1 error-message-div">
-                    <p *ngIf="activityForm.get('waterTesting').get('turbidity').errors?.required  && this.submitStep3==true"
-                      class="errorMessage">
-                      <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
-                      is required.</p>
-                  </div>
                 </div>
                 <div class="row" formGroupName="waterTesting">
                   <div class="col-md-12">
@@ -388,12 +344,6 @@
                       <div class="input-group-prepend">
                         <div class="input-group-text bl-0">mg/L</div>
                       </div>
-                    </div>
-                    <div class="mt-1 error-message-div">
-                      <p *ngIf="activityForm.get('waterTesting').get('phosphate').errors?.required  && this.submitStep3==true"
-                        class="errorMessage">
-                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
-                        is required.</p>
                     </div>
                   </div>
                 </div>
@@ -407,12 +357,6 @@
                         <div class="input-group-text bl-0">mg/L</div>
                       </div>
                     </div>
-                    <div class="mt-1 error-message-div">
-                      <p *ngIf="activityForm.get('waterTesting').get('ammonia').errors?.required  && this.submitStep3==true"
-                        class="errorMessage">
-                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
-                        is required.</p>
-                    </div>
                   </div>
                 </div>
                 <div class="row" formGroupName="waterTesting">
@@ -423,12 +367,6 @@
                       <div class="input-group-prepend">
                         <div class="input-group-text bl-0">mg/L</div>
                       </div>
-                    </div>
-                    <div class="mt-1 error-message-div">
-                      <p *ngIf="activityForm.get('waterTesting').get('lead').errors?.required  && this.submitStep3==true"
-                        class="errorMessage">
-                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
-                        is required.</p>
                     </div>
                   </div>
                 </div>
@@ -441,12 +379,6 @@
                       <div class="input-group-prepend">
                         <div class="input-group-text bl-0">ppm</div>
                       </div>
-                    </div>
-                    <div class="mt-1 error-message-div">
-                      <p *ngIf="activityForm.get('waterTesting').get('dissolvedSolids').errors?.required  && this.submitStep3==true"
-                        class="errorMessage">
-                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
-                        is required.</p>
                     </div>
                   </div>
                 </div>
@@ -470,7 +402,7 @@
               </div>
             </mdb-step>
             <mdb-step name="Flora & Fauna">
-              <form xformGroup="secondFormGroup" class="container-stepper-form">
+              <form class="container-stepper-form">
                 <div class="col-md-12">
                   <div class="row">
                     <img src="../../../assets/scalable-vector-graphics/flora.svg" height="28px" width="28px">
@@ -480,8 +412,7 @@
                     could include grasses,
                     shrubs, plants
                     and trees.</p>
-                  <div class="text-left mt-2" fxormGroupName="generalInformation">
-                    <div class="row ">
+                    <div class="col-md-12">
                       <img *ngFor='let url of imageUrlFlora' [src]="url" height="50px" width="50px"
                         style="margin: 3px;">
                       <label class="custom-file-upload">
@@ -490,7 +421,6 @@
                       </label>
                     </div>
                   </div>
-                </div>
                 <div class="col-md-12">
                   <div class="row">
                     <img src="../../../assets/scalable-vector-graphics/fauna.svg" height="35px" width="35px">
@@ -499,8 +429,8 @@
                   <p class="row">Record fish, amphibians, reptiles, birds, insects and mammals that you see
                     around you.</p>
                   <div class="text-left mt-2" fxormGroupName="generalInformation">
-                    <div class="row">
-                      <img *ngFor='let url of imageUrlFauna' [src]="url" height="50px" width="50px"
+                    <div class="col-md-12">
+                    <img *ngFor='let url of imageUrlFauna' [src]="url" height="50px" width="50px"
                         style="margin: 3px;">
                       <label class="custom-file-upload">
                         <input id="file" type="file" class="form-control" multiple
@@ -519,7 +449,7 @@
             <mdb-step name="Pictures">
               <form xformGroup="secondFormGroup" class="container-stepper-form">
                 <label class="ml-2 mt-2 bold">Pictures</label>
-                <div class="row">
+                <div class="col-md-12">
                   <img *ngFor='let url of imageUrlGroup' [src]="url" height="50px" width="50px" style="margin: 3px;">
                   <label class="custom-file-upload">
                     <input id="file" type="file" class="form-control" multiple
@@ -527,7 +457,7 @@
                     Group Picture
                   </label>
                 </div>
-                <div class="row">
+                <div class="col-md-12">
                   <img *ngFor='let url of imageUrlActivity' [src]="url" height="50px" width="50px" style="margin: 3px;">
                   <label class="custom-file-upload">
                     <input id="file" type="file" class="form-control" multiple
@@ -535,7 +465,7 @@
                     Activity Picture
                   </label>
                 </div>
-                <div class="row">
+                <div class="col-md-12">
                   <img *ngFor='let url of imageUrlAtwork' [src]="url" height="50px" width="50px" style="margin: 3px;">
                   <label class="custom-file-upload">
                     <input id="file" type="file" class="form-control" multiple
@@ -551,12 +481,12 @@
               </div>
             </mdb-step>
             <mdb-step name="Preview">
-              <form class="container-stepper-form">
-                <h2>Preview before Submit </h2>
+              <form class="container-stepper-form text-center">
+                <h2 >Preview before Submit </h2>
                 <div class="box" fxLayoutAlign="stretch">
                   <div class="item">
                     <span>General Information </span>
-                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()"></mdb-icon>
+                    <mdb-icon fas icon="pencil-alt" (click)="move(1)"></mdb-icon>
                     <hr class="hr-line1" />
                     <label for="activityDate" class="text-left ml-2">Activity Date <span>:</span>
                       <span
@@ -574,7 +504,7 @@
                   </div>
                   <div class="item">
                     <span> Water Level & Weather </span>
-                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()"></mdb-icon>
+                    <mdb-icon fas icon="pencil-alt"></mdb-icon>
                     <hr class="hr-line1" />
                     <label for="rm_dp" class="text-left ml-2">Measure the air temperature <span>:</span>
                       <span>{{activityForm.get('waterLevelAndWeather').get('airTemperature').value}}</span></label>
@@ -591,7 +521,7 @@
                 <div class="box" fxLayoutAlign="stretch" style="height:300px;">
                   <div class="item1">
                     <span> Observe the Surroundings </span>
-                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()"></mdb-icon>
+                    <mdb-icon fas icon="pencil-alt" ></mdb-icon>
                     <hr class="hr-line1" />
                     <div class="container">
                       <span *ngFor="let obj of surroundingArray.value">{{obj}}</span>
