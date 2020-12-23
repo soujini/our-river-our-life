@@ -27,9 +27,9 @@ imagePath="../../assets/jpg/umeed_mistry.jpg">
         </div>
       </div>
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 mt-2">
           <div *ngFor="let img of m.fauna" style="display:inline-block; text-align:center">
-            <img [src]="img.imageURL" height="150px" width="150px" class="ml-2">
+            <img [src]="img.imageURL" style="image-orientation: none;transform: rotate(360deg);" height="150px" width="150px" class="ml-2">
           </div>
         </div>
       </div>
