@@ -1,8 +1,10 @@
 <div class="content">
-  <form class="content form form-horizontal" [formGroup]="blogForm" 
-    style="padding-left:350px; padding-right:350px; padding-top:50px; padding-bottom:50px;">
+  <form class="content form form-horizontal" [formGroup]="blogForm"
+    style="padding-left:350px; padding-right:350px;">
+    
+    <h2 class="text-center h1-responsive font-weight-bold my-5">Add Blog</h2>
 
-    <div class="row" >
+    <div class="row">
       <div class="col-md-12">
         <label for="templateType" class="text-left">Type</label>
         <select id="drop" class="custom-select" formControlName="templateType">
@@ -12,29 +14,30 @@
         </select><br />
       </div>
     </div>
-   
-    <div class="row" >
+
+    <div class="row">
       <div class="col-md-12">
         <label for="title" class="text-left">Title</label>
-        <input mdbInput  name="title"  type="text" class="form-control"
-          formControlName="featuredTitle" placeholder="Enter title">
+        <input mdbInput name="title" type="text" class="form-control" formControlName="featuredTitle"
+          placeholder="Enter title">
       </div>
     </div>
-    <div class="row" >
+    <div class="row">
       <div class="col-md-12">
         <label for="featuredDescription" class="text-left">Description</label>
-        <textarea name="description"   type="text" class="form-control" class="form-control" formControlName="featuredDescription" placeholder="Description">
+        <textarea name="description" type="text" class="form-control" class="form-control"
+          formControlName="featuredDescription" placeholder="Description">
         </textarea>
       </div>
     </div>
 
     <div>
-      <label for="featuredPhoto"  class=" text-left">Featured Photo </label>
+      <label for="featuredPhoto" class=" text-left">Featured Photo </label>
       <div class="row">
         <div class="col-md-3 mt-0">
           <div style="height:150px; background-color:#f7f7f7">
             <span class="helper"></span><img [src]="featuredPhoto" style="margin: 3px;"
-            style="image-orientation: none;width:100%; height:100%; vertical-align:middle" >
+              style="image-orientation: none;width:100%; height:100%; vertical-align:middle">
           </div>
         </div>
         <div class="image_container mt-0 col-md-9">
@@ -47,8 +50,8 @@
         </div>
       </div>
     </div>
-   
-       <div class="text-left">
+
+    <div class="text-left">
       <label for="featuredAdditionalPhotos" class="text-left">Featured Additional Photos </label>
       <img *ngFor='let url of featuredAdditionalPhotos' [src]="url" height="50px" width="50px" style="margin: 3px;">
       <div xclass="row">
@@ -58,7 +61,7 @@
       </div>
     </div>
 
-    <div class="form-group col-xs-12" *ngIf="this.blogForm.get('templateType').value == 2" >
+    <div class="form-group col-xs-12" *ngIf="this.blogForm.get('templateType').value == 2">
       <label for="featuredVideo" class="control-label">Featured Videos</label>
       <div class="input-group col-xs-12">
         <div class="input-group xmb-3">
@@ -73,28 +76,32 @@
     </div>
 
 
-    <div class="form-group col-xs-12" formArrayName="featuredAdditionalVideos" *ngIf="this.blogForm.get('templateType').value == 2">
+    <div class="form-group col-xs-12" formArrayName="featuredAdditionalVideos"
+      *ngIf="this.blogForm.get('templateType').value == 2">
       <label for="featuredAdditionalVideos" class="control-label">Featured Additional Videos</label>
-        <div *ngFor="let su of blogForm.get('featuredAdditionalVideos'); let i=index" [formGroupName]="i"  class="input-group attach_link mb-2" >
-          <div class="input-group-prepend">
-            <span id="featuredAdditionalVideos" class="input-group-text"  xclass="md-addon">https://</span>
-          </div>
-          <input type="text" class="form-control input-color append" 
-           formControlName="featuredAdditionalVideos" placeholder= " Enter the Featured Additional Videos URL "  id="inlineFormInputGroupMD">
-          <div class="input-group-append">
-            <span  class="input-group-text">
-              <button *ngIf="this.blogForm.get('featuredAdditionalVideos')['controls'][i]['controls'].value != ''" class="trash bg" (click)="removeScreenshotURL(i)"><img class="trash-icon" src="../../assets/scalable-vector-graphics/trash_icon_grey.svg"></button>
-            </span>
-          </div>
-      
+      <div *ngFor="let su of blogForm.get('featuredAdditionalVideos'); let i=index" [formGroupName]="i"
+        class="input-group attach_link mb-2">
+        <div class="input-group-prepend">
+          <span id="featuredAdditionalVideos" class="input-group-text" xclass="md-addon">https://</span>
         </div>
-        <button class="col-xs-12 btn_white_dashed" (click)="addScreenshotURL()">+ Additional Videos </button>
+        <input type="text" class="form-control input-color append" formControlName="featuredAdditionalVideos"
+          placeholder=" Enter the Featured Additional Videos URL " id="inlineFormInputGroupMD">
+        <div class="input-group-append">
+          <span class="input-group-text">
+            <button *ngIf="this.blogForm.get('featuredAdditionalVideos')['controls'][i]['controls'].value != ''"
+              class="trash bg" (click)="removeScreenshotURL(i)"><img class="trash-icon"
+                src="../../assets/scalable-vector-graphics/trash_icon_grey.svg"></button>
+          </span>
+        </div>
+
       </div>
+      <button class="col-xs-12 btn_white_dashed" (click)="addScreenshotURL()">+ Additional Videos </button>
+    </div>
 
 
     <div class="text-right">
-      <button type="button" class="btn xmt-2 btn-primary btn-rounded"  (click)="createblog()"
-      style="width:200px">Submit</button>
+      <button type="button" class="btn xmt-2 btn-primary btn-rounded" (click)="createblog()"
+        style="width:200px">Submit</button>
     </div>
 
   </form>
