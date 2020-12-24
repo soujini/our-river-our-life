@@ -156,6 +156,7 @@ export class RiverMonitoringComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setCurrentTime();
     this.zoom = 13;
     this.getWaterTestDetails();
     this.mapsAPILoader.load().then(() => {
@@ -183,25 +184,34 @@ export class RiverMonitoringComponent implements OnInit {
     });
   }
 
-
-  getCurrentDate() {
-    var dt = new Date();
-    return dt.getDate();
+  setCurrentTime() {
+    let dt = new Date();
+    let normalizeHour = dt.getHours() >= 13 ? dt.getHours() - 12 : dt.getHours()
+    var formattedTime = dt.getHours() >= 13 ? normalizeHour + ':' + dt.getMinutes() + 'PM' : normalizeHour + ':' + dt.getMinutes() + 'AM';
+    this.activityForm.get('generalInformation').patchValue({
+      activityTime: formattedTime
+    });
   }
 
-  getCurrentTime() {
-    var d = new Date();
-    d.setHours(d.getHours() + 2); // offset from local time
-    var h = (d.getHours() % 12) || 12; // show midnight & noon as 12
-    return (
-      (h < 10 ? '0' : '') + h +
-      (d.getMinutes() < 10 ? ':0' : ':') + d.getMinutes() +
-      // optional seconds display
-      // ( d.getSeconds() < 10 ? ':0' : ':') + d.getSeconds() +
-      (d.getHours() < 12 ? ' AM' : ' PM')
-    );
+  
+  // getCurrentDate() {
+  //   var dt = new Date();
+  //   return dt.getDate();
+  // }
 
-  }
+  // getCurrentTime() {
+  //   var d = new Date();
+  //   d.setHours(d.getHours() + 2); // offset from local time
+  //   var h = (d.getHours() % 12) || 12; // show midnight & noon as 12
+  //   return (
+  //     (h < 10 ? '0' : '') + h +
+  //     (d.getMinutes() < 10 ? ':0' : ':') + d.getMinutes() +
+  //     // optional seconds display
+  //     // ( d.getSeconds() < 10 ? ':0' : ':') + d.getSeconds() +
+  //     (d.getHours() < 12 ? ' AM' : ' PM')
+  //   );
+
+  // }
   bla() {
     this.getAddressByLatitudeAndLongitude(this.activityForm.get('generalInformation').get('latitude').value,
       this.activityForm.get('generalInformation').get('longitude').value, this.activityForm.get('generalInformation'));
@@ -216,8 +226,10 @@ export class RiverMonitoringComponent implements OnInit {
     this.activityForm = this.fb.group({
       userId: [''],
       generalInformation: this.fb.group({
-        activityDate: [this.getCurrentDate(), [Validators.required]],
-        activityTime: [this.getCurrentTime(), [Validators.required]],
+        // activityDate: [this.getCurrentDate(), [Validators.required]],
+        // activityTime: [this.getCurrentTime(), [Validators.required]],
+        activityDate: [(new Date()),[Validators.required]],
+        activityTime: ['',[Validators.required]],
         testerName: ['', [Validators.required]],
         latitude: [''],
         longitude: [''],

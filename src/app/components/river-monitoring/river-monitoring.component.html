@@ -487,7 +487,8 @@
                     <hr class="hr-line1" />
                     <label for="activityDate" class="text-left ml-2">Activity Date <span>:</span>
                       <span
-                        class="ml-2">{{activityForm.get('generalInformation').get('activityDate').value}}</span></label>
+                        class="ml-2">{{activityForm.get('generalInformation').get('activityDate').value | date:"dd-MMM-y" }}</span>
+                      </label>
                     <label class="text-left ml-2">Activity Time <span>:</span>
                       <span>{{activityForm.get('generalInformation').get('activityTime').value}}</span></label>
                     <label class="text-left ml-2">Name <span>:</span>
@@ -631,7 +632,7 @@
           </div>
           <div *ngIf="this.reports.length != 0" class="xrow mt-2" style="min-height:450px; background-color:white;margin-left: -35px;margin-right: -35px;">
             <div class="text-center">
-              <h2 class="h1-responsive font-weight-bold xmy-3">Recent Posts</h2>
+              <h2 class="h1-responsive font-weight-bold xmy-3">Certificate URL</h2>
              </div>
             <div class="col-12 mt-4 text-left">
               <ul style="list-style-type:none" *ngFor="let report of reports">
