@@ -25,14 +25,14 @@
         <div class="d-flex">
           <input for="latitude" formControlName="latitude" type="text" class="input-latitude col-md-6 mt-3"
             placeholder="Latitude" (change)="bla()">
-          <p *ngIf="mapsForm.get('latitude').errors?.required  && this.submitted==true" class="errorMessage">
+          <!-- <p *ngIf="mapsForm.get('latitude').errors?.required  && this.submitted==true" class="errorMessage">
             <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
-            is required.</p>
+            is required.</p> -->
           <input for="longitude" formControlName="longitude" type="text" class="input-latitude col-md-6 mt-3"
             placeholder="Longitude" (change)="bla()">
-          <p *ngIf="mapsForm.get('longitude').errors?.required  && this.submitted==true" class="errorMessage">
+          <!-- <p *ngIf="mapsForm.get('longitude').errors?.required  && this.submitted==true" class="errorMessage">
             <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
-            is required.</p>
+            is required.</p> -->
         </div>
       </div>
       <div class="alert-div mt-3 text-center">
@@ -81,7 +81,7 @@
             <img *ngFor='let url of images' [src]="url" height="50px" width="50px" style="margin: 3px;">
           </div>
           <div class="mt-1 error-message-div">
-            <p *ngIf="imageFiles.length == 0 && this.submitted == true" class="errorMessage"><img class="img-add"
+            <p *ngIf="imageFiles.length == null && this.submitted == true" class="errorMessage"><img class="img-add"
                 src="../../../assets/scalable-vector-graphics/exclamation.svg">
               This image is required.</p>
           </div>

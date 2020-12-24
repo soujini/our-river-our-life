@@ -10,6 +10,7 @@ import { SpinnerService } from '../../services/spinner.service';
 })
 export class AddBlogComponent implements OnInit {
   blogForm: FormGroup;
+  public submitted:boolean=false;
 
   featuredAdditionalVideosArray:any=[];
   featuredAdditionalVideos= [];
@@ -53,10 +54,11 @@ export class AddBlogComponent implements OnInit {
   }
   createblog() {
     // console.log(this.blogForm.value,this.imagefeaturedAdditionalPhotos,this.imagefeaturedPhoto);
-    this.orolService.createblog(this.blogForm.value,this.imagefeaturedAdditionalPhotos,this.imagefeaturedPhoto)
+    this.orolService.createblog(this.blogForm.value,this.imagefeaturedAdditionalPhotos,this.imagefeaturedPhoto,)
 // console.log(this.featuredAdditionalVideosArray.value);
 // console.log(this.blogForm.get('featuredAdditionalVideos').value);
   }
+
 
   getId(url) {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
