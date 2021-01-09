@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="d-flex justify-content-center">
+        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+            <button class="btn-custom-blue" mdbBtn type="button" rounded="true" mdbWavesEffect>Today </button>
+            <button class="btn-custom-blue" mdbBtn type="button" rounded="true" mdbWavesEffect>Weekly</button>
+            <button class="btn-custom-blue" mdbBtn type="button" rounded="true" mdbWavesEffect>Monthly</button>
+        </div>
+    </div>
+    <mdb-date-picker id="dp" [inline]="true" name="mydate" [options]="myDatePickerOptions" class="col-10"
+         type="button" rounded="true"  [placeholder]="'Custom Filter'" xngModel="model" required>
+    </mdb-date-picker>
+</div>

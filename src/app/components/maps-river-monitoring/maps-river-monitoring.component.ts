@@ -29,17 +29,9 @@ export class MapsRiverMonitoringComponent implements OnInit {
     }
   }
   mapClicked($event: MouseEvent) {
-    // alert("clicked");
-    // this.markers.push({
-    //   latitude: $event.coords.lat,
-    //   longitude: $event.coords.lng,
-    //   draggable: true
-    // });
   }
 
-  // markerDragEnd(m: marker, $event: MouseEvent) {
-  //   console.log('dragEnd', m, $event);
-  // }
+  
 
   getWaterTestDetails() {
     // var a = this.orolService.getFloodAlerts();

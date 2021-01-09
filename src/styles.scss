@@ -140,6 +140,9 @@ label{
 //   background: #fcfcfc;
 // }
 
+
+
+
 .formControl:focus {
   border: 2px solid #d3d3d6
 }
@@ -838,9 +841,7 @@ mdb-card-img img {
 #gallery-sm.carousel .carousel-control-prev-icon {
   visibility: hidden !important;
 }
-.agm-map-container-inner{
-  margin-top:-8px !important;
-}
+
 
 #maps-flood-watch .agm-map-container-inner{
   margin-top:0px !important;
@@ -887,6 +888,12 @@ mdb-card-img img {
 //     background-color: #34495e !important;
 //     color:yellowgreen !important;
 // }
+.agm-map-container-inner {
+ 
+  border-radius: 15px !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .gm-style {
     font: 400 11px 'Open Sans', sans-serif !important;
 }

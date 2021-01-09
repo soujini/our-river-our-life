@@ -1,0 +1,60 @@
+<!-- <div class="col-xs-12 ">
+  <div class="related-posts-heading " >
+      <div class="videos-gallery text-center"style="font-family: 'Open Sans', sans-serif;padding-top:35px; padding-bottom:35px;">
+ <h2><span style="color:#357ba0;font-weight: 800; color:#116bb5">BLOG POST</span>
+</h2>
+</div>
+<a class="btn btn-link heading-btn" href="/voices-from-the-river"> 
+  View all
+  </a>
+  </div>
+  <hr>
+  <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'" [animation]="'slide'">
+
+    <mdb-slide *ngFor="let blog of blogs">
+      
+        <div class="col-md-4 clearfix d-none d-md-block">
+            <div class="card">
+                <img class="img-fluid"  width= "476px" height= "316px" [src]="blog.img" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">{{blog.title}}</h4>
+                </div>
+            </div>
+        </div>
+       
+    </mdb-slide>
+  
+  </mdb-carousel>
+
+</div>  
+                       -->
+
+<div class="col-xs-12 " style="background-color: whitesmoke;">
+  <div class="related-posts-heading ">
+    <div class="videos-gallery text-center"
+      style="font-family: 'Open Sans', sans-serif;padding-top:35px; padding-bottom:35px;">
+      <h2><span style="color:#357ba0;font-weight: 800; color:#116bb5">BLOG POST</span>
+      </h2>
+    </div>
+    <a class="btn btn-link heading-btn" href="/voices-from-the-river">
+      View all
+    </a>
+  </div>
+  <hr>
+  
+</div>
+  <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+    [animation]="'slide'">
+    <mdb-carousel-item *ngFor="let item of slides; let i = index">
+      <div class="col-md-4" *ngFor="let card of item; let cardIndex = index">
+        <mdb-card class="my-1">
+          <mdb-card-img [src]="card.img" width="476px" height="316px" alt="Card image cap"></mdb-card-img>
+          <mdb-card-body>
+            <mdb-card-title>
+              <h4>{{card.title}}</h4>
+            </mdb-card-title>
+          </mdb-card-body>
+        </mdb-card>
+      </div>
+    </mdb-carousel-item>
+  </mdb-carousel>

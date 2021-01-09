@@ -96,8 +96,8 @@ top: 78px;
 }
 agm-map {
 
-    height: 400px;
-    width: 100% !important;
+    height: 500px;
+    // width: 100% !important;
    }
 
    .input-search{
@@ -169,11 +169,11 @@ margin:0px;
 
 }
 
-// @media (min-width: 1200px){
-// .container {
-//     max-width: 100%;
-// }
-// }
+@media (min-width: 1200px){
+.container {
+    // max-width: 100%;
+}
+}
 
 .uploader input {
     display: none;

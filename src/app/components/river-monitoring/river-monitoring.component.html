@@ -4,7 +4,7 @@
       [contentClass]="'card'" class="classic-tabs xtext-center">
       <mdb-tab heading="Create Report" style="xheight:500px;margin-left:-35px; margin-right:-35px">
         <div class="row" class="bg-white" style="xheight:600px">
-          <mdb-stepper #river_monitoring_stepper id="river_monitoring_stepper" class="col-12">
+          <mdb-stepper #river_monitoring_stepper id="river_monitoring_stepper" xstepChange="onStepChange($event)" class="col-12">
 
             <mdb-step name="General Information" xstepForm="activityForm">
               <form class="container-stepper-form" [formGroup]="activityForm">

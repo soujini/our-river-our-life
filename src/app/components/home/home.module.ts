@@ -10,6 +10,8 @@ import { MapsViewComponent } from '../../components/maps-view/maps-view.componen
 import { MapsFloodWatchComponent } from '../../components/maps-flood-watch/maps-flood-watch.component';
 import { MapsRiverMonitoringComponent } from '../../components/maps-river-monitoring/maps-river-monitoring.component';
 import { MapsFloraComponent } from '../../components/maps-flora/maps-flora.component';
+import { FilterDateComponent } from '../../components/filter-date/filter-date.component';
+
 import { MapsFaunaComponent } from '../../components/maps-fauna/maps-fauna.component';
 import { VideosGalleryComponent } from '../../components/videos-gallery/videos-gallery.component';
 import { ContributorsComponent } from '../../components/contributors/contributors.component';
@@ -19,6 +21,7 @@ import { GoogleMapsModule } from '@angular/google-maps'
 import { AgmCoreModule } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { RecentPostComponent } from '../../components/recent-post/recent-post.component';
 
 @NgModule({
   imports: [
@@ -54,8 +57,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     VideosGalleryComponent,
     ContributorsComponent,
     MapsFloodWatchComponent,
+    RecentPostComponent,
     MapsRiverMonitoringComponent,
     MapsFloraComponent,
+    FilterDateComponent,
     MapsFaunaComponent
   ],
   declarations: [
@@ -67,8 +72,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     VideosGalleryComponent,
     ContributorsComponent,
     MapsFloodWatchComponent,
+    RecentPostComponent,
     MapsRiverMonitoringComponent,
     MapsFloraComponent,
+    FilterDateComponent,
     MapsFaunaComponent
   ],
 })

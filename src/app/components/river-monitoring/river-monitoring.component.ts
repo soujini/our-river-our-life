@@ -315,6 +315,7 @@ export class RiverMonitoringComponent implements OnInit {
 
   }
   move(index: number) {
+    
     // this.river_monitoring_stepper.setNewActiveStep(1)
     // this.river_monitoring_stepper.selectedIndex = index;
   }

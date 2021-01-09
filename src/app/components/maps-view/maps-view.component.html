@@ -1,25 +1,34 @@
 <div class="text-center banner">
-<div class="row" style="display:flex; justify-content:center">
-  <button [ngClass]="mapsMode == 1 ? 'btn-custom-green' : 'btn-custom-blue'" mdbBtn type="button" rounded="true" (click)="selectMap(1)"
-  mdbWavesEffect>FLOOD WATCH</button>
-  <button [ngClass]="mapsMode == 2 ? 'btn-custom-green' : 'btn-custom-blue'" mdbBtn type="button" rounded="true" (click)="selectMap(2)"
-  mdbWavesEffect>RIVER MONITORING</button>
-  <button [ngClass]="mapsMode == 3 ? 'btn-custom-green' : 'btn-custom-blue'" mdbBtn type="button" rounded="true" (click)="selectMap(3)"
-  mdbWavesEffect>FLORA</button>
-  <button [ngClass]="mapsMode == 4 ? 'btn-custom-green' : 'btn-custom-blue'" mdbBtn type="button" rounded="true" (click)="selectMap(4)"
-  mdbWavesEffect>FAUNA</button>
+  <div class="row" style="display:flex; justify-content:center">
+    <button [ngClass]="mapsMode == 1 ? 'btn-custom-green' : 'btn-custom-blue'" mdbBtn type="button" rounded="true"
+      (click)="selectMap(1)" mdbWavesEffect>FLOOD WATCH</button>
+    <button [ngClass]="mapsMode == 2 ? 'btn-custom-green' : 'btn-custom-blue'" mdbBtn type="button" rounded="true"
+      (click)="selectMap(2)" mdbWavesEffect>RIVER MONITORING</button>
+    <button [ngClass]="mapsMode == 3 ? 'btn-custom-green' : 'btn-custom-blue'" mdbBtn type="button" rounded="true"
+      (click)="selectMap(3)" mdbWavesEffect>FLORA</button>
+    <button [ngClass]="mapsMode == 4 ? 'btn-custom-green' : 'btn-custom-blue'" mdbBtn type="button" rounded="true"
+      (click)="selectMap(4)" mdbWavesEffect>FAUNA</button>
+  </div>
 </div>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 ">
+     <app-filter-date></app-filter-date>
+    </div>
 
-<div *ngIf="this.mapsMode == 1">
-  <app-maps-flood-watch></app-maps-flood-watch>
-</div>
-<div *ngIf="this.mapsMode == 2">
-  <app-maps-river-monitoring></app-maps-river-monitoring>
-</div>
-<div *ngIf="this.mapsMode == 3">
-  <app-maps-flora></app-maps-flora>
-</div>
-<div *ngIf="this.mapsMode == 4">
-  <app-maps-fauna></app-maps-fauna>
+    <div class="col-md-10">
+      <div *ngIf="this.mapsMode == 1">
+        <app-maps-flood-watch></app-maps-flood-watch>
+      </div>
+      <div *ngIf="this.mapsMode == 2">
+        <app-maps-river-monitoring></app-maps-river-monitoring>
+      </div>
+      <div *ngIf="this.mapsMode == 3">
+        <app-maps-flora></app-maps-flora>
+      </div>
+      <div *ngIf="this.mapsMode == 4">
+        <app-maps-fauna></app-maps-fauna>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-<div>
+<div class="container">
  <agm-map
 [latitude]="lat"
 [longitude]="lng"
@@ -8,8 +8,7 @@
 [zoomControl]="true"
 [fitBounds]="true"
 (mapClick)="mapClicked($event)">
-<agm-marker-cluster  minimumClusterSize= "100"
-imagePath="../../assets/jpg/umeed_mistry.jpg">
+<agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/gh-pages/images/m">
 <agm-marker [agmFitBounds]="true" *ngFor="let m of markers; let i = index"
 (markerClick)="clickedMarker(m.location, i)"
 [latitude]="m.latitude"

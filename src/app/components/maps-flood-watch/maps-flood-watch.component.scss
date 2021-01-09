@@ -95,7 +95,8 @@
   top: 78px;
 }
 agm-map {
-  height: 400px;
+  height: 500px;
+
   // width: 100% !important;
 }
 
@@ -167,12 +168,16 @@ p {
   // border-top:5px solid gray;
 
 }
+.btn-custom-blue{
+  background-color: #34495e;
+  color:white;
+}
 
-// @media (min-width: 1200px){
-// .container {
-//     max-width: 100%;
-// }
-// }
+@media (min-width: 1200px){
+.container {
+    // max-width: 100%;
+}
+}
 
 .uploader input {
   display: none;

@@ -3,8 +3,8 @@
     <mdb-tabset id="flora_fauna_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'"
       [contentClass]="'card'" class="classic-tabs">
       <mdb-tab heading="Edit Profile" style="margin-left:-35px; margin-right:-35px">
-        <div class="row" class="bg-white" xstyle="height:460px;">
-          <form class="content form form-horizontal" [formGroup]="profileForm"
+        <div class="row py-3 px-md-5" class="bg-white" xstyle="height:460px;">
+          <form class="content form form-horizontal d-inline-block"  [formGroup]="profileForm"
             style="padding-left:350px; padding-right:350px; padding-top:50px; padding-bottom:50px;">
             <div class="row mt-2" style="background-color:white;">
               <div class="col-12">
@@ -36,7 +36,7 @@
                   </div>
                 </div>
                 <div class="row formGroup mt-1">
-                  <div class="col-md-6">
+                  <div class="col-sm-6">
                     <div>
                     <label for="firstName" class="text-left">First Name</label>
                     <input mdbInput id="first_name" value='' type="text" class="form-control"
@@ -50,7 +50,7 @@
                       </div>
                       
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-sm-6">
                     <label for="lastName" class="text-left">Last Name (optional)</label>
                     <input mdbInput id="last_name" type="text" class="form-control" formControlName="lastName"
                       placeholder="Last Name">
