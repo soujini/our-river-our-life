@@ -28,7 +28,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 // import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 
 // import { BannerWavesComponent } from './components/banner-waves/banner-waves.component';
-
+import {NgxImageCompressService} from 'ngx-image-compress';
 import { AuthService } from "../app/shared/services/auth.service";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
@@ -100,7 +100,7 @@ import { NgOtpInputModule } from 'ng-otp-input';
     // }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
-  providers: [AuthService],
+  providers: [AuthService,NgxImageCompressService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

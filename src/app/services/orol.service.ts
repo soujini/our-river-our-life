@@ -227,7 +227,8 @@ export class OrolService {
     );
   }
 
-  public addFlora(x, images: File[]) {
+  public addFlora(x, images:File) {
+    console.log(images);
     var user = JSON.parse(localStorage.getItem('User'));
 
     this.spinnerService.setSpinner(true);
@@ -235,9 +236,9 @@ export class OrolService {
       Authorization: 'Bearer ' + user.accessToken
     });
     const form = new FormData;
-    for (var i = 0; i < images.length; i++) {
-      form.append('flora', images[i]);
-    }
+    // for (var i = 0; i < images.length; i++) {
+      form.append('flora', images);
+    // }
 
     form.append("userId", x.userId);
     form.append("location", x.location);
@@ -260,16 +261,17 @@ export class OrolService {
     );
   }
 
-  public addFauna(x, images: File[]) {
+  public addFauna(x, images:File) {
+    console.log(images);
     var user = JSON.parse(localStorage.getItem('User'));
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({
       Authorization: 'Bearer ' + user.accessToken
     });
     const form = new FormData;
-    for (var i = 0; i < images.length; i++) {
-      form.append('fauna', images[i]);
-    }
+    // for (var i = 0; i < images.length; i++) {
+      form.append('fauna', images);
+    // }
 
     form.append("userId", x.userId);
     form.append("location", x.location);
