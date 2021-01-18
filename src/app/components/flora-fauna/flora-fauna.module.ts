@@ -10,6 +10,7 @@ import { FloraFaunaComponent } from './flora-fauna.component';
  import { GoogleMapsModule } from '@angular/google-maps'
  import { AgmCoreModule } from '@agm/core';
  import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
  import { MDBBootstrapModulesPro, CarouselModule,CollapseModule , WavesModule,CardsModule, ButtonsModule,LightBoxModule,ModalModule,TabsModule} from 'ng-uikit-pro-standard';
 
@@ -20,6 +21,7 @@ import { FloraFaunaComponent } from './flora-fauna.component';
   declarations: [FloraFaunaComponent],
   imports: [
     CommonModule,
+    InfiniteScrollModule,
     FloraFaunaRoutingModule,
     MatAutocompleteModule,
     MatFormFieldModule,

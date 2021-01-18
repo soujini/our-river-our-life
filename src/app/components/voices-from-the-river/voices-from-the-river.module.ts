@@ -5,6 +5,8 @@ import { VoicesFromTheRiverRoutingModule } from './voices-from-the-river-routing
 import { VoicesFromTheRiverComponent } from './voices-from-the-river.component';
 import {  ModalModule, WavesModule , InputsModule, ButtonsModule,CarouselModule} from 'ng-uikit-pro-standard';
 import {AddBlogComponent} from '../add-blog/add-blog.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 @NgModule({
   declarations: [
     VoicesFromTheRiverComponent,
@@ -19,7 +21,8 @@ import {AddBlogComponent} from '../add-blog/add-blog.component';
     CarouselModule,
     ModalModule,
     WavesModule,
-    ButtonsModule
+    ButtonsModule,
+    InfiniteScrollModule
   ],
   exports:[
     VoicesFromTheRiverComponent,

@@ -1,101 +1,102 @@
-<div class="container-fluid">
-  <form class="content form form-horizontal d-inline-block" [formGroup]="blogForm"
-    style="padding-left:350px; padding-right:350px;">
-    
+<div class="content">
+  <form class=" form form-horizontal " [formGroup]="blogForm" style="padding-left:350px; padding-right:350px;">
+
     <h2 class="text-center h1-responsive font-weight-bold my-3">Add Blog</h2>
-<div style="padding: 20px;">
-    <div class="row">
-      <div class="col-md-12 mb-2">
-        <label for="templateType" class="text-left">Type</label>
-        <select id="drop" class="custom-select" formControlName="templateType">
-          <option value="" selected disabled>Select Type</option>
-          <option value="1">Template 1</option>
-          <option value="2">Template 2</option>
-        </select><br />
+    <div style="padding: 20px;">
+      <div class="row">
+        <div class="col-md-12 mb-2">
+          <label for="templateType" class="text-left">Type</label>
+          <select id="drop" class="custom-select" formControlName="templateType">
+            <option value="" selected disabled>Select Type</option>
+            <option value="1">Template 1</option>
+            <option value="2">Template 2</option>
+          </select><br />
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 mb-2">
-        <label for="title" class="text-left">Title</label>
-        <input mdbInput name="title" type="text" class="form-control" formControlName="featuredTitle"
-          placeholder="Enter title">
+      <div class="row">
+        <div class="col-md-12 mb-2">
+          <label for="title" class="text-left">Title</label>
+          <input mdbInput name="title" type="text" class="form-control" formControlName="featuredTitle"
+            placeholder="Enter title">
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 mb-2">
-        <label for="featuredDescription" class="text-left">Description</label>
-        <textarea name="description" type="text" class="form-control" class="form-control"
-          formControlName="featuredDescription" placeholder="Description">
+      <div class="row">
+        <div class="col-md-12 mb-2">
+          <label for="featuredDescription" class="text-left">Description</label>
+          <textarea name="description" type="text" class="form-control" class="form-control"
+            formControlName="featuredDescription" placeholder="Description">
         </textarea>
-      </div>
-    </div>
-    <div>
-      <label for="featuredPhoto" class=" text-left">Featured Photo </label>
-      <div class="row mb-2">
-        <div class="col-md-3 mt-0">
-          <div style="height:150px; background-color:#f7f7f7">
-            <span class="helper"></span><img [src]="featuredPhoto" style="margin: 3px;"
-              style="image-orientation: none;width:100%; height:100%; vertical-align:middle">
-          </div>
         </div>
-        <div class="image_container mt-0 col-md-9">
-          <div class="form-group ">
-            <label class="custom-file-upload">
-              <input id="file" type="file" class="form-control" (change)="onFeaturedPhoto($event)">Upload
-            </label>
+      </div>
+      <div>
+        <label for="featuredPhoto" class=" text-left">Featured Photo </label>
+        <div class="row mb-2">
+          <div class="col-md-3 mt-0">
+            <div style="height:150px; background-color:#f7f7f7">
+              <span class="helper"></span>
+              <img [src]="featuredPhoto" style="margin: 3px;"
+                style="image-orientation: none;width:100%; height:100%; vertical-align:middle">
+            </div>
+          </div>
+          <div class="image_container mt-0 col-md-9">
+            <div class="form-group ">
+              <label class="custom-file-upload">
+                <input id="file" type="file" class="form-control" (change)="onFeaturedPhoto($event)">Upload
+              </label>
 
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="text-left mb-2">
-      <label for="featuredAdditionalPhotos" class="text-left">Featured Additional Photos </label>
-      <img *ngFor='let url of featuredAdditionalPhotos' [src]="url" height="50px" width="50px" style="margin: 3px;">
-      <div xclass="row">
-        <label class="custom-file-uploader">
-          <input id="file" type="file" class="form-control" multiple (change)="onFeaturedAdditionalPhoto($event)">Upload
-        </label>
+      <div class="text-left mb-2">
+        <label for="featuredAdditionalPhotos" class="text-left">Featured Additional Photos </label>
+        <img *ngFor='let url of featuredAdditionalPhotos' [src]="url" height="50px" width="50px" style="margin: 3px;">
+        <div xclass="row">
+          <label class="custom-file-uploader">
+            <input id="file" type="file" class="form-control" multiple
+              (change)="onFeaturedAdditionalPhoto($event)">Upload
+          </label>
+        </div>
       </div>
-    </div>
-    <div class="mb-2 col-xs-12" *ngIf="this.blogForm.get('templateType').value == 2">
-      <label for="featuredVideo" class="control-label">Featured Videos</label>
-      <div class="input-group col-xs-12">
-        <div class="input-group xmb-3">
+      <div class="mb-2 col-xs-12" *ngIf="this.blogForm.get('templateType').value == 2">
+        <label for="featuredVideo" class="control-label">Featured Videos</label>
+        <div class="input-group col-xs-12">
+          <div class="input-group xmb-3">
+            <div class="input-group-prepend">
+              <span id="featuredVideo" class="input-group-text md-addon"
+                style="border-left:1px solid #c9c9c9">https://</span>
+            </div>
+            <input mdbInput type="text" class="form-control" formControlName="featuredVideo" id="inlineFormInputGroupMD"
+              placeholder="Enter the Featured Videos URL">
+          </div>
+        </div>
+      </div>
+      <div class="mb-2 col-xs-12" formArrayName="featuredAdditionalVideos"
+        *ngIf="this.blogForm.get('templateType').value == 2">
+        <label for="featuredAdditionalVideos" class="control-label">Featured Additional Videos</label>
+        <div *ngFor="let su of blogForm.get('featuredAdditionalVideos'); let i=index" [formGroupName]="i"
+          class="input-group attach_link mb-2">
           <div class="input-group-prepend">
-            <span id="featuredVideo" class="input-group-text md-addon"
-              style="border-left:1px solid #c9c9c9">https://</span>
+            <span id="featuredAdditionalVideos" class="input-group-text" xclass="md-addon">https://</span>
           </div>
-          <input mdbInput type="text" class="form-control" formControlName="featuredVideo" id="inlineFormInputGroupMD"
-            placeholder="Enter the Featured Videos URL">
-        </div>
-      </div>
-    </div>
-    <div class="mb-2 col-xs-12" formArrayName="featuredAdditionalVideos"
-      *ngIf="this.blogForm.get('templateType').value == 2">
-      <label for="featuredAdditionalVideos" class="control-label">Featured Additional Videos</label>
-      <div *ngFor="let su of blogForm.get('featuredAdditionalVideos'); let i=index" [formGroupName]="i"
-        class="input-group attach_link mb-2">
-        <div class="input-group-prepend">
-          <span id="featuredAdditionalVideos" class="input-group-text" xclass="md-addon">https://</span>
-        </div>
-        <input type="text" class="form-control input-color append" formControlName="featuredAdditionalVideos"
-          placeholder=" Enter the Featured Additional Videos URL " id="inlineFormInputGroupMD">
-        <div class="input-group-append">
-          <span class="input-group-text">
-            <button *ngIf="this.blogForm.get('featuredAdditionalVideos')['controls'][i]['controls'].value != ''"
-              class="trash bg" (click)="removeScreenshotURL(i)"><img class="trash-icon"
-                src="../../assets/scalable-vector-graphics/trash_icon_grey.svg"></button>
-          </span>
-        </div>
+          <input type="text" class="form-control input-color append" formControlName="featuredAdditionalVideos"
+            placeholder=" Enter the Featured Additional Videos URL " id="inlineFormInputGroupMD">
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <button *ngIf="this.blogForm.get('featuredAdditionalVideos')['controls'][i]['controls'].value != ''"
+                class="trash bg" (click)="removeScreenshotURL(i)"><img class="trash-icon"
+                  src="../../assets/scalable-vector-graphics/trash_icon_grey.svg"></button>
+            </span>
+          </div>
 
+        </div>
+        <button class="col-xs-12 btn_white_dashed" (click)="addScreenshotURL()">+ Additional Videos </button>
       </div>
-      <button class="col-xs-12 btn_white_dashed" (click)="addScreenshotURL()">+ Additional Videos </button>
+      <div class="text-center">
+        <button type="button" class="btn xmt-2 btn-primary btn-rounded" (click)="createblog()"
+          style="width:200px">Submit</button>
+      </div>
     </div>
-    <div class="text-center">
-      <button type="button" class="btn xmt-2 btn-primary btn-rounded" (click)="createblog()"
-        style="width:200px">Submit</button>
-    </div>
-  </div>
 
   </form>
 </div>

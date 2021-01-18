@@ -5,42 +5,44 @@
 
       <mdb-tab heading="Flora" style="margin-left: -35px; margin-right: -35px;">
 
-
-        <div class="outer-block" *ngIf="this.flora.length > 0" style="background-color:white;padding:50px">
-          <div class="items" *ngFor="let f of flora">
-            <mdb-card cascade="true" wider="true">
-              <mdb-card-body cascade="true" class="text-center">
-                <img *ngIf="f.img" class="ng-thumb" [src]="f.img" alt="Image"
-                  style="-webkit-transform: rotate(360deg);image-orientation: none;
+        <div class="search-results" style="background-color:white;padding:50px" infiniteScroll
+          [infiniteScrollDistance]='2' [infiniteScrollThrottle]='50' [scrollWindow]="false" (scrolled)="onScroll()">
+          <div class="outer-block" *ngIf="this.flora.length > 0">
+            <div class="items" *ngFor="let f of flora">
+              <mdb-card cascade="true" wider="true">
+                <mdb-card-body cascade="true" class="text-center">
+                  <img *ngIf="f.img" class="ng-thumb" [src]="f.img" alt="Image"
+                    style="-webkit-transform: rotate(360deg);image-orientation: none;
                 -moz-transform: rotate(360deg);-ms-transform: rotate(360deg);-o-transform: rotate(360deg);transform: rotate(360deg);">
-                <div *ngIf="!f.img" class="spinner"></div>
-                <mdb-card-text>
-                  <div class="card-text">
-                    <div *ngIf="f.location != ''" class="d-flex mt-1">
-                      <label class="label-ff">Location : </label>&nbsp;<label class="label-value">{{
-                        f.location}}</label>
+                  <div *ngIf="!f.img" class="spinner"></div>
+                  <mdb-card-text>
+                    <div class="card-text">
+                      <div *ngIf="f.location != ''" class="d-flex mt-1">
+                        <label class="label-ff">Location : </label>&nbsp;<label class="label-value">{{
+                          f.location}}</label>
+                      </div>
+                      <div *ngIf="f.commonName != ''" class="d-flex">
+                        <label class="label-ff">Common Name : </label>&nbsp;<label class="label-value">{{
+                          f.commonName}}</label>
+                      </div>
+                      <div *ngIf="f.scientificName != ''" class="d-flex">
+                        <label class="label-ff">Scientific Name : </label>&nbsp;<label
+                          class="label-value">{{f.scientificName}}</label>
+                      </div>
+                      <div *ngIf="f.localName != ''" class="d-flex">
+                        <label class="label-ff">Local Name : </label>&nbsp;<label
+                          class="label-value">{{f.localName}}</label>
+                      </div>
+                      <div *ngIf="f.contributorName != ''" class="d-flex">
+                        <label class="label-ff">Contributor : </label>&nbsp;<label
+                          class="label-value">{{f.contributorName}}</label>
+                      </div>
                     </div>
-                    <div *ngIf="f.commonName != ''" class="d-flex">
-                      <label class="label-ff">Common Name : </label>&nbsp;<label class="label-value">{{
-                        f.commonName}}</label>
-                    </div>
-                    <div *ngIf="f.scientificName != ''" class="d-flex">
-                      <label class="label-ff">Scientific Name : </label>&nbsp;<label
-                        class="label-value">{{f.scientificName}}</label>
-                    </div>
-                    <div *ngIf="f.localName != ''" class="d-flex">
-                      <label class="label-ff">Local Name : </label>&nbsp;<label
-                        class="label-value">{{f.localName}}</label>
-                    </div>
-                    <div *ngIf="f.contributorName != ''" class="d-flex">
-                      <label class="label-ff">Contributor : </label>&nbsp;<label
-                        class="label-value">{{f.contributorName}}</label>
-                    </div>
-                  </div>
-                </mdb-card-text>
+                  </mdb-card-text>
 
-              </mdb-card-body>
-            </mdb-card>
+                </mdb-card-body>
+              </mdb-card>
+            </div>
           </div>
         </div>
         <div *ngIf="this.flora.length == 0" class="row row mt-2"
@@ -54,46 +56,49 @@
             <p class="mt-4">Please click on <strong>'+ NEW'</strong> to add a Flora.</p>
           </div>
         </div>
+
       </mdb-tab>
 
       <mdb-tab heading="Fauna" style="margin-left: -35px; margin-right: -35px; ">
-
-        <div class="outer-block" *ngIf="this.fauna.length > 0" style="background-color:white;padding:50px">
-          <div class="items" *ngFor="let f of fauna">
-            <mdb-card cascade="true" wider="true">
-              <mdb-card-body cascade="true" class="text-center">
-                <img *ngIf="f.img" style="image-orientation: none;"
-                  style="-webkit-transform: rotate(360deg);image-orientation: none;
+        <div class="search-results" style="background-color:white;padding:50px" infiniteScroll
+          [infiniteScrollDistance]='2' [infiniteScrollThrottle]='50' [scrollWindow]="false" (scrolled)="onScroll()">
+          <div class="outer-block" *ngIf="this.fauna.length > 0">
+            <div class="items" *ngFor="let f of fauna">
+              <mdb-card cascade="true" wider="true">
+                <mdb-card-body cascade="true" class="text-center">
+                  <img *ngIf="f.img" style="image-orientation: none;"
+                    style="-webkit-transform: rotate(360deg);image-orientation: none;
                 -moz-transform: rotate(360deg);-ms-transform: rotate(360deg);-o-transform: rotate(360deg);transform: rotate(360deg);" class="ng-thumb" [src]="f.img"
-                  alt="Image">
-                <div *ngIf="!f.img" class="spinner"></div>
-                <mdb-card-text>
-                  <div class="card-text">
-                    <div *ngIf="f.location != ''" class="d-flex mt-1">
-                      <label class="label-ff">Location : </label>&nbsp;<label class="label-value">{{
-                        f.location}}</label>
+                    alt="Image">
+                  <div *ngIf="!f.img" class="spinner"></div>
+                  <mdb-card-text>
+                    <div class="card-text">
+                      <div *ngIf="f.location != ''" class="d-flex mt-1">
+                        <label class="label-ff">Location : </label>&nbsp;<label class="label-value">{{
+                          f.location}}</label>
+                      </div>
+                      <div *ngIf="f.commonName != ''" class="d-flex mt-1">
+                        <label class="label-ff">Common Name : </label>&nbsp;<label class="label-value">{{
+                          f.commonName}}</label>
+                      </div>
+                      <div *ngIf="f.scientificName != ''" class="d-flex">
+                        <label class="label-ff">Scientific Name : </label>&nbsp;<label
+                          class="label-value">{{f.scientificName}}</label>
+                      </div>
+                      <div *ngIf="f.localName != ''" class="d-flex">
+                        <label class="label-ff">Local Name : </label>&nbsp;<label
+                          class="label-value">{{f.localName}}</label>
+                      </div>
+                      <div *ngIf="f.contributorName != ''" class="d-flex">
+                        <label class="label-ff">Contributor : </label>&nbsp;<label
+                          class="label-value">{{f.contributorName}}</label>
+                      </div>
                     </div>
-                    <div *ngIf="f.commonName != ''" class="d-flex mt-1">
-                      <label class="label-ff">Common Name : </label>&nbsp;<label class="label-value">{{
-                        f.commonName}}</label>
-                    </div>
-                    <div *ngIf="f.scientificName != ''" class="d-flex">
-                      <label class="label-ff">Scientific Name : </label>&nbsp;<label
-                        class="label-value">{{f.scientificName}}</label>
-                    </div>
-                    <div *ngIf="f.localName != ''" class="d-flex">
-                      <label class="label-ff">Local Name : </label>&nbsp;<label
-                        class="label-value">{{f.localName}}</label>
-                    </div>
-                    <div *ngIf="f.contributorName != ''" class="d-flex">
-                      <label class="label-ff">Contributor : </label>&nbsp;<label
-                        class="label-value">{{f.contributorName}}</label>
-                    </div>
-                  </div>
-                </mdb-card-text>
+                  </mdb-card-text>
 
-              </mdb-card-body>
-            </mdb-card>
+                </mdb-card-body>
+              </mdb-card>
+            </div>
           </div>
         </div>
         <div *ngIf="this.fauna.length == 0" class="row mt-2" style="height:300px; background-color:white;">
@@ -204,14 +209,15 @@
               <div class="col-md-3 mt-0">
                 <div style="height:150px; background-color:#f7f7f7">
                   <span class="helper"></span>
-                    <img  [src]="imageURL"  style="margin: 3px;"
-                    style="image-orientation: none;width:100%; height:100%; vertical-align:middle">          
-                    <br> Original: Size: {{sizeOfOriginalImage | number : '1.2-2'}}MB
-                    <br> Compressed: Size: {{sizeOFCompressedImage | number : '1.2-2'}}MB<br>                </div>
+                  <img *ngIf="imgResultAfterCompress" [src]="imgResultAfterCompress" style="margin: 3px;"
+                    style="width:100%; height:100%; vertical-align:middle"
+                    alt="">
+                </div>
               </div>
               <div class="image_container mt-0 col-md-9">
                 <div class="form-group ">
-                  <input type='file' class="form-control w-100" (change)="onSelectFile($event)" style="height:45px;">
+                  <button type="button" class="btn upload-button btn-rounded" (click)="compressFile()"
+                    style="width:200px">Upload Image</button>
                   <div class="error-message-div mt-1">
                     <p *ngIf="imageFile == null && this.submitted == true" class="errorMessage"><img class="img-add"
                         src="../../../assets/scalable-vector-graphics/exclamation.svg"> Please select a photo.</p>
@@ -220,13 +226,6 @@
               </div>
             </div>
 
-            <!-- <input type="file" accept=".jpg,.png,.jpeg" id="image-input" (change)="selectFile($event)"> <br><br>
-            Original: Size: {{sizeOfOriginalImage | number : '1.2-2'}}MB<br>
-
-            <img [src]="localUrl"  height="200px"><br><br><br> 
-              Compressed: Size: {{sizeOFCompressedImage | number : '1.2-2'}}MB <br>
-              <img [src]="localCompressedURl" height="150px"> -->
-              
             <div class="text-center">
               <button type="button" class="btn xmt-2 btn-primary btn-rounded" (click)="addFloraFauna()"
                 style="width:200px">Submit</button>
@@ -237,4 +236,3 @@
     </mdb-tabset>
   </div>
 </div>
-

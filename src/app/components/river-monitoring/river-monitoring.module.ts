@@ -13,6 +13,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { GoogleMapsModule } from '@angular/google-maps'
 import { AgmCoreModule } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
     RiverMonitoringRoutingModule,
      MatListModule,
     MatAutocompleteModule,
+    InfiniteScrollModule,
     MatCheckboxModule,
     MatFormFieldModule,
     AgmJsMarkerClustererModule,

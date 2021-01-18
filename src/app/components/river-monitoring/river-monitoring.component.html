@@ -634,10 +634,13 @@
             <div class="text-center">
               <h2 class="h1-responsive font-weight-bold xmy-3">Certificate URL</h2>
              </div>
+             <div class="search-results" infiniteScroll [infiniteScrollDistance]='2' [infiniteScrollThrottle]='10'
+             [scrollWindow]="false" (scrolled)="onScroll()">
             <div class="col-12 mt-4 text-left">
               <ul style="list-style-type:none" *ngFor="let report of reports">
                 <li><a [href]="report.certificateURL" target="_blank">{{report.certificateURL}}</a></li>
                 </ul>
+            </div>
             </div>
             </div>
 

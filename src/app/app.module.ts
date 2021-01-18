@@ -26,6 +26,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 // import { GoogleMapsModule } from '@angular/google-maps'
 // import { AgmCoreModule } from '@agm/core';
 // import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
+// import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 // import { BannerWavesComponent } from './components/banner-waves/banner-waves.component';
 import {NgxImageCompressService} from 'ngx-image-compress';
@@ -76,7 +77,8 @@ import { NgOtpInputModule } from 'ng-otp-input';
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     // GoogleMapsModule,
-    BrowserModule,
+    BrowserModule,    
+    // InfiniteScrollModule,
     AppRoutingModule,
     MatToolbarModule,
     // MatAutocompleteModule,

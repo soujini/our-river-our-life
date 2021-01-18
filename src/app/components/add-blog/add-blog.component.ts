@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
 import { OrolService } from '../../services/orol.service';
 import { SpinnerService } from '../../services/spinner.service';
-
+import {NgxImageCompressService} from 'ngx-image-compress';
 @Component({
   selector: 'app-add-blog',
   templateUrl: './add-blog.component.html',
@@ -14,13 +14,14 @@ export class AddBlogComponent implements OnInit {
 
   featuredAdditionalVideosArray:any=[];
   featuredAdditionalVideos= [];
-  featuredPhoto= "../../../assets/scalable-vector-graphics/flood-watch.svg";
+  // featuredPhoto= "../../../assets/scalable-vector-graphics/flood-watch.svg";
   public imagefeaturedPhoto: File[] = [];
-
+  imgResultAfterCompress:string;
+  featuredPhoto:string;
   featuredAdditionalPhotos = [];
   public imagefeaturedAdditionalPhotos: File[] = [];
 
-  constructor(private fb: FormBuilder, private orolService: OrolService,
+  constructor(private fb: FormBuilder, private orolService: OrolService,private imageCompress: NgxImageCompressService,
     private spinnerService: SpinnerService) {
     this.createForm();
     this.featuredAdditionalVideosArray= this.blogForm.controls.featuredAdditionalVideos as FormArray;
@@ -96,6 +97,7 @@ export class AddBlogComponent implements OnInit {
     }
 
   }
+
 
 
 }

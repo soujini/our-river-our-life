@@ -14,11 +14,12 @@ import { NgxImageCompressService } from 'ngx-image-compress';
   styleUrls: ['./flora-fauna.component.scss']
 })
 export class FloraFaunaComponent implements OnInit {
+  pageNumber = 1;
+
   @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
   public submitted: boolean = false;
   public searchControl: FormControl;
-  public imageFile: File[] = [];
-  public imageFile2: File;
+  public imageFile: File;
   public typeOptions = [
     { value: '1', label: 'Flora' },
     { value: '2', label: 'Fauna' },
@@ -27,22 +28,22 @@ export class FloraFaunaComponent implements OnInit {
   resource: any;
   fauna: any = [];
   flora: any = [];
-  imageURL: any = "../../../assets/scalable-vector-graphics/flood-watch.svg";
   images = [
   ];
+
   geocoder: any;
   centerLoc: any = {};
   floraFaunaForm: FormGroup;
-  sizeOfOriginalImage:number;
-  sizeOFCompressedImage:number;
-  imgResultAfterCompress:string;
-  localCompressedURl:any;
-  
+  imgResultBeforeCompress: string;
+  imgResultAfterCompress: string;
+
   constructor(private fb: FormBuilder, private orolService: OrolService, private spinnerService: SpinnerService,
-    public router: Router, private http: HttpClient,private imageCompress: NgxImageCompressService,
+    public router: Router, private http: HttpClient, private imageCompress: NgxImageCompressService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone) {
     this.createForm();
+    // this.pageNumber=1;
+
   }
 
   ngOnInit() {
@@ -115,64 +116,41 @@ export class FloraFaunaComponent implements OnInit {
       // alert("Geolocation is not supported by this browser.");
     }
   }
-   // onSelectFile(event) {
-  //   if (event.target.files && event.target.files[0]) {
-  //     var length = event.target.files.length;
-  //     for (let i = 0; i < event.target.files.length; i++) {
-  //       this.imageFile.push(event.target.files[i]);
-  //       var reader = new FileReader();
-  //       reader.onload = (event:any) => {
-  //         this.imageURL = event.target.result;
-  //         this.image.push(event.target.result);
-  //       }
-  //       reader.readAsDataURL(event.target.files[i]);
-  //     }
-  //   }
 
-  // }
 
-  onSelectFile(event) {
-    var fileName: any;
-    this.imageFile = event.target.files[0];
-    console.log(this.imageFile);
-    fileName = this.imageFile['name'];
-    if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.imageURL = event.target.result;
-        this.compressFile(this.imageURL,fileName)
-      }
-      reader.readAsDataURL(event.target.files[0]);
+  dataURLtoFile(dataurl, filename) {
+
+    var arr = dataurl.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
     }
+
+    return new File([u8arr], filename, { type: mime });
   }
- 
-  compressFile(imageURL, fileName) {
+
+  compressFile() {
     var orientation = -1;
-    this.sizeOfOriginalImage = this.imageCompress.byteCount(imageURL) / (1024 * 1024);
-    this.imageCompress.compressFile(imageURL, orientation, 50, 50).then(
-      result => {
-        this.imgResultAfterCompress = result;
-        this.localCompressedURl = result;
-        this.sizeOFCompressedImage = this.imageCompress.byteCount(result) / (1024 * 1024);
-        console.log(this.sizeOFCompressedImage)
+    this.imageCompress.uploadFile().then(({ image }) => {
 
-        const imageName = fileName;// call method that creates a blob from dataUri
-        const imageBlob = this.dataURItoBlob(this.imgResultAfterCompress.split(',')[1]); //imageFile created below is the new compressed file which can be send to API in form data
-        this.imageFile2 = new File([result], imageName, { type: 'image/jpeg' });
-        alert(typeof(result));
-      });
-  }
-  dataURItoBlob(dataURI) {
-    const byteString = window.atob(dataURI);
-    const arrayBuffer = new ArrayBuffer(byteString.length);
-    const intArray = new Uint8Array(arrayBuffer); for (let i = 0; i < byteString.length; i++) {
-      intArray[i] = byteString.charCodeAt(i);
-    }
-    const blob = new Blob([intArray], { type: 'image/jpeg' });
-    return blob;
+      this.imgResultBeforeCompress = image;
+
+      this.imageCompress.compressFile(image, orientation, 50, 50).then(
+        result => {
+          this.imgResultAfterCompress = result;
+          this.imageFile = this.dataURLtoFile(this.imgResultAfterCompress, "Test");
+        }
+      );
+
+    });
+
   }
 
- 
+
   getFloraFauna() {
     this.spinnerService.setSpinner(true);
     this.orolService.getFloraFauna().subscribe((data) => {
@@ -254,19 +232,22 @@ export class FloraFaunaComponent implements OnInit {
     });
   }
   async addFloraFauna() {
-    console.log(typeof( this.imageFile2));
     this.submitted = true;
-    console.log(this.floraFaunaForm.value);
     if (this.floraFaunaForm.get('type').value == 1) {
-      this.orolService.addFlora(this.floraFaunaForm.value, this.imageFile2);
+      this.orolService.addFlora(this.floraFaunaForm.value, this.imageFile);
       this.spinnerService.setSpinner(true);
 
     }
     if (this.floraFaunaForm.get('type').value == 2) {
-      this.orolService.addFauna(this.floraFaunaForm.value, this.imageFile2);
+      this.orolService.addFauna(this.floraFaunaForm.value, this.imageFile);
       this.spinnerService.setSpinner(true);
 
     }
+  }
+  onScroll() {
+    this.pageNumber = this.pageNumber + 1;
+    console.log("scrolled down!!", this.pageNumber);
+    alert(this.pageNumber);
   }
 
 }

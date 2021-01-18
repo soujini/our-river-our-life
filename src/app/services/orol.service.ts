@@ -228,9 +228,7 @@ export class OrolService {
   }
 
   public addFlora(x, images:File) {
-    console.log(images);
     var user = JSON.parse(localStorage.getItem('User'));
-
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({
       Authorization: 'Bearer ' + user.accessToken
@@ -262,7 +260,6 @@ export class OrolService {
   }
 
   public addFauna(x, images:File) {
-    console.log(images);
     var user = JSON.parse(localStorage.getItem('User'));
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({

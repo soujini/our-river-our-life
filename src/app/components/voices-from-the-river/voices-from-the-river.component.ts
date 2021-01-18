@@ -15,6 +15,7 @@ import { SpinnerService } from '../../services/spinner.service';
 export class VoicesFromTheRiverComponent implements OnInit {
   blogs = [];
   public selectedBlog: any;
+  pageNumber = 1;
 
   constructor(private router: Router, private orolService: OrolService,
     private spinnerService: SpinnerService) {
@@ -26,6 +27,11 @@ export class VoicesFromTheRiverComponent implements OnInit {
   }
   gotoList() {
     this.router.navigate(['/add']);
+  }
+  onScroll() {
+    this.pageNumber = this.pageNumber+1;
+    console.log("scrolled down!!",this.pageNumber);
+    alert(this.pageNumber);
   }
 
   getBlogs() {
