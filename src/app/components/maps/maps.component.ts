@@ -6,6 +6,7 @@ import { timer } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { OrolService } from '../../services/orol.service';
 import { Event, Route, Router, ActivatedRoute, RoutesRecognized } from '@angular/router';
+import { NgxImageCompressService } from 'ngx-image-compress';
 
 
 declare var google;
@@ -16,16 +17,23 @@ declare var google;
   styleUrls: ['./maps.component.scss']
 })
 export class MapsComponent implements OnInit {
-
+  localUrl: any;
+  localCompressedURl: any;
+  sizeOfOriginalImage: number;
+  sizeOFCompressedImage: number;
+  imgResultBeforeCompress: string;
+  imgResultAfterCompress= [];
   public iconUrl = '../../../assets/scalable-vector-graphics/flood-watch.svg';
   public imageFiles: File[] = [];
+  public imageFile:File;
+  file: any;
+  images: any = [];
   @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
   public myDatePickerOptions: IMyOptions = {
     dateFormat: 'dd mmm yyyy',
     closeAfterSelect: true
   };
   apps: any;
-  images = [];
   geocoder: any;
   mapsForm: FormGroup;
   // public latitude: number = 23.074290;
@@ -39,7 +47,6 @@ export class MapsComponent implements OnInit {
   selectedImage: any = [];
   submitted: boolean = false;
 
-
   toggle(mode: string) {
     this.validate();
     this.show = !this.show;
@@ -49,7 +56,7 @@ export class MapsComponent implements OnInit {
   }
 
   constructor(public router: Router, private fb: FormBuilder, private http: HttpClient, private orolService: OrolService,
-    private mapsAPILoader: MapsAPILoader,
+    private mapsAPILoader: MapsAPILoader, private imageCompress: NgxImageCompressService,
     private ngZone: NgZone
   ) {
     this.createForm();
@@ -117,11 +124,11 @@ export class MapsComponent implements OnInit {
 
   createForm() {
     this.mapsForm = this.fb.group({
-      location: ['',[Validators.required]],
-      latitude: ['',[Validators.required]],
-      longitude: ['',[Validators.required]],
-      activityDate: [(new Date()),[Validators.required]],
-      activityTime: ['',[Validators.required]],
+      location: ['', [Validators.required]],
+      latitude: ['', [Validators.required]],
+      longitude: ['', [Validators.required]],
+      activityDate: [(new Date()), [Validators.required]],
+      activityTime: ['', [Validators.required]],
       photos: this.fb.array([]),
       experience: ['']
     });
@@ -133,8 +140,8 @@ export class MapsComponent implements OnInit {
       this.mapsForm.get('latitude').valid &&
       this.mapsForm.get('longitude').valid &&
       this.mapsForm.get('activityDate').valid &&
-      this.mapsForm.get('activityTime').valid &&
-      this.imageFiles.length > 0 
+      this.mapsForm.get('activityTime').valid
+      // && this.imageFiles.length > 0 
     ) {
     }
   }
@@ -195,10 +202,55 @@ export class MapsComponent implements OnInit {
         var reader = new FileReader();
         reader.onload = (event: any) => {
           this.images.push(event.target.result);
+          this.compressFile(this.images)
         }
         reader.readAsDataURL(event.target.files[i]);
       }
     }
-
   }
+
+  // onFileChange(event) {
+  //   if (event.target.files && event.target.files[0]) {
+  //       var filesAmount = event.target.files.length;
+  //       for (let i = 0; i < filesAmount; i++) {
+  //               var reader = new FileReader();
+  //               reader.onload = (event:any) => {
+  //                 console.log(event.target.result);
+  //                  this.images.push(event.target.result); 
+  //               }
+  //               reader.readAsDataURL(event.target.files[i]);
+  //       }
+
+  //   }
+
+  // }
+  
+  compressFile(images) {
+    var orientation = -1;
+    this.imgResultBeforeCompress = images;
+    console.log(this.imgResultBeforeCompress);
+    for(let i = 0; i < images.length; i++){
+    console.log('Size in bytes was:', this.imageCompress.byteCount(images));     
+    this.imageCompress.compressFile(images, orientation, 50, 50).then(
+      result => {
+        this.imgResultAfterCompress.push(result);
+        console.log('Size in bytes is now:', this.imageCompress.byteCount(result));
+        // // const imageBlob = this.dataURItoBlob(this.imgResultAfterCompress,"Test");
+        this.imageFile = this.dataURLtoFile(this.imgResultAfterCompress, "Test");
+
+      });
+    }
+  }
+  dataURLtoFile(dataurl, filename) {
+    var arr = dataurl.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, { type: mime });
+  }
+
 }

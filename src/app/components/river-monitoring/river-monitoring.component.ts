@@ -331,7 +331,6 @@ export class RiverMonitoringComponent implements OnInit {
   onScroll() {
     this.pageNumber = this.pageNumber+1;
     console.log("scrolled down!!",this.pageNumber);
-    alert(this.pageNumber);
   }
   getWaterTestDetails() {
       var user = JSON.parse(localStorage.getItem('User'));

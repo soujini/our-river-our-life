@@ -31,7 +31,6 @@ export class VoicesFromTheRiverComponent implements OnInit {
   onScroll() {
     this.pageNumber = this.pageNumber+1;
     console.log("scrolled down!!",this.pageNumber);
-    alert(this.pageNumber);
   }
 
   getBlogs() {

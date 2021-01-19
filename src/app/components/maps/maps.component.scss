@@ -5,7 +5,18 @@
 #input{
   margin-top: -15px;
 }
-
+.upload-button{
+  border: 1px solid #1C3764;
+  background-color: #fff;
+display: inline-block;
+padding: 10px;
+cursor: pointer;
+font-size: 12px;
+border-radius: 20px;
+width: 189px;
+text-align: center;
+margin-top: 50px;
+}
 .text{
   line-height: 2.5;
   font-size:14px;

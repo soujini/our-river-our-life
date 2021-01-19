@@ -119,29 +119,26 @@ export class FloraFaunaComponent implements OnInit {
 
 
   dataURLtoFile(dataurl, filename) {
-
     var arr = dataurl.split(','),
       mime = arr[0].match(/:(.*?);/)[1],
       bstr = atob(arr[1]),
       n = bstr.length,
       u8arr = new Uint8Array(n);
-
     while (n--) {
       u8arr[n] = bstr.charCodeAt(n);
     }
-
     return new File([u8arr], filename, { type: mime });
   }
 
   compressFile() {
     var orientation = -1;
     this.imageCompress.uploadFile().then(({ image }) => {
-
       this.imgResultBeforeCompress = image;
-
-      this.imageCompress.compressFile(image, orientation, 50, 50).then(
+      console.warn('Size in bytes was:', this.imageCompress.byteCount(image));     
+       this.imageCompress.compressFile(image, orientation, 50, 50).then(
         result => {
           this.imgResultAfterCompress = result;
+          console.warn('Size in bytes is now:', this.imageCompress.byteCount(result));
           this.imageFile = this.dataURLtoFile(this.imgResultAfterCompress, "Test");
         }
       );
@@ -149,7 +146,6 @@ export class FloraFaunaComponent implements OnInit {
     });
 
   }
-
 
   getFloraFauna() {
     this.spinnerService.setSpinner(true);
@@ -247,7 +243,6 @@ export class FloraFaunaComponent implements OnInit {
   onScroll() {
     this.pageNumber = this.pageNumber + 1;
     console.log("scrolled down!!", this.pageNumber);
-    alert(this.pageNumber);
   }
 
 }
