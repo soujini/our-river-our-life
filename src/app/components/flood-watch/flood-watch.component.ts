@@ -11,7 +11,7 @@ declare var google;
 })
 export class FloodWatchComponent implements OnInit {
   ngOnInit(){
-    
+
   }
 
 }

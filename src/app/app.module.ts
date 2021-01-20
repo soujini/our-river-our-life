@@ -53,6 +53,8 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 // import { RiverMonitoringComponent } from './components/river-monitoring/river-monitoring.component';
 import { FilterDateComponent } from './components/filter-date/filter-date.component';
 
+import { NgOtpInputModule } from  'ng-otp-input';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -116,6 +118,7 @@ import { FilterDateComponent } from './components/filter-date/filter-date.compon
       libraries: ["places"]
     }),
     AgmJsMarkerClustererModule,
+    NgOtpInputModule
     // MatToolbarModule
   ],
   providers: [AuthService,NgxImageCompressService],

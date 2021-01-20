@@ -31,6 +31,7 @@
     "@types/google-maps": "^3.2.2",
     "firebase": "^7.24.0",
     "js-marker-clusterer": "^1.0.0",
+    "ng-otp-input": "^1.7.1",
     "ng-uikit-pro-standard": "file:ng-uikit-pro-standard-8.8.0.tgz",
     "ngx-image-compress": "^11.0.3",
     "ngx-infinite-scroll": "^10.0.1",
