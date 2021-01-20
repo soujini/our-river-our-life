@@ -1,7 +1,7 @@
 <div class="content">
-  <form class=" form form-horizontal " [formGroup]="blogForm" style="padding-left:350px; padding-right:350px;">
+  <form class="form form-horizontal col-lg-8 col-xs-12" [formGroup]="blogForm">
 
-    <h2 class="text-center h1-responsive font-weight-bold my-3">Add Blog</h2>
+    <h2 class="text-left h1-responsive font-weight-bold my-3">Add Blog</h2>
     <div style="padding: 20px;">
       <div class="row">
         <div class="col-md-12 mb-2">
@@ -85,14 +85,14 @@
             <span class="input-group-text">
               <button *ngIf="this.blogForm.get('featuredAdditionalVideos')['controls'][i]['controls'].value != ''"
                 class="trash bg" (click)="removeScreenshotURL(i)"><img class="trash-icon"
-                  src="../../assets/scalable-vector-graphics/trash_icon_grey.svg"></button>
+                  src="../../assets/icons/trash_icon_grey.svg"></button>
             </span>
           </div>
 
         </div>
         <button class="col-xs-12 btn_white_dashed" (click)="addScreenshotURL()">+ Additional Videos </button>
       </div>
-      <div class="text-center">
+      <div class="text-right">
         <button type="button" class="btn xmt-2 btn-primary btn-rounded" (click)="createblog()"
           style="width:200px">Submit</button>
       </div>

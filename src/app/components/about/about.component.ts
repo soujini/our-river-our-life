@@ -1,23 +1,23 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import 'jarallax';
-declare var jarallax: any;
+import { Component, OnInit } from '@angular/core';
+// import 'jarallax';
+// declare var jarallax: any;
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
-export class AboutComponent implements AfterViewInit {
+export class AboutComponent implements OnInit {
 
   constructor() { }
 
-  // ngOnInit(): void {
-  // }
-  //
-  ngAfterViewInit() {
-    jarallax(document.querySelectorAll('.jarallax'), {
-      speed: 0.2
-    });
+  ngOnInit(): void {
   }
+  //
+  // ngAfterViewInit() {
+  //   jarallax(document.querySelectorAll('.jarallax'), {
+  //     speed: 0.2
+  //   });
+  // }
 
 }

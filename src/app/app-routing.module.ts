@@ -1,54 +1,38 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent} from './components/home/home.component';
+import { AboutComponent} from './components/about/about.component';
+import { ResourcesComponent} from './components/resources/resources.component';
+import { OngoingCampaignsComponent} from './components/ongoing-campaigns/ongoing-campaigns.component';
+import { MyAccountComponent} from './components/my-account/my-account.component';
+import { FloraFaunaComponent} from './components/flora-fauna/flora-fauna.component';
+// import { VoicesFromTheRiverComponent} from './components/voices-from-the-river/voices-from-the-river.component';
+// import { AddBlogComponent} from './components/add-blog/add-blog.component';
 import { NotFoundComponent} from './components/not-found/not-found.component';
-const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule)
-  },
+import { FloodWatchComponent} from './components/flood-watch/flood-watch.component';
+import { PrivacyPolicyComponent} from './components/privacy-policy/privacy-policy.component';
 
+const routes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'resources', component: ResourcesComponent },
+  { path: 'ongoing-campaigns', component: OngoingCampaignsComponent },
+  { path: 'my-account1', component: MyAccountComponent },
+  { path: 'flora-fauna', component: FloraFaunaComponent },
   {
-    path: 'about',
-    loadChildren: () => import('./components/about/about.module').then(m => m.AboutModule)
-  },
-  {
-    path: 'river-monitoring',
-    loadChildren: () => import('./components/river-monitoring/river-monitoring.module').then(m => m.RiverMonitoringModule)
-  },
-  {
-    path: 'flood-watch',
-    loadChildren: () => import('./components/flood-watch/flood-watch.module').then(m => m.FloodWatchModule)
-  },
-  {
-    path: 'flora-fauna',
-    loadChildren: () => import('./components/flora-fauna/flora-fauna.module').then(m => m.FloraFaunaModule)
-  },
-  {
-    path: 'voices-from-the-river',
-    loadChildren: () => import('./components/voices-from-the-river/voices-from-the-river.module').then(m => m.VoicesFromTheRiverModule)
-  },
-  {
-    path: 'resources',
-    loadChildren: () => import('./components/resources/resources.module').then(m => m.ResourcesModule)
-  },
-  {
-    path: 'ongoing-campaigns',
-    loadChildren: () => import('./components/ongoing-campaigns/ongoing-campaigns.module').then(m => m.OngoingCampaignsModule)
-  },
-  {
-    path: 'privacy-policy',
-    loadChildren: () => import('./components/privacy-policy/privacy-policy.module').then(m => m.PrivacyPolicyModule)
-  },
-  {
-    path: 'edit-profile',
-    loadChildren: () => import('./components/edit-profile/edit-profile.module').then(m => m.EditProfileModule)
-  },
-  {
-	path: '',
-	redirectTo: 'home',
-	pathMatch: 'full'
+  path: 'voices-from-the-river',
+  loadChildren: () => import('./components/voices-from-the-river/voices-from-the-river.module').then(m => m.VoicesFromTheRiverModule)
 },
-{ path: '**', component: NotFoundComponent }
+{
+  path: 'river-monitoring',
+  loadChildren: () => import('./components/river-monitoring/river-monitoring.module').then(m => m.RiverMonitoringModule)
+},
+  // { path: 'voices-from-the-river', component: VoicesFromTheRiverComponent },
+  // { path: 'add-blog', component: AddBlogComponent },
+  { path: 'flood-watch', component: FloodWatchComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: '',redirectTo: 'home',pathMatch: 'full'},
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

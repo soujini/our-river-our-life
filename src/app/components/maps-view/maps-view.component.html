@@ -1,5 +1,6 @@
+<div style="background-color:whitesmoke">
 <div class="text-center banner">
-  <div class="row" style="display:flex; justify-content:center">
+  <div class="maps-options">
     <button [ngClass]="mapsMode == 1 ? 'btn-custom-green' : 'btn-custom-blue'" mdbBtn type="button" rounded="true"
       (click)="selectMap(1)" mdbWavesEffect>FLOOD WATCH</button>
     <button [ngClass]="mapsMode == 2 ? 'btn-custom-green' : 'btn-custom-blue'" mdbBtn type="button" rounded="true"
@@ -10,13 +11,9 @@
       (click)="selectMap(4)" mdbWavesEffect>FAUNA</button>
   </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-2 ">
-     <app-filter-date></app-filter-date>
-    </div>
-
-    <div class="col-md-10">
+<div class="container text-center">
+  <div xclass="row">
+    <div class="col-md-12">
       <div *ngIf="this.mapsMode == 1">
         <app-maps-flood-watch></app-maps-flood-watch>
       </div>
@@ -32,3 +29,4 @@
     </div>
   </div>
 </div>
+<div>

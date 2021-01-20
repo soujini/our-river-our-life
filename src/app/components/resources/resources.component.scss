@@ -1,6 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ng-uikit-pro-standard/assets/scss/core/colors';
+@import '~ng-uikit-pro-standard/assets/scss/core/variables';
+@import '~ng-uikit-pro-standard/assets/scss/core/variables-pro';
+@import '~ng-uikit-pro-standard/assets/scss/bootstrap/functions';
+@import '~ng-uikit-pro-standard/assets/scss/bootstrap/variables';
+@import '~ng-uikit-pro-standard/assets/scss/core/mixins';
+
+
 .resources{
-    margin-top: 100px;
-    background:url(../../../assets/jpg/banner/bg_waves2.webp);
+    // margin-top: 100px;
+    // background:url(../../../assets/jpg/banner/bg_waves2.webp);
     background-attachment: scroll;
     -webkit-transform: translate3d(0,0,0);
     background-repeat: no-repeat;
@@ -18,10 +27,14 @@
   padding-bottom:35px;
 }
 .custom-btn{
-  background-image: url(../../../assets/scalable-vector-graphics/banner_header2.svg) !important;
+  background-image: url(../../../assets/trees.svg) !important;
 }
 .aqua-gradient {
-    background: linear-gradient(40deg,#2096ff,#8cc641)!important;
+
+
+    // background: linear-gradient(40deg,#2096ff,#8cc641)!important;
+    background: linear-gradient(40deg,#86bbbc,#268586)!important;
+
 }
 .card-description{
   padding:25px !important;
@@ -41,4 +54,25 @@
     display: inline-block;
     margin: 0 0 1em;
     width: 100%;
+}
+@include media-breakpoint-down(md) {
+  .outer-block {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+  -moz-column-gap: 1em;
+  -webkit-column-gap: 1em;
+  column-gap: 1em;
+}
+}
+
+@include media-breakpoint-down(sm) {
+  .outer-block {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+  -moz-column-gap: 1em;
+  -webkit-column-gap: 1em;
+  column-gap: 1em;
+}
 }

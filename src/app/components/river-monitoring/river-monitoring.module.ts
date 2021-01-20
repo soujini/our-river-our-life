@@ -8,8 +8,8 @@ import { RiverMonitoringComponent } from './river-monitoring.component';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MdbFileUploadModule } from 'mdb-file-upload';
-import { FlexLayoutModule } from '@angular/flex-layout';
+// import { MdbFileUploadModule } from 'mdb-file-upload';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 import { GoogleMapsModule } from '@angular/google-maps'
 import { AgmCoreModule } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
@@ -19,11 +19,11 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 @NgModule({
   declarations: [RiverMonitoringComponent],
   imports: [
-    FlexLayoutModule,
+    // FlexLayoutModule,
     CommonModule,
     MDBBootstrapModulesPro.forRoot(),
     FormsModule,
-    MdbFileUploadModule,
+    // MdbFileUploadModule,
     ReactiveFormsModule,
     TabsModule,
     WavesModule,

@@ -1,16 +1,31 @@
 .about{
-  font-size: 1rem;
- font-family: 'Open Sans', sans-serif !important;
- color:#808080;
- font-weight:400;
+  background-color: white;
+  // font-size: 1rem;
+  // font-family: 'Open Sans', sans-serif !important;
+  // color:#black;
+  // font-weight:400;
 }
 .about-banner{
-  height:300px;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  line-height: 300px;
+  padding-left:25%;
+  padding-right:25%;
+  padding-top:50px;
+  padding-bottom:50px;
+  // background-color: #ef4f4;
+  font-size:1.1rem;
+  line-height: 1.7;
+  font-family: 'Open Sans', sans-serif !important;
+  font-weight: 500;
+  letter-spacing: 1px;
+
+  background-color: #ffffff;
+  // opacity: 0.4;
+  // background: linear-gradient(135deg, #e0edea55 25%, transparent 25%) -20px 0/ 40px 40px, linear-gradient(225deg, #e0edea 25%, transparent 25%) -20px 0/ 40px 40px, linear-gradient(315deg, #e0edea55 25%, transparent 25%) 0px 0/ 40px 40px, linear-gradient(45deg, #e0edea 25%, #ffffff 25%) 0px 0/ 40px 40px;
 }
+.title{
+  color:#white;
+  font-weight: 800;
+}
+
 .h1-about{
   line-height: 300px;
   color:black;
@@ -18,20 +33,22 @@
 }
 .banner{
   // background:url(../../../assets/jpg/banner/banner2.jpg);
-  background:url(../../../assets/jpg/banner/bg_waves2.webp);
-  background-attachment: scroll;
-  -webkit-transform: translate3d(0,0,0);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  // background:url(../../../assets/jpg/banner/bg_waves2.webp);
+  // background-attachment: scroll;
+  // -webkit-transform: translate3d(0,0,0);
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // background-size: cover;
   // margin-top:100px;
   font-family: 'Open Sans',sans-serif;
   padding-top:35px;
   padding-bottom:35px;
+  background-color: #e0edea;
+  color:#116bb4;
 }
 .jarallax_about_banner{
-    background-image: url(../../../assets/jpg/banner/bg_mountain1.jpg);
-    -webkit-transform: translate3d(0,0,0);
+  // background-image: url(../../../assets/jpg/banner/bg_mountain1.jpg);
+  -webkit-transform: translate3d(0,0,0);
   background-attachment: fixed;
   height: 600px;
   width:auto;
@@ -39,40 +56,40 @@
   background-size:cover;
 }
 .who-we-are{
- font-family: 'Open Sans', sans-serif;
- font-weight: 800;
- line-height: 1.42857143;
- color: #303030;
- margin-top:20px;
- margin-bottom:20px;
-   // font-size: 24px;
-   text-transform: uppercase;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  line-height: 1.42857143;
+  color: #303030;
+  margin-top:20px;
+  margin-bottom:20px;
+  // font-size: 24px;
+  text-transform: uppercase;
 }
 .display-1 {
-    font-size: 2.5rem !important;
-    font-weight: 800 !important;
-    line-height: 2 !important;
-    font-family: 'Open Sans', sans-serif !important;
-    letter-spacing: 1px;
-    padding-top: 75px;
-    padding-bottom: 75px;
-    color:#303030;
+  font-size: 2.5rem !important;
+  font-weight: 800 !important;
+  line-height: 2 !important;
+  font-family: 'Open Sans', sans-serif !important;
+  letter-spacing: 1px;
+  padding-top: 75px;
+  padding-bottom: 75px;
+  color:#303030;
 }
 .parallax-about-banner{
-  background:url(../../../assets/jpg/banner/bg_waves2.webp);
+  // background:url(../../../assets/jpg/banner/bg_waves2.webp);
   background-attachment: scroll;
   -webkit-transform: translate3d(0,0,0);
   background-attachment: fixed;
   min-height: 206px;
 }
 
-.about-description1{
-  font-size:1rem;
-  line-height: 1.7;
-  font-family: 'Open Sans', sans-serif !important;
-  font-weight: 500;
-  letter-spacing: 1px;
-}
+// .about-description1{
+//   // font-size:1rem;
+//   // line-height: 1.7;
+//   // font-family: 'Open Sans', sans-serif !important;
+//   // font-weight: 500;
+//   // letter-spacing: 1px;
+// }
 .about-description{
   font-size:1rem;
   // padding-left:50px;
@@ -90,9 +107,9 @@
   margin-top:3rem;
 }
 .helper {
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
 }
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
@@ -111,19 +128,19 @@
 
 // Small devices (landscape phones, less than 768px)
 @media (max-width: 767px) {
- //  .about-description{
- //    font-size:1rem;
- //    padding-left:15px;
- //    padding-right:15px;
- // }
- // .about-image1{
- //   margin-top:0px;
- //   margin-bottom:3rem;
- // }
- // .about-image2{
- //   margin-top:3rem;
- //   margin-bottom:0px;
- // }
+  //  .about-description{
+  //    font-size:1rem;
+  //    padding-left:15px;
+  //    padding-right:15px;
+  // }
+  // .about-image1{
+  //   margin-top:0px;
+  //   margin-bottom:3rem;
+  // }
+  // .about-image2{
+  //   margin-top:3rem;
+  //   margin-bottom:0px;
+  // }
 }
 
 // Medium devices (tablets, less than 992px)
@@ -132,10 +149,10 @@
     font-size:1rem;
     padding-left:15px;
     padding-right:15px;
- }
- }
+  }
+}
 
 // Large devices (desktops, less than 1200px)
 @media (max-width: 1199px) {
 
- }
+}

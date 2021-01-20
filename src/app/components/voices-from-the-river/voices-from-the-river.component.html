@@ -1,15 +1,16 @@
-<div class="content">
+<div class="content container-fluid">
   <div class="text-right">
     <button type="button" class="btn xmt-2 btn-primary btn-rounded" routerLinkActive="active" routerLink="add-blog"
       style="width:200px">Add Blog</button>
   </div>
-  <section class="text-center my-5">
-    <h2 class="h1-responsive font-weight-bold my-5">Recent Posts</h2>
+  <section class="text-center">
+    <h2 class="h1-responsive font-weight-bold mb-5">Recent Posts</h2>
     <div class="search-results" infiniteScroll [infiniteScrollDistance]='2' [infiniteScrollThrottle]='50'
       [scrollWindow]="false" (scrolled)="onScroll()">
-      <div class="row" style="margin: 3px;">
-        <div class="col-lg-4 col-md-12 mb-4" *ngFor="let blog of blogs" (click)="this.selectedBlog = blog">
-          <div class="view overlay rounded z-depth-2 mb-4 waves-light" mdbWavesEffect>
+      <div class="row">
+        <div class="col-lg-3 col-md-12 mb-5" *ngFor="let blog of blogs" (click)="this.selectedBlog = blog">
+          <div class="blog-card">
+          <div class="view overlay rounded xz-depth-2 mb-4 waves-light bg-green" mdbWavesEffect>
             <img class="img-fluid blog-images" [src]=blog.featuredPhoto.imageURL alt="Sample image">
             <a>
               <div class="mask rgba-white-slight"></div>
@@ -20,6 +21,7 @@
           <p class="dark-grey-text ellipsis">{{blog.featuredDescription}}</p>
           <a mdbBtn class="btn btn-primary btn-rounded" rounded="true" (click)="frame.show()" mdbWavesEffect>Read
             more</a>
+        </div>
         </div>
       </div>
     </div>
@@ -43,7 +45,7 @@
       <div class="modal-body">
         <div class="row">
           <!-- <div class="col-lg-5"> -->
-          <img class="d-block w-100 img-fluid blog-images" [src]=selectedBlog.featuredPhoto.imageURL alt="First slide">
+          <img class="d-block img-fluid blog-images2" height="500px" width="auto" [src]=selectedBlog.featuredPhoto.imageURL alt="First slide">
           <!-- </div> -->
         </div>
         <div class="row">

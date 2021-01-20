@@ -1,4 +1,4 @@
-<div class="content">
+<div class="river-monitoring">
   <div>
     <mdb-tabset id="river_monitoring_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'"
       [contentClass]="'card'" class="classic-tabs xtext-center">
@@ -17,7 +17,7 @@
                   </div>
                   <div class="col-md-6">
                     <label for="rm_tp" class="text-left">Activity Time</label>
-                    <mdb-time-picker id="rm_tp" [buttonLabel]="'Done'" [twelvehour]="true" 
+                    <mdb-time-picker id="rm_tp" [buttonLabel]="'Done'" [twelvehour]="true"
                       formControlName="activityTime" [darktheme]="true" [placeholder]="'Selected time'">
                     </mdb-time-picker>
                   </div>
@@ -31,7 +31,7 @@
                   <div class="mt-1 error-message-div">
                     <p *ngIf="activityForm.get('generalInformation').get('testerName').errors?.required  && this.submitStep1==true"
                       class="errorMessage">
-                      <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is
+                      <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field is
                       required.</p>
                   </div>
                 </div>
@@ -44,7 +44,7 @@
                   <div class="mt-1 error-message-div">
                     <p *ngIf="activityForm.get('generalInformation').get('location').errors?.required  && this.submitStep1==true"
                       class="errorMessage">
-                      <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field is
+                      <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field is
                       required.</p>
                   </div>
                 </div>
@@ -56,7 +56,7 @@
                     <div class="mt-1 error-message-div">
                       <p *ngIf="activityForm.get('generalInformation').get('latitude').errors?.required  && this.submitStep1==true"
                         class="errorMessage">
-                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                        <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
                         is required.</p>
                     </div>
                   </div>
@@ -67,7 +67,7 @@
                     <div class="mt-1 error-message-div">
                       <p *ngIf="activityForm.get('generalInformation').get('longitude').errors?.required  && this.submitStep1==true"
                         class="errorMessage">
-                        <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                        <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
                         is required.</p>
                     </div>
                   </div>
@@ -104,7 +104,7 @@
                   <div class="mt-1 error-message-div">
                     <p *ngIf="activityForm.get('waterLevelAndWeather').get('airTemperature').errors?.required  && this.submitStep2==true"
                       class="errorMessage">
-                      <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                      <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
                       is required.</p>
                   </div>
                 </div>
@@ -122,7 +122,7 @@
                   <div class="mt-1 error-message-div">
                     <p *ngIf="activityForm.get('waterLevelAndWeather').get('waterLevel').errors?.required  && this.submitStep2==true"
                       class="errorMessage">
-                      <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                      <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
                       is required.</p>
                   </div>
                 </div>
@@ -142,7 +142,7 @@
                   <div class="mt-1 error-message-div">
                     <p *ngIf="activityForm.get('waterLevelAndWeather').get('weather').errors?.required  && this.submitStep2==true"
                       class="errorMessage">
-                      <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+                      <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
                       is required.</p>
                   </div>
                 </div>
@@ -159,7 +159,7 @@
                   </div>
                   <div class="mt-1 error-message-div">
                     <p *ngIf="imageFilesRiver.length == 0 && this.submitStep2 == true" class="errorMessage"><img class="img-add"
-                      src="../../../assets/scalable-vector-graphics/exclamation.svg">
+                      src="../../../assets/icons/exclamation_icon.svg">
                       This image is required.</p>
                   </div>
                 </div>
@@ -183,7 +183,7 @@
                     <div class="mt-1 error-message-div">
                       <p *ngIf="activityForm.get('surroundings')['length'] == 0 && this.submitStep3 == true"
                         class="errorMessage"><img class="img-add"
-                          src="../../../assets/scalable-vector-graphics/exclamation.svg"> Please select at least
+                          src="../../../assets/icons/exclamation_icon.svg"> Please select at least
                         1 Category.</p>
                     </div>
                   </div>
@@ -402,7 +402,7 @@
               <form class="container-stepper-form">
                 <div class="col-md-12">
                   <div class="row">
-                    <img src="../../../assets/scalable-vector-graphics/flora.svg" height="28px" width="28px">
+                    <img src="../../../assets/icons/flora_icon.svg" height="28px" width="28px">
                     <label class="ml-2 mt-1 bold">Flora</label>
                   </div>
                   <p class="row">Record the vegetation you can see around you. This
@@ -420,7 +420,7 @@
                   </div>
                 <div class="col-md-12">
                   <div class="row">
-                    <img src="../../../assets/scalable-vector-graphics/fauna.svg" height="35px" width="35px">
+                    <img src="../../../assets/icons/fauna_icon.svg" height="35px" width="35px">
                     <label class="ml-2 mt-2 bold">Fauna</label>
                   </div>
                   <p class="row">Record fish, amphibians, reptiles, birds, insects and mammals that you see
@@ -575,14 +575,14 @@
                     <hr class="hr-line1" />
 
                     <div class="row ml-2">
-                      <img src="../../../assets/scalable-vector-graphics/flora.svg" height="28px" width="28px">
+                      <img src="../../../assets/icons/flora_icon.svg" height="28px" width="28px">
                       <label class="ml-2 mt-1 bold">Flora</label>
                       <img *ngFor='let url of imageUrlFlora' [src]="url" height="50px" width="50px"
                         style="margin: 3px;">
                     </div>
 
                     <div class="row ml-2">
-                      <img src="../../../assets/scalable-vector-graphics/fauna.svg" height="35px" width="35px">
+                      <img src="../../../assets/icons/fauna_icon.svg" height="35px" width="35px">
                       <label class="ml-2 mt-2 bold">Fauna</label>
                       <img *ngFor='let url of imageUrlFauna' [src]="url" height="50px" width="50px"
                         style="margin: 3px;">

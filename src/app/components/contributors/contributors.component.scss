@@ -1,15 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ng-uikit-pro-standard/assets/scss/core/colors';
+@import '~ng-uikit-pro-standard/assets/scss/core/variables';
+@import '~ng-uikit-pro-standard/assets/scss/core/variables-pro';
+@import '~ng-uikit-pro-standard/assets/scss/bootstrap/functions';
+@import '~ng-uikit-pro-standard/assets/scss/bootstrap/variables';
+@import '~ng-uikit-pro-standard/assets/scss/core/mixins';
+
+@include media-breakpoint-down(md) {
+  .waves-splash{
+    margin-top:-30px;
+    width:100%;
+  }
+}
+
+@include media-breakpoint-down(xl) {
+
+}
+
+.contributors{
+  background-color:#ecf4f4;
+  padding-top:100px;padding-bottom:50px;
+  // background: linear-gradient(20deg, #e1e1e1 0%, #ecf4f4 100%);
+}
+.title{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  color:#268586;
+}
+.waves-splash{
+  margin-top:-30px;
+}
 .contributor-name{
   font-size: 1rem;
- font-family: 'Open Sans', sans-serif !important;
- color:#303030;
- font-weight:bold;
- // text-transform: uppercase;
+  font-family: 'Open Sans', sans-serif !important;
+  color:#3e3e3e;
+  font-weight:600;
+  letter-spacing: 1px;
 }
-.parallax-custom{
-  // background-image: url(../../../assets/jpg/parallax_2.jpg);
-  background-image: url(../../../assets/jpg/parallax_5.webp);
-  background-attachment: fixed;
-  height: 600px;
+.contributor-section{
+  opacity:0.7;
+  height:60px;
+  width:60px;
+  background-color:#86bbbc;
+  border-radius:50%;border:1px solid #fdfefe;
+  text-align:center;
+}
+.contributor-icon{
+  color:#fdfefe;
+  font-size:25px;
+  line-height:50px;
 }
 
 mdb-slide{

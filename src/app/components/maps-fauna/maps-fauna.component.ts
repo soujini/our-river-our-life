@@ -13,7 +13,7 @@ export class MapsFaunaComponent implements OnInit {
   // initial center position for the map
   public lat: number = 20.5937;
   public lng: number = 78.9629;
-  public iconUrl = '../../../assets/scalable-vector-graphics/flood-watch.svg';
+  public iconUrl = '../../../assets/icons/marker.svg';
   public markers: marker[] = [];
 
   constructor(private orolService: OrolService, private spinnerService:SpinnerService) {

@@ -4,7 +4,7 @@ import { Route, Router, NavigationStart, ActivatedRoute } from '@angular/router'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SpinnerService } from '../services/spinner.service';
 declare var Orol: any;
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class OrolService {
   public userDetailsSubject = new BehaviorSubject({});
   userDetails = this.userDetailsSubject.asObservable();
   constructor(private router: Router, public httpClient: HttpClient, private spinnerService: SpinnerService) { }
- 
+
   public getBlogs() {
     var user = JSON.parse(localStorage.getItem('User'));
     // this.spinnerService.setSpinner(true);
@@ -54,7 +54,7 @@ export class OrolService {
       },
       (err) => {
         this.spinnerService.setSpinner(false);
-        window.alert(err)
+        //window.alert(err)
       },
     );
    }
@@ -130,7 +130,7 @@ export class OrolService {
    //   },
    //   (err) => {
    //     this.spinnerService.setSpinner(false);
-   //     window.alert(err)
+   //     //window.alert(err)
    //   },
    // );
  }
@@ -154,13 +154,13 @@ export class OrolService {
     //   },
     //   (err) => {
     //     this.spinnerService.setSpinner(false);
-    //     window.alert(err)
+    //     //window.alert(err)
     //   },
     // );
   }
 
-  
-  
+
+
   public getAccessToken(username, mode) { //Username can be email or phone number
     var obj;
     if (mode == "phone") {
@@ -222,13 +222,15 @@ export class OrolService {
       },
       (err) => {
         this.spinnerService.setSpinner(false);
-        window.alert(err)
+        //window.alert(err)
       },
     );
   }
 
   public addFlora(x, images:File) {
+    console.log(images);
     var user = JSON.parse(localStorage.getItem('User'));
+
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({
       Authorization: 'Bearer ' + user.accessToken
@@ -254,12 +256,13 @@ export class OrolService {
       },
       (err) => {
         this.spinnerService.setSpinner(false);
-        window.alert(err)
+        //window.alert(err)
       },
     );
   }
 
   public addFauna(x, images:File) {
+    console.log(images);
     var user = JSON.parse(localStorage.getItem('User'));
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({
@@ -285,7 +288,7 @@ export class OrolService {
       },
       (err) => {
         this.spinnerService.setSpinner(false);
-        window.alert(err)
+        //window.alert(err)
       },
     );
   }
@@ -360,7 +363,7 @@ export class OrolService {
       },
       (err) => {
         this.spinnerService.setSpinner(false);
-        window.alert(err)
+        //window.alert(err)
       },
     );
   }

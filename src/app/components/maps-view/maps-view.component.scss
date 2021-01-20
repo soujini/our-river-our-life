@@ -1,12 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ng-uikit-pro-standard/assets/scss/core/colors';
+@import '~ng-uikit-pro-standard/assets/scss/core/variables';
+@import '~ng-uikit-pro-standard/assets/scss/core/variables-pro';
+@import '~ng-uikit-pro-standard/assets/scss/bootstrap/functions';
+@import '~ng-uikit-pro-standard/assets/scss/bootstrap/variables';
+@import '~ng-uikit-pro-standard/assets/scss/core/mixins';
+
+
 .banner{
-  background:url(../../../assets/jpg/banner/bg_waves2.webp) no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  // background:url(../../../assets/jpg/banner/bg_waves2.webp) no-repeat center center;
+  // -webkit-background-size: cover;
+  // -moz-background-size: cover;
+  // -o-background-size: cover;
+  // background-size: cover;
   font-family: 'Open Sans', sans-serif;
   padding-top:35px;
   padding-bottom:35px;
+}
+.maps-options{
+  display:flex;
+  justify-content:center;
 }
 .btn-custom-blue{
   background-color: #34495e;
@@ -17,4 +30,9 @@
   background-color: #34495e;
   color:yellowgreen;
   cursor: pointer;
+}
+@include media-breakpoint-down(sm) {
+  .maps-options{
+    display:grid;
+  }
 }

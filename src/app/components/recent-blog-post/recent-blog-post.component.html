@@ -1,0 +1,34 @@
+<div xclass="col-xs-12 ">
+  <!-- <div class="related-posts-heading">
+    <div class="videos-gallery text-center"
+      style="font-family: 'Open Sans', sans-serif;padding-top:35px; padding-bottom:35px;">
+      <h2><span style="color:#357ba0;font-weight: 800; color:#116bb5">BLOG POST</span>
+      </h2>
+    </div>
+    <a class="btn btn-link heading-btn" href="/voices-from-the-river">
+      View all
+    </a>
+  </div>
+  <hr> -->
+  <div class="banner">
+      <h2 class="title row" style="margin-left:15px;margin-right:15px">
+      <span class="col-lg-6 text-left">RECENT BLOG POSTS</span>
+      <span class="col-lg-6 text-right">View all</span>
+      </h2>
+  </div>
+</div>
+  <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+    [animation]="'slide'">
+    <mdb-carousel-item *ngFor="let item of slides; let i = index">
+      <div class="col-md-4" *ngFor="let card of item; let cardIndex = index">
+        <mdb-card class="my-1">
+          <mdb-card-img [src]="card.img" xwidth="auto" xheight="200px" alt="Card image cap"></mdb-card-img>
+          <mdb-card-body>
+            <mdb-card-title>
+              <h4>{{card.title}}</h4>
+            </mdb-card-title>
+          </mdb-card-body>
+        </mdb-card>
+      </div>
+    </mdb-carousel-item>
+  </mdb-carousel>

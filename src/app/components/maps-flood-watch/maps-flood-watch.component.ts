@@ -14,7 +14,7 @@ export class MapsFloodWatchComponent implements OnInit {
   // initial center position for the map
   public lat: number = 22.00;
   public lng: number = 77.00;
-  public iconUrl = '../../../assets/scalable-vector-graphics/flood-watch.svg';
+  public iconUrl = '../../../assets/icons/marker.svg';
   public markers: marker[] = [];
 
   constructor(private orolService: OrolService, private spinnerService:SpinnerService) {
@@ -26,7 +26,7 @@ export class MapsFloodWatchComponent implements OnInit {
   clickedMarker(label: string, index: number ) {
     console.log(`clicked the marker: ${label || index}`)
   }
-   
+
   mapClicked($event: MouseEvent) {
     // alert("clicked");
     // this.markers.push({
@@ -40,7 +40,7 @@ export class MapsFloodWatchComponent implements OnInit {
   //   console.log('dragEnd', m, $event);
   // }
 
- 
+
   getFloodAlerts() {
     // var a = this.orolService.getFloodAlerts();
     this.orolService.getFloodAlerts().subscribe((data)=>{

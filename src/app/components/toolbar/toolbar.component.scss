@@ -1,155 +1,82 @@
+@import '~ng-uikit-pro-standard/assets/scss/core/colors';
+@import '~ng-uikit-pro-standard/assets/scss/core/variables';
+@import '~ng-uikit-pro-standard/assets/scss/core/variables-pro';
+@import '~ng-uikit-pro-standard/assets/scss/bootstrap/functions';
+@import '~ng-uikit-pro-standard/assets/scss/bootstrap/variables';
+@import '~ng-uikit-pro-standard/assets/scss/core/mixins';
 
-.login_header{
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 500 !important;
- color: #000000 !important;
- font-size: 16px !important;
- letter-spacing: 1px !important;
-
-}
-.forget{
-  display: block !important;
-  text-align: end !important;
-}
-.input_header{
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300 !important;
- color: #000000 !important;
- font-size: 12px !important;
- letter-spacing: 2px !important;
-
-}
-.loginbtn_size{
-  width: 196px !important;
-}
-
-input{
-  width: 308px;
-height: 50px;
-}
-
-.login{
-  width: 200px !important;
-  height: 50px !important;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 500 !important;
- background-color: #1C3764 !important;
-}
-.login_btn{
-  display: flex !important;
-  justify-content: center !important;
-}
-#loginModal{
-  .modal-content{
-    padding:50px !important;
-    width: 416px !important;
-    height: 436px !important;
-    border-radius: 25px !important;
-
-  }
-  .modal-header{
-    padding:0px !important;
-    // padding-top:-50px !important;
-    border: none;
-    height: 86px;
-  }
-  .modal-body{
-      padding:0px !important;
-      // padding-top:20px !important;
-  }
-  .modal-dialog-centered{
-    width: inherit !important;
-    width: 416px !important;
-  }
-  .modal-footer{
-    border:none !important;
-    padding: 0px !important;
-    margin-top: 20px;
+@include media-breakpoint-down(md) {
+  links ul li{
+    // width:50%;
+    width: 100% !important;
+    padding:10px !important;
   }
 }
-// .navbar{
-//   position: fixed !important;
-//   background-image: url(../../../assets/scalable-vector-graphics/banner_header2.svg);
-//    background-repeat: no-repeat;
-//   background-position: right;
-//   height:100px !important;
+
+@include media-breakpoint-down(xl) {
+   ul li{
+      padding: 10px !important;
+  }
+}
+// #wave {
+//   position: relative;
+//   height: 10px;
+//   width: 100%;
+//   background: #e0efe3;
+// }
+// #wave:before {
+//   content: "";
+//   display: block;
+//   position: absolute;
+//   border-radius: 100% 50%;
+//   width: 340px;
+//   height: 80px;
+//   background-color: white;
+//   right: -5px;
+//   top: 40px;
+// }
+// #wave:after {
+//   content: "";
+//   display: block;
+//   position: absolute;
+//   border-radius: 100% 50%;
+//   width: 300px;
+//   height: 70px;
+//   background-color: #e0efe3;
+//   left: 0;
+//   top: 27px;
 // }
 
-.logo{
-  cursor: pointer;
-  width: 120px;
-  margin-left: 80px;
-  margin-top: 20.5px;
-  margin-bottom: 20.5px;
+.heading:hover{
+  // background-color: whitesmoke !important;
+  // opacity: 0.6 !important;
+  // font-weight:bold !important;
+   color:darkgray !important;
 }
 
-.example-fill-remaining-space {
-  /* This fills the remaining space, by using flexbox.
-     Every toolbar row uses a flexbox row layout. */
-  flex: 1 1 auto;
-  text-align: right;
+img.logo{
+  cursor: pointer;
+  width: 120px;
 }
 
 .heading{
   cursor:pointer !important;
   font-size:0.9rem !important;
-  color: gray;
+  color: gray !important;
   font-weight: 500;
-  padding: 20px;
+  // padding: 20px;
   text-transform: capitalize !important;
   letter-spacing: 1px;
 }
-.router-link-active{
-   color:#303030;
-  font-weight:bold;
+.dropdown-item{
+padding:20px !important;
 }
 .dropdown-item:hover{
-  background-color: #f7f7f7 !important;
-  box-shadow: none !important;
+  // color:pink !important;
 }
 
-// .parallax-custom{
-//   background-image: url('../../../assets/jpg/parallax_3.jpg');
-//   background-attachment: fixed;
-//   height: 1200px;
-// }
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-
-}
-// Extra small devices (portrait phones, less than 576px)
-@media (max-width: 575px) {
-
-
-}
-
-// Small devices (landscape phones, less than 768px)
-@media (max-width: 767px) {
-
- }
-
-// Medium devices (tablets, less than 992px)
-@media (max-width: 991px) {
-  .menu-dd{
-    height:500px !important;
-  }
- }
-
-// Large devices (desktops, less than 1200px)
-@media (max-width: 1199px) {
-
- }
- .line-header{
-  width: 100%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border: 1.875% solid #E1E1E1;
-}
 .router-link-active{
   color:#116bb5 !important;
+  //   color:#116bb5 !important;
+  //   font-weight:bold !important;
 }

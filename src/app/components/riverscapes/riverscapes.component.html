@@ -1,0 +1,107 @@
+<div class="riverscapes">
+  <div class="banner text-center">
+    <h2 class="title"><span>RIVERSCAPES</span>
+    </h2>
+  </div>
+<div class="container text-center">
+  <div class="gallery">
+    <mdb-carousel [interval]="15000" class="carousel slide carousel-fade d-none d-xl-block" [animation]="'fade'" >
+      <mdb-carousel-item *ngFor="let item of slides; let i = index" style="margin-top:-8px">
+        <div *ngFor="let card of item; let cardIndex = index">
+          <mdb-card>
+            <div *ngIf="i % 2 == 0" class="slide-card1">
+              <div class="image2-section">
+                <img alt="name" class="img-fluid" [src]="card.image" alt="Card image cap">
+              </div>
+              <div class="card1-section text-center">
+                <div>
+                  <mdb-card-title>
+                    <p class="card-title text-left">{{card.title}}</p>
+                  </mdb-card-title>
+                  <div>
+                    <p class="text-left" class="image-description">{{card.description}}</p>
+                    <p class="text-left" class="image-description">{{card.description2}}</p>
+                  </div>
+                </div>
+                <div class="details1-section">
+                  <div class="details" >
+                    <div><img alt="name" class="artist-profile-pic" [src]="card.artist_profile_pic" type='image/jp2' alt="Profile"></div>
+                    <div class="ml-3 artist-info">
+                      <span>{{card.artist}}</span><br />
+                      <span *ngIf="card.artist_social_media_1 != ''">{{card.artist_social_media_1}}</span><br/>
+                      <span *ngIf="card.artist_social_media_2 != ''">{{card.artist_social_media_2}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="i % 2 != 0" class="slide-card2">
+              <div class="card2-section text-center">
+                <div>
+                  <mdb-card-title>
+                    <p class="card-title text-left">{{card.title}}</p>
+                  </mdb-card-title>
+                  <div>
+                    <p class="text-left" class="image-description">{{card.description}}</p>
+                    <p class="text-left" class="image-description">{{card.description2}}</p>
+                  </div>
+                </div>
+                <div class="details2-section">
+                  <div class="details">
+                    <img alt="name" class="artist-profile-pic" [src]="card.artist_profile_pic" alt="profile">
+                    <div class="ml-3 artist-info">
+                      <span>{{card.artist}}</span><br />
+                      <span>{{card.artist_social_media_1}}</span><br/>
+                      <span>{{card.artist_social_media_2}}</span>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="image2-section" >
+                <img alt="name" class="img-fluid" [src]="card.image" alt="Card image cap" style="width:auto; height:430px;xobject-fit:cover; background-color:black;" >
+              </div>
+            </div>
+          </mdb-card>
+        </div>
+      </mdb-carousel-item>
+    </mdb-carousel>
+
+    <mdb-carousel [interval]="15000" class="carousel slide carousel-fade d-block d-xl-none" [animation]="'fade'" >
+      <mdb-carousel-item *ngFor="let item of slides; let i = index" style="margin-top:-8px">
+        <div *ngFor="let card of item; let cardIndex = index">
+          <mdb-card>
+            <div class="slide-card1">
+              <div class="image2-section">
+                <img alt="name" class="img-fluid" [src]="card.image" alt="Card image cap">
+              </div>
+              <div class="card1-section text-center">
+                <div>
+                  <mdb-card-title>
+                    <p class="card-title text-left">{{card.title}}</p>
+                  </mdb-card-title>
+                  <div>
+                    <p class="text-left" class="image-description">{{card.description}}</p>
+                    <p class="text-left" class="image-description">{{card.description2}}</p>
+                  </div>
+                </div>
+                <div class="details1-section">
+                  <div class="details" >
+                    <div><img alt="name" class="artist-profile-pic" [src]="card.artist_profile_pic" type='image/jp2' alt="Profile"></div>
+                    <div class="ml-3 artist-info">
+                      <span>{{card.artist}}</span><br />
+                      <span *ngIf="card.artist_social_media_1 != ''">{{card.artist_social_media_1}}</span><br/>
+                      <span *ngIf="card.artist_social_media_2 != ''">{{card.artist_social_media_2}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mdb-card>
+        </div>
+      </mdb-carousel-item>
+    </mdb-carousel>
+
+  </div>
+  </div>
+</div>

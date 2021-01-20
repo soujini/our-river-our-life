@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, ViewChild, EventEmitter, AfterViewIni
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDirective } from 'ng-uikit-pro-standard';
 import { WindowService } from '../../services/window.service';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import { OrolService } from '../../services/orol.service';
 import { SpinnerService } from '../../services/spinner.service';
 
@@ -11,7 +11,7 @@ import { SpinnerService } from '../../services/spinner.service';
   templateUrl: './verify-otp.component.html',
   styleUrls: ['./verify-otp.component.scss']
 })
-export class VerifyOTPComponent implements AfterViewInit {
+export class VerifyOtpComponent implements AfterViewInit {
   windowRef: any;
   errorMessage: any;
   @ViewChild('otpModal') otpModal: ModalDirective;

@@ -1,13 +1,14 @@
 .features{
-  background-image: url('../../../assets/jpg/banner/bg_river1.webp');
+  background-image: url('../../../assets/backgrounds/bg_river.webp');
+  
   background-position: right;
   background-repeat: no-repeat;
   padding-top:75px;
   // padding-bottom:75px;
-  min-height:775px;
+  min-height:800px;
   -webkit-transform: translate3d(0,0,0);
-  background-attachment: scroll;
-  background-size: cover;
+  // background-attachment: scroll;
+  // background-size: cover;
 }
 .feature-card-img{
   height:100px;
@@ -39,18 +40,18 @@
 }
 
 .min-text{
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: #303030;
   text-align: center;
   letter-spacing: 1px;
-  line-height: 1.7;
+  line-height: 2;
 }
 .feature-description{
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: 0.9rem;
+  font-weight: 500;
   color: #303030;
   text-align: center;
   letter-spacing: 1px;
-  line-height: 1.7;
+  line-height: 2;
 }

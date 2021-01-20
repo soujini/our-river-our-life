@@ -1,10 +1,11 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { NavbarModule, WavesModule, ButtonsModule } from 'ng-uikit-pro-standard'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from "../../shared/services/auth.service";
 import { OrolService } from "../../services/orol.service";
 import { ModalDirective } from 'ng-uikit-pro-standard';
-// import { RegisterComponent } from '../../components/register/register.component';
+
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -27,9 +28,13 @@ export class ToolbarComponent implements OnInit {
   isGetInvolved:boolean=false;
   avatarURL:String="../../assets/jpg/profile.png";
 
-  constructor(private formBuilder: FormBuilder,public router: Router, public route: ActivatedRoute, public authService: AuthService, public orolService:OrolService
-  ) {
-
+  constructor(
+    private formBuilder: FormBuilder,
+    public router: Router,
+    public route: ActivatedRoute,
+    private orolService:OrolService,
+    private authService:AuthService
+  ){
     this.orolService.userDetailsSubject.subscribe(data => {
       if(JSON.stringify(data) === '{}'){
         this.name = "";
@@ -43,14 +48,15 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit()  {
     var user = JSON.parse(localStorage.getItem('User'));
-    console.log(user.avatarURL);
-    this.avatarURL = user.avatarURL;
+    if(user){
+      this.avatarURL = user.avatarURL;
+    }
   }
 
   setIsRegister(event){
     this.isRegister = event;
   }
-
+  
   setIsRecoverPassword(event){
     this.isRecoverPassword = event;
   }
@@ -72,4 +78,5 @@ export class ToolbarComponent implements OnInit {
   logout(){
     this.authService.SignOut();
   }
+
 }

@@ -1,36 +1,69 @@
 <div class="videos-gallery">
-  <div class="banner text-center" style="font-family: 'Open Sans', sans-serif;padding-top:35px; padding-bottom:35px;
-  ">
-    <h2><span style="color:#357ba0;font-weight: 800; color:#116bb5">FEATURED VIDEOS</span>
+  <div class="banner text-center">
+    <h2 class="title"><span>FEATURED VIDEOS</span>
     </h2>
   </div>
 
   <div class="campaigns" *ngFor="let campaign of campaigns_list; let i=index">
     <div class="container">
-
-    <div class="row" xstyle="margin-right:0px;margin-left:0px;">
-      <div class="vid-container col-lg-9">
-        <div class="embed-responsive embed-responsive-4by3">
+    <div xclass="row">
+      <div class="vid-container col-lg-12">
+        <div class="embed-responsive embed-responsive-21by9">
           <iframe class="embed-responsive-item" id="vid_frame" [src]="campaign.defaultVideo" frameborder="0"
             title="video" style="postition:relative"></iframe>
         </div>
       </div>
-
-      <div class="col-lg-3 videos-list">
-        <ul #widgetsContent>
-          <li *ngFor="let v of campaign.videos">
-            <div class="vid-item text-center" (click)="bla(i, v.url);">
-              <div class="thumb">
-                <img alt="name" [src]="v.thumb">
-              </div>
-              <div class="video-description">
-                {{v.name}}
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
     </div>
+    <div class="videos-list">
+    <ul>
+      <li *ngFor="let v of campaign.videos">
+        <div class="vid-item text-center" (click)="bla(i, v.url);">
+          <div class="thumb">
+            <img alt="name" [src]="v.thumb" height="100px" width="100px">
+          </div>
+          <div class="video-description">
+            {{v.name}}
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
+  </div>
+  <!-- <div class="videos-list row"> -->
+    <!-- <div class="container" style="overflow:scroll;padding-left:25px">
+
+    </div> -->
+    <!-- <div style="width:90%">
+    asda,mnd,and,an,amnsd,ansdasda,mnd,and,an,amnsd,ansdasda,mnd,and,an,amnsd,ansdasda,mnd,and,an,amnsd,ansdasda,mnd,and,an,amnsd,ansdasda,mnd,and,an,amnsd,ansdasda,mnd,and,an,amnsd,ansdasda,mnd,and,an,amnsd,ansdasda,mnd,and,an,amnsd,ansdasda,mnd,and,an,amnsd,ansdasda,mnd,and,an,amnsd,ansdasda,mnd,and,an,amnsd,ansdasda,mnd,and,an,amnsd,ansdasda,mnd,and,an,amnsd,ansdasda,mnd,and,an,amnsd,ansdasda,mnd,and,an,amnsd,ansd
+    </div> -->
+    <!-- <ul>
+      <li *ngFor="let v of campaign.videos">
+        <div class="vid-item text-center" (click)="bla(i, v.url);">
+          <div class="xthumb">
+            <img alt="name" [src]="v.thumb" height="100px" width="100px">
+          </div>
+          <div class="video-description">
+            {{v.name}}
+          </div>
+        </div>
+      </li>
+    </ul> -->
+    <!-- </div> -->
+  <!-- <div class="container-fluid">
+    <div class="col-lg-12 videos-list">
+      <ul #widgetsContent>
+        <li *ngFor="let v of campaign.videos">
+          <div class="vid-item text-center" (click)="bla(i, v.url);">
+            <div class="thumb">
+              <img alt="name" [src]="v.thumb" height="100px" width="auto">
+            </div>
+            <div class="video-description">
+              {{v.name}}
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    </div> -->
   </div>
 </div>

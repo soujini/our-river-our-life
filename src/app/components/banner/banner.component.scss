@@ -1,22 +1,43 @@
-
-.header {
+.banner {
+  margin-top:-52px;
   position: relative;
   text-align: center;
   background: linear-gradient(60deg, #63b8ac 0%, #f7f7f7 100%);
   color: white;
 }
-.logo {
-  width: 50px;
-  fill: white;
-  display: inline-block;
-  vertical-align: middle;
-}
-.inner-header {
+
+.header {
   height: 45vh;
   width: 100%;
   margin: 0;
   padding: 0;
 }
+
+.inner-header{
+  padding-top:50px;
+  height:250px;
+  padding-left:200px;
+  padding-right:200px;
+}
+
+.heading{
+  text-transform: uppercase;
+  color: #34495E;
+  font-size:1.5rem;
+  font-weight: bold;
+  line-height: 3em;
+  letter-spacing: 1px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.description{
+  color: #34495E;
+  font-size:1.1rem;
+  font-weight: 600;
+  line-height: 2em;
+  letter-spacing: 1px;
+}
+
 .flex {
   /*Flexbox for containers*/
   display: flex;
@@ -24,6 +45,7 @@
   align-items: center;
   text-align: center;
 }
+
 .waves {
   position: relative;
   width: 100%;
@@ -32,12 +54,7 @@
   /*Fix for safari gap*/
   max-height: 150px;
 }
-.content {
-  position: relative;
-  height: 20vh;
-  text-align: center;
-  background-color: white;
-}
+
 /* Animation */
 .parallax>use {
   animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
@@ -67,37 +84,6 @@
   }
 }
 
-.banner{
-  margin-top:150px;
-  padding-top:50px;
-  padding-bottom:75px;
-  text-align: center;
-  letter-spacing: 1px;
-  min-height:350px;
-}
-.banner-div{
-  padding-top:50px;
-  height:250px;
-  padding-left:200px;
-  padding-right:200px;
-}
-.banner-text1{
-  text-transform: uppercase;
-  color: #34495E;
-  font-size:1.5rem;
-  font-weight: bold;
-  line-height: 3em;
-  letter-spacing: 1px;
-  font-family: "Open Sans", sans-serif;
-}
-.banner-text2{
-  color: #34495E;
-  font-size:1.1rem;
-  font-weight: 600;
-  line-height: 2em;
-  letter-spacing: 1px;
-}
-
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
 
@@ -109,31 +95,29 @@
 }
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575px) {
-  .banner-div{
+  .inner-header{
     padding-top:50px;
     height:350px !important;
     padding-left:15px;
     padding-right:15px;
   }
-  .inner-header {
+  .header {
     height: 60vh;
     width: 100%;
     margin: 0;
     padding: 0;
-    // margin-top:50px;
   }
-
 }
 
 // Small devices (landscape phones, less than 768px)
 @media (max-width: 767px) {
-  .banner-div{
+  .inner-header{
     padding-top:50px;
     height:250px;
     padding-left:15px;
     padding-right:15px;
   }
-  .inner-header {
+  .header {
     height: 60vh;
     width: 100%;
     margin: 0;
@@ -154,13 +138,13 @@
 
 // Medium devices (tablets, less than 992px)
 @media (max-width: 991px) {
-  .banner-div{
+  .inner-header{
     padding-top:50px;
     height:250px;
     padding-left:15px;
     padding-right:15px;
   }
-  .inner-header {
+  .header {
     height: 60vh;
     width: 100%;
     margin: 0;
@@ -183,6 +167,3 @@
 @media (max-width: 1199px) {
 
 }
-
-// Extra large devices (large desktops)
-// No media query since the extra-large breakpoint has no upper bound on its width

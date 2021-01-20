@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDirective } from 'ng-uikit-pro-standard';
 import { AuthService } from "../../shared/services/auth.service";
 import { WindowService } from '../../services/window.service';
-import * as firebase from 'firebase';
+import  * as firebase from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { SpinnerService } from '../../services/spinner.service';

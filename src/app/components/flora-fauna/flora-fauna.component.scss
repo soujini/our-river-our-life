@@ -1,3 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ng-uikit-pro-standard/assets/scss/core/colors';
+@import '~ng-uikit-pro-standard/assets/scss/core/variables';
+@import '~ng-uikit-pro-standard/assets/scss/core/variables-pro';
+@import '~ng-uikit-pro-standard/assets/scss/bootstrap/functions';
+@import '~ng-uikit-pro-standard/assets/scss/bootstrap/variables';
+@import '~ng-uikit-pro-standard/assets/scss/core/mixins';
+
+
+.content{
+      background-color: white !important;
+}
+
+.center-image{
+  width:176px;
+  height:auto;
+  vertical-align:middle;
+}
+
+.flexbox1 {
+    flex: 0 1 auto;
+}
+
+.flexbox2 {
+    flex: 1;
+    align-self: flex-end;
+}
+
+.frame {
+    width: 176px !important;
+    height: 176px !important;
+    vertical-align: middle;
+    text-align: center;
+    display: table-cell;
+      background-color: #f7f7f7 !important;
+}
+.custom-btn {
+  margin-top:50px;
+  border: 1px solid #268586 !important;
+  background-color: white;
+  color: #757575;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  text-align: center;
+  width: 160px;
+  letter-spacing: 1px;
+    padding: 10px;
+}
+
 .search-results {
   height: 500px;
   overflow-y: scroll;
@@ -27,9 +76,7 @@ margin-top: 50px;
   margin: 0 0 2em;
   width: 100%;
 }
-.content{
-    margin-top: 100px !important;
-}
+
 .card-text{
 padding: 10px !important;
 }
@@ -92,13 +139,13 @@ line-height:2.75em;
 
 // }
 
-.addFlora{
-  font-size:14px;
-  font-weight: 500;
-  font-family: 'Open Sans', sans-serif !important;
-  color:#808080;
-
-}
+// .addFlora{
+//   font-size:14px;
+//   font-weight: 500;
+//   font-family: 'Open Sans', sans-serif !important;
+//   color:#808080;
+//
+// }
 
 .image_container{
   padding:0px;
@@ -168,9 +215,9 @@ right: 133px;
 // .pills-primary .nav-link.active, .pills-primary .show>.nav-link, .bla{
 //   background-color: #34495e !important;
 // }
-.content{
-  background-color: #34495e !important;
-}
+// .content{
+//   background-color: #34495e !important;
+// }
 .search-box{
   width: 440px;
   height: 54px;
@@ -200,4 +247,26 @@ right: 133px;
   color:dimgray;
 }
 .label-value{
+}
+
+@include media-breakpoint-down(md) {
+  .outer-block {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+    -moz-column-gap: 1em;
+    -webkit-column-gap: 1em;
+    column-gap: 1em;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .outer-block {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+    -moz-column-gap: 1em;
+    -webkit-column-gap: 1em;
+    column-gap: 1em;
+  }
 }

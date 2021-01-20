@@ -1,15 +1,17 @@
-
-
-
 .videos-gallery{
-  background:url(../../../assets/jpg/banner/bg_waves2.webp) no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  padding-left: 50px;
-  padding-right: 50px;
+  // padding-left: 50px;
+  // padding-right: 50px;
   padding-bottom: 35px;
+}
+.banner{
+  font-family: 'Open Sans',
+  sans-serif;padding-top:35px;
+  padding-bottom:35px;
+}
+.title{
+  color:#357ba0;
+  font-weight: 800;
+  color:#116bb5;
 }
 // .custom-slider-main{
 //   display: flex;
@@ -125,33 +127,36 @@
 
 .vid-container {
   position: relative;
-  padding-top: 30px;
-  height: 500px;
-  width:1000px;
+  // padding-top: 0px;
+  // height: 500px;
+  // width:1000px;
   text-align: center;
-  background-color: black;
+  // background-color: black;
+  padding: 0px !important;
+  // margin-bottom:25px;
 }
 .vid-container iframe{
   // position: absolute;
   top: 0;
   left: 0;
-  height:450px;
-  width:1000px;
+  // height:450px;
+  // width:1000px;
 }
 .videos-list{
-  background-color: transparent;
-  height:500px;
+  border-top:5px solid whitesmoke;
+  background-color: black;
   justify-content:center;
-  overflow-y: scroll;
-  // padding:25px;
   font-size: 1rem;
   font-family: "Open Sans", sans-serif !important;
-  color: #303030;
+  color: white;
   font-weight: 400;
+  padding-top: 20px !important;
+  overflow: scroll !important;
 
   ul{
     list-style-type:none;
     padding-left:0;
+    display:inline-flex;
   }
 }
 //
@@ -165,9 +170,12 @@
 .thumb {
   // overflow:hidden;
   // height: 84px;
-  padding-left: 50px;
-  padding-right: 50px;
+  // padding-left: 50px;
+  // padding-right: 50px;
   cursor: pointer;
+  img{
+    border:1px dashed gray !important;
+  }
 }
 // .vid-item{
 //   text-align: center;
@@ -177,11 +185,11 @@
   text-align: center;
   font-size: 0.9rem;
 }
-.thumb img {
-  width: 50%;
-  position: relative;
-  // top: -13px;
-}
+// .thumb img {
+//   width: 50%;
+//   position: relative;
+//   // top: -13px;
+// }
 // .arrows {
 //   position:relative;
 //   width: 100%;
@@ -214,5 +222,5 @@
 ul > li{
   // padding:15px !important;
   // padding-top:25px !important;
-  // width: 150px;
+  width: 200px;
 }

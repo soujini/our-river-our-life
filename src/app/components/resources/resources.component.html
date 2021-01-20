@@ -38,7 +38,7 @@
       </h2>
     </div>
     <div class="row">
-      <div class="col-md-6" *ngFor="let item of bioMonitoringToolkit">
+      <div class="col-lg-4 col-md-4 mt-4" *ngFor="let item of bioMonitoringToolkit">
         <div class="text-center">
           <p>{{item.name}}
         </div>
@@ -53,8 +53,9 @@
       <h2><span style="color:#357ba0;font-weight: 800; color:#116bb5">IMPORTANT LINKS</span>
       </h2>
     </div>
+    <div class="row content">
     <div class="outer-block">
-      <div class="items xmt-4" *ngFor="let item of importantLinks">
+      <div class="items" *ngFor="let item of importantLinks">
         <mdb-card cascade="true" wider="true">
           <div class="view view-cascade gradient-card-header aqua-gradient">
             <h5 class="card-header-title mb-2" style="font-size:14px">{{item.name}}</h5>
@@ -75,6 +76,7 @@
         </mdb-card>
       </div>
     </div>
+    </div>
 
   </div>
   <div class="section">
@@ -82,8 +84,9 @@
       <h2><span style="color:#357ba0;font-weight: 800; color:#116bb5">EDUCATION & OUTREACH MATERIAL</span>
       </h2>
     </div>
+    <div class="row content">
     <div class="outer-block">
-      <div class="items xmt-4" *ngFor="let item of educationAndOutreachLinks">
+      <div class="items" *ngFor="let item of educationAndOutreachLinks">
         <mdb-card cascade="true" wider="true">
           <div class="view view-cascade gradient-card-header blue-gradient">
             <h5 class="card-header-title mb-2" style="font-size:14px">{{item.name}}</h5>
@@ -101,6 +104,7 @@
           </mdb-card-body>
         </mdb-card>
       </div>
+      </div>
     </div>
 
   </div>
@@ -109,8 +113,9 @@
       <h2><span style="color:#357ba0;font-weight: 800; color:#116bb5">GOVERNMENT WEBSITES</span>
       </h2>
     </div>
+    <div class="row content">
     <div class="outer-block">
-      <div class="items xmt-4" *ngFor="let item of governmentWebsites">
+      <div class="items" *ngFor="let item of governmentWebsites">
         <mdb-card cascade="true" wider="true">
           <div class="view view-cascade gradient-card-header aqua-gradient">
             <h5 class="card-header-title mb-2" style="font-size:14px">{{item.name}}</h5>
@@ -129,6 +134,7 @@
         </mdb-card>
       </div>
     </div>
+    </div>
 
   </div>
 
@@ -137,8 +143,9 @@
       <h2><span style="color:#357ba0;font-weight: 800; color:#116bb5">CITIZENS PORTALS</span>
       </h2>
     </div>
+    <div class="row content">
     <div class="outer-block">
-      <div class="items xmt-4" *ngFor="let item of citizensPortal">
+      <div class="items" *ngFor="let item of citizensPortal">
         <mdb-card cascade="true" wider="true">
           <div class="view view-cascade gradient-card-header aqua-gradient">
             <h5 class="card-header-title mb-2" style="font-size:14px">{{item.name}}</h5>
@@ -155,6 +162,7 @@
               </button> </a>
           </mdb-card-body>
         </mdb-card>
+      </div>
       </div>
     </div>
 

@@ -4,7 +4,7 @@ import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { SpinnerService } from '../../services/spinner.service';
 import { OrolService } from '../../services/orol.service';
