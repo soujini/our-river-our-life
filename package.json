@@ -14,8 +14,10 @@
   "dependencies": {
     "@agm/core": "^1.1.0",
     "@agm/js-marker-clusterer": "^1.1.0",
+    "@angular-devkit/build-angular": "~0.1100.5",
     "@angular/animations": "^11.0.5",
     "@angular/cdk": "^11.0.3",
+    "@angular/compiler-cli": "~11.0.5",
     "@angular/common": "^11.0.5",
     "@angular/compiler": "^11.0.5",
     "@angular/core": "^11.0.5",
@@ -41,9 +43,7 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1100.5",
     "@angular/cli": "^11.0.5",
-    "@angular/compiler-cli": "~11.0.5",
     "@angular/language-service": "~11.0.5",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
@@ -66,5 +66,9 @@
     "inquirer": "^6.2.2",
     "inquirer-autocomplete-prompt": "^1.0.1",
     "open": "^7.0.3"
-  }
+  },
+  "engines": {
+  "node": "12.16.2",
+  "npm": "6.14.11"
+}
 }
