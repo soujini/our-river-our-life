@@ -59,9 +59,9 @@
               <span class="ml-2" style="vertical-align:middle">{{name}}</span><span class="caret"></span>
             </a>
             <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown xdropdown-custom" role="menu">
-              <a [routerLink]="'/my-account1'" class="dropdown-item" mdbWavesEffect href="#"><mdb-icon fas icon="user-alt"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">My Account</span></a>
+              <a [routerLink]="'/my-account'" class="dropdown-item" mdbWavesEffect href="#"><mdb-icon fas icon="user-alt"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">My Account</span></a>
                 <div class="divider dropdown-divider"></div>
-              <a class="dropdown-item" mdbWavesEffect href="#"><mdb-icon fas icon="sign-out-alt"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">Logout</span></a>
+              <a class="dropdown-item" mdbWavesEffect href="#" (click)="logout()"><mdb-icon fas icon="sign-out-alt"></mdb-icon><span  xrouterLinkActive="['router-link-active']" class="heading ml-2">Logout</span></a>
             </div>
           </li>
           <li class="nav-item avatar dropdown d-lg-none" dropdown>

@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'resources', component: ResourcesComponent },
   { path: 'ongoing-campaigns', component: OngoingCampaignsComponent },
-  { path: 'my-account1', component: MyAccountComponent },
+  { path: 'my-account', component: MyAccountComponent },
   { path: 'flora-fauna', component: FloraFaunaComponent },
   {
   path: 'voices-from-the-river',

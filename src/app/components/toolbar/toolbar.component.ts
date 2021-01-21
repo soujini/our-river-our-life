@@ -26,7 +26,7 @@ export class ToolbarComponent implements OnInit {
   submitted = false;
   isEyeHidden:boolean=true;
   isGetInvolved:boolean=false;
-  avatarURL:String="../../assets/jpg/profile.png";
+  avatarURL:String="../../assets/icons/profile.png";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -56,7 +56,7 @@ export class ToolbarComponent implements OnInit {
   setIsRegister(event){
     this.isRegister = event;
   }
-  
+
   setIsRecoverPassword(event){
     this.isRecoverPassword = event;
   }

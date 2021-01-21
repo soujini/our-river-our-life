@@ -64,7 +64,6 @@ export class MapsComponent implements OnInit {
   }
 
   mapReady(event) {
-    // console.log(event);
     this.setCurrentPosition();
     // this.getGeoLocation();
   }
@@ -137,116 +136,96 @@ export class MapsComponent implements OnInit {
   validate() {
     this.submitted = true;
     if (this.mapsForm.get('location').valid &&
-      this.mapsForm.get('latitude').valid &&
-      this.mapsForm.get('longitude').valid &&
-      this.mapsForm.get('activityDate').valid &&
-      this.mapsForm.get('activityTime').valid
-      // && this.imageFiles.length > 0 
-    ) {
-    }
+    this.mapsForm.get('latitude').valid &&
+    this.mapsForm.get('longitude').valid &&
+    this.mapsForm.get('activityDate').valid &&
+    this.mapsForm.get('activityTime').valid
+    // && this.imageFiles.length > 0
+  ) {
   }
+}
 
-  async getAddressByLatitudeAndLongitude(lat, lng, form) {
-    var address;
-    this.geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(lat, lng);
+async getAddressByLatitudeAndLongitude(lat, lng, form) {
+  var address;
+  this.geocoder = new google.maps.Geocoder();
+  var latlng = new google.maps.LatLng(lat, lng);
 
-    await this.geocoder.geocode({ latLng: latlng }, function (results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        var arrAddress = results;
-        address = results[0].formatted_address;
-        form.patchValue({
-          location: address
-        });
-      } else {
-        console.log("Geocoder failed due to: " + status);
-      }
+  await this.geocoder.geocode({ latLng: latlng }, function (results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      var arrAddress = results;
+      address = results[0].formatted_address;
+      form.patchValue({
+        location: address
+      });
+    } else {
+      console.log("Geocoder failed due to: " + status);
+    }
+  });
+}
+
+private setCurrentPosition() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      var accuracy = position.coords.accuracy;
+      // alert(accuracy);
+      this.mapsForm.patchValue({
+        latitude: +position.coords.latitude,
+        longitude: +position.coords.longitude,
+      });
+      this.centerLoc = { lat: position.coords.latitude, lng: position.coords.longitude };
+      // this.latitude=position.coords.latitude;
+      // this.longitude=position.coords.longitude;
+      this.getAddressByLatitudeAndLongitude(position.coords.latitude, position.coords.longitude, this.mapsForm);
+      // this.zoom = 15;
     });
   }
-
-  private setCurrentPosition() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        var accuracy = position.coords.accuracy;
-        // alert(accuracy);
-        this.mapsForm.patchValue({
-          latitude: +position.coords.latitude,
-          longitude: +position.coords.longitude,
-        });
-        this.centerLoc = { lat: position.coords.latitude, lng: position.coords.longitude };
-        // this.latitude=position.coords.latitude;
-        // this.longitude=position.coords.longitude;
-        this.getAddressByLatitudeAndLongitude(position.coords.latitude, position.coords.longitude, this.mapsForm);
-        // this.zoom = 15;
-      });
-    }
-    else {
-      // alert("Geolocation is not supported by this browser.");
-    }
+  else {
+    // alert("Geolocation is not supported by this browser.");
   }
+}
 
-  async addAlert() {
-    this.validate();
-    await this.orolService.addAlert(this.mapsForm.value, this.imageFiles);
-    this.show = false;
-    this.setCurrentPosition();
-    this.images = [];
-    this.imageFiles = [];
-  }
+async addAlert() {
+  this.validate();
+  await this.orolService.addAlert(this.mapsForm.value, this.imageFiles);
+  this.show = false;
+  this.setCurrentPosition();
+  this.images = [];
+  this.imageFiles = [];
+}
 
-  onFileChange(event) {
-    if (event.target.files && event.target.files[0]) {
-      var length = event.target.files.length;
-      for (let i = 0; i < event.target.files.length; i++) {
-        this.imageFiles.push(event.target.files[i]);
-        var reader = new FileReader();
-        reader.onload = (event: any) => {
-          this.images.push(event.target.result);
-          this.compressFile(this.images)
-        }
-        reader.readAsDataURL(event.target.files[i]);
+onFileChange(event) {
+  this.images=[];
+  if (event.target.files && event.target.files[0]) {
+    var length = event.target.files.length;
+    for (let i = 0; i < event.target.files.length; i++) {
+      this.imageFiles.push(event.target.files[i]);
+      var _filename = Date.now()+"-flood-alert";
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.images.push(event.target.result);//base64
+        this.compressFile(event.target.result, _filename);
       }
+      reader.readAsDataURL(event.target.files[i]);
     }
   }
+}
 
-  // onFileChange(event) {
-  //   if (event.target.files && event.target.files[0]) {
-  //       var filesAmount = event.target.files.length;
-  //       for (let i = 0; i < filesAmount; i++) {
-  //               var reader = new FileReader();
-  //               reader.onload = (event:any) => {
-  //                 console.log(event.target.result);
-  //                  this.images.push(event.target.result); 
-  //               }
-  //               reader.readAsDataURL(event.target.files[i]);
-  //       }
-
-  //   }
-
-  // }
-  
-  compressFile(images) {
-    var orientation = -1;
-    this.imgResultBeforeCompress = images;
-    console.log(this.imgResultBeforeCompress);
-    for(let i = 0; i < images.length; i++){
-    console.log('Size in bytes was:', this.imageCompress.byteCount(images));     
-    this.imageCompress.compressFile(images, orientation, 50, 50).then(
-      result => {
-        this.imgResultAfterCompress.push(result);
-        console.log('Size in bytes is now:', this.imageCompress.byteCount(result));
-        // // const imageBlob = this.dataURItoBlob(this.imgResultAfterCompress,"Test");
-        this.imageFile = this.dataURLtoFile(this.imgResultAfterCompress, "Test");
-
-      });
-    }
+compressFile(base64URL, filename) {
+  alert(filename);
+  var orientation = -1;
+  this.imgResultBeforeCompress = base64URL;
+  this.imageCompress.compressFile(base64URL, orientation, 50, 50).then(
+    result => {
+      this.imgResultAfterCompress.push(result);
+      this.imageFile = this.dataURLtoFile(result, filename);
+    });
   }
   dataURLtoFile(dataurl, filename) {
     var arr = dataurl.split(','),
-      mime = arr[0].match(/:(.*?);/)[1],
-      bstr = atob(arr[1]),
-      n = bstr.length,
-      u8arr = new Uint8Array(n);
+    mime = arr[0].match(/:(.*?);/)[1],
+    bstr = atob(arr[1]),
+    n = bstr.length,
+    u8arr = new Uint8Array(n);
     while (n--) {
       u8arr[n] = bstr.charCodeAt(n);
     }

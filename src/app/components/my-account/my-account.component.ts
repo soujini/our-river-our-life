@@ -12,7 +12,7 @@ export class MyAccountComponent implements OnInit {
 
   profileForm: FormGroup;
   public imageFile: File[]=[];
-  imageURL:any = "../../assets/jpg/profile.png";
+  imageURL:any = "../../assets/icons/profile.png";
   show: boolean = false;
   images = [];
   submitted: boolean = false;

@@ -1,3 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ng-uikit-pro-standard/assets/scss/core/colors';
+@import '~ng-uikit-pro-standard/assets/scss/core/variables';
+@import '~ng-uikit-pro-standard/assets/scss/core/variables-pro';
+@import '~ng-uikit-pro-standard/assets/scss/bootstrap/functions';
+@import '~ng-uikit-pro-standard/assets/scss/bootstrap/variables';
+@import '~ng-uikit-pro-standard/assets/scss/core/mixins';
+
+
+
 .about{
   background-color: white;
   // font-size: 1rem;
@@ -6,8 +16,8 @@
   // font-weight:400;
 }
 .about-banner{
-  padding-left:25%;
-  padding-right:25%;
+  padding-left:50px;
+  padding-right:50px;
   padding-top:50px;
   padding-bottom:50px;
   // background-color: #ef4f4;
@@ -155,4 +165,11 @@
 // Large devices (desktops, less than 1200px)
 @media (max-width: 1199px) {
 
+}
+
+@include media-breakpoint-down(lg) {
+  .about-banner{
+    padding-left:25px;
+    padding-right:25px;
+  }
 }

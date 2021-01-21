@@ -15,11 +15,11 @@
       </div>
     </div>
     <div class="videos-list">
-    <ul>
+    <ul class="mb-0">
       <li *ngFor="let v of campaign.videos">
         <div class="vid-item text-center" (click)="bla(i, v.url);">
           <div class="thumb">
-            <img alt="name" [src]="v.thumb" height="100px" width="100px">
+            <img alt="name" [src]="v.thumb" height="75px" width="75px">
           </div>
           <div class="video-description">
             {{v.name}}
@@ -40,7 +40,7 @@
       <li *ngFor="let v of campaign.videos">
         <div class="vid-item text-center" (click)="bla(i, v.url);">
           <div class="xthumb">
-            <img alt="name" [src]="v.thumb" height="100px" width="100px">
+            <img alt="name" [src]="v.thumb" height="75px" width="75px">
           </div>
           <div class="video-description">
             {{v.name}}

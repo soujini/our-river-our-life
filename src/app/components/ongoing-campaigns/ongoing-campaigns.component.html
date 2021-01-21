@@ -1,15 +1,14 @@
 <div class="ongoing-campaigns">
-<!-- <app-banner-waves></app-banner-waves> -->
 <div class="banner text-center">
   <h2 class="title"><span>ONGOING CAMPAIGNS</span>
   </h2>
 </div>
 <div class="campaigns" *ngFor="let campaign of campaigns_list; let i=index">
   <p class="campaign-title">{{campaign.name}}</p>
-  <div class="campaign-url" *ngFor="let c of campaign.campaigns">
-    <a class="col-12" [href]="c.url" target="_blank">{{c.url}}</a>
+  <div class="campaign-url pb-2" *ngFor="let c of campaign.campaigns">
+    <u><a class="col-12" [href]="c.url" target="_blank">{{c.url}}</a></u>
   </div>
-  <div class="container">
+  <div class="container mt-4">
     <div class="xrow">
       <div class="vid-container col-lg-12">
         <div class="embed-responsive embed-responsive-21by9">
@@ -19,11 +18,11 @@
       </div>
 
       <div class="videos-list">
-        <ul >
+        <ul class="mb-0">
           <li *ngFor="let v of campaign.videos">
             <div class="vid-item text-center" (click)="bla(i, v.url);">
               <div class="thumb">
-                <img alt="name" [src]="v.thumb" height="100px" width="100px">
+                <img alt="name" [src]="v.thumb" height="75px" width="75px">
               </div>
               <div class="video-description">
                 {{v.name}}
