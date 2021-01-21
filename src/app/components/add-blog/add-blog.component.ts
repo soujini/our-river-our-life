@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormArray,Validators } from '@angular/forms';
+
 import { OrolService } from '../../services/orol.service';
 import { SpinnerService } from '../../services/spinner.service';
 import { NgxImageCompressService } from 'ngx-image-compress';
@@ -36,10 +37,10 @@ export class AddBlogComponent implements OnInit {
   createForm() {
     var user = JSON.parse(localStorage.getItem('User'));
     this.blogForm = this.fb.group({
-      templateType: [''],
+      templateType: ['', [Validators.required]],
       userId: [user.id],
-      featuredTitle: [''],
-      featuredDescription: [''],
+      featuredTitle: ['',[Validators.required,Validators.maxLength(200)]],
+      featuredDescription: ['',[Validators.required,Validators.maxLength(1000)]],
       featuredPhoto: this.fb.array([]),
       featuredAdditionalPhotos: this.fb.array([]),
       featuredVideo: [''],
@@ -56,10 +57,10 @@ export class AddBlogComponent implements OnInit {
     this.featuredAdditionalVideosArray.removeAt(index);
   }
   createblog() {
-    // console.log( this.imageFile);
-    this.orolService.createblog(this.blogForm.value, this.imagefeaturedAdditionalPhotos, this.imageFile)
-    // console.log(this.featuredAdditionalVideosArray.value);
-    // console.log(this.blogForm.get('featuredAdditionalVideos').value);
+    this.submitted = true;
+    this.orolService.createblog(this.blogForm.value, this.imageFile)
+    this.spinnerService.setSpinner(true);
+
   }
 
 
@@ -101,12 +102,14 @@ export class AddBlogComponent implements OnInit {
     var orientation = -1;
     this.imageCompress.uploadFile().then(({ image }) => {
       this.imgResultBeforeCompress = image;
+      var filename = Date.now()+"-add-blog";
       console.log('Size in bytes was:', this.imageCompress.byteCount(image));
+      alert(filename);
       this.imageCompress.compressFile(image, orientation, 50, 50).then(
         result => {
           this.imgResultAfterCompress = result;
           console.log('Size in bytes is now:', this.imageCompress.byteCount(result));
-          this.imageFile = this.dataURLtoFile(this.imgResultAfterCompress, "Test");
+          this.imageFile = this.dataURLtoFile(this.imgResultAfterCompress,filename);
         }
       );
 

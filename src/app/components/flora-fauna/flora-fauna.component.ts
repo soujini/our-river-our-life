@@ -15,8 +15,6 @@ import { NgxImageCompressService } from 'ngx-image-compress';
 })
 export class FloraFaunaComponent implements OnInit {
   pageNumber = 1;
-  // public imageFile: File[]=[];
-
   @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
   public submitted: boolean = false;
   public searchControl: FormControl;
@@ -130,17 +128,25 @@ export class FloraFaunaComponent implements OnInit {
     }
     return new File([u8arr], filename, { type: mime });
   }
-
-  compressFile() {
+  compressFile() {    
     var orientation = -1;
+    var filename=  ""; 
     this.imageCompress.uploadFile().then(({ image }) => {
       this.imgResultBeforeCompress = image;
-      // console.warn('Size in bytes was:', this.imageCompress.byteCount(image));
-       this.imageCompress.compressFile(image, orientation, 50, 50).then(
+      if (this.floraFaunaForm.get('type').value == 1){
+         filename = "flora_"+ Date.now();
+      }
+      else if(this.floraFaunaForm.get('type').value == 2){
+        filename = "fauna_"+ Date.now();
+     }
+      
+      console.log('Size in bytes was:', this.imageCompress.byteCount(image));
+      alert(filename);
+       this.imageCompress.compressFile(image, orientation, 50, 50,).then(
         result => {
           this.imgResultAfterCompress = result;
-          // console.warn('Size in bytes is now:', this.imageCompress.byteCount(result));
-          this.imageFile = this.dataURLtoFile(this.imgResultAfterCompress, "Test");
+          console.log('Size in bytes is now:', this.imageCompress.byteCount(result));
+          this.imageFile = this.dataURLtoFile(this.imgResultAfterCompress,filename );
         }
       );
 

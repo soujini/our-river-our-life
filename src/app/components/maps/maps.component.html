@@ -58,7 +58,7 @@
       </div>
       <div class="date">
         <label class="alert-date">Date</label>
-        <mdb-date-picker name="mydate" auto formControlName="activityDate" [options]="myDatePickerOptions" id="mydp"
+        <mdb-date-picker name="mydate" auto formControlName="activityDate" [options]="myDatePickerOptions" id="mydp" [inline] ="true"
           [placeholder]="'Selected date'" required>
         </mdb-date-picker>
         <p *ngIf="mapsForm.get('activityDate').errors?.required  && this.submitted==true" class="errorMessage">
