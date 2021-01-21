@@ -11,24 +11,28 @@
   </div>
   <hr> -->
   <div class="banner">
-      <h2 class="title row" style="margin-left:15px;margin-right:15px">
+    <h2 class="title row" style="margin-left:15px;margin-right:15px">
       <span class="col-lg-6 text-left">RECENT BLOG POSTS</span>
-      <span class="col-lg-6 text-right">View all</span>
-      </h2>
+      <span class="col-lg-6 text-right">
+        <a href="/voices-from-the-river">
+          View all
+        </a>
+      </span>
+    </h2>
   </div>
 </div>
-  <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
-    [animation]="'slide'">
-    <mdb-carousel-item *ngFor="let item of slides; let i = index">
-      <div class="col-md-4" *ngFor="let card of item; let cardIndex = index">
-        <mdb-card class="my-1">
-          <mdb-card-img [src]="card.img" xwidth="auto" xheight="200px" alt="Card image cap"></mdb-card-img>
-          <mdb-card-body>
-            <mdb-card-title>
-              <h4>{{card.title}}</h4>
-            </mdb-card-title>
-          </mdb-card-body>
-        </mdb-card>
-      </div>
-    </mdb-carousel-item>
-  </mdb-carousel>
+<mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+  [animation]="'slide'">
+  <mdb-carousel-item *ngFor="let item of slides; let i = index">
+    <div class="col-md-4" *ngFor="let card of item; let cardIndex = index">
+      <mdb-card class="my-1">
+        <mdb-card-img [src]="card.img" xwidth="auto" xheight="200px" alt="Card image cap"></mdb-card-img>
+        <mdb-card-body>
+          <mdb-card-title>
+            <h4>{{card.title}}</h4>
+          </mdb-card-title>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+  </mdb-carousel-item>
+</mdb-carousel>

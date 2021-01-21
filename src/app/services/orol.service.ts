@@ -197,7 +197,6 @@ export class OrolService {
  
 
   public addFauna(x, images:File) {
-    console.log(images);
     var user = JSON.parse(localStorage.getItem('User'));
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({
@@ -227,39 +226,7 @@ export class OrolService {
       },
     );
   }
-  public createblog(x, imagefeaturedAdditionalPhotos: File[],imagefeaturedPhoto: File) {
-    var user = JSON.parse(localStorage.getItem('User'));
-
-    this.spinnerService.setSpinner(true);
-     const httpHeaders: HttpHeaders = new HttpHeaders({
-     Authorization: 'Bearer ' + user.accessToken
-   });
-    const form = new FormData;
-    // for (var i = 0; i < imagefeaturedPhoto.length; i++) {
-      form.append('featuredPhoto', imagefeaturedPhoto);
-    // }
-    for (var i = 0; i < imagefeaturedAdditionalPhotos.length; i++) {
-      form.append('featuredAdditionalPhotos', imagefeaturedAdditionalPhotos[i]);
-    }
-    form.append("templateType", x.templateType);
-    form.append("userId", x.userId);
-    form.append("featuredTitle", x.featuredTitle);
-    form.append("featuredDescription", x.featuredDescription);
-    form.append("featuredVideo", x.featuredVideo);
-    form.append("featuredAdditionalVideos", x.featuredAdditionalVideos);
-
-    this.httpClient.post("https://our-river-our-life-api.herokuapp.com/blogs/create-blog", form, { headers: httpHeaders }).subscribe(
-      (res) => {
-        this.spinnerService.setSpinner(false);
-        this.router.navigate(['./voices-from-the-river']);
-
-      },
-      (err) => {
-        this.spinnerService.setSpinner(false);
-        //window.alert(err)
-      },
-    );
-   }
+ 
 
 
   public getFloodAlerts() {
@@ -303,7 +270,6 @@ export class OrolService {
 
   public addFlora(x, images:File) {
     var user = JSON.parse(localStorage.getItem('User'));
-
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({
       Authorization: 'Bearer ' + user.accessToken
@@ -333,6 +299,34 @@ export class OrolService {
       },
     );
   }
+  public createblog(x, images:File) {
+    var user = JSON.parse(localStorage.getItem('User'));  
+    this.spinnerService.setSpinner(true);
+     const httpHeaders: HttpHeaders = new HttpHeaders({
+     Authorization: 'Bearer ' + user.accessToken
+   });
+    const form = new FormData;
+    form.append('featuredPhoto', images);
+
+    form.append("templateType", x.templateType);
+    form.append("userId", x.userId);
+    form.append("featuredTitle", x.featuredTitle);
+    form.append("featuredDescription", x.featuredDescription);
+    form.append("featuredVideo", x.featuredVideo);
+    form.append("featuredAdditionalVideos", x.featuredAdditionalVideos);
+
+    this.httpClient.post("https://our-river-our-life-api.herokuapp.com/blogs/create-blog", form, { headers: httpHeaders }).subscribe(
+      (res) => {
+        this.spinnerService.setSpinner(false);
+        this.router.navigate(['./voices-from-the-river']);
+
+      },
+      (err) => {
+        this.spinnerService.setSpinner(false);
+        //window.alert(err)
+      },
+    );
+   }
   public updateProfile(userInfo, images: File) {
     console.log(images);
     var user = JSON.parse(localStorage.getItem('User'));

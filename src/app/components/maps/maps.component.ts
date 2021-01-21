@@ -214,9 +214,13 @@ compressFile(base64URL, filename) {
   alert(filename);
   var orientation = -1;
   this.imgResultBeforeCompress = base64URL;
+  console.log('Size in bytes was:', this.imageCompress.byteCount(base64URL));
+
   this.imageCompress.compressFile(base64URL, orientation, 50, 50).then(
     result => {
       this.imgResultAfterCompress.push(result);
+      console.log('Size in bytes is now:', this.imageCompress.byteCount(result));
+
       this.imageFile = this.dataURLtoFile(result, filename);
     });
   }
