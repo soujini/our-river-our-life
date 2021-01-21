@@ -35,7 +35,6 @@ export class VoicesFromTheRiverComponent implements OnInit {
 
   getBlogs() {
     // var a = this.orolService.getBlogs();
-    console.log(this.blogs);
     this.orolService.getBlogs().subscribe((data) => {
       if (data['count']) {
         for (var i = 0; i < data['rows'].length; i++) {

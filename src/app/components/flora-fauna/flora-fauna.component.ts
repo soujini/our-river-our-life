@@ -15,6 +15,7 @@ import { NgxImageCompressService } from 'ngx-image-compress';
 })
 export class FloraFaunaComponent implements OnInit {
   pageNumber = 1;
+  // public imageFile: File[]=[];
 
   @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
   public submitted: boolean = false;
@@ -144,7 +145,6 @@ export class FloraFaunaComponent implements OnInit {
       );
 
     });
-
   }
 
   getFloraFauna() {

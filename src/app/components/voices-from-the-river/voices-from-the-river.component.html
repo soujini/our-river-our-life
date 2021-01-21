@@ -1,74 +1,71 @@
-<div class="content container-fluid">
-  <div class="text-right">
-    <button type="button" class="btn xmt-2 btn-primary btn-rounded" routerLinkActive="active" routerLink="add-blog"
-      style="width:200px">Add Blog</button>
-  </div>
-  <section class="text-center">
-    <h2 class="h1-responsive font-weight-bold mb-5">Recent Posts</h2>
-    <div class="search-results" infiniteScroll [infiniteScrollDistance]='2' [infiniteScrollThrottle]='50'
-      [scrollWindow]="false" (scrolled)="onScroll()">
-      <div class="row">
-        <div class="col-lg-3 col-md-12 mb-5" *ngFor="let blog of blogs" (click)="this.selectedBlog = blog">
-          <div class="blog-card">
-          <div class="view overlay rounded xz-depth-2 mb-4 waves-light bg-green" mdbWavesEffect>
-            <img class="img-fluid blog-images" [src]=blog.featuredPhoto.imageURL alt="Sample image">
-            <a>
-              <div class="mask rgba-white-slight"></div>
-            </a>
+<div class="content">
+  <mdb-tabset id="recentPosts_addBlog_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'"
+    class="classic-tabs">
+    <mdb-tab heading="View Recent Posts">
+      <div class="banner text-center">
+        <h2 class="title"><span>Recent Posts</span>
+        </h2>
+      </div>
+       <div class="search-results" infiniteScroll [infiniteScrollDistance]='2' [infiniteScrollThrottle]='50'
+              [scrollWindow]="false" (scrolled)="onScroll()">
+        <div class="outer-block">
+          <section class="text-center">
+              <div class="row">
+                <div class="col-lg-3 col-md-12 mb-5" *ngFor="let blog of blogs" (click)="this.selectedBlog = blog">
+                  <div class="blog-card">
+                    <div class="view overlay rounded xz-depth-2 mb-4 waves-light bg-green" mdbWavesEffect>
+                      <img class="img-fluid blog-images" [src]=blog.featuredPhoto.imageURL alt="Sample image">
+                      <a>
+                        <div class="mask rgba-white-slight"></div>
+                      </a>
+                    </div>
+                    <h4 class="font-weight-bold mb-3"><strong>{{blog.featuredTitle}}</strong></h4>
+                    <p>by <a class="font-weight-bold">{{blog.contributorName}}</a>, {{blog.createdAt | date:"dd-MMM-y"}}
+                    </p>
+                    <p class="dark-grey-text ellipsis">{{blog.featuredDescription}}</p>
+                    <a mdbBtn class="btn btn-primary btn-rounded" rounded="true" (click)="frame.show()"
+                      mdbWavesEffect>Read
+                      more</a>
+                  </div>
+                </div>
+              </div>
+          </section>
+        </div>
+      </div>
+      
+      <div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-full-width xmodal-dialog-scrollable modal-lg " role="document">
+        <div class="modal-content modal-content-full-width" *ngIf="this.selectedBlog">
+          <div class="modal-header modal-header-full-width">
+            <button type="button" class="close pull-right" aria-label="Close" (click)="frame.hide()">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title w-100 h2-responsive title-name" id="myModalLabel">
+              <strong>{{selectedBlog.featuredTitle}}</strong>
+            </h4>
           </div>
-          <h4 class="font-weight-bold mb-3"><strong>{{blog.featuredTitle}}</strong></h4>
-          <p>by <a class="font-weight-bold">{{blog.contributorName}}</a>, {{blog.createdAt | date:"dd-MMM-y"}}</p>
-          <p class="dark-grey-text ellipsis">{{blog.featuredDescription}}</p>
-          <a mdbBtn class="btn btn-primary btn-rounded" rounded="true" (click)="frame.show()" mdbWavesEffect>Read
-            more</a>
-        </div>
+          <div class="modal-body">
+            <div class="row">
+              <img class="d-block img-fluid blog-images2" height="500px" width="auto" [src]=selectedBlog.featuredPhoto.imageURL alt="First slide">
+            </div>
+            <div class="row">
+              <p class="dark-grey-text">{{selectedBlog.featuredDescription}}</p>
+            </div>
+          </div>
+          <div class="modal-footer-full-width  modal-footer">
+            <p>@<a class="font-weight-bold">{{selectedBlog.contributorName}}</a><br /> {{selectedBlog.createdAt |
+              date:"dd-MMM-y"}}</p>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+
+
+    </mdb-tab>
+    <mdb-tab heading="+ Add New Blog">
+      <app-add-blog></app-add-blog>
+    </mdb-tab>
+ 
+  </mdb-tabset>
 </div>
-
-
-
-<div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog"
-  aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-full-width xmodal-dialog-scrollable modal-lg " role="document">
-    <div class="modal-content modal-content-full-width" *ngIf="this.selectedBlog">
-      <div class="modal-header modal-header-full-width">
-        <button type="button" class="close pull-right" aria-label="Close" (click)="frame.hide()">
-          <span aria-hidden="true">×</span>
-        </button>
-        <h4 class="modal-title w-100 h2-responsive title-name" id="myModalLabel">
-          <strong>{{selectedBlog.featuredTitle}}</strong>
-        </h4>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <!-- <div class="col-lg-5"> -->
-          <img class="d-block img-fluid blog-images2" height="500px" width="auto" [src]=selectedBlog.featuredPhoto.imageURL alt="First slide">
-          <!-- </div> -->
-        </div>
-        <div class="row">
-          <!-- <div class="col-lg-7"> -->
-          <p class="dark-grey-text">{{selectedBlog.featuredDescription}}</p>
-          <!-- </div> -->
-        </div>
-      </div>
-      <div class="modal-footer-full-width  modal-footer">
-        <p>@<a class="font-weight-bold">{{selectedBlog.contributorName}}</a><br /> {{selectedBlog.createdAt |
-          date:"dd-MMM-y"}}</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- <mdb-carousel [isControls]="true" [animation]="'slide'">
-            <mdb-slide> -->
-<!-- <img class="d-block w-100 img-fluid blog-images" [src]=selectedBlog.featuredPhoto.imageURL
-              alt="First slide"> -->
-<!-- </mdb-slide>
-            <mdb-slide>
-                <img class="d-block w-100 img-fluid blog-images" [src]=selectedBlog.featuredAdditionalPhotos[2].imageURL  alt="First slide">
-              </mdb-slide>
-            </mdb-carousel> -->
