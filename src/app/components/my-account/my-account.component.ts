@@ -87,6 +87,7 @@ export class MyAccountComponent implements OnInit {
     });
   }
   compressFile() {
+    var user = JSON.parse(localStorage.getItem('User'));
     var orientation = -1;
     this.imageCompress.uploadFile().then(({ image }) => {
       this.imgResultBeforeCompress = image;
@@ -95,7 +96,7 @@ export class MyAccountComponent implements OnInit {
         result => {
           this.imgResultAfterCompress = result;
           console.log('Size in bytes is now:', this.imageCompress.byteCount(result));
-          this.imageFile = this.dataURLtoFile(this.imgResultAfterCompress, "Test");
+          this.imageFile = this.dataURLtoFile(this.imgResultAfterCompress, "avatar_"+user.id);
         }
       );
     });

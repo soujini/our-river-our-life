@@ -199,7 +199,7 @@ onFileChange(event) {
     var length = event.target.files.length;
     for (let i = 0; i < event.target.files.length; i++) {
       this.imageFiles.push(event.target.files[i]);
-      var _filename = Date.now()+"-flood-alert";
+      var _filename = "floodAlert_"+Date.now();
       var reader = new FileReader();
       reader.onload = (event: any) => {
         this.images.push(event.target.result);//base64
