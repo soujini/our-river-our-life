@@ -3,11 +3,11 @@
 }
 
 .item {
-  width: 430px;
-  height: 415px;
+  // width: 430px;
+  // height: 415px;
   background-color: #FFF;
   margin: 10px;
-  text-align: center;
+  text-align: left;
   border: 1px solid #1C3764;
   border-radius: 10px;
   line-height: 3;
@@ -20,35 +20,35 @@
 .img-add{
   margin-left:15px;
 }
-.item1 {
-  width: 550px;
-  height: 295px;
-  background-color: #FFF;
-  margin: 10px;
-  text-align: center;
-  border: 1px solid #1C3764;
-  border-radius: 10px;
-  line-height: 3;
-}
-.item2 {
-  width: 430px;
-  height: 471px;
-  background-color: #FFF;
-  margin: 10px;
-  text-align: center;
-  border: 1px solid #1C3764;
-  border-radius: 10px;
-  line-height: 18px;
-}
-.item3 {
-  width: 430px;
-  height: 270px;
-  background-color: #FFF;
-  margin: 10px;
-  text-align: center;
-  border: 1px solid #1C3764;
-  border-radius: 10px;
-}
+// .item1 {
+//   width: 550px;
+//   height: 295px;
+//   background-color: #FFF;
+//   margin: 10px;
+//   text-align: center;
+//   border: 1px solid #1C3764;
+//   border-radius: 10px;
+//   line-height: 3;
+// }
+// .item2 {
+//   // width: 430px;
+//   height: 471px;
+//   background-color: #FFF;
+//   margin: 10px;
+//   text-align: center;
+//   border: 1px solid #1C3764;
+//   border-radius: 10px;
+//   line-height: 18px;
+// }
+// .item3 {
+//   width: 430px;
+//   height: 270px;
+//   background-color: #FFF;
+//   margin: 10px;
+//   text-align: center;
+//   border: 1px solid #1C3764;
+//   border-radius: 10px;
+// }
 .container {
   display: flex;
   flex-flow: row wrap;
@@ -63,10 +63,10 @@
 //   background-color: #34495e !important;
 //     margin-top: 100px !important;
 // }
-.container-stepper-form{
-  padding-left:350px;
-  padding-right:350px;
-}
+// .container-stepper-form{
+//   padding-left:350px;
+//   padding-right:350px;
+// }
 .btn-group > .btn, .btn-group-vertical > .btn {
   height:54.5px;
     text-align: left;
@@ -462,3 +462,21 @@ input[type="file"] {
 //     height: 100%;
 //     vertical-align: middle;
 // }
+
+
+.stepper-heading{
+    font-weight: bold;
+}
+.box {
+   display: flex;
+   flex-wrap: wrap;
+}
+.box>* {
+   flex: 1 1 430px;
+}
+.step-number{
+  font-size:12px;
+  color:gray;
+  font-weight:500;
+  margin-top:-5px;
+}

@@ -20,18 +20,18 @@
           autocapitalize="off" spellcheck="off" type="text" class="input-search col-md-12 mt-3" #search
           [formControl]="searchControl">
         <p *ngIf="mapsForm.get('location').errors?.required  && this.submitted==true" class="errorMessage">
-          <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+          <img class="img-add" src="../../../assets/icons/exclamation.svg"> This field
           is required.</p>
         <div class="d-flex">
           <input for="latitude" formControlName="latitude" type="text" class="input-latitude col-md-6 mt-3"
             placeholder="Latitude" (change)="bla()">
           <!-- <p *ngIf="mapsForm.get('latitude').errors?.required  && this.submitted==true" class="errorMessage">
-            <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+            <img class="img-add" src="../../../assets/icons/exclamation.svg"> This field
             is required.</p> -->
           <input for="longitude" formControlName="longitude" type="text" class="input-latitude col-md-6 mt-3"
             placeholder="Longitude" (change)="bla()">
           <!-- <p *ngIf="mapsForm.get('longitude').errors?.required  && this.submitted==true" class="errorMessage">
-            <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+            <img class="img-add" src="../../../assets/icons/exclamation.svg"> This field
             is required.</p> -->
         </div>
       </div>
@@ -43,9 +43,9 @@
       </div>
     </div>
     <div class="alert-box bg-white" [formGroup]="mapsForm" [ngClass]="(show) ? 'visible': 'hidden'">
-      <img class="mr-2 pointer" (click)="toggle('')" src="../../../assets/scalable-vector-graphics/back.svg">
+      <img class="mr-2 pointer" (click)="toggle('')" src="../../../assets/icons/back.svg">
       <span class="alert-text mr-2">Add Flood Alert</span><img
-        src="../../../assets/scalable-vector-graphics/flood-watch.svg">
+        src="../../../assets/icons/flood-watch.svg">
       <hr class="line-header">
       <div>
         <label for="location" class="alert-location">Location: </label> <span class="alert-text">
@@ -58,18 +58,18 @@
       </div>
       <div class="date">
         <label class="alert-date">Date</label>
-        <mdb-date-picker name="mydate" auto formControlName="activityDate" [options]="myDatePickerOptions" id="mydp" [inline] ="true"
+        <mdb-date-picker name="mydate" [inline]="true" auto formControlName="activityDate" [options]="myDatePickerOptions" id="mydp"
           [placeholder]="'Selected date'" required>
         </mdb-date-picker>
         <p *ngIf="mapsForm.get('activityDate').errors?.required  && this.submitted==true" class="errorMessage">
-          <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+          <img class="img-add" src="../../../assets/icons/exclamation.svg"> This field
           is required.</p>
       </div>
       <div>
         <label class="alert-date" for='activityTime'>Time</label>
         <mdb-time-picker #timepicker formControlName="activityTime" id="mytp"></mdb-time-picker>
         <p *ngIf="mapsForm.get('activityTime').errors?.required  && this.submitted==true" class="errorMessage">
-          <img class="img-add" src="../../../assets/scalable-vector-graphics/exclamation.svg"> This field
+          <img class="img-add" src="../../../assets/icons/exclamation.svg"> This field
           is required.</p>
       </div>
 
@@ -82,14 +82,14 @@
           </div>
           <div class="mt-1 error-message-div">
             <p *ngIf="imageFiles.length == null && this.submitted == true" class="errorMessage"><img class="img-add"
-                src="../../../assets/scalable-vector-graphics/exclamation.svg">
+                src="../../../assets/icons/exclamation.svg">
               This image is required.</p>
           </div>
           <input id="file" type="file" class="form-control" multiple (change)="onFileChange($event)"
             style="height:45px;">
         </div>
       </div>
-     
+
       <div class="md-form input-group optional" for='experience'>
         <textarea class="form-control" formControlName="experience"
           placeholder="Your experience or message (Optional)"></textarea>

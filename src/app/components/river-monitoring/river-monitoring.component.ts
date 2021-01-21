@@ -17,7 +17,7 @@ import { SpinnerService } from '../../services/spinner.service';
   styleUrls: ['./river-monitoring.component.scss']
 })
 export class RiverMonitoringComponent implements OnInit {
-  @ViewChild('river_monitoring_stepper', { static: true }) river_monitoring_stepper: MdbStepperComponent 
+  @ViewChild('river_monitoring_stepper', { static: true }) river_monitoring_stepper: MdbStepperComponent
   @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
   defaultImageURL: string = "../../../assets/icons/default_image_upload.jpg";
   @ViewChild('basicModal') basicModal: ModalDirective;
@@ -65,59 +65,59 @@ export class RiverMonitoringComponent implements OnInit {
   waterLevels = [
     {
       name: "Low",
-      imageUrl: "../../../assets/scalable-vector-graphics/water_level_low_icon.svg",
-      imageUrlEnable: "../../../assets/scalable-vector-graphics/water_level_low_icon_enable.svg",
+      imageUrl: "../../../assets/icons/water_level_low_icon.svg",
+      imageUrlEnable: "../../../assets/icons/water_level_low_icon_enable.svg",
 
     },
     {
       name: "Normal",
-      imageUrl: "../../../assets/scalable-vector-graphics/water_level_normal_icon.svg",
-      imageUrlEnable: "../../../assets/scalable-vector-graphics/water_level_normal_icon_enable.svg",
+      imageUrl: "../../../assets/icons/water_level_normal_icon.svg",
+      imageUrlEnable: "../../../assets/icons/water_level_normal_icon_enable.svg",
 
     },
 
     {
       name: "High",
-      imageUrl: "../../../assets/scalable-vector-graphics/water_level_high_icon.svg",
-      imageUrlEnable: "../../../assets/scalable-vector-graphics/water_level_high_icon_enable.svg",
+      imageUrl: "../../../assets/icons/water_level_high_icon.svg",
+      imageUrlEnable: "../../../assets/icons/water_level_high_icon_enable.svg",
 
     },
     {
       name: "Flooded",
-      imageUrl: "../../../assets/scalable-vector-graphics/water_level_flooded_icon.svg",
-      imageUrlEnable: "../../../assets/scalable-vector-graphics/water_level_flooded_enable.svg",
+      imageUrl: "../../../assets/icons/water_level_flooded_icon.svg",
+      imageUrlEnable: "../../../assets/icons/water_level_flooded_enable.svg",
 
     },
   ];
   weatherCodition = [
     {
       name: "Sunny",
-      imageUrl: "../../../assets/scalable-vector-graphics/sunny_icon.svg",
-      imageUrlEnable: "../../../assets/scalable-vector-graphics/sunny_icon_enable.svg",
+      imageUrl: "../../../assets/icons/sunny_icon.svg",
+      imageUrlEnable: "../../../assets/icons/sunny_icon_enable.svg",
     },
     {
       name: "Partly Cloudy",
-      imageUrl: "../../../assets/scalable-vector-graphics/partly_cloudy_icon.svg",
-      imageUrlEnable: "../../../assets/scalable-vector-graphics/partly_cloudy_icon_enable.svg",
+      imageUrl: "../../../assets/icons/partly_cloudy_icon.svg",
+      imageUrlEnable: "../../../assets/icons/partly_cloudy_icon_enable.svg",
 
     },
 
     {
       name: "Cloudy",
-      imageUrl: "../../../assets/scalable-vector-graphics/cloudy_icon.svg",
-      imageUrlEnable: "../../../assets/scalable-vector-graphics/cloudy_icon_enable.svg",
+      imageUrl: "../../../assets/icons/cloudy_icon.svg",
+      imageUrlEnable: "../../../assets/icons/cloudy_icon_enable.svg",
 
     },
     {
       name: "Light Rain",
-      imageUrl: "../../../assets/scalable-vector-graphics/light_rain_icon.svg",
-      imageUrlEnable: "../../../assets/scalable-vector-graphics/light_rain_icon_enable.svg",
+      imageUrl: "../../../assets/icons/light_rain_icon.svg",
+      imageUrlEnable: "../../../assets/icons/light_rain_icon_enable.svg",
 
     },
     {
       name: "Heavy Rain",
-      imageUrl: "../../../assets/scalable-vector-graphics/heavy_rain_icon.svg",
-      imageUrlEnable: "../../../assets/scalable-vector-graphics/heavy_rain_icon_enable.svg",
+      imageUrl: "../../../assets/icons/heavy_rain_icon.svg",
+      imageUrlEnable: "../../../assets/icons/heavy_rain_icon_enable.svg",
 
     },
   ];
@@ -194,7 +194,7 @@ export class RiverMonitoringComponent implements OnInit {
     });
   }
 
-  
+
   // getCurrentDate() {
   //   var dt = new Date();
   //   return dt.getDate();
@@ -227,14 +227,12 @@ export class RiverMonitoringComponent implements OnInit {
     this.activityForm = this.fb.group({
       userId: [''],
       generalInformation: this.fb.group({
-        // activityDate: [this.getCurrentDate(), [Validators.required]],
-        // activityTime: [this.getCurrentTime(), [Validators.required]],
         activityDate: [(new Date()),[Validators.required]],
         activityTime: ['',[Validators.required]],
         testerName: ['', [Validators.required]],
         latitude: [''],
         longitude: [''],
-        location: [''],
+        location: ['',[Validators.required]],
       }),
       waterLevelAndWeather: this.fb.group({
         airTemperature: ['', [Validators.required]],
@@ -316,7 +314,7 @@ export class RiverMonitoringComponent implements OnInit {
 
   }
   move(index: number) {
-    
+
     // this.river_monitoring_stepper.setNewActiveStep(1)
     // this.river_monitoring_stepper.selectedIndex = index;
   }
@@ -362,7 +360,7 @@ export class RiverMonitoringComponent implements OnInit {
         );
       });
   }
- 
+
 
   onFileChangesRiver(event) {
     if (event.target.files && event.target.files[0]) {

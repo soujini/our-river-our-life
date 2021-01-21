@@ -1,651 +1,758 @@
 <div class="river-monitoring">
-  <div>
-    <mdb-tabset id="river_monitoring_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'"
-      [contentClass]="'card'" class="classic-tabs xtext-center">
-      <mdb-tab heading="Create Report" style="xheight:500px;margin-left:-35px; margin-right:-35px">
-        <div class="row" class="bg-white" style="xheight:600px">
-          <mdb-stepper #river_monitoring_stepper id="river_monitoring_stepper" xstepChange="onStepChange($event)" class="col-12">
+  <mdb-tabset id="river_monitoring_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'"
+  [contentClass]="'card'" class="classic-tabs">
+  <mdb-tab heading="Create Report">
+    <div class="bg-white" style="margin-left: -15px;margin-right: -15px;">
+      <mdb-stepper #river_monitoring_stepper id="river_monitoring_stepper" xstepChange="onStepChange($event)">
+        <mdb-step  xname="General Information" xstepForm="activityForm">
+          <div xclass="row" style="justify-content:center">
 
-            <mdb-step name="General Information" xstepForm="activityForm">
-              <form class="container-stepper-form" [formGroup]="activityForm">
-                <div class="row" formGroupName="generalInformation">
-                  <div class="col-md-6">
-                    <label for="rm_dp" class="text-left">Activity Date</label>
-                    <mdb-date-picker id="rm_dp" [inline]="true" name="mydate" formControlName="activityDate"
-                      [options]="myDatePickerOptions" [placeholder]="'Selected date'" xngModel="model" required>
-                    </mdb-date-picker>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="rm_tp" class="text-left">Activity Time</label>
-                    <mdb-time-picker id="rm_tp" [buttonLabel]="'Done'" [twelvehour]="true"
-                      formControlName="activityTime" [darktheme]="true" [placeholder]="'Selected time'">
-                    </mdb-time-picker>
-                  </div>
-                </div>
-                <div class="row mt-2" formGroupName="generalInformation">
-                  <div class="col-md-12">
-                    <label for="rm_testerName" class="text-left">Name</label>
-                    <input mdbInput id="rm_testerName" type="text" id="form1" class="form-control"
-                      formControlName="testerName" placeholder="Name">
-                  </div>
-                  <div class="mt-1 error-message-div">
-                    <p *ngIf="activityForm.get('generalInformation').get('testerName').errors?.required  && this.submitStep1==true"
-                      class="errorMessage">
-                      <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field is
-                      required.</p>
-                  </div>
-                </div>
-                <div class="row mt-2">
-                  <div class="col-md-12" formGroupName="generalInformation">
-                    <label for="location" class="text-left">Location</label>
-                    <input for="location" formControlName="location" placeholder="Search by location" autocorrect="off"
-                      autocapitalize="off" spellcheck="off" type="text" class="form-control input-search mt-2" #search>
-                  </div>
-                  <div class="mt-1 error-message-div">
-                    <p *ngIf="activityForm.get('generalInformation').get('location').errors?.required  && this.submitStep1==true"
-                      class="errorMessage">
-                      <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field is
-                      required.</p>
-                  </div>
-                </div>
-                <div class="row mt-2" formGroupName="generalInformation">
-                  <div class="col-md-6">
-                    <label for="rm_latitude" class="text-left">Latitude</label>
-                    <input for="latitude" formControlName="latitude" type="text" class="form-control"
-                      placeholder="Latitude" (change)="bla()">
-                    <div class="mt-1 error-message-div">
-                      <p *ngIf="activityForm.get('generalInformation').get('latitude').errors?.required  && this.submitStep1==true"
-                        class="errorMessage">
-                        <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
-                        is required.</p>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="longitude" class="text-left">Longitude</label>
-                    <input for="longitude" formControlName="longitude" type="text" class="form-control"
-                      placeholder="Longitude" (change)="bla()">
-                    <div class="mt-1 error-message-div">
-                      <p *ngIf="activityForm.get('generalInformation').get('longitude').errors?.required  && this.submitStep1==true"
-                        class="errorMessage">
-                        <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
-                        is required.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="mt-3">
-                  <agm-map class="mt-2" style="height: 300px;" [mapTypeId]="'hybrid'" [fitBounds]="true" accuracy=100
-                    [latitude]="this.activityForm.get('generalInformation').get('latitude').value"
-                    [longitude]="this.activityForm.get('generalInformation').get('longitude').value" [zoom]="zoom"
-                    [scrollwheel]="false" (mapReady)="mapReady($event)"  [usePanning]='true' [draggable]=false>
-                    <agm-marker [agmFitBounds]="true"
-                      [latitude]="this.activityForm.get('generalInformation').get('latitude').value"
-                      [longitude]="this.activityForm.get('generalInformation').get('longitude').value"></agm-marker>
-                  </agm-map>
-                </div>
-              </form>
-              <hr class="hr-line" />
-              <div class="text-right">
-                <button mdbBtn size="sm" class="custom-btn-blue" (click)="validateStep1()">NEXT</button>
+            <form xclass="form form-horizontal text-left col-lg-8 col-xs-12 mt-5" [formGroup]="activityForm">
+              <h3 class="stepper-heading text-left">General Information <span class="step-number">(Step 1/7)</span></h3>
+              <div class="row mt-5" formGroupName="generalInformation">
+                <div class="form-group col-md-6 text-left">
+                  <label class="control-label col-md-6 col-xs-12" for="rm_dp">Activity Date</label>
+                  <div class="input-group col-12">
+                    <!-- <mdb-date-picker class="w-100" auto id="rm_dp" [inline]="true" name="mydate" formControlName="activityDate"
+                    [options]="myDatePickerOptions" [placeholder]="'Selected date'" xngModel="model" required>
+                  </mdb-date-picker> -->
+
+                  <mdb-date-picker name="mydate" class="w-100" [inline] ="true" auto formControlName="activityDate" [options]="myDatePickerOptions" id="mydp"
+                  [placeholder]="'Selected date'" required>
+                </mdb-date-picker>
               </div>
-            </mdb-step>
-            <mdb-step name="Water Level & Weather" xstepForm="activityForm">
-              <form class="container-stepper-form" [formGroup]="activityForm" style="padding-left:350px; padding-right:350px">
-                <div class="row" formGroupName="waterLevelAndWeather">
-                  <div class="col-md-12">
-                    <label for="rm_airTemperature" class="text-left">Measure the air temperature</label>
-                    <div class="input-group mb-2">
-                      <input mdbInput formControlName="airTemperature" type="number" class="form-control"
-                        placeholder="Air Temperature">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text bl-0">°C</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mt-1 error-message-div">
-                    <p *ngIf="activityForm.get('waterLevelAndWeather').get('airTemperature').errors?.required  && this.submitStep2==true"
-                      class="errorMessage">
-                      <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
-                      is required.</p>
-                  </div>
-                </div>
-                <div class="row mt-2">
-                  <div class="col-md-12">
-                    <label for="rm_airTemperature" class="text-left">Observe the Water Level</label>
-                    <div class="d-flex">
-                      <div *ngFor="let wl of waterLevels" class="mr-50">
-                        <img (click)=setWaterLevel(wl.name);
-                         [src]="this.activityForm.get('waterLevelAndWeather').get('waterLevel').value == wl.name ? wl.imageUrlEnable : wl.imageUrl">
-                        <label class="text-center light mt-2">{{wl.name}}</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mt-1 error-message-div">
-                    <p *ngIf="activityForm.get('waterLevelAndWeather').get('waterLevel').errors?.required  && this.submitStep2==true"
-                      class="errorMessage">
-                      <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
-                      is required.</p>
-                  </div>
-                </div>
-                <div class="row mt-2">
-                  <div class="col-md-12">
-                    <label for="rm_airTemperature" class="text-left">Weather Conditions</label>
-                    <div class="d-flex">
-                      <div *ngFor="let wc of weatherCodition" class="mr-50">
-                        <img (click)=setWeather(wc.name);
-                         [src]="this.activityForm.get('waterLevelAndWeather').get('weather').value == wc.name ? wc.imageUrlEnable : wc.imageUrl">
-
-                        <!-- <img (click)=setWeather(wc.name); [src]="wc.imageUrl"> -->
-                        <label class="text-center light mt-2">{{wc.name}}</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mt-1 error-message-div">
-                    <p *ngIf="activityForm.get('waterLevelAndWeather').get('weather').errors?.required  && this.submitStep2==true"
-                      class="errorMessage">
-                      <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
-                      is required.</p>
-                  </div>
-                </div>
-                <div class="row mt-2">
-                  <div class="col-md-12">
-                  <label for="rm_location" class="text-left">River Pictures</label>
-                  </div>
-                  <div class="col-md-12">
-                  <img *ngFor='let url of imageUrlRiver' [src]="url" height="50px" width="50px" style="margin: 3px;">
-                    <label class="custom-file-upload">
-                      <input id="file" type="file" class="form-control" multiple
-                        (change)="onFileChangesRiver($event)">Upload
-                    </label>
-                  </div>
-                  <div class="mt-1 error-message-div">
-                    <p *ngIf="imageFilesRiver.length == 0 && this.submitStep2 == true" class="errorMessage"><img class="img-add"
-                      src="../../../assets/icons/exclamation_icon.svg">
-                      This image is required.</p>
-                  </div>
-                </div>
-              </form>
-              <hr class="hr-line" />
-              <div class="text-right">
-                <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
-                <button mdbBtn size="sm" class="custom-btn-blue" (click)="validateStep2()">NEXT</button>
-              </div>
-            </mdb-step>
-            <mdb-step name="Observe your Surroundings" xstepForm="activityForm">
-              <form xformGroupx="surroundings" class="container-stepper-form">
-                <div class="row">
-                  <div class="col-md-12 mt-3 text-left" xformGroupName="waterLevelAndWeather">
-                    <div *ngFor="let obj of surroundings ; let i=index" class="col-md-3 text-left"
-                      style="display:inline-block">
-                      <mdb-checkbox class="checkbox-coco-filled" [checked]="false" value={{obj}}
-                        (change)="this.getSelectedSurroundings($event,obj)" [default]="true">{{obj}}
-                      </mdb-checkbox>
-                    </div>
-                    <div class="mt-1 error-message-div">
-                      <p *ngIf="activityForm.get('surroundings')['length'] == 0 && this.submitStep3 == true"
-                        class="errorMessage"><img class="img-add"
-                          src="../../../assets/icons/exclamation_icon.svg"> Please select at least
-                        1 Category.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" >
-                  <div class="col-md-12">
-                  <label for="rm_location" class="text-left">Surroundings Pictures</label>
-                  </div>
-                  <div class="col-md-12">
-                  <img *ngFor='let url of imageUrlSurrounding' [src]="url" height="50px" width="50px"
-                    style="margin: 3px;">
-                    <label class="custom-file-upload">
-                      <input id="file" type="file" class="form-control" multiple
-                        (change)="onFileChangesSurrounding($event)">Upload
-                    </label>
-                  </div>
-                </div>
-              </form>
-              <hr class="hr-line" />
-              <div class="text-right">
-                <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
-                <button mdbBtn size="sm" class="custom-btn-blue" (click)="validateStep4()">NEXT</button>
-              </div>
-            </mdb-step>
-            <mdb-step name="Water Quality Testing">
-              <form [formGroup]="activityForm" class="container-stepper-form">
-                <div class="row" formGroupName="waterTesting">
-                  <div class="col-md-12">
-                    <label for="rm_airTemperature" class="text-left">Water Temperature</label>
-                    <div class="input-group mb-2">
-                      <input mdbInput formControlName="waterTemperature" type="number" class="form-control"
-                        placeholder="Water Temperature">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text bl-0">°C</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" formGroupName="waterTesting">
-                  <div class="col-md-6">
-                    <label for="rm_airTemperature" class="text-left">pH</label>
-                    <div class="input-group mb-2">
-                      <input mdbInput formControlName="pH" type="number" class="form-control"
-                        placeholder="Water Temperature">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text bl-0">°C</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="rm_airTemperature" class="text-left">Alkalinity</label>
-                    <div class="input-group mb-2">
-                      <input mdbInput formControlName="alkalinity" type="text" class="form-control"
-                        placeholder="Water Temperature">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text bl-0">°C</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" formGroupName="waterTesting">
-                  <div class="col-md-6">
-                    <label for="rm_airTemperature" class="text-left">Nitrate</label>
-                    <div class="input-group mb-2">
-                      <input mdbInput formControlName="nitrate" type="number" class="form-control"
-                        placeholder="Nitrate">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text bl-0">mg/L</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="rm_airTemperature" class="text-left">Nitrite</label>
-                    <div class="input-group mb-2">
-                      <input mdbInput formControlName="nitrite" type="text" class="form-control" placeholder="Nitrite">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text bl-0">mg/L</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" formGroupName="waterTesting">
-                  <div class="col-md-12">
-                    <label for="rm_airTemperature" class="text-left">Hardness</label>
-                    <div class="input-group mb-2">
-                      <input mdbInput formControlName="hardness" type="number" class="form-control"
-                        placeholder="Water Temperature">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text bl-0">mg/L</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" formGroupName="waterTesting">
-                  <div class="col-md-6">
-                    <label for="rm_airTemperature" class="text-left">Chlorine</label>
-                    <div class="input-group mb-2">
-                      <input mdbInput formControlName="chlorine" type="number" class="form-control"
-                        placeholder="Chlorine">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text bl-0">mg/L</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="rm_airTemperature" class="text-left">Iron</label>
-                    <div class="input-group mb-2">
-                      <input mdbInput formControlName="iron" type="text" class="form-control" placeholder="Iron">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text bl-0">mg/L</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" formGroupName="waterTesting">
-                  <div class="col-md-12">
-                    <label for="rm_airTemperature" class="text-left">Dissolved Oxygen</label>
-                    <div class="input-group mb-2">
-                      <input mdbInput formControlName="dissolvedOxygen" type="number" class="form-control"
-                        placeholder="Dissolved Oxygen">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text bl-0">mg/L</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" formGroupName="waterTesting">
-                  <div class="col-md-12">
-                    <label for="rm_airTemperature" class="text-left">E-Coli/Coliform Bacteria</label>
-                    <div class="input-group" style="margin-left:-6px;">
-                      <button mdbBtn type="button" class="custom-btn" *ngFor="let item of items; let i = index"
-                        [ngClass]="(lastClickedIndex == i) ? 'custom-btn-active': 'custom-btn'"
-                        (click)="changeActive(i); setBacteria(item.name)" #disable mdbWavesEffect>{{item.name}}</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" formGroupName="waterTesting">
-                  <div class="col-md-12">
-                    <label for="rm_airTemperature" class="text-left">Turbidity</label>
-                    <div class="input-group mb-2">
-                      <input mdbInput formControlName="turbidity" type="number" class="form-control"
-                        placeholder="Turbidity">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text bl-0">NTU</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" formGroupName="waterTesting">
-                  <div class="col-md-12">
-                    <label for="rm_airTemperature" class="text-left">Phosphate</label>
-                    <div class="input-group mb-2">
-                      <input mdbInput formControlName="phosphate" type="number" class="form-control"
-                        placeholder="Phosphate">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text bl-0">mg/L</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" formGroupName="waterTesting">
-                  <div class="col-md-12">
-                    <label for="rm_airTemperature" class="text-left">Ammonia</label>
-                    <div class="input-group mb-2">
-                      <input mdbInput formControlName="ammonia" type="number" class="form-control"
-                        placeholder="Ammonia">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text bl-0">mg/L</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" formGroupName="waterTesting">
-                  <div class="col-md-12">
-                    <label for="rm_airTemperature" class="text-left">Lead</label>
-                    <div class="input-group mb-2">
-                      <input mdbInput formControlName="lead" type="number" class="form-control" placeholder="Lead">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text bl-0">mg/L</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" formGroupName="waterTesting">
-                  <div class="col-md-12">
-                    <label for="rm_airTemperature" class="text-left">Total Dissolved Solids</label>
-                    <div class="input-group mb-2">
-                      <input mdbInput formControlName="dissolvedSolids" type="number" class="form-control"
-                        placeholder="Total Dissolved Solids">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text bl-0">ppm</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" formGroupName="waterTesting">
-                  <div class="col-md-12">
-                    <label for="rm_airTemperature" class="text-left">Conductivity</label>
-                    <div class="input-group mb-2">
-                      <input mdbInput formControlName="conductivity" type="number" class="form-control"
-                        placeholder="Conductivity">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text bl-0">µs</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
-              <hr class="hr-line" />
-              <div class="text-right">
-                <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
-                <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
-              </div>
-            </mdb-step>
-            <mdb-step name="Flora & Fauna">
-              <form class="container-stepper-form">
-                <div class="col-md-12">
-                  <div class="row">
-                    <img src="../../../assets/icons/flora_icon.svg" height="28px" width="28px">
-                    <label class="ml-2 mt-1 bold">Flora</label>
-                  </div>
-                  <p class="row">Record the vegetation you can see around you. This
-                    could include grasses,
-                    shrubs, plants
-                    and trees.</p>
-                    <div class="col-md-12">
-                      <img *ngFor='let url of imageUrlFlora' [src]="url" height="50px" width="50px"
-                        style="margin: 3px;">
-                      <label class="custom-file-upload mt-2">
-                        <input id="file" type="file" class="form-control" multiple
-                          (change)="onFileChangesFlora($event)">Upload
-                      </label>
-                    </div>
-                  </div>
-                <div class="col-md-12">
-                  <div class="row">
-                    <img src="../../../assets/icons/fauna_icon.svg" height="35px" width="35px">
-                    <label class="ml-2 mt-2 bold">Fauna</label>
-                  </div>
-                  <p class="row">Record fish, amphibians, reptiles, birds, insects and mammals that you see
-                    around you.</p>
-                  <div class="text-left mt-2" fxormGroupName="generalInformation">
-                    <div class="col-md-12">
-                    <img *ngFor='let url of imageUrlFauna' [src]="url" height="50px" width="50px"
-                        style="margin: 3px;">
-                      <label class="custom-file-upload mt-2">
-                        <input id="file" type="file" class="form-control" multiple
-                          (change)="onFileChangesFauna($event)">Upload
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </form>
-              <hr class="hr-line" />
-              <div class="text-right">
-                <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
-                <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
-              </div>
-            </mdb-step>
-            <mdb-step name="Pictures">
-              <form xformGroup="secondFormGroup" class="container-stepper-form">
-                <label class="ml-2 mt-2 bold">Pictures</label>
-                <div class="col-md-12">
-                  <img *ngFor='let url of imageUrlGroup' [src]="url" height="50px" width="50px" style="margin: 3px;">
-                  <label class="custom-file-upload mt-2">
-                    <input id="file" type="file" class="form-control" multiple
-                      (change)="onFileChangesGroup($event)">Upload
-                    Group Picture
-                  </label>
-                </div>
-                <div class="col-md-12">
-                  <img *ngFor='let url of imageUrlActivity' [src]="url" height="50px" width="50px" style="margin: 3px;">
-                  <label class="custom-file-upload mt-2">
-                    <input id="file" type="file" class="form-control" multiple
-                      (change)="onFileChangesActivity($event)">Upload
-                    Activity Picture
-                  </label>
-                </div>
-                <div class="col-md-12">
-                  <img *ngFor='let url of imageUrlAtwork' [src]="url" height="50px" width="50px" style="margin: 3px;">
-                  <label class="custom-file-upload mt-2">
-                    <input id="file" type="file" class="form-control" multiple
-                      (change)="onFileChangesAtwork($event)">Upload
-                    Artwork
-                  </label>
-                </div>
-              </form>
-              <hr class="hr-line" />
-              <div class="text-right">
-                <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
-                <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
-              </div>
-            </mdb-step>
-            <mdb-step name="Preview">
-              <form class="container-stepper-form text-center">
-                <h2 >Preview before Submit </h2>
-                <div class="box" fxLayoutAlign="stretch">
-                  <div class="item">
-                    <span>General Information </span>
-                    <mdb-icon fas icon="pencil-alt" (click)="move(1)"></mdb-icon>
-                    <hr class="hr-line1" />
-                    <label for="activityDate" class="text-left ml-2">Activity Date <span>:</span>
-                      <span
-                        class="ml-2">{{activityForm.get('generalInformation').get('activityDate').value | date:"dd-MMM-y" }}</span>
-                      </label>
-                    <label class="text-left ml-2">Activity Time <span>:</span>
-                      <span>{{activityForm.get('generalInformation').get('activityTime').value}}</span></label>
-                    <label class="text-left ml-2">Name <span>:</span>
-                      <span>{{activityForm.get('generalInformation').get('testerName').value}}</span> </label>
-                    <label for="rm_dp" class="text-left ml-2">Location <span>:</span>
-                      <span>{{activityForm.get('generalInformation').get('location').value}}</span></label>
-                    <label for="rm_dp" class="text-left ml-2">Latitude <span>:</span>
-                      <span>{{activityForm.get('generalInformation').get('latitude').value}}</span></label>
-                    <label for="rm_dp" class="text-left ml-2">Longitude <span>:</span>
-                      <span>{{activityForm.get('generalInformation').get('latitude').value}}</span></label>
-                  </div>
-                  <div class="item">
-                    <span> Water Level & Weather </span>
-                    <mdb-icon fas icon="pencil-alt"></mdb-icon>
-                    <hr class="hr-line1" />
-                    <label for="rm_dp" class="text-left ml-2">Measure the air temperature <span>:</span>
-                      <span>{{activityForm.get('waterLevelAndWeather').get('airTemperature').value}}</span></label>
-                    <label for="rm_dp" class="text-left ml-2"> Observe the Water Level <span>:</span>
-                      <span>{{activityForm.get('waterLevelAndWeather').get('waterLevel').value}}</span> </label>
-                    <label for="rm_dp" class="text-left ml-2">Weather Conditions <span>:</span>
-                      <span>{{activityForm.get('waterLevelAndWeather').get('weather').value}}</span></label>
-                    <label for="rm_dp" class="text-left ml-2">River Pictures <span>:</span>
-                      <img *ngFor='let url of imageUrlRiver' [src]="url" height="50px" width="50px"
-                        style="margin: 3px;">
-                    </label>
-                  </div>
-                </div>
-                <div class="box" fxLayoutAlign="stretch" style="height:300px;">
-                  <div class="item1">
-                    <span> Observe the Surroundings </span>
-                    <mdb-icon fas icon="pencil-alt" ></mdb-icon>
-                    <hr class="hr-line1" />
-                    <div class="container">
-                      <span *ngFor="let obj of surroundingArray.value">{{obj}}</span>
-                    </div>
-
-                    <label for="rm_dp" class="text-left ml-2">River Pictures <span>:</span>
-                      <img *ngFor='let url of imageUrlSurrounding' [src]="url" height="50px" width="50px"
-                        style="margin: 3px;">
-                    </label>
-                  </div>
-                </div>
-                <div class="box" fxLayoutAlign="stretch">
-                  <div class="item2">
-                    <span>Water Testing </span>
-                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()"></mdb-icon>
-                    <hr class="hr-line1" />
-                    <label for="rm_airTemperature" class="text-left ml-2">Water Temperature <span>:</span>
-                      <span>{{activityForm.get('waterTesting').get('waterTemperature').value}}</span></label>
-                    <label for="rm_airTemperature" class="text-left ml-2">pH <span>:</span>
-                      <span>{{activityForm.get('waterTesting').get('pH').value}}</span></label>
-                    <label for="rm_airTemperature" class="text-left ml-2">Alkalinity <span>:</span>
-                      <span>{{activityForm.get('waterTesting').get('alkalinity').value}}</span></label>
-                    <label for="rm_airTemperature" class="text-left ml-2">Nitrate <span>:</span>
-                      <span>{{activityForm.get('waterTesting').get('nitrate').value}}</span></label>
-                    <label for="rm_airTemperature" class="text-left ml-2">Nitrite <span>:</span>
-                      <span>{{activityForm.get('waterTesting').get('nitrite').value}}</span> </label>
-                    <label for="rm_airTemperature" class="text-left ml-2">Hardness <span>:</span>
-                      <span>{{activityForm.get('waterTesting').get('hardness').value}}</span> </label>
-                    <label for="rm_airTemperature" class="text-left ml-2">Chlorine <span>:</span>
-                      <span>{{activityForm.get('waterTesting').get('chlorine').value}}</span> </label>
-                    <label for="rm_airTemperature" class="text-left ml-2">Iron <span>:</span>
-                      <span>{{activityForm.get('waterTesting').get('iron').value}}</span></label>
-                    <label for="rm_airTemperature" class="text-left ml-2">Dissolved Oxygen <span>:</span>
-                      <span>{{activityForm.get('waterTesting').get('dissolvedOxygen').value}}</span></label>
-                    <label for="rm_airTemperature" class="text-left ml-2">E-Coli/Coliform Bacteria<span>:</span>
-                      <span>{{activityForm.get('waterTesting').get('bacteria').value}}</span></label>
-                    <label for="rm_airTemperature" class="text-left ml-2">Turbidity <span>:</span>
-                      <span>{{activityForm.get('waterTesting').get('turbidity').value}}</span></label>
-                    <label for="rm_airTemperature" class="text-left ml-2">Phosphate <span>:</span>
-                      <span>{{activityForm.get('waterTesting').get('phosphate').value}}</span></label>
-                    <label for="rm_airTemperature" class="text-left ml-2">Ammonia <span>:</span>
-                      <span>{{activityForm.get('waterTesting').get('ammonia').value}}</span> </label>
-                    <label for="rm_airTemperature" class="text-left ml-2">Lead <span>:</span>
-                      <span>{{activityForm.get('waterTesting').get('lead').value}}</span></label>
-                    <label for="rm_airTemperature" class="text-left ml-2">Total Dissolved Solids <span>:</span>
-                      <span>{{activityForm.get('waterTesting').get('dissolvedSolids').value}}</span> </label>
-                    <label for="rm_airTemperature" class="text-left ml-2">Conductivity <span>:</span>
-                      <span>{{activityForm.get('waterTesting').get('conductivity').value}}</span></label>
-                  </div>
-                  <div class="item2">
-                    <span>Flora & Fauna </span>
-                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()"></mdb-icon>
-                    <hr class="hr-line1" />
-
-                    <div class="row ml-2">
-                      <img src="../../../assets/icons/flora_icon.svg" height="28px" width="28px">
-                      <label class="ml-2 mt-1 bold">Flora</label>
-                      <img *ngFor='let url of imageUrlFlora' [src]="url" height="50px" width="50px"
-                        style="margin: 3px;">
-                    </div>
-
-                    <div class="row ml-2">
-                      <img src="../../../assets/icons/fauna_icon.svg" height="35px" width="35px">
-                      <label class="ml-2 mt-2 bold">Fauna</label>
-                      <img *ngFor='let url of imageUrlFauna' [src]="url" height="50px" width="50px"
-                        style="margin: 3px;">
-                    </div>
-
-                  </div>
-                </div>
-                <div class="box" fxLayoutAlign="stretch" style="height:300px;">
-                  <div class="item3">
-                    <span> Picture</span>
-                    <mdb-icon fas icon="pencil-alt" (click)="setSteep()"></mdb-icon>
-                    <hr class="hr-line1" />
-                    <label for="rm_dp" class="text-left ml-2">Group Pictures <span>:</span>
-                      <img *ngFor='let url of imageUrlGroup' [src]="url" height="50px" width="50px"
-                        style="margin: 3px;">
-                    </label>
-                    <label for="rm_dp" class="text-left ml-2">Activity Pictures <span>:</span>
-                      <img *ngFor='let url of imageUrlActivity' [src]="url" height="50px" width="50px"
-                        style="margin: 3px;">
-                    </label>
-                    <label for="rm_dp" class="text-left ml-2">Artwork Pictures <span>:</span>
-                      <img *ngFor='let url of imageUrlAtwork' [src]="url" height="50px" width="50px"
-                        style="margin: 3px;">
-                    </label>
-                  </div>
-                </div>
-
-              </form>
-              <hr class="hr-line" />
-
-              <div class="xstep-actions text-right">
-                <button mdbBtn size="sm" class="custom-btn-blue" (click)="createWaterTestDetails()">SUBMIT</button>
-              </div>
-            </mdb-step>
-          </mdb-stepper>
-        </div>
-      </mdb-tab>
-
-      <mdb-tab heading="View Reports" xstyle="height:500px">
-        <div class="bg-white">
-          <div *ngIf="this.reports.length == 0" class="row mt-2" style="height:450px; background-color:white;margin-left: -35px;margin-right: -35px;">
-            <div class="col-12 text-center mt-5">
-              <p class="mt-4">Sorry! We don't have any reports to view at the moment. Would you like to contribute and
-                create a new report?</p>
-              <p class="mt-4">Please click on <strong>'CREATE REPORT'</strong> to add a new report.</p>
+            </div>
+            <div class="form-group col-md-6 text-left">
+              <label for="rm_tp" class="control-label">Activity Time</label>
+              <div class="input-group col-12">
+                <mdb-time-picker class="w-100" id="rm_tp" [buttonLabel]="'Done'" [twelvehour]="true"
+                formControlName="activityTime" [darktheme]="true" [placeholder]="'Selected time'">
+              </mdb-time-picker>
             </div>
           </div>
-          <div *ngIf="this.reports.length != 0" class="xrow mt-2" style="min-height:450px; background-color:white;margin-left: -35px;margin-right: -35px;">
-            <div class="text-center">
-              <h2 class="h1-responsive font-weight-bold xmy-3">Certificate URL</h2>
-             </div>
-             <div class="search-results" infiniteScroll [infiniteScrollDistance]='2' [infiniteScrollThrottle]='10'
-             [scrollWindow]="false" (scrolled)="onScroll()">
-            <div class="col-12 mt-4 text-left">
-              <ul style="list-style-type:none" *ngFor="let report of reports">
-                <li><a [href]="report.certificateURL" target="_blank">{{report.certificateURL}}</a></li>
-                </ul>
+        </div>
+        <div class="d-flex mt-1" formGroupName="generalInformation">
+          <div class="form-group col-md-6 text-left">
+            <label for="rm_testerName" class="control-label">Name</label>
+            <div class="input-group">
+              <input mdbInput id="rm_testerName" type="text" id="form1" class="form-control"
+              formControlName="testerName" placeholder="Name">
             </div>
-            </div>
+            <div class="mt-1 error-message-div">
+              <p *ngIf="activityForm.get('generalInformation').get('testerName').errors?.required  && this.submitStep1==true"
+              class="errorMessage">
+              <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field is
+              required.</p>
             </div>
 
+          </div>
+
         </div>
-      </mdb-tab>
-    </mdb-tabset>
+        <div class="d-flex mt-1">
+          <div class="form-group col-md-6 text-left" formGroupName="generalInformation">
+            <label for="location" class="control-label">Location</label>
+            <div class="input-group">
+              <input for="location" formControlName="location" placeholder="Search by location" autocorrect="off"
+              autocapitalize="off" spellcheck="off" type="text" class="form-control input-search mt-2" #search>
+            </div>
+            <div class="mt-1 error-message-div">
+              <p *ngIf="activityForm.get('generalInformation').get('location').errors?.required  && this.submitStep1==true"
+              class="errorMessage">
+              <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field is
+              required.</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="d-flex mt-1" formGroupName="generalInformation">
+          <div class="form-group col-md-6 text-left">
+            <label for="rm_latitude" class="control-label">Latitude</label>
+            <div class="input-group">
+              <input for="latitude" formControlName="latitude" type="text" class="form-control"
+              placeholder="Latitude" (change)="bla()">
+            </div>
+            <div class="mt-1 error-message-div">
+              <p *ngIf="activityForm.get('generalInformation').get('latitude').errors?.required  && this.submitStep1==true"
+              class="errorMessage">
+              <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
+              is required.</p>
+            </div>
+          </div>
+          <div class="form-group col-md-6 text-left">
+            <label for="longitude" class="control-label">Longitude</label>
+            <div class="input-group">
+              <input for="longitude" formControlName="longitude" type="text" class="form-control"
+              placeholder="Longitude" (change)="bla()">
+            </div>
+            <div class="mt-1 error-message-div">
+              <p *ngIf="activityForm.get('generalInformation').get('longitude').errors?.required  && this.submitStep1==true"
+              class="errorMessage">
+              <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
+              is required.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-2">
+          <agm-map style="height: 300px;" [mapTypeId]="'hybrid'" [fitBounds]="true" accuracy=100
+          [latitude]="this.activityForm.get('generalInformation').get('latitude').value"
+          [longitude]="this.activityForm.get('generalInformation').get('longitude').value" [zoom]="zoom"
+          [scrollwheel]="false" (mapReady)="mapReady($event)"  [usePanning]='true' [draggable]=false>
+          <agm-marker [agmFitBounds]="true"
+          [latitude]="this.activityForm.get('generalInformation').get('latitude').value"
+          [longitude]="this.activityForm.get('generalInformation').get('longitude').value"></agm-marker>
+        </agm-map>
+      </div>
+    </form>
   </div>
+  <hr class="hr-line" />
+  <div class="text-right">
+    <button mdbBtn size="sm" class="custom-btn-blue" (click)="validateStep1()">NEXT</button>
+  </div>
+</mdb-step>
+<mdb-step xname="Water Level & Weather" xstepForm="activityForm">
+  <div xclass="row" style="justify-content:center">
+    <form xclass="form form-horizontal text-left col-lg-8 col-xs-12" [formGroup]="activityForm">
+      <h3 class="stepper-heading text-left">Water Level & Weather <span class="step-number">(Step 2/7)</span></h3>
+      <div class="d-flex mt-1 mt-5" formGroupName="waterLevelAndWeather">
+        <div class="form-group col-md-12 text-left">
+          <label class="control-label">Measure the air temperature</label>
+          <div class="input-group">
+            <input mdbInput formControlName="airTemperature" type="number" class="form-control"
+            placeholder="Air Temperature">
+            <div class="input-group-prepend">
+              <div class="input-group-text bl-0">°C</div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-1 error-message-div">
+          <p *ngIf="activityForm.get('waterLevelAndWeather').get('airTemperature').errors?.required  && this.submitStep2==true"
+          class="errorMessage">
+          <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
+          is required.</p>
+        </div>
+      </div>
+      <div class="d-flex mt-1">
+        <div class="form-group col-md-12 text-left">
+          <label class="control-label">Observe the Water Level</label>
+          <div class="d-flex">
+            <div *ngFor="let wl of waterLevels" class="mr-5">
+              <img class="cursor-pointer" (click)=setWaterLevel(wl.name);
+              [src]="this.activityForm.get('waterLevelAndWeather').get('waterLevel').value == wl.name ? wl.imageUrlEnable : wl.imageUrl">
+              <br/><label class="w-100 text-center light mt-2">{{wl.name}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="mt-1 error-message-div">
+          <p *ngIf="activityForm.get('waterLevelAndWeather').get('waterLevel').errors?.required  && this.submitStep2==true"
+          class="errorMessage">
+          <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
+          is required.</p>
+        </div>
+      </div>
+      <div class="d-flex mt-1">
+        <div class="form-group col-md-12 text-left">
+          <label class="control-label">Weather Conditions</label>
+          <div class="d-flex">
+            <div *ngFor="let wc of weatherCodition" class="mr-5">
+              <img class="cursor-pointer" (click)=setWeather(wc.name);
+              [src]="this.activityForm.get('waterLevelAndWeather').get('weather').value == wc.name ? wc.imageUrlEnable : wc.imageUrl">
+              <br/><label class="w-100 text-center light mt-2">{{wc.name}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="mt-1 error-message-div">
+          <p *ngIf="activityForm.get('waterLevelAndWeather').get('weather').errors?.required  && this.submitStep2==true"
+          class="errorMessage">
+          <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
+          is required.</p>
+        </div>
+      </div>
+      <div class="mt-1 text-left">
+        <div class="form-group col-md-12 text-left">
+          <label for="rm_location" class="control-label">River Pictures</label>
+        </div>
+        <div class="col-md-12 text-left">
+          <img *ngFor='let url of imageUrlRiver' [src]="url" height="50px" width="50px">
+        </div>
+        <label class="custom-file-upload ml-3 mt-2">
+          <input id="file" type="file" class="form-control" multiple
+          (change)="onFileChangesRiver($event)">Upload
+        </label>
+        <div class="mt-1 error-message-div">
+          <p *ngIf="imageFilesRiver.length == 0 && this.submitStep2 == true" class="errorMessage"><img class="img-add"
+            src="../../../assets/icons/exclamation_icon.svg">
+            This image is required.</p>
+          </div>
+        </div>
+      </form>
+    </div>
+    <hr class="hr-line" />
+    <div class="text-right">
+      <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
+      <button mdbBtn size="sm" class="custom-btn-blue" (click)="validateStep2()">NEXT</button>
+    </div>
+  </mdb-step>
+  <mdb-step xname="Observe your Surroundings" xstepForm="activityForm">
+    <div xclass="row" style="justify-content:center">
+      <form xformGroupx="surroundings" xclass="form form-horizontal text-left col-lg-8 col-xs-12">
+        <h3 class="stepper-heading text-left">Observe your Surroundings <span class="step-number">(Step 3/7)</span></h3>
+        <div class="mt-5">
+          <div class="col-md-12 mt-3 text-left" xformGroupName="waterLevelAndWeather">
+            <div *ngFor="let obj of surroundings ; let i=index" class="col-md-3 text-left"
+            style="display:inline-block">
+            <mdb-checkbox class="checkbox-coco-filled" [checked]="false" value={{obj}}
+            (change)="this.getSelectedSurroundings($event,obj)" [default]="true">{{obj}}
+          </mdb-checkbox>
+        </div>
+        <div class="mt-1 error-message-div">
+          <p *ngIf="activityForm.get('surroundings')['length'] == 0 && this.submitStep3 == true"
+          class="errorMessage"><img class="img-add"
+          src="../../../assets/icons/exclamation_icon.svg"> Please select at least
+          1 Category.</p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-1 text-left">
+      <div class="form-group col-md-12 text-left">
+        <label for="rm_location" class="control-label">Surrounding Pictures</label>
+      </div>
+      <div class="col-md-12 text-left">
+        <img *ngFor='let  url of imageUrlSurrounding' [src]="url" height="50px" width="50px">
+      </div>
+      <label class="custom-file-upload ml-3 mt-2">
+        <input id="file" type="file" class="form-control" multiple
+        (change)="onFileChangesSurrounding($event)">Upload
+      </label>
+      <div class="mt-1 error-message-div">
+        <p *ngIf="imageFilesRiver.length == 0 && this.submitStep2 == true" class="errorMessage"><img class="img-add"
+          src="../../../assets/icons/exclamation_icon.svg">
+          This image is required.</p>
+        </div>
+      </div>
+      <!-- <div class="mt-1" >
+      <div class="form-group col-md-12 text-left">
+      <label for="rm_location" class="control-label">Surroundings Pictures</label>
+    </div>
+    <div class="col-md-12 text-left">
+    <img *ngFor='let url of imageUrlSurrounding' [src]="url" height="50px" width="50px"
+    >
+  </div>
+  <label class="custom-file-upload ml-3 mt-2">
+  <input id="file" type="file" class="form-control" multiple
+  (change)="onFileChangesSurrounding($event)">Upload
+</label>
+
+</div> -->
+</form>
+</div>
+<hr class="hr-line" />
+<div class="text-right">
+  <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
+  <button mdbBtn size="sm" class="custom-btn-blue" (click)="validateStep4()">NEXT</button>
+</div>
+</mdb-step>
+<mdb-step xname="Water Quality Testing">
+  <div xclass="row" style="justify-content:center">
+    <form [formGroup]="activityForm" class="form form-horizontal text-left col-lg-8 col-xs-12">
+      <h3 class="stepper-heading text-left">Water Quality Testing <span class="step-number">(Step 4/7)</span></h3>
+      <div class="row mt-5" formGroupName="waterTesting">
+        <div class="form-group col-md-12 text-left">
+          <label class="control-label">Water Temperature</label>
+          <div class="input-group">
+            <input mdbInput formControlName="waterTemperature" type="number" class="form-control"
+            placeholder="Water Temperature">
+            <div class="input-group-prepend">
+              <div class="input-group-text bl-0">°C</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="waterTesting">
+        <div class="form-group col-md-6 text-left">
+          <label class="control-label">pH</label>
+          <div class="input-group">
+            <input mdbInput formControlName="pH" type="number" class="form-control"
+            placeholder="Water Temperature">
+            <div class="input-group-prepend">
+              <div class="input-group-text bl-0">°C</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-md-6 text-left">
+          <label class="control-label">Alkalinity</label>
+          <div class="input-group">
+            <input mdbInput formControlName="alkalinity" type="text" class="form-control"
+            placeholder="Water Temperature">
+            <div class="input-group-prepend">
+              <div class="input-group-text bl-0">°C</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="waterTesting">
+        <div class="form-group col-md-6 text-left">
+          <label class="control-label">Nitrate</label>
+          <div class="input-group">
+            <input mdbInput formControlName="nitrate" type="number" class="form-control"
+            placeholder="Nitrate">
+            <div class="input-group-prepend">
+              <div class="input-group-text bl-0">mg/L</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-md-6 text-left">
+          <label class="control-label">Nitrite</label>
+          <div class="input-group">
+            <input mdbInput formControlName="nitrite" type="text" class="form-control" placeholder="Nitrite">
+            <div class="input-group-prepend">
+              <div class="input-group-text bl-0">mg/L</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="waterTesting">
+        <div class="form-group col-md-12 text-left">
+          <label class="control-label">Hardness</label>
+          <div class="input-group">
+            <input mdbInput formControlName="hardness" type="number" class="form-control"
+            placeholder="Water Temperature">
+            <div class="input-group-prepend">
+              <div class="input-group-text bl-0">mg/L</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="waterTesting">
+        <div class="form-group col-md-6 text-left">
+          <label class="control-label">Chlorine</label>
+          <div class="input-group">
+            <input mdbInput formControlName="chlorine" type="number" class="form-control"
+            placeholder="Chlorine">
+            <div class="input-group-prepend">
+              <div class="input-group-text bl-0">mg/L</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-md-6 text-left">
+          <label class="control-label">Iron</label>
+          <div class="input-group">
+            <input mdbInput formControlName="iron" type="text" class="form-control" placeholder="Iron">
+            <div class="input-group-prepend">
+              <div class="input-group-text bl-0">mg/L</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="waterTesting">
+        <div class="form-group col-md-12 text-left">
+          <label class="control-label">Dissolved Oxygen</label>
+          <div class="input-group">
+            <input mdbInput formControlName="dissolvedOxygen" type="number" class="form-control"
+            placeholder="Dissolved Oxygen">
+            <div class="input-group-prepend">
+              <div class="input-group-text bl-0">mg/L</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="waterTesting">
+        <div class="form-group col-md-12 text-left">
+          <label class="control-label">E-Coli/Coliform Bacteria</label>
+          <div class="input-group" style="margin-left:-6px;">
+            <button mdbBtn type="button" class="custom-btn" *ngFor="let item of items; let i = index"
+            [ngClass]="(lastClickedIndex == i) ? 'custom-btn-active': 'custom-btn'"
+            (click)="changeActive(i); setBacteria(item.name)" #disable mdbWavesEffect>{{item.name}}</button>
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="waterTesting">
+        <div class="form-group col-md-12 text-left">
+          <label class="control-label">Turbidity</label>
+          <div class="input-group">
+            <input mdbInput formControlName="turbidity" type="number" class="form-control"
+            placeholder="Turbidity">
+            <div class="input-group-prepend">
+              <div class="input-group-text bl-0">NTU</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="waterTesting">
+        <div class="form-group col-md-12 text-left">
+          <label class="control-label">Phosphate</label>
+          <div class="input-group">
+            <input mdbInput formControlName="phosphate" type="number" class="form-control"
+            placeholder="Phosphate">
+            <div class="input-group-prepend">
+              <div class="input-group-text bl-0">mg/L</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="waterTesting">
+        <div class="form-group col-md-12 text-left">
+          <label class="control-label">Ammonia</label>
+          <div class="input-group">
+            <input mdbInput formControlName="ammonia" type="number" class="form-control"
+            placeholder="Ammonia">
+            <div class="input-group-prepend">
+              <div class="input-group-text bl-0">mg/L</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="waterTesting">
+        <div class="form-group col-md-12 text-left">
+          <label class="control-label">Lead</label>
+          <div class="input-group">
+            <input mdbInput formControlName="lead" type="number" class="form-control" placeholder="Lead">
+            <div class="input-group-prepend">
+              <div class="input-group-text bl-0">mg/L</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="waterTesting">
+        <div class="form-group col-md-12 text-left">
+          <label class="control-label">Total Dissolved Solids</label>
+          <div class="input-group">
+            <input mdbInput formControlName="dissolvedSolids" type="number" class="form-control"
+            placeholder="Total Dissolved Solids">
+            <div class="input-group-prepend">
+              <div class="input-group-text bl-0">ppm</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="waterTesting">
+        <div class="form-group col-md-6 text-left">
+          <label class="control-label">Conductivity</label>
+          <div class="input-group">
+            <input mdbInput formControlName="conductivity" type="number" class="form-control"
+            placeholder="Conductivity">
+            <div class="input-group-prepend">
+              <div class="input-group-text bl-0">µs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <hr class="hr-line" />
+  <div class="text-right">
+    <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
+    <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
+  </div>
+</mdb-step>
+<mdb-step xname="Flora & Fauna">
+  <!-- <div style="justify-content:center"> -->
+  <form xclass="form form-horizontal text-left col-lg-8 col-xs-12">
+    <h3 class="stepper-heading text-left">Flora & Fauna <span class="step-number">(Step 5/7)</span></h3>
+
+    <div class="col-md-12 mt-5">
+      <div class="row">
+        <img src="../../../assets/icons/fauna_icon.svg" height="35px" width="35px">
+        <label class="ml-2 mt-2 bold">Flora</label>
+      </div>
+      <p class="row">Record the vegetation you can see around you. This
+        could include grasses,
+        shrubs, plants
+        and trees.</p>
+        <div class="text-left mt-2">
+          <div class="col-md-12">
+            <img *ngFor='let url of imageUrlFlora' [src]="url" height="50px" width="50px" >
+          </div>
+          <label class="custom-file-upload mt-2">
+            <input id="file" type="file" class="form-control" multiple
+            (change)="onFileChangesFlora($event)">Upload
+          </label>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="row">
+          <img src="../../../assets/icons/fauna_icon.svg" height="35px" width="35px">
+          <label class="ml-2 mt-2 bold">Fauna</label>
+        </div>
+        <p class="row">Record fish, amphibians, reptiles, birds, insects and mammals that you see
+          around you.</p>
+          <div class="text-left mt-2">
+            <div class="col-md-12">
+              <img *ngFor='let url of imageUrlFauna' [src]="url" height="50px" width="50px" >
+            </div>
+            <label class="custom-file-upload mt-2">
+              <input id="file" type="file" class="form-control" multiple
+              (change)="onFileChangesFauna($event)">Upload
+            </label>
+          </div>
+        </div>
+      </form>
+      <!-- </div> -->
+      <hr class="hr-line" />
+      <div class="text-right">
+        <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
+        <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
+      </div>
+    </mdb-step>
+    <mdb-step xname="Pictures">
+      <div xclass="row" xstyle="justify-content:center">
+        <form xformGroup="secondFormGroup" xclass="form form-horizontal text-left col-lg-8 col-xs-12">
+          <h3 class="stepper-heading text-left">Pictures <span class="step-number">(Step 6/7)</span></h3>
+          <label class="ml-2 mt-5 bold">Pictures</label>
+          <div class="col-md-12">
+            <img *ngFor='let url of imageUrlGroup' [src]="url" height="50px" width="50px" >
+
+          </div>
+          <label class="custom-file-upload mt-2">
+            <input id="file" type="file" class="form-control" multiple
+            (change)="onFileChangesGroup($event)">Upload
+            Group Picture
+          </label>
+          <div class="col-md-12">
+            <img *ngFor='let url of imageUrlActivity' [src]="url" height="50px" width="50px" >
+
+          </div>
+          <label class="custom-file-upload mt-2">
+            <input id="file" type="file" class="form-control" multiple
+            (change)="onFileChangesActivity($event)">Upload
+            Activity Picture
+          </label>
+          <div class="col-md-12">
+            <img *ngFor='let url of imageUrlAtwork' [src]="url" height="50px" width="50px" >
+
+          </div>
+          <label class="custom-file-upload mt-2">
+            <input id="file" type="file" class="form-control" multiple
+            (change)="onFileChangesAtwork($event)">Upload
+            Artwork
+          </label>
+        </form>
+      </div>
+      <hr class="hr-line" />
+      <div class="text-right">
+        <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
+        <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
+      </div>
+    </mdb-step>
+    <mdb-step xname="Preview">
+      <form xclass="form form-horizontal text-left col-lg-8 col-xs-12">
+        <h3 class="stepper-heading text-left">Preview <span class="step-number">(Step 7/7)</span></h3>
+        <div class="box col-12 mt-5">
+          <div class="item">
+            <div class="preview-heading text-center">
+              <span>General Information <mdb-icon class="ml-2" fas icon="pencil-alt" (click)="move(1)"></mdb-icon></span>
+            </div>
+
+            <hr class="hr-line1" />
+            <div>
+              <label for="activityDate" class="text-left ml-2">Activity Date : </label>
+              <span class="ml-2">{{activityForm.get('generalInformation').get('activityDate').value | date:"dd-MMM-y" }}</span>
+            </div>
+
+            <div>
+              <label class="text-left ml-2">Activity Time : </label>
+              <span>{{activityForm.get('generalInformation').get('activityTime').value}}</span>
+            </div>
+            <div>
+            <label class="text-left ml-2">Name : </label>
+            <span>{{activityForm.get('generalInformation').get('testerName').value}}</span>
+            </div>
+            <div>
+            <label for="rm_dp" class="text-left ml-2">Location : </label>
+            <span>{{activityForm.get('generalInformation').get('location').value}}</span>
+          </div>
+          <div>
+            <label for="rm_dp" class="text-left ml-2">Latitude : </label>
+            <span>{{activityForm.get('generalInformation').get('latitude').value}}</span>
+          </div>
+          <div>
+            <label for="rm_dp" class="text-left ml-2">Longitude : </label>
+            <span>{{activityForm.get('generalInformation').get('latitude').value}}</span>
+          </div>
+          </div>
+          <div class="item">
+            <div class="preview-heading text-center">
+              <span class="text-center">Water Level & Weather <mdb-icon fas icon="pencil-alt"></mdb-icon></span>
+            </div>
+
+            <hr class="hr-line1" />
+            <div>
+            <label for="rm_dp" class="text-left ml-2">Measure the air temperature  : </label>
+            <span>{{activityForm.get('waterLevelAndWeather').get('airTemperature').value}}</span>
+            </div>
+            <div>
+            <label for="rm_dp" class="text-left ml-2"> Observe the Water Level : </label>
+            <span>{{activityForm.get('waterLevelAndWeather').get('waterLevel').value}}</span>
+          </div>
+          <div>
+            <label for="rm_dp" class="text-left ml-2">Weather Conditions : </label>
+            <span>{{activityForm.get('waterLevelAndWeather').get('weather').value}}</span>
+          </div>
+          <div>
+            <label for="rm_dp" class="col-12 text-center ml-2">River Pictures</label>
+            <img *ngFor='let url of imageUrlRiver' [src]="url" height="50px" width="50px"
+            >
+          </div>
+          </div>
+          <div class="item">
+            <div class="preview-heading text-center">
+              <span>Observe the Surroundings <mdb-icon class="ml-2" fas icon="pencil-alt" ></mdb-icon></span>
+            </div>
+
+            <hr class="hr-line1" />
+            <div class="container">
+              <span *ngFor="let obj of surroundingArray.value">{{obj}}<span>,</span></span>
+            </div>
+
+            <label for="rm_dp" class="text-center col-12 ml-2">Surrounding Pictures</label>
+            <img *ngFor='let url of imageUrlSurrounding' [src]="url" height="50px" width="50px"
+            >
+          </div>
+          <div class="item">
+            <div class="preview-heading text-center">
+              <span>Water Testing <mdb-icon class="ml-2" fas icon="pencil-alt" (click)="setSteep()"></mdb-icon></span>
+            </div>
+
+            <hr class="hr-line1" />
+
+          <div>
+            <label class="text-left ml-2">Water Temperature : </label>
+            <span>{{activityForm.get('waterTesting').get('waterTemperature').value}}</span>
+          </div>
+          <div>
+            <label class="text-left ml-2">pH : </label>
+            <span>{{activityForm.get('waterTesting').get('pH').value}}</span>
+          </div>
+          <div>
+            <label class="text-left ml-2">Alkalinity : </label>
+            <span>{{activityForm.get('waterTesting').get('alkalinity').value}}</span>
+          </div>
+          <div>
+            <label class="text-left ml-2">Nitrate : </label>
+            <span>{{activityForm.get('waterTesting').get('nitrate').value}}</span>
+          </div>
+          <div>
+            <label class="text-left ml-2">Nitrite : </label>
+            <span>{{activityForm.get('waterTesting').get('nitrite').value}}</span>
+          </div>
+          <div>
+            <label class="text-left ml-2">Hardness : </label>
+            <span>{{activityForm.get('waterTesting').get('hardness').value}}</span>
+          </div>
+          <div>
+            <label class="text-left ml-2">Chlorine : </label>
+            <span>{{activityForm.get('waterTesting').get('chlorine').value}}</span>
+          </div>
+          <div>
+            <label class="text-left ml-2">Iron : </label>
+            <span>{{activityForm.get('waterTesting').get('iron').value}}</span>
+          </div>
+          <div>
+            <label class="text-left ml-2">Dissolved Oxygen : </label>
+            <span>{{activityForm.get('waterTesting').get('dissolvedOxygen').value}}</span>
+          </div>
+          <div>
+            <label class="text-left ml-2">E-Coli/Coliform Bacteria : </label>
+              <span>{{activityForm.get('waterTesting').get('bacteria').value}}</span>
+            </div>
+            <div>
+              <label class="text-left ml-2">Turbidity : </label>
+              <span>{{activityForm.get('waterTesting').get('turbidity').value}}</span>
+            </div>
+            <div>
+              <label class="text-left ml-2">Phosphate : </label>
+              <span>{{activityForm.get('waterTesting').get('phosphate').value}}</span>
+            </div>
+            <div>
+              <label class="text-left ml-2">Ammonia : </label>
+              <span>{{activityForm.get('waterTesting').get('ammonia').value}}</span>
+            </div>
+            <div>
+              <label class="text-left ml-2">Lead : </label>
+              <span>{{activityForm.get('waterTesting').get('lead').value}}</span>
+            </div>
+            <div>
+              <label class="text-left ml-2">Total Dissolved Solids : </label>
+              <span>{{activityForm.get('waterTesting').get('dissolvedSolids').value}}</span>
+            </div>
+            <div>
+              <label class="text-left ml-2">Conductivity : </label>
+              <span>{{activityForm.get('waterTesting').get('conductivity').value}}</span>
+            </div>
+            </div>
+            <div class="item">
+              <div class="preview-heading text-center">
+                <span>Flora & Fauna <mdb-icon class="ml-2" fas icon="pencil-alt" (click)="setSteep()"></mdb-icon></span>
+              </div>
+
+              <hr class="hr-line1" />
+
+              <div class="row ml-2">
+                <img src="../../../assets/icons/flora_icon.svg" height="28px" width="28px">
+                <label class="ml-2 mt-1 bold">Flora</label>
+                <img *ngFor='let url of imageUrlFlora' [src]="url" height="50px" width="50px"
+                >
+              </div>
+
+              <div class="row ml-2">
+                <img src="../../../assets/icons/fauna_icon.svg" height="35px" width="35px">
+                <label class="ml-2 mt-2 bold">Fauna</label>
+                <img *ngFor='let url of imageUrlFauna' [src]="url" height="50px" width="50px"
+                >
+              </div>
+
+            </div>
+            <div class="item">
+              <div class="preview-heading text-center">
+                <span>Pictures<mdb-icon class="ml-2" fas icon="pencil-alt" (click)="setSteep()"></mdb-icon></span>
+              </div>
+
+              <hr class="hr-line1" />
+              <label for="rm_dp" class="text-center col-12 ml-2 bold">Group Pictures</label>
+              <img *ngFor='let url of imageUrlGroup' [src]="url" height="50px" width="50px"
+              >
+              <label for="rm_dp" class="text-center col-12 ml-2 bold">Activity Pictures</label>
+              <img *ngFor='let url of imageUrlActivity' [src]="url" height="50px" width="50px"
+              >
+              <label for="rm_dp" class="text-center col-12 ml-2 bold">Artwork Pictures</label>
+              <img *ngFor='let url of imageUrlAtwork' [src]="url" height="50px" width="50px"
+              >
+            </div>
+          </div>
+        </form>
+        <hr class="hr-line" />
+
+        <div class="xstep-actions text-right">
+          <button mdbBtn size="sm" class="custom-btn-blue" (click)="createWaterTestDetails()">SUBMIT</button>
+        </div>
+      </mdb-step>
+    </mdb-stepper>
+  </div>
+</mdb-tab>
+
+<mdb-tab heading="View Reports" xstyle="height:500px">
+  <div class="bg-white">
+    <div *ngIf="this.reports.length == 0" class="row mt-2" style="height:450px; background-color:white;margin-left: -35px;margin-right: -35px;">
+      <div class="col-12 text-center mt-5">
+        <p class="mt-4">Sorry! We don't have any reports to view at the moment. Would you like to contribute and
+          create a new report?</p>
+          <p class="mt-4">Please click on <strong>'CREATE REPORT'</strong> to add a new report.</p>
+        </div>
+      </div>
+      <div *ngIf="this.reports.length != 0" class="xrow mt-2" style="min-height:450px; background-color:white;margin-left: -35px;margin-right: -35px;">
+        <div class="text-center">
+          <h2 class="h1-responsive font-weight-bold xmy-3">Certificate URL</h2>
+        </div>
+        <div class="search-results" infiniteScroll [infiniteScrollDistance]='2' [infiniteScrollThrottle]='10'
+        [scrollWindow]="false" (scrolled)="onScroll()">
+        <div class="col-12 mt-4 text-left">
+          <ul style="list-style-type:none" *ngFor="let report of reports">
+            <li><a [href]="report.certificateURL" target="_blank">{{report.certificateURL}}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</mdb-tab>
+</mdb-tabset>
 </div>

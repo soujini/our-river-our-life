@@ -104,7 +104,6 @@ export class AddBlogComponent implements OnInit {
       this.imgResultBeforeCompress = image;
       var filename = Date.now()+"-add-blog";
       console.log('Size in bytes was:', this.imageCompress.byteCount(image));
-      alert(filename);
       this.imageCompress.compressFile(image, orientation, 50, 50).then(
         result => {
           this.imgResultAfterCompress = result;

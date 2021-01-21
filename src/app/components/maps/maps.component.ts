@@ -23,7 +23,7 @@ export class MapsComponent implements OnInit {
   sizeOFCompressedImage: number;
   imgResultBeforeCompress: string;
   imgResultAfterCompress= [];
-  public iconUrl = '../../../assets/scalable-vector-graphics/flood-watch.svg';
+  public iconUrl = '../../../assets/icons/flood-watch.svg';
   public imageFiles: File[] = [];
   public imageFile:File;
   file: any;
@@ -211,7 +211,6 @@ onFileChange(event) {
 }
 
 compressFile(base64URL, filename) {
-  alert(filename);
   var orientation = -1;
   this.imgResultBeforeCompress = base64URL;
   console.log('Size in bytes was:', this.imageCompress.byteCount(base64URL));
