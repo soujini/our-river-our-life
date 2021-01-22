@@ -60,7 +60,7 @@ export class RecentBlogPostComponent implements OnInit {
     }
 
     ngOnInit() {
-      
+
     }
     chunk(arr, chunkSize) {
       let R = [];
@@ -78,10 +78,10 @@ export class RecentBlogPostComponent implements OnInit {
               featuredPhoto: data['rows'][i].featuredPhoto,
               createdAt: data['rows'][i].createdAt,
               contributorName: data['rows'][i].contributorName,
-              
+
             });
           }
-          this.slides = this.chunk(this.cards, 3);
+          this.slides = this.chunk(this.cards, 4);
         }
         // this.spinnerService.setSpinner(false);
       });

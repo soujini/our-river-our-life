@@ -1,9 +1,9 @@
 <div class="content">
   <mdb-tabset id="recentPosts_addBlog_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'"
     class="classic-tabs">
-    <mdb-tab heading="View Recent Posts">
+    <mdb-tab heading="All Posts">
       <div class="banner text-center">
-        <h2 class="title"><span>Recent Posts</span>
+        <h2 class="title"><span>All Posts</span>
         </h2>
       </div>
        <div class="search-results" infiniteScroll [infiniteScrollDistance]='2' [infiniteScrollThrottle]='50'
@@ -35,13 +35,13 @@
 
 
     </mdb-tab>
-    <mdb-tab heading="+ Add New Blog">
+    <mdb-tab *ngIf="this.user" heading="+ Add New Blog">
       <app-add-blog></app-add-blog>
     </mdb-tab>
- 
+
   </mdb-tabset>
 </div>
-      
+
 <div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog"
 aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-dialog-full-width xmodal-dialog-scrollable modal-lg " role="document">

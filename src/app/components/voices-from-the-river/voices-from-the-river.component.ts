@@ -16,6 +16,7 @@ export class VoicesFromTheRiverComponent implements OnInit {
   blogs = [];
   public selectedBlog: any;
   pageNumber = 1;
+  public user;
 
   constructor(private router: Router, private orolService: OrolService,
     private spinnerService: SpinnerService) {

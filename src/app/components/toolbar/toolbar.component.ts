@@ -27,6 +27,7 @@ export class ToolbarComponent implements OnInit {
   isEyeHidden:boolean=true;
   isGetInvolved:boolean=false;
   avatarURL:String="../../assets/icons/profile.png";
+  public user;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,6 +42,8 @@ export class ToolbarComponent implements OnInit {
       }
       else{
         var user = JSON.parse(localStorage.getItem('User'));
+        this.user=user;
+
         this.name = user.firstName + ' '+user.lastName;
       }
     });

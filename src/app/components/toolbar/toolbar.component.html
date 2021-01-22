@@ -3,6 +3,7 @@
     <mdb-navbar-brand>
       <a class="navbar-brand" href="#"><img alt="logo" class="logo" [routerLink]="'/home'" src="../../assets/logos/orol_logo.svg"></a>
     </mdb-navbar-brand>
+
     <links class="text-center">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
@@ -17,8 +18,8 @@
           <a [ngClass]="{'router-link-active': this.router.url == '/flood-watch' || this.router.url == '/river-monitoring' || this.router.url == '/flora-fauna' || this.router.url == '/voices-from-the-river'}" dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light heading" mdbWavesEffect>
             Get Involved<span class="caret"></span></a>
             <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown" role="menu">
-              <a [routerLink]="'/river-monitoring'" class="dropdown-item" mdbWavesEffect href="#"><mdb-icon fas icon="water" [routerLinkActive]="['router-link-active']"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">River Monitoring</span></a>
-              <div class="divider dropdown-divider"></div>
+              <a *ngIf="this.user" [routerLink]="'/river-monitoring'" class="dropdown-item" mdbWavesEffect href="#"><mdb-icon fas icon="water" [routerLinkActive]="['router-link-active']"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">River Monitoring</span></a>
+              <div *ngIf="this.user" class="divider dropdown-divider"></div>
               <a [routerLink]="'/flood-watch'" class="dropdown-item" mdbWavesEffect href="#"><mdb-icon fas icon="binoculars"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">Flood Watch</span></a>
               <div class="divider dropdown-divider"></div>
               <a [routerLink]="'/flora-fauna'" class="dropdown-item" mdbWavesEffect href="#"><mdb-icon fab icon="pagelines"></mdb-icon><mdb-icon fas icon="frog"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">Flora & Fauna</span></a>
@@ -30,7 +31,7 @@
             <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light heading" mdbWavesEffect>
               Get Involved<span class="caret"></span></a>
               <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown" role="menu" style="position:relative !important">
-                <a [routerLink]="'/river-monitoring'" class="dropdown-item" mdbWavesEffect href="#"><mdb-icon fas icon="water" [routerLinkActive]="['router-link-active']"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">River Monitoring</span></a>
+                <a  [routerLink]="'/river-monitoring'" class="dropdown-item" mdbWavesEffect href="#"><mdb-icon fas icon="water" [routerLinkActive]="['router-link-active']"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">River Monitoring</span></a>
                 <div class="divider dropdown-divider"></div>
                 <a [routerLink]="'/flood-watch'" class="dropdown-item" mdbWavesEffect href="#"><mdb-icon fas icon="binoculars"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">Flood Watch</span></a>
                 <div class="divider dropdown-divider"></div>

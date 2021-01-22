@@ -106,7 +106,7 @@
         </div>
       </div>
     </mdb-tab>
-    <mdb-tab heading="+ New">
+    <mdb-tab heading="+ New" (click)="add();" *ngIf="this.user != null">
       <div class="overlay form-group mt-2">
         <form class="alert-box form form-horizontal text-left col-lg-8 col-xs-12" [formGroup]="floraFaunaForm">
           <div class="row">
