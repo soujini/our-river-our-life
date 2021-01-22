@@ -6,20 +6,10 @@
 @import '~ng-uikit-pro-standard/assets/scss/bootstrap/variables';
 @import '~ng-uikit-pro-standard/assets/scss/core/mixins';
 
-@include media-breakpoint-down(md) {
-  .waves-splash{
-    margin-top:-30px;
-    width:100%;
-  }
-}
-
-@include media-breakpoint-down(xl) {
-
-}
-
 .contributors{
   background-color:#ecf4f4;
-  padding-top:100px;padding-bottom:50px;
+  padding-top:50px;
+  padding-bottom:50px;
   // background: linear-gradient(20deg, #e1e1e1 0%, #ecf4f4 100%);
 }
 .title{
@@ -28,7 +18,7 @@
   color:#268586;
 }
 .waves-splash{
-  margin-top:-30px;
+  margin-top:-50px;
 }
 .contributor-name{
   font-size: 1rem;
@@ -42,7 +32,8 @@
   height:60px;
   width:60px;
   background-color:#86bbbc;
-  border-radius:50%;border:1px solid #fdfefe;
+  border-radius: 50%;
+  border:1px solid #fdfefe;
   text-align:center;
 }
 .contributor-icon{
@@ -53,4 +44,10 @@
 
 mdb-slide{
   margin-top:100px !important;
+}
+@include media-breakpoint-down(md) {
+  .waves-splash{
+    margin-top:-30px;
+    width:100%;
+  }
 }
