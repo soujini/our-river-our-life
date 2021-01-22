@@ -328,7 +328,6 @@ export class RiverMonitoringComponent implements OnInit {
   // }
   onScroll() {
     this.pageNumber = this.pageNumber+1;
-    console.log("scrolled down!!",this.pageNumber);
   }
   getWaterTestDetails() {
       var user = JSON.parse(localStorage.getItem('User'));
@@ -524,7 +523,6 @@ export class RiverMonitoringComponent implements OnInit {
       });
     }
     else {
-      // alert("Geolocation is not supported by this browser.");
     }
   }
 
@@ -541,7 +539,6 @@ export class RiverMonitoringComponent implements OnInit {
         });
       } else {
         console.log("Geocoder failed due to: " + status);
-        // alert("Geocoder failed due to: " + status + ". Please enter a valid latitide and longitude.")
       }
     });
   }

@@ -28,7 +28,6 @@ export class MapsFloodWatchComponent implements OnInit {
   }
 
   mapClicked($event: MouseEvent) {
-    // alert("clicked");
     // this.markers.push({
     //   latitude: $event.coords.lat,
     //   longitude: $event.coords.lng,

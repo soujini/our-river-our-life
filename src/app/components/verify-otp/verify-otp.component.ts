@@ -67,7 +67,6 @@ export class VerifyOtpComponent implements AfterViewInit {
 
       if (data['user'].firstName == '' || data['user'].firstName == undefined || data['user'].lastName == '' || data['user'].lastName == undefined || data['user'].email == '' || data['user'].email == undefined) {
         ///route to edit profile page
-        // alert("going to edit profile")
         this.router.navigate(['./edit-profile']);
         this.spinnerService.setSpinner(false);
 

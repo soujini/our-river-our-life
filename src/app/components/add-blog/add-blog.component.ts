@@ -59,7 +59,6 @@ export class AddBlogComponent implements OnInit {
   createblog() {
     this.submitted = true;
     this.orolService.createblog(this.blogForm.value, this.imageFile)
-    this.spinnerService.setSpinner(true);
 
   }
 
@@ -103,11 +102,9 @@ export class AddBlogComponent implements OnInit {
     this.imageCompress.uploadFile().then(({ image }) => {
       this.imgResultBeforeCompress = image;
       var filename = Date.now()+"-add-blog";
-      console.log('Size in bytes was:', this.imageCompress.byteCount(image));
       this.imageCompress.compressFile(image, orientation, 50, 50).then(
         result => {
           this.imgResultAfterCompress = result;
-          console.log('Size in bytes is now:', this.imageCompress.byteCount(result));
           this.imageFile = this.dataURLtoFile(this.imgResultAfterCompress,filename);
         }
       );

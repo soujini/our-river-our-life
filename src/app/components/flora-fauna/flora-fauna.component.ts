@@ -112,7 +112,6 @@ export class FloraFaunaComponent implements OnInit {
       });
     }
     else {
-      // alert("Geolocation is not supported by this browser.");
     }
   }
 
@@ -140,12 +139,9 @@ export class FloraFaunaComponent implements OnInit {
         filename = "fauna_"+ Date.now();
      }
       
-      console.log('Size in bytes was:', this.imageCompress.byteCount(image));
-      alert(filename);
        this.imageCompress.compressFile(image, orientation, 50, 50,).then(
         result => {
           this.imgResultAfterCompress = result;
-          console.log('Size in bytes is now:', this.imageCompress.byteCount(result));
           this.imageFile = this.dataURLtoFile(this.imgResultAfterCompress,filename );
         }
       );
@@ -248,7 +244,6 @@ export class FloraFaunaComponent implements OnInit {
   }
   onScroll() {
     this.pageNumber = this.pageNumber + 1;
-    console.log("scrolled down!!", this.pageNumber);
   }
 
 }

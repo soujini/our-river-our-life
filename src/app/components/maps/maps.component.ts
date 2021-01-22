@@ -167,7 +167,6 @@ private setCurrentPosition() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       var accuracy = position.coords.accuracy;
-      // alert(accuracy);
       this.mapsForm.patchValue({
         latitude: +position.coords.latitude,
         longitude: +position.coords.longitude,
@@ -180,7 +179,6 @@ private setCurrentPosition() {
     });
   }
   else {
-    // alert("Geolocation is not supported by this browser.");
   }
 }
 
@@ -213,13 +211,9 @@ onFileChange(event) {
 compressFile(base64URL, filename) {
   var orientation = -1;
   this.imgResultBeforeCompress = base64URL;
-  console.log('Size in bytes was:', this.imageCompress.byteCount(base64URL));
-
   this.imageCompress.compressFile(base64URL, orientation, 50, 50).then(
     result => {
       this.imgResultAfterCompress.push(result);
-      console.log('Size in bytes is now:', this.imageCompress.byteCount(result));
-
       this.imageFile = this.dataURLtoFile(result, filename);
     });
   }

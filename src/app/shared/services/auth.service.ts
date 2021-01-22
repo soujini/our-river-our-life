@@ -82,7 +82,6 @@ export class AuthService {
     //   /* Call the SendVerificaitonMail() function when new user sign
     //   up and returns promise */
     //   // this.orolService.signIn(email, phoneNumber).subscribe((res)=>{
-    //   //     alert(res.id);
     //   //   localStorage.setItem('userId', res.id);
     //   // });
     //   this.SendVerificationMail();

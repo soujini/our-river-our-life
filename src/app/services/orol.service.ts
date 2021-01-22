@@ -23,6 +23,15 @@ export class OrolService {
     });
     return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/blogs", { headers: httpHeaders });
   }
+  public getRecentBlogs() {
+    var user = JSON.parse(localStorage.getItem('User'));
+    const httpHeaders: HttpHeaders = new HttpHeaders({
+      Authorization: 'Bearer ' + user.accessToken
+    });
+    return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/blogs/top10", { headers: httpHeaders });
+  }
+  
+
 
 
  
@@ -318,7 +327,7 @@ export class OrolService {
     this.httpClient.post("https://our-river-our-life-api.herokuapp.com/blogs/create-blog", form, { headers: httpHeaders }).subscribe(
       (res) => {
         this.spinnerService.setSpinner(false);
-        this.router.navigate(['./voices-from-the-river']);
+        this.router.navigate(['./home']);
 
       },
       (err) => {
@@ -328,7 +337,6 @@ export class OrolService {
     );
    }
   public updateProfile(userInfo, images: File) {
-    console.log(images);
     var user = JSON.parse(localStorage.getItem('User'));
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({

@@ -27,7 +27,6 @@ export class MapsFloraComponent implements OnInit {
     console.log(`clicked the marker: ${label || index}`)
   }
   mapClicked($event: MouseEvent) {
-    // alert("clicked");
     // this.markers.push({
     //   latitude: $event.coords.lat,
     //   longitude: $event.coords.lng,
