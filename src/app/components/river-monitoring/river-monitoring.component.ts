@@ -8,6 +8,7 @@ import { ModalDirective } from 'ng-uikit-pro-standard';
 import { MapsAPILoader } from '@agm/core';
 import { NgZone } from '@angular/core';
 import { OrolService } from '../../services/orol.service';
+import { NgxImageCompressService } from 'ngx-image-compress';
 
 import { SpinnerService } from '../../services/spinner.service';
 
@@ -29,7 +30,7 @@ export class RiverMonitoringComponent implements OnInit {
   info = "(Max. size 250KB)";
   geocoder: any;
   surroundingArray: any;
-  reports:any=[];
+  reports: any = [];
   lastClickedIndex;
   public myDatePickerOptions: IMyOptions = {
     dateFormat: 'dd mmm yyyy',
@@ -37,9 +38,11 @@ export class RiverMonitoringComponent implements OnInit {
   };
   images = [];
   centerLoc: any = {};
+  imgResultBeforeCompress: string;
+  imgResultAfterCompress = [];
 
   public imageFilesRiver: File[] = [];
-  imageUrlRiver = [];
+  imageUrlRiver: any = [];
   public imageFilesSurrounding: File[] = [];
   imageUrlSurrounding = [];
   public imageFilesFlora: File[] = [];
@@ -146,7 +149,7 @@ export class RiverMonitoringComponent implements OnInit {
   lat: number;
   lng: number;
 
-  constructor(private fb: FormBuilder, private orolService: OrolService,private router: Router,
+  constructor(private fb: FormBuilder, private orolService: OrolService, private router: Router, private imageCompress: NgxImageCompressService,
     private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private spinnerService: SpinnerService) {
     this.createForm();
     this.surroundingArray = this.activityForm.controls.surroundings as FormArray;
@@ -227,12 +230,12 @@ export class RiverMonitoringComponent implements OnInit {
     this.activityForm = this.fb.group({
       userId: [''],
       generalInformation: this.fb.group({
-        activityDate: [(new Date()),[Validators.required]],
-        activityTime: ['',[Validators.required]],
+        activityDate: [(new Date()), [Validators.required]],
+        activityTime: ['', [Validators.required]],
         testerName: ['', [Validators.required]],
         latitude: [''],
         longitude: [''],
-        location: ['',[Validators.required]],
+        location: ['', [Validators.required]],
       }),
       waterLevelAndWeather: this.fb.group({
         airTemperature: ['', [Validators.required]],
@@ -327,14 +330,14 @@ export class RiverMonitoringComponent implements OnInit {
   //   }
   // }
   onScroll() {
-    this.pageNumber = this.pageNumber+1;
+    this.pageNumber = this.pageNumber + 1;
   }
   getWaterTestDetails() {
-      var user = JSON.parse(localStorage.getItem('User'));
+    var user = JSON.parse(localStorage.getItem('User'));
     this.spinnerService.setSpinner(true);
-    this.orolService.getWaterTestDetails().subscribe((data)=>{
-      if(data['count']){
-        this.reports=data['rows'].filter(r => r.userId == user.id);
+    this.orolService.getWaterTestDetails().subscribe((data) => {
+      if (data['count']) {
+        this.reports = data['rows'].filter(r => r.userId == user.id);
       }
       this.spinnerService.setSpinner(false);
     });
@@ -344,13 +347,13 @@ export class RiverMonitoringComponent implements OnInit {
     this.orolService.createWaterTestDetails(this.activityForm.value, this.imageFilesRiver,
       this.imageFilesSurrounding, this.imageFilesFlora, this.imageFilesFauna, this.imageFilesGroup, this.imageFilesActivity, this.imageFilesAtwork).
       subscribe((data) => {
-        console.log(data);
-          //Call Generate REPORT
+        // console.log(data);
+        //Call Generate REPORT
         this.orolService.generateReport(data).subscribe(
           (res) => {
             this.spinnerService.setSpinner(false);
             console.log(res);
-             this.router.navigate(['./home']);
+            this.router.navigate(['./home']);
           },
           (err) => {
             this.spinnerService.setSpinner(false);
@@ -358,95 +361,157 @@ export class RiverMonitoringComponent implements OnInit {
           },
         );
       });
+    this.imageUrlRiver = [];
+    this.imageFilesRiver = [];
+    this.imageUrlSurrounding = [];
+    this.imageFilesSurrounding = [];
+    this.imageUrlFlora = [];
+    this.imageFilesFlora = [];
+    this.imageUrlFauna = [];
+    this.imageFilesFauna = [];
+    this.imageUrlGroup = [];
+    this.imageFilesGroup = [];
+    this.imageUrlActivity = [];
+    this.imageFilesActivity = [];
+    this.imageUrlAtwork = [];
+    this.imageFilesAtwork = [];
+
+
+  }
+  compressFile(base64URL, filename) {
+    var orientation = -1;
+    this.imgResultBeforeCompress = base64URL;
+    console.log('Size in bytes was:', this.imageCompress.byteCount(base64URL));
+    this.imageCompress.compressFile(base64URL, orientation, 50, 50).then(
+      result => {
+        this.imgResultAfterCompress.push(result);
+        console.log('Size in bytes is now:', this.imageCompress.byteCount(result));
+        this.imageFile = this.dataURLtoFile(result, filename);
+      });
+  }
+  dataURLtoFile(dataurl, filename) {
+    var arr = dataurl.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, { type: mime });
   }
 
-
   onFileChangesRiver(event) {
+    this.imageUrlRiver = [];
     if (event.target.files && event.target.files[0]) {
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
         this.imageFilesRiver.push(event.target.files[i]);
+        var _filename = "riverPicture_" + Date.now();
         var reader = new FileReader();
         reader.onload = (event: any) => {
           this.imageUrlRiver.push(event.target.result);
+          this.compressFile(event.target.result, _filename);
+
         }
         reader.readAsDataURL(event.target.files[i]);
       }
     }
   }
   onFileChangesSurrounding(event) {
+    this.imageUrlSurrounding = [];
     if (event.target.files && event.target.files[0]) {
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
         this.imageFilesSurrounding.push(event.target.files[i]);
+        var _filename = "surroundingPicture_" + Date.now();
         var reader = new FileReader();
         reader.onload = (event: any) => {
           this.imageUrlSurrounding.push(event.target.result);
+          this.compressFile(event.target.result, _filename);
         }
         reader.readAsDataURL(event.target.files[i]);
       }
     }
   }
   onFileChangesFlora(event) {
+    this.imageUrlFlora = [];
     if (event.target.files && event.target.files[0]) {
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
         this.imageFilesFlora.push(event.target.files[i]);
+        var _filename = "florarPicture_" + Date.now();
         var reader = new FileReader();
         reader.onload = (event: any) => {
           this.imageUrlFlora.push(event.target.result);
+          this.compressFile(event.target.result, _filename);
+
         }
         reader.readAsDataURL(event.target.files[i]);
       }
     }
   }
   onFileChangesFauna(event) {
+    this.imageUrlFauna = [];
     if (event.target.files && event.target.files[0]) {
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
         this.imageFilesFauna.push(event.target.files[i]);
+        var _filename = "florarPicture_" + Date.now();
         var reader = new FileReader();
         reader.onload = (event: any) => {
           this.imageUrlFauna.push(event.target.result);
+          this.compressFile(event.target.result, _filename);
+
         }
         reader.readAsDataURL(event.target.files[i]);
       }
     }
   }
   onFileChangesGroup(event) {
+    this.imageUrlGroup = [];
     if (event.target.files && event.target.files[0]) {
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
         this.imageFilesGroup.push(event.target.files[i]);
+        var _filename = "groupPicture_" + Date.now();
         var reader = new FileReader();
         reader.onload = (event: any) => {
           this.imageUrlGroup.push(event.target.result);
+          this.compressFile(event.target.result, _filename);
         }
         reader.readAsDataURL(event.target.files[i]);
       }
     }
   }
   onFileChangesActivity(event) {
+    this.imageUrlActivity = [];
     if (event.target.files && event.target.files[0]) {
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
         this.imageFilesActivity.push(event.target.files[i]);
+        var _filename = "activityPicture_" + Date.now();
         var reader = new FileReader();
         reader.onload = (event: any) => {
           this.imageUrlActivity.push(event.target.result);
+          this.compressFile(event.target.result, _filename);
         }
         reader.readAsDataURL(event.target.files[i]);
       }
     }
   }
   onFileChangesAtwork(event) {
+    this.imageUrlAtwork = [];
     if (event.target.files && event.target.files[0]) {
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
         this.imageFilesAtwork.push(event.target.files[i]);
+        var _filename = "atWorkPicture_" + Date.now();
         var reader = new FileReader();
         reader.onload = (event: any) => {
           this.imageUrlAtwork.push(event.target.result);
+          this.compressFile(event.target.result, _filename);
+
         }
         reader.readAsDataURL(event.target.files[i]);
       }
@@ -549,7 +614,7 @@ export class RiverMonitoringComponent implements OnInit {
         weather: name
       }
     });
-    console.log(this.activityForm.value);
+    // console.log(this.activityForm.value);
   }
 
   setWaterLevel(name) {
@@ -558,7 +623,7 @@ export class RiverMonitoringComponent implements OnInit {
         waterLevel: name
       }
     });
-    console.log(this.activityForm.value);
+    // console.log(this.activityForm.value);
   }
   setBacteria(name) {
     this.activityForm.patchValue({
@@ -566,7 +631,7 @@ export class RiverMonitoringComponent implements OnInit {
         bacteria: name
       }
     });
-    console.log(this.activityForm.value)
+    // console.log(this.activityForm.value)
   }
   changeActive(i) {
     this.lastClickedIndex = i;
