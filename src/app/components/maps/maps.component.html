@@ -20,18 +20,18 @@
           autocapitalize="off" spellcheck="off" type="text" class="input-search col-md-12 mt-3" #search
           [formControl]="searchControl">
         <p *ngIf="mapsForm.get('location').errors?.required  && this.submitted==true" class="errorMessage">
-          <img class="img-add" src="../../../assets/icons/exclamation.svg"> This field
+          <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
           is required.</p>
         <div class="d-flex">
           <input for="latitude" formControlName="latitude" type="text" class="input-latitude col-md-6 mt-3"
             placeholder="Latitude" (change)="bla()">
           <!-- <p *ngIf="mapsForm.get('latitude').errors?.required  && this.submitted==true" class="errorMessage">
-            <img class="img-add" src="../../../assets/icons/exclamation.svg"> This field
+            <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
             is required.</p> -->
           <input for="longitude" formControlName="longitude" type="text" class="input-latitude col-md-6 mt-3"
             placeholder="Longitude" (change)="bla()">
           <!-- <p *ngIf="mapsForm.get('longitude').errors?.required  && this.submitted==true" class="errorMessage">
-            <img class="img-add" src="../../../assets/icons/exclamation.svg"> This field
+            <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
             is required.</p> -->
         </div>
       </div>
@@ -62,14 +62,14 @@
           [placeholder]="'Selected date'" required>
         </mdb-date-picker>
         <p *ngIf="mapsForm.get('activityDate').errors?.required  && this.submitted==true" class="errorMessage">
-          <img class="img-add" src="../../../assets/icons/exclamation.svg"> This field
+          <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
           is required.</p>
       </div>
       <div>
         <label class="alert-date" for='activityTime'>Time</label>
         <mdb-time-picker #timepicker formControlName="activityTime" id="mytp"></mdb-time-picker>
         <p *ngIf="mapsForm.get('activityTime').errors?.required  && this.submitted==true" class="errorMessage">
-          <img class="img-add" src="../../../assets/icons/exclamation.svg"> This field
+          <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
           is required.</p>
       </div>
 
@@ -82,7 +82,7 @@
           </div>
           <div class="mt-1 error-message-div">
             <p *ngIf="imageFiles.length == null && this.submitted == true" class="errorMessage"><img class="img-add"
-                src="../../../assets/icons/exclamation.svg">
+                src="../../../assets/icons/exclamation_icon.svg">
               This image is required.</p>
           </div>
           <input id="file" type="file" class="form-control" multiple (change)="onFileChange($event)"

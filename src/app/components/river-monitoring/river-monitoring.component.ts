@@ -407,7 +407,7 @@ export class RiverMonitoringComponent implements OnInit {
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
         this.imageFilesRiver.push(event.target.files[i]);
-        var _filename = "riverPicture_" + Date.now();
+        var _filename = "river_" + Date.now();
         var reader = new FileReader();
         reader.onload = (event: any) => {
           this.imageUrlRiver.push(event.target.result);
@@ -424,7 +424,7 @@ export class RiverMonitoringComponent implements OnInit {
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
         this.imageFilesSurrounding.push(event.target.files[i]);
-        var _filename = "surroundingPicture_" + Date.now();
+        var _filename = "surrounding_" + Date.now();
         var reader = new FileReader();
         reader.onload = (event: any) => {
           this.imageUrlSurrounding.push(event.target.result);
@@ -440,7 +440,7 @@ export class RiverMonitoringComponent implements OnInit {
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
         this.imageFilesFlora.push(event.target.files[i]);
-        var _filename = "florarPicture_" + Date.now();
+        var _filename = "flora_" + Date.now();
         var reader = new FileReader();
         reader.onload = (event: any) => {
           this.imageUrlFlora.push(event.target.result);
@@ -457,7 +457,7 @@ export class RiverMonitoringComponent implements OnInit {
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
         this.imageFilesFauna.push(event.target.files[i]);
-        var _filename = "florarPicture_" + Date.now();
+        var _filename = "fauna_" + Date.now();
         var reader = new FileReader();
         reader.onload = (event: any) => {
           this.imageUrlFauna.push(event.target.result);
@@ -490,7 +490,7 @@ export class RiverMonitoringComponent implements OnInit {
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
         this.imageFilesActivity.push(event.target.files[i]);
-        var _filename = "activityPicture_" + Date.now();
+        var _filename = "activity_" + Date.now();
         var reader = new FileReader();
         reader.onload = (event: any) => {
           this.imageUrlActivity.push(event.target.result);
@@ -506,7 +506,7 @@ export class RiverMonitoringComponent implements OnInit {
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
         this.imageFilesAtwork.push(event.target.files[i]);
-        var _filename = "atWorkPicture_" + Date.now();
+        var _filename = "artwork_" + Date.now();
         var reader = new FileReader();
         reader.onload = (event: any) => {
           this.imageUrlAtwork.push(event.target.result);

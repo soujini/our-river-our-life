@@ -19,10 +19,13 @@
 <agm-info-window>
   <mdb-tabset [buttonClass]="'nav md-pills pills-primary'" [contentClass]="'card'">
     <mdb-tab heading="Images">
+      <div class="container">
       <div class="row">
-        <div class="col-12">
-          <label class="mb-0">LOCATION</label>
-          <strong>{{m.location}}</strong> <br/>
+        <div class="col-lg-3">
+          <label>LOCATION</label>
+        </div>
+        <div class="col-lg-9">
+          <strong>{{m.location}}</strong>
         </div>
       </div>
       <div class="row">
@@ -31,6 +34,7 @@
             <img [src]="img.imageURL" style="image-orientation: none;transform: rotate(360deg);" height="150px" width="150px" class="ml-2">
           </div>
         </div>
+      </div>
       </div>
     </mdb-tab>
   </mdb-tabset>

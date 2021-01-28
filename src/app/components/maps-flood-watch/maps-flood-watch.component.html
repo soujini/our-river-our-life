@@ -1,48 +1,66 @@
-
 <div class="container">
-      <agm-map [latitude]="lat"  [longitude]="lng" [zoom]="zoom" [mapTypeId]="'hybrid'" [disableDefaultUI]="false"
-      [zoomControl]="true" [fitBounds]="true" (mapClick)="mapClicked($event)" height=200>
-      <agm-marker-cluster
-        imagePath="https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/gh-pages/images/m">
-        <agm-marker [agmFitBounds]="true" *ngFor="let m of markers; let i = index"
-          (markerClick)="clickedMarker(m.label, i)" [latitude]="m.latitude"
-          [iconUrl]='{"url": iconUrl,"scaledSize": {"height": 35, "width": 35}}' [longitude]="m.longitude"
-          xlabel="m.label" [markerDraggable]="m.draggable">
-  
-          <agm-info-window>
-            <mdb-tabset class="xyz" [buttonClass]="'nav md-pills pills-primary'" [contentClass]="'card'">
-              <mdb-tab heading="Info">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="'hybrid'" [disableDefaultUI]="false"
+    [zoomControl]="true" [fitBounds]="true" (mapClick)="mapClicked($event)" height=200>
+    <agm-marker-cluster
+      imagePath="https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/gh-pages/images/m">
+      <agm-marker [agmFitBounds]="true" *ngFor="let m of markers; let i = index"
+        (markerClick)="clickedMarker(m.label, i)" [latitude]="m.latitude"
+        [iconUrl]='{"url": iconUrl,"scaledSize": {"height": 35, "width": 35}}' [longitude]="m.longitude"
+        xlabel="m.label" [markerDraggable]="m.draggable">
 
-                <div class="container">
+        <agm-info-window>
+          <mdb-tabset class="xyz" [buttonClass]="'nav md-pills pills-primary'" [contentClass]="'card'">
+            <mdb-tab heading="Info">
+              <div class="container">
                 <div class="row">
-                  <div class="col-12">
-                    <label class="mb-0">LOCATION</label>
+                  <div class="col-lg-3">
+                    <label>LOCATION</label>
+                  </div>
+                  <div class="col-lg-9">
                     <strong>{{m.location}}</strong>
-                    <label class="mt-2">TIME : <strong> {{m.activityTime}}</strong></label>
-                    <label class="mt-2">DATE : <strong> {{m.activityDate}}</strong></label>
-                    <label class="mt-2 mb-0">EXPERIENCE</label>
-                    <strong> {{m.experience}}</strong>
                   </div>
                 </div>
-                </div>
-              </mdb-tab>
-              <mdb-tab heading="Images">
-                <div class="container">
                 <div class="row">
-                  <div class="col-12">
-                    <div *ngFor="let img of m.photos" style="display:inline-block; text-align:center">
+                  <div class="col-lg-3">
+                    <label>TIME</label>
+                  </div>
+                  <div class="col-lg-9">
+                    <strong>{{m.activityTime}}</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3">
+                    <label>DATE</label>
+                  </div>
+                  <div class="col-lg-9">
+                    <strong>{{m.activityDate}}</strong>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3">
+                    <label>EXPERIENCE</label>
+                  </div>
+                  <div class="col-lg-9">
+                    <strong>{{m.experience}}</strong>
+                  </div>
+                </div>
+              </div>
+            </mdb-tab>
+            <mdb-tab heading="Images">
+              <div class="container">
+                <div class="row">
+                    <div  class="col-lg-12" *ngFor="let img of m.photos">
                       <img [src]="img" height="150px" width="150px" class="ml-2">
                     </div>
-                  </div>
                 </div>
-                </div>
-              </mdb-tab>
-            </mdb-tabset>
-          </agm-info-window>
-        </agm-marker>
-      </agm-marker-cluster>
-      <agm-circle [latitude]="lat + 0.3" [longitude]="lng" [radius]="5000" [fillColor]="'red'" [circleDraggable]="true"
-        [editable]="true">
-      </agm-circle>
-    </agm-map>
+              </div>
+            </mdb-tab>
+          </mdb-tabset>
+        </agm-info-window>
+      </agm-marker>
+    </agm-marker-cluster>
+    <agm-circle [latitude]="lat + 0.3" [longitude]="lng" [radius]="5000" [fillColor]="'red'" [circleDraggable]="true"
+      [editable]="true">
+    </agm-circle>
+  </agm-map>
 </div>

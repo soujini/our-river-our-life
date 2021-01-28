@@ -7,7 +7,7 @@ import { ChangeDetectorRef, Component, EventEmitter,Output,OnInit } from '@angul
   styleUrls: ['./maps-view.component.scss']
 })
 export class MapsViewComponent implements OnInit {
-  mapsMode:number=2;
+  mapsMode:number=1;
 
   constructor(public cd:ChangeDetectorRef) {}
 
