@@ -38,6 +38,7 @@ export class MapsComponent implements OnInit {
   apps: any;
   geocoder: any;
   mapsForm: FormGroup;
+  decimalPattern = /^\d+(\.\d)?\d*$/;
   // public latitude: number = 23.074290;
   // public longitude: number = 79.134113;
   public searchControl: FormControl;
@@ -126,12 +127,12 @@ export class MapsComponent implements OnInit {
   createForm() {
     this.mapsForm = this.fb.group({
       location: ['', [Validators.required]],
-      latitude: ['', [Validators.required]],
-      longitude: ['', [Validators.required]],
+      latitude: ['', [Validators.required, Validators.pattern(this.decimalPattern)]],
+      longitude: ['', [Validators.required, Validators.pattern(this.decimalPattern)]],
       activityDate: [(new Date()), [Validators.required]],
       activityTime: ['', [Validators.required]],
       photos: this.fb.array([]),
-      experience: ['']
+      experience: ['', Validators.maxLength(500)]
     });
   }
 

@@ -40,7 +40,7 @@ export class RiverMonitoringComponent implements OnInit {
   centerLoc: any = {};
   imgResultBeforeCompress: string;
   imgResultAfterCompress = [];
-
+  decimalPattern = /^\d+(\.\d)?\d*$/;
   public imageFilesRiver: File[] = [];
   imageUrlRiver: any = [];
   public imageFilesSurrounding: File[] = [];
@@ -232,34 +232,34 @@ export class RiverMonitoringComponent implements OnInit {
       generalInformation: this.fb.group({
         activityDate: [(new Date()), [Validators.required]],
         activityTime: ['', [Validators.required]],
-        testerName: ['', [Validators.required]],
-        latitude: [''],
-        longitude: [''],
-        location: ['', [Validators.required]],
+        testerName: ['',  [Validators.required, Validators.maxLength(100)]],
+        latitude: ['',[Validators.pattern(this.decimalPattern)]],
+        longitude: ['',[Validators.pattern(this.decimalPattern)]],
+        location: ['', [Validators.required, Validators.maxLength(200)]],
       }),
       waterLevelAndWeather: this.fb.group({
-        airTemperature: ['', [Validators.required]],
+        airTemperature: ['', [Validators.required ,Validators.pattern(this.decimalPattern)]],
         waterLevel: ['', [Validators.required]],
         weather: ['', [Validators.required]],
       }),
       surroundings: this.fb.array([]),
       waterTesting: this.fb.group({
-        waterTemperature: [''],
-        pH: [''],
-        dissolvedOxygen: [''],
-        hardness: [''],
-        nitrate: [''],
-        nitrite: [''],
-        chlorine: [''],
-        alkalinity: [''],
-        iron: [''],
-        bacteria: [''],
-        turbidity: [''],
-        phosphate: [''],
-        ammonia: [''],
-        lead: [''],
-        dissolvedSolids: [''],
-        conductivity: [''],
+        waterTemperature: ['',[Validators.pattern(this.decimalPattern)]],
+        pH: ['',[Validators.pattern(this.decimalPattern)]],
+        dissolvedOxygen: ['',[Validators.pattern(this.decimalPattern)]],
+        hardness: ['',[Validators.pattern(this.decimalPattern)]],
+        nitrate: ['',[Validators.pattern(this.decimalPattern)]],
+        nitrite: ['',[Validators.pattern(this.decimalPattern)]],
+        chlorine: ['',[Validators.pattern(this.decimalPattern)]],
+        alkalinity: ['',[Validators.pattern(this.decimalPattern)]],
+        iron: ['',[Validators.pattern(this.decimalPattern)]],
+        bacteria: ['',[Validators.pattern(this.decimalPattern)]],
+        turbidity: ['',[Validators.pattern(this.decimalPattern)]],
+        phosphate: ['',[Validators.pattern(this.decimalPattern)]],
+        ammonia: ['',[Validators.pattern(this.decimalPattern)]],
+        lead: ['',[Validators.pattern(this.decimalPattern)]],
+        dissolvedSolids: ['',[Validators.pattern(this.decimalPattern)]],
+        conductivity: ['',[Validators.pattern(this.decimalPattern)]],
       }),
       // flora: this.fb.group({
       //   imageURL: [''],
