@@ -23,7 +23,9 @@ export class MapsComponent implements OnInit {
   sizeOFCompressedImage: number;
   imgResultBeforeCompress: string;
   imgResultAfterCompress= [];
-  public iconUrl = '../../../assets/icons/flood-watch.svg';
+  note=".jpg,.png, files accepted";
+  info = "(Max. size 250KB)";
+  public iconUrl = '../../../assets/icons/marker.svg';
   public imageFiles: File[] = [];
   public imageFile:File;
   file: any;

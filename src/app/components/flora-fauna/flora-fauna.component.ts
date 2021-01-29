@@ -14,8 +14,8 @@ import { NgxImageCompressService } from 'ngx-image-compress';
   styleUrls: ['./flora-fauna.component.scss']
 })
 export class FloraFaunaComponent implements OnInit {
+  @ViewChild('search', { static: false }) public searchElementRef: ElementRef;
   pageNumber = 1;
-  @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
   public submitted: boolean = false;
   public searchControl: FormControl;
   public imageFile: File;
@@ -23,6 +23,8 @@ export class FloraFaunaComponent implements OnInit {
     { value: '1', label: 'Flora' },
     { value: '2', label: 'Fauna' },
   ];
+  note=".jpg,.png, files accepted";
+  info = "(Max. size 250KB)";
   public waterTestDetails: any;
   resource: any;
   fauna: any = [];
@@ -35,18 +37,26 @@ export class FloraFaunaComponent implements OnInit {
   floraFaunaForm: FormGroup;
   imgResultBeforeCompress: string;
   imgResultAfterCompress: string;
+  user;
 
   constructor(private fb: FormBuilder, private orolService: OrolService, private spinnerService: SpinnerService,
     public router: Router, private http: HttpClient, private imageCompress: NgxImageCompressService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone) {
-    this.createForm();
+      var user = JSON.parse(localStorage.getItem('User'));
+      this.user=user;
+      if(user){
+
+        this.createForm();
+      }
+
     // this.pageNumber=1;
 
   }
 
   ngOnInit() {
-    this.searchControl = new FormControl();
+    if(this.user){
+        this.searchControl = new FormControl();
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
         types: ["address"]
@@ -70,9 +80,16 @@ export class FloraFaunaComponent implements OnInit {
         });
       });
     });
+  }
     // this.getSearchResource();
     this.getWaterTestDetails();
     this.getFloraFauna();
+  }
+
+  add(){
+
+    // this.createForm();
+    alert("wah");
   }
 
 
@@ -127,9 +144,9 @@ export class FloraFaunaComponent implements OnInit {
     }
     return new File([u8arr], filename, { type: mime });
   }
-  compressFile() {    
+  compressFile() {
     var orientation = -1;
-    var filename=  ""; 
+    var filename=  "";
     this.imageCompress.uploadFile().then(({ image }) => {
       this.imgResultBeforeCompress = image;
       if (this.floraFaunaForm.get('type').value == 1){
@@ -138,7 +155,7 @@ export class FloraFaunaComponent implements OnInit {
       else if(this.floraFaunaForm.get('type').value == 2){
         filename = "fauna_"+ Date.now();
      }
-      
+
        this.imageCompress.compressFile(image, orientation, 50, 50,).then(
         result => {
           this.imgResultAfterCompress = result;
@@ -218,16 +235,18 @@ export class FloraFaunaComponent implements OnInit {
   }
   createForm() {
     var user = JSON.parse(localStorage.getItem('User'));
-    this.floraFaunaForm = this.fb.group({
-      type: ['', [Validators.required]],
-      userId: [user.id],
-      location: ['', [Validators.required]],
-      commonName: ['', [Validators.required]],
-      localName: ['', [Validators.required]],
-      scientificName: ['', [Validators.required]],
-      latitude: ['', [Validators.required]],
-      longitude: ['', [Validators.required]],
-    });
+    if(user){
+      this.floraFaunaForm = this.fb.group({
+        type: ['', [Validators.required]],
+        userId: [user.id],
+        location: ['', [Validators.required]],
+        commonName: ['', [Validators.required]],
+        localName: ['', [Validators.required]],
+        scientificName: ['', [Validators.required]],
+        latitude: ['', [Validators.required]],
+        longitude: ['', [Validators.required]],
+      });
+    }
   }
   async addFloraFauna() {
     this.submitted = true;

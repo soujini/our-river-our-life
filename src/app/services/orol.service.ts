@@ -16,24 +16,20 @@ export class OrolService {
   constructor(private router: Router, public httpClient: HttpClient, private spinnerService: SpinnerService) { }
 
   public getBlogs() {
-    var user = JSON.parse(localStorage.getItem('User'));
+    //var user = JSON.parse(localStorage.getItem('User'));
     // this.spinnerService.setSpinner(true);
-    const httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization: 'Bearer ' + user.accessToken
-    });
-    return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/blogs", { headers: httpHeaders });
+    // const httpHeaders: HttpHeaders = new HttpHeaders({
+    //   Authorization: 'Bearer ' + user.accessToken
+    // });
+    return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/blogs");
   }
   public getRecentBlogs() {
-    var user = JSON.parse(localStorage.getItem('User'));
-    const httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization: 'Bearer ' + user.accessToken
-    });
-    return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/blogs/top10", { headers: httpHeaders });
+  //  var user = JSON.parse(localStorage.getItem('User'));
+    // const httpHeaders: HttpHeaders = new HttpHeaders({
+    //   Authorization: 'Bearer ' + user.accessToken
+    // });
+    return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/blogs/top10");
   }
-
-
-
-
 
   public createWaterTestDetails(x, imageFilesRiver: File[], imageFilesSurrounding: File[], imageFilesFlora: File[],
      imageFilesFauna: File[], imageFilesGroup: File[], imageFilesActivity: File[], imageFilesAtwork: File[]) {
@@ -113,6 +109,8 @@ export class OrolService {
     //   },
     // );
   }
+
+
   public generateReport(x) {
     var user = JSON.parse(localStorage.getItem('User'));
     this.spinnerService.setSpinner(true);
@@ -248,18 +246,18 @@ export class OrolService {
   public getWaterTestDetails() {
     var user = JSON.parse(localStorage.getItem('User'));
     this.spinnerService.setSpinner(true);
-    const httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization: 'Bearer ' + user.accessToken
-    });
-    return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/water-test-details", { headers: httpHeaders });
+    // const httpHeaders: HttpHeaders = new HttpHeaders({
+    //   Authorization: 'Bearer ' + user.accessToken
+    // });
+    return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/water-test-details");
   }
   public getFloraFauna() {
     var user = JSON.parse(localStorage.getItem('User'));
     // this.spinnerService.setSpinner(true);
-    const httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization: 'Bearer ' + user.accessToken
-    });
-    return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/flora-fauna", { headers: httpHeaders });
+    // const httpHeaders: HttpHeaders = new HttpHeaders({
+    //   Authorization: 'Bearer ' + user.accessToken
+    // });
+    return this.httpClient.get("https://our-river-our-life-api.herokuapp.com/flora-fauna");
   }
 
   public getUser() {
@@ -311,7 +309,7 @@ export class OrolService {
       },
     );
   }
-  public createblog(x, images: File) {
+  public createblog(x, images:File) {
     var user = JSON.parse(localStorage.getItem('User'));
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({

@@ -19,13 +19,19 @@ export class MyAccountComponent implements OnInit {
   submitted: boolean = false;
   imgResultBeforeCompress: string;
   imgResultAfterCompress: string;
-
+  reports: any = [];
+  pageNumber = 1;
+  note=".jpg,.png, files accepted";
+  info = "(Max. size 250KB)";
+  
   constructor(private fb: FormBuilder, private imageCompress: NgxImageCompressService, public orolService: OrolService, private spinnerService: SpinnerService) {
     this.createForm();
   }
 
   ngOnInit(): void {
     this.getUser();
+    this.getWaterTestDetails();
+
   }
 
   createForm() {
@@ -130,5 +136,18 @@ export class MyAccountComponent implements OnInit {
       this.spinnerService.setSpinner(false);
     });
 
+  }
+  onScroll() {
+    this.pageNumber = this.pageNumber + 1;
+  }
+  getWaterTestDetails() {
+    var user = JSON.parse(localStorage.getItem('User'));
+    this.spinnerService.setSpinner(true);
+    this.orolService.getWaterTestDetails().subscribe((data) => {
+      if (data['count']) {
+        this.reports = data['rows'].filter(r => r.userId == user.id);
+      }
+      this.spinnerService.setSpinner(false);
+    });
   }
 }

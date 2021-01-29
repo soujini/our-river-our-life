@@ -183,6 +183,10 @@
             src="../../../assets/icons/exclamation_icon.svg">
             This image is required.</p>
           </div>
+          <div  class="ml-3">
+            <span class="notes mt-2">{{note}}</span><br>
+            <span class="notes2 mt-2">{{info}}</span><br>
+          </div>
         </div>
       </form>
     </div>
@@ -227,6 +231,10 @@
         <p *ngIf="imageFilesRiver.length == 0 && this.submitStep2 == true" class="errorMessage"><img class="img-add"
           src="../../../assets/icons/exclamation_icon.svg">
           This image is required.</p>
+        </div>
+        <div  class="ml-3">
+          <span class="notes mt-2">{{note}}</span><br>
+          <span class="notes2 mt-2">{{info}}</span><br>
         </div>
       </div>
       <!-- <div class="mt-1" >
@@ -466,6 +474,10 @@
             <input id="file" type="file" class="form-control" multiple
             (change)="onFileChangesFlora($event)">Upload
           </label>
+          <div  class="ml-2">
+            <span class="notes mt-2">{{note}}</span><br>
+            <span class="notes2 mt-2">{{info}}</span><br>
+          </div>
         </div>
       </div>
       <div class="col-md-12">
@@ -483,6 +495,10 @@
               <input id="file" type="file" class="form-control" multiple
               (change)="onFileChangesFauna($event)">Upload
             </label>
+            <div  class="ml-2">
+              <span class="notes mt-2">{{note}}</span><br>
+              <span class="notes2 mt-2">{{info}}</span><br>
+            </div>
           </div>
         </div>
       </form>
@@ -525,6 +541,10 @@
             (change)="onFileChangesAtwork($event)">Upload
             Artwork
           </label>
+          <div  class="ml-2">
+            <span class="notes mt-2">{{note}}</span><br>
+            <span class="notes2 mt-2">{{info}}</span><br>
+          </div>
         </form>
       </div>
       <hr class="hr-line" />

@@ -1,4 +1,4 @@
-<div>
+<div class="container" style="border:1px dashed #B3BDBB;box-shadow: rgba(0, 0, 0, 0.1) 0px 30px 90px;padding:5px">
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="'hybrid'" [disableDefaultUI]="false"
         [zoomControl]="true" [fitBounds]="true" (mapClick)="mapClicked($event)">
         <agm-marker-cluster

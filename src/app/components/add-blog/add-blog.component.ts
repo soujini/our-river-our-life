@@ -13,7 +13,8 @@ export class AddBlogComponent implements OnInit {
   blogForm: FormGroup;
   public submitted: boolean = false;
   public imageFile: File;
-
+  note=".jpg,.png, files accepted";
+  info = "(Max. size 250KB)";
   featuredAdditionalVideosArray: any = [];
   featuredAdditionalVideos = [];
   // featuredPhoto= "../../../assets/icons/marker.svg";

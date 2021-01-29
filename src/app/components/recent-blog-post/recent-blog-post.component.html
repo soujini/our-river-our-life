@@ -1,19 +1,19 @@
-<div xclass="col-xs-12 ">
+<div class="recent-blog-posts">
   <div class="banner">
     <h2 class="title row" style="margin-left:15px;margin-right:15px">
       <span class="col-lg-6 text-left">RECENT BLOG POSTS</span>
       <span class="col-lg-6 text-right">
         <a href="/voices-from-the-river">
-          View all
+          <u><span class="view-all">View all</span></u>
         </a>
       </span>
     </h2>
   </div>
-</div>
-<mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
-  [animation]="'slide'">
+
+<mdb-carousel [isControls]="true" class="xcarousel-multi-item xmulti-animation text-center carousel slide carousel-fade testimonial-carousel" [type]="'carousel-multi-item'"
+  [animation]="'fade'">
   <mdb-carousel-item *ngFor="let item of slides; let i = index">
-    <div class="col-md-4" *ngFor="let card of item; let cardIndex = index">
+    <div class="col-md-3" *ngFor="let card of item; let cardIndex = index">
       <mdb-card class="my-1">
         <!-- <mdb-card-img [src]="card.featuredPhoto.imageURL" class="img-fluid blog-images" width="auto" height="200px" alt="Card image cap"></mdb-card-img> -->
         <mdb-card-body>
@@ -35,3 +35,4 @@
     </div>
   </mdb-carousel-item>
 </mdb-carousel>
+</div>

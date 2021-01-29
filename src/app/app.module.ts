@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 // import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -96,6 +97,7 @@ import { NgOtpInputModule } from  'ng-otp-input';
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     BrowserModule,
+    InfiniteScrollModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     MDBBootstrapModulesPro.forRoot(),
