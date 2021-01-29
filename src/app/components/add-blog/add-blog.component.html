@@ -64,6 +64,7 @@
         <div class="flexbox2 ml-4">
           <div class="flex">
             <button type="button" class="btn custom-btn" (click)="compressFile()">Upload Image</button>
+            <button class="trash bg ml-2"><img src="../../assets/icons/trash_icon_grey.svg"></button>
             <div class="error-message-div mt-1">
               <p *ngIf="imageFile == null && this.submitted == true" class="errorMessage"><img class="img-add"
                   src="../../../assets/icons/exclamation_icon.svg"> Please select a photo.</p>

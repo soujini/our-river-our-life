@@ -15,12 +15,13 @@
               <div class="flexbox2 ml-4">
                 <div class="flex">
                   <button type="button" class="custom-btn-orol" (click)="compressFile()">CHANGE IMAGE</button>
+                  <button class="trash bg ml-2"><img src="../../assets/icons/trash_icon_grey.svg"></button>
                   <div *ngIf="imageFile == null && this.submitted == true" class="image-error-message">
                     <p class="errorMessage"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This
                       image is required.</p>
                   </div>
                 </div>
-                <div  class="mt-2">
+                <div class="mt-2">
                   <span class="notes mt-2">{{note}}</span><br>
                   <span class="notes2 mt-2">{{info}}</span><br>
                 </div>
@@ -100,20 +101,20 @@
     </mdb-tab> -->
 
     <mdb-tab heading="Certification">
-      <div  class="xrow mt-2" style="min-height:450px; background-color:white;margin-left: -35px;margin-right: -35px;">
+      <div class="xrow mt-2" style="min-height:450px; background-color:white;margin-left: -35px;margin-right: -35px;">
         <div class="text-center">
           <h3 class="stepper-heading text-left ml-5">Certificate URL</h3>
 
         </div>
         <div class="search-results" infiniteScroll [infiniteScrollDistance]='2' [infiniteScrollThrottle]='10'
-        [scrollWindow]="false" (scrolled)="onScroll()">
-        <div class="col-12 mt-4 text-left">
-          <ul style="list-style-type:none" *ngFor="let report of reports">
-            <li><a [href]="report.certificateURL" target="_blank">{{report.certificateURL}}</a></li>
-          </ul>
+          [scrollWindow]="false" (scrolled)="onScroll()">
+          <div class="col-12 mt-4 text-left">
+            <ul style="list-style-type:none" *ngFor="let report of reports">
+              <li><a [href]="report.certificateURL" target="_blank">{{report.certificateURL}}</a></li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
     </mdb-tab>
 
   </mdb-tabset>

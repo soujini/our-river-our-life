@@ -89,7 +89,6 @@ export class FloraFaunaComponent implements OnInit {
   add(){
 
     // this.createForm();
-    alert("wah");
   }
 
 

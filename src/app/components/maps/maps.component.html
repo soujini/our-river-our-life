@@ -101,8 +101,11 @@
                 src="../../../assets/icons/exclamation_icon.svg">
               This image is required.</p>
           </div>
-          <input id="file" type="file" class="form-control" multiple (change)="onFileChange($event)"
+          <div class="row" style="margin: 1px;">
+          <input id="file" type="file" class="form-control col-9" multiple (change)="onFileChange($event)"
             style="height:45px;">
+          <button class="trash bg xml-2 col-3"><img src="../../assets/icons/trash_icon_grey.svg"></button>
+        </div>
           <div class="text-center mt-2">
             <span class="notes mt-2">{{note}}</span><br>
             <span class="notes2 mt-2">{{info}}</span><br>
