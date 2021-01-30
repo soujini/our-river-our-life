@@ -92,6 +92,11 @@ export class MyAccountComponent implements OnInit {
       }
     });
   }
+  deleteImage(){
+    this.imageFile=null;
+    this.imgResultAfterCompress=this.imageURL;
+  }
+  
   compressFile() {
     var user = JSON.parse(localStorage.getItem('User'));
     var orientation = -1;

@@ -15,7 +15,7 @@
               <div class="flexbox2 ml-4">
                 <div class="flex">
                   <button type="button" class="custom-btn-orol" (click)="compressFile()">CHANGE IMAGE</button>
-                  <button class="trash bg ml-2"><img src="../../assets/icons/trash_icon_grey.svg"></button>
+                  <button class="trash bg ml-2" (click)="deleteImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
                   <div *ngIf="imageFile == null && this.submitted == true" class="image-error-message">
                     <p class="errorMessage"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This
                       image is required.</p>

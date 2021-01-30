@@ -9,6 +9,8 @@
     <path d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#d9eae8" />
   </svg>
   <div class="w-100 router-outlet">
+    <div class="loader" *ngIf="this.isLoading">
+    </div>
   <router-outlet></router-outlet>
   </div>
   </div>

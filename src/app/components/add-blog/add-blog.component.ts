@@ -49,18 +49,22 @@ export class AddBlogComponent implements OnInit {
     });
   }
 
-  addScreenshotURL() {
-    if (this.featuredAdditionalVideosArray.length < 4) {
-      this.featuredAdditionalVideosArray.push(new FormControl(''));
-    }
-  }
-  removeScreenshotURL(index) {
-    this.featuredAdditionalVideosArray.removeAt(index);
-  }
+  // addScreenshotURL() {
+  //   if (this.featuredAdditionalVideosArray.length < 4) {
+  //     this.featuredAdditionalVideosArray.push(new FormControl(''));
+  //   }
+  // }
+  // removeScreenshotURL(index) {
+  //   this.featuredAdditionalVideosArray.removeAt(index);
+  // }
   createblog() {
     this.submitted = true;
     this.orolService.createblog(this.blogForm.value, this.imageFile)
 
+  }
+  deleteImage(){
+    this.imageFile=null;
+    this.imgResultAfterCompress="";
   }
 
 
@@ -72,19 +76,19 @@ export class AddBlogComponent implements OnInit {
       ? match[2]
       : null;
   }
-  onFeaturedAdditionalPhoto(event) {
-    if (event.target.files && event.target.files[0]) {
-      var length = event.target.files.length;
-      for (let i = 0; i < event.target.files.length; i++) {
-        this.imagefeaturedAdditionalPhotos.push(event.target.files[i]);
-        var reader = new FileReader();
-        reader.onload = (event: any) => {
-          this.featuredAdditionalPhotos.push(event.target.result);
-        }
-        reader.readAsDataURL(event.target.files[i]);
-      }
-    }
-  }
+  // onFeaturedAdditionalPhoto(event) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     var length = event.target.files.length;
+  //     for (let i = 0; i < event.target.files.length; i++) {
+  //       this.imagefeaturedAdditionalPhotos.push(event.target.files[i]);
+  //       var reader = new FileReader();
+  //       reader.onload = (event: any) => {
+  //         this.featuredAdditionalPhotos.push(event.target.result);
+  //       }
+  //       reader.readAsDataURL(event.target.files[i]);
+  //     }
+  //   }
+  // }
 
   dataURLtoFile(dataurl, filename) {
     var arr = dataurl.split(','),

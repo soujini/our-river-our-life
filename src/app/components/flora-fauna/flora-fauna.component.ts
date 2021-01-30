@@ -164,7 +164,10 @@ export class FloraFaunaComponent implements OnInit {
 
     });
   }
-
+  deleteImage(){
+    this.imageFile=null;
+    this.imgResultAfterCompress="";
+  }
   getFloraFauna() {
     this.spinnerService.setSpinner(true);
     this.orolService.getFloraFauna().subscribe((data) => {

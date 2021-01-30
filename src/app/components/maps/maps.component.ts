@@ -193,7 +193,11 @@ async addAlert() {
   this.images = [];
   this.imageFiles = [];
 }
-
+deleteImage(){
+  this.imageFiles=[];
+  this.images=[];
+  this.imgResultAfterCompress=[];
+}
 onFileChange(event) {
   this.images=[];
   if (event.target.files && event.target.files[0]) {

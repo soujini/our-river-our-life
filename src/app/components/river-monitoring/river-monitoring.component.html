@@ -209,7 +209,7 @@
                     <input id="file" type="file" class="form-control" multiple
                       (change)="onFileChangesRiver($event)">Upload
                   </label>
-                  <button class="trash bg ml-2"><img src="../../assets/icons/trash_icon_grey.svg"></button>
+                  <button class="trash bg ml-2" (click)="deleteRiverImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
                   <div class="mt-1 error-message-div">
                     <p *ngIf="imageFilesRiver.length == 0 && this.submitStep2 == true" class="errorMessage"><img
                         class="img-add" src="../../../assets/icons/exclamation_icon.svg">
@@ -260,7 +260,7 @@
                     <input id="file" type="file" class="form-control" multiple
                       (change)="onFileChangesSurrounding($event)">Upload
                   </label>
-                  <button class="trash bg ml-2"><img src="../../assets/icons/trash_icon_grey.svg"></button>
+                  <button class="trash bg ml-2" (click)="deleteSurroundingImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
                   <div class="mt-1 error-message-div">
                     <p *ngIf="imageFilesRiver.length == 0 && this.submitStep2 == true" class="errorMessage"><img
                         class="img-add" src="../../../assets/icons/exclamation_icon.svg">
@@ -574,7 +574,7 @@
                     <input id="file" type="file" class="form-control" multiple
                       (change)="onFileChangesFlora($event)">Upload
                   </label>
-                  <button class="trash bg ml-2"><img src="../../assets/icons/trash_icon_grey.svg"></button>
+                  <button class="trash bg ml-2" (click)="deleteFloraImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
                   <div class="ml-2">
                     <span class="notes mt-2">{{note}}</span><br>
                     <span class="notes2 mt-2">{{info}}</span><br>
@@ -596,7 +596,7 @@
                     <input id="file" type="file" class="form-control" multiple
                       (change)="onFileChangesFauna($event)">Upload
                   </label>
-                  <button class="trash bg ml-2"><img src="../../assets/icons/trash_icon_grey.svg"></button>
+                  <button class="trash bg ml-2" (click)="deleteFaunaImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
                   <div class="ml-2">
                     <span class="notes mt-2">{{note}}</span><br>
                     <span class="notes2 mt-2">{{info}}</span><br>
@@ -625,7 +625,7 @@
                     (change)="onFileChangesGroup($event)">Upload
                   Group Picture
                 </label>
-                <button class="trash bg ml-2"><img src="../../assets/icons/trash_icon_grey.svg"></button>
+                <button class="trash bg ml-2" (click)="deleteGroupImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
                 <div class="col-md-12">
                   <img *ngFor='let url of imageUrlActivity' [src]="url" height="50px" width="50px">
 
@@ -635,7 +635,7 @@
                     (change)="onFileChangesActivity($event)">Upload
                   Activity Picture
                 </label>
-                <button class="trash bg ml-2"><img src="../../assets/icons/trash_icon_grey.svg"></button>
+                <button class="trash bg ml-2" (click)="deleteActivityImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
                 <div class="col-md-12">
                   <img *ngFor='let url of imageUrlAtwork' [src]="url" height="50px" width="50px">
                 </div>
@@ -644,7 +644,7 @@
                     (change)="onFileChangesAtwork($event)">Upload
                   Artwork
                 </label>
-                <button class="trash bg ml-2"><img src="../../assets/icons/trash_icon_grey.svg"></button>
+                <button class="trash bg ml-2" (click)="deleteArtworkImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
                 <div class="ml-2">
                   <span class="notes mt-2">{{note}}</span><br>
                   <span class="notes2 mt-2">{{info}}</span><br>
