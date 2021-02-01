@@ -359,7 +359,7 @@ export class OrolService {
       (res) => {
         console.log(res);
         this.spinnerService.setSpinner(false);
-        this.router.navigate(['./edit-profile']);
+        // this.router.navigate(['./my-account']);
         localStorage.removeItem('User');
         localStorage.setItem('User', JSON.stringify(res));
         this.userDetailsSubject.next(res);

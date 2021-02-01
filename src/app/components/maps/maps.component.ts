@@ -103,11 +103,21 @@ export class MapsComponent implements OnInit {
       });
     });
   }
-
   setCurrentTime() {
     let dt = new Date();
-    let normalizeHour = dt.getHours() >= 13 ? dt.getHours() - 12 : dt.getHours()
-    var formattedTime = dt.getHours() >= 13 ? normalizeHour + ':' + dt.getMinutes() + 'PM' : normalizeHour + ':' + dt.getMinutes() + 'AM';
+    let normalizeHour = dt.getHours() >= 13 ? dt.getHours() - 12 : dt.getHours();
+    var hrs= normalizeHour.toString();
+    let normalizeMins = dt.getMinutes();
+    var mins=normalizeMins.toString();
+    if(normalizeHour < 10){
+      hrs = "0"+normalizeHour;
+    }
+
+    if(normalizeMins < 10){
+      mins = "0"+mins;
+    }
+
+    var formattedTime = dt.getHours() >= 13 ? hrs + ':' + mins + 'PM' : hrs + ':' + mins + 'AM';
     this.mapsForm.patchValue({
       activityTime: formattedTime
     });

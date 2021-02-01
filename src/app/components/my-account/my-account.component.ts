@@ -21,9 +21,10 @@ export class MyAccountComponent implements OnInit {
   imgResultAfterCompress: string;
   reports: any = [];
   pageNumber = 1;
-  note=".jpg,.png, files accepted";
-  info = "(Max. size 250KB)";
-  
+  note=".jpg, .jpeg, .png, files accepted";
+  info = "(Max. size 100KB)";
+  isLargeImageFile=false;
+  isInvalidImageFile=false;
   constructor(private fb: FormBuilder, private imageCompress: NgxImageCompressService, public orolService: OrolService, private spinnerService: SpinnerService) {
     this.createForm();
   }
@@ -50,7 +51,7 @@ export class MyAccountComponent implements OnInit {
       this.profileForm.get('lastName').valid &&
       this.profileForm.get('phoneNumber').valid &&
       this.profileForm.get('email').valid
-      // && this.imageFile.length > 0
+       && this.imageFile != null
     ) {
       this.updateProfile();
     }
@@ -59,20 +60,6 @@ export class MyAccountComponent implements OnInit {
     await this.orolService.updateProfile(this.profileForm.value, this.imageFile);
     this.show = false;
     this.images = [];
-
-    // var user = JSON.parse(localStorage.getItem('User'));
-    // this.orolService.updateProfile(this.profileForm.value,this.imageFile).subscribe((data)=>{
-    //   const User: any = {
-    //     'id':user.id,
-    //     'accessToken':user.accessToken,
-    //     'firstName':this.profileForm.get('firstName').value,
-    //     'lastName':this.profileForm.get('lastName').value,
-    //     'phoneNumber':user.phoneNumber,
-    //     'email':user.email,
-    //     'avatarURL' : user.avatarURL ? user.avatarURL[0] : [],
-
-    //   }
-
   }
   getUser() {
     this.orolService.getUser().subscribe((data) => {
@@ -84,7 +71,6 @@ export class MyAccountComponent implements OnInit {
           lastName: data['lastName'],
           email: data['email'],
           phoneNumber: data['phoneNumber'],
-          // avatarURL:data.avatarURL[0],
         });
       }
       else {
@@ -93,11 +79,16 @@ export class MyAccountComponent implements OnInit {
     });
   }
   deleteImage(){
+    this.isLargeImageFile=false;
+    this.isInvalidImageFile=false;
+    this.submitted = true;
     this.imageFile=null;
     this.imgResultAfterCompress=this.imageURL;
   }
-  
+
   compressFile() {
+    this.isLargeImageFile=false;
+    this.isInvalidImageFile=false;
     var user = JSON.parse(localStorage.getItem('User'));
     var orientation = -1;
     this.imageCompress.uploadFile().then(({ image }) => {
@@ -106,6 +97,19 @@ export class MyAccountComponent implements OnInit {
         result => {
           this.imgResultAfterCompress = result;
           this.imageFile = this.dataURLtoFile(this.imgResultAfterCompress, "avatar_"+user.id);
+          console.log(this.imageFile);
+          var type = this.imageFile.type.split('/');
+          alert(type[1]);
+          if(type[1] == "jpeg" || type[1] == "jpg" || type[1] == "png"){
+          if(this.imageFile.size > 100000){//250kb (in bytes)
+            this.isLargeImageFile=true;
+            // this.deleteImage();
+          }
+        }
+        else{
+
+          this.isInvalidImageFile=true;
+        }
         }
       );
     });

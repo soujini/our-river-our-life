@@ -4,7 +4,7 @@ import { Route, Router, NavigationStart, ActivatedRoute } from '@angular/router'
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { IMyOptions, MdbStepperComponent } from 'ng-uikit-pro-standard';
-import { ModalDirective } from 'ng-uikit-pro-standard';
+import { ModalDirective,ClockPickerComponent } from 'ng-uikit-pro-standard';
 import { MapsAPILoader } from '@agm/core';
 import { NgZone } from '@angular/core';
 import { OrolService } from '../../services/orol.service';
@@ -22,6 +22,7 @@ export class RiverMonitoringComponent implements OnInit {
   @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
   defaultImageURL: string = "../../../assets/icons/default_image_upload.jpg";
   @ViewChild('basicModal') basicModal: ModalDirective;
+  @ViewChild('timePicker', { static: true }) timePicker: ClockPickerComponent;
   defaultImageURLTemp: string = "../../../assets/icons/default_image_upload.jpg";
   public imageFile: File = null;
   public imageFileTemp: File = null;
@@ -34,6 +35,10 @@ export class RiverMonitoringComponent implements OnInit {
   lastClickedIndex;
   public myDatePickerOptions: IMyOptions = {
     dateFormat: 'dd mmm yyyy',
+    closeAfterSelect: true
+  };
+  public myTimePickerOptions: IMyOptions = {
+    // dateFormat: 'dd mmm yyyy',
     closeAfterSelect: true
   };
   images = [];
@@ -188,10 +193,22 @@ export class RiverMonitoringComponent implements OnInit {
     });
   }
 
+
   setCurrentTime() {
     let dt = new Date();
-    let normalizeHour = dt.getHours() >= 13 ? dt.getHours() - 12 : dt.getHours()
-    var formattedTime = dt.getHours() >= 13 ? normalizeHour + ':' + dt.getMinutes() + 'PM' : normalizeHour + ':' + dt.getMinutes() + 'AM';
+    let normalizeHour = dt.getHours() >= 13 ? dt.getHours() - 12 : dt.getHours();
+    var hrs= normalizeHour.toString();
+    let normalizeMins = dt.getMinutes();
+    var mins=normalizeMins.toString();
+    if(normalizeHour < 10){
+      hrs = "0"+normalizeHour;
+    }
+
+    if(normalizeMins < 10){
+      mins = "0"+mins;
+    }
+
+    var formattedTime = dt.getHours() >= 13 ? hrs + ':' + mins + 'PM' : hrs + ':' + mins + 'AM';
     this.activityForm.get('generalInformation').patchValue({
       activityTime: formattedTime
     });
@@ -224,7 +241,6 @@ export class RiverMonitoringComponent implements OnInit {
         this.activityForm.get('generalInformation').get('longitude').value
     };
   }
-
 
   createForm() {
     this.activityForm = this.fb.group({
@@ -433,6 +449,7 @@ export class RiverMonitoringComponent implements OnInit {
   onFileChangesRiver(event) {
     this.imageUrlRiver = [];
     if (event.target.files && event.target.files[0]) {
+      console.log(event.target.files[0]);
       var length = event.target.files.length;
       for (let i = 0; i < event.target.files.length; i++) {
         this.imageFilesRiver.push(event.target.files[i]);

@@ -24,10 +24,10 @@
                     </div>
                   </div>
                   <div class="form-group col-md-6 text-left">
-                    <label for="rm_tp" class="control-label">Activity Time</label>
-                    <div class="input-group col-12">
-                      <mdb-time-picker class="w-100" id="rm_tp" [buttonLabel]="'Done'" [twelvehour]="true"
-                        formControlName="activityTime" [darktheme]="true" [placeholder]="'Selected time'">
+                    <label for="rm_tp" class="control-label">Activity Times</label>
+                    <div class="input-group col-12" (focusout)="bla1()">
+                      <mdb-time-picker #timepicker class="w-100" id="rm_tp" [buttonLabel]="'SET'" [twelvehour]="true"
+                        formControlName="activityTime" [darktheme]="false" [placeholder]="'Selected time'">
                       </mdb-time-picker>
                     </div>
                   </div>

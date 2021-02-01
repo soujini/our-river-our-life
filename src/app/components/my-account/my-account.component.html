@@ -8,7 +8,7 @@
             <div class="d-flex">
               <div class="flexbox1" style="height:150px; width:150px; line-height:54px;">
                 <div class="frame">
-                  <img [src]=imgResultAfterCompress class="img-list" height="auto" width="150px"
+                  <img [src]=imgResultAfterCompress class="img-list" max-height="150px" width="150px"
                     style="border-radius:50%">
                 </div>
               </div>
@@ -16,14 +16,18 @@
                 <div class="flex">
                   <button type="button" class="custom-btn-orol" (click)="compressFile()">CHANGE IMAGE</button>
                   <button class="trash bg ml-2" (click)="deleteImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
-                  <div *ngIf="imageFile == null && this.submitted == true" class="image-error-message">
-                    <p class="errorMessage"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This
-                      image is required.</p>
-                  </div>
+
                 </div>
                 <div class="mt-2">
                   <span class="notes mt-2">{{note}}</span><br>
                   <span class="notes2 mt-2">{{info}}</span><br>
+                </div>
+                <div  class="image-error-message mt-1">
+                  <p *ngIf="imageFile == null && this.submitted == true" class="errorMessage"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This
+                    image is required.</p>
+                    <p *ngIf="isLargeImageFile ==true" class="errorMessage"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> Please ensure the file size is less than 100KB</p>
+                    <p *ngIf="isInvalidImageFile ==true" class="errorMessage"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> Please ensure the file type is a .jpeg, .jpg or .png</p>
+
                 </div>
               </div>
             </div>
@@ -83,8 +87,8 @@
               <input mdbInput id="email" type="text" class="form-control" formControlName="email" disabled
                 [ngClass]="{ 'is-invalid': submitted && profileForm.get('email').errors }" placeholder="Email">
               <div *ngIf="submitted && profileForm.get('email').errors" class="invalid-feedback">
-                <div *ngIf="profileForm.get('email').errors.required">Email is required</div>
-                <div *ngIf="profileForm.get('email').errors.email">Email must be a valid email address</div>
+                <div *ngIf="profileForm.get('email').errors.required"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg">Email is required</div>
+                <div *ngIf="profileForm.get('email').errors.email"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg">Email must be a valid email address</div>
               </div>
             </div>
           </div>
