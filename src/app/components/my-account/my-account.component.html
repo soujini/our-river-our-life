@@ -1,7 +1,22 @@
 <div class="profile ">
+
   <mdb-tabset id="flora_fauna_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'" class="classic-tabs">
+
     <mdb-tab heading="Edit Profile">
+      <div *ngIf="this.successMessage" class="message-div-success text-center">
+    <div>
+    <mdb-icon far icon="check-circle"></mdb-icon>
+  {{successMessage}}
+    </div>
+    </div>
+    <div *ngIf="this.errorMessage" class="message-div-error text-center">
+  <div>
+  <mdb-icon fas icon="exclamation-circle"></mdb-icon>
+  {{errorMessage}}
+  </div>
+  </div>
       <div class="py-3 px-md-5" class="bg-white" style="margin-left:-15px;margin-right:-15px;padding:35px">
+
         <form class="form form-horizontal text-left col-lg-8 col-xs-12" [formGroup]="profileForm">
           <div class="form-group">
             <label for="name" class="control-label">PROFILE IMAGE <span class="star">*</span></label>
@@ -23,7 +38,7 @@
                   <span class="notes2 mt-2">{{info}}</span><br>
                 </div>
                 <div  class="image-error-message mt-1">
-                  <p *ngIf="imageFile == null && this.submitted == true" class="errorMessage"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This
+                  <p *ngIf="imageFile == null && this.submitted == true && this.imgResultAfterCompress == this.imageURL" class="errorMessage"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This
                     image is required.</p>
                     <p *ngIf="isLargeImageFile ==true" class="errorMessage"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> Please ensure the file size is less than 100KB</p>
                     <p *ngIf="isInvalidImageFile ==true" class="errorMessage"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> Please ensure the file type is a .jpeg, .jpg or .png</p>
@@ -104,17 +119,24 @@
 
     </mdb-tab> -->
 
-    <mdb-tab heading="Certification">
-      <div class="xrow mt-2" style="min-height:450px; background-color:white;margin-left: -35px;margin-right: -35px;">
+    <mdb-tab heading="PARTICIPATION CERTIFICATES">
+      <div class="xrow bg-white mt-2 pt-5" style="min-height:450px; margin-left: -35px;margin-right: -35px;">
         <div class="text-center">
-          <h3 class="stepper-heading text-left ml-5">Certificate URL</h3>
+          <h3 class="stepper-heading text-left ml-5">Certificates</h3>
 
         </div>
         <div class="search-results" infiniteScroll [infiniteScrollDistance]='2' [infiniteScrollThrottle]='10'
           [scrollWindow]="false" (scrolled)="onScroll()">
           <div class="col-12 mt-4 text-left">
             <ul style="list-style-type:none" *ngFor="let report of reports">
-              <li><a [href]="report.certificateURL" target="_blank">{{report.certificateURL}}</a></li>
+              <li>
+                <!-- <a [href]="report.certificateURL" target="_blank">{{report.certificateURL}}</a> -->
+                <div class="card_certificate">
+                  <a [href]="report.certificateURL" target="_blank" style="font-size:20px">View Certificate</a>
+                  <span>By {{report.contributorName}}</span>
+                  <span>On {{report.generalInformation.activityDate |date}}</span>
+                  </div>
+              </li>
             </ul>
           </div>
         </div>

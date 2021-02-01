@@ -262,6 +262,7 @@ export class OrolService {
 
   public getUser() {
     var user = JSON.parse(localStorage.getItem('User'));
+    console.log(user);
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({
       Authorization: 'Bearer ' + user.accessToken
@@ -339,6 +340,7 @@ export class OrolService {
   }
   public updateProfile(userInfo, images: File) {
     var user = JSON.parse(localStorage.getItem('User'));
+    var accessToken = user.accessToken;
     this.spinnerService.setSpinner(true);
     const httpHeaders: HttpHeaders = new HttpHeaders({
       Authorization: 'Bearer ' + user.accessToken
@@ -355,21 +357,22 @@ export class OrolService {
     form.append("avatarURL", userInfo.avatarURL);
 
 
-    this.httpClient.post("https://our-river-our-life-api.herokuapp.com/user/update-profile", form, { headers: httpHeaders }).subscribe(
-      (res) => {
-        console.log(res);
-        this.spinnerService.setSpinner(false);
-        // this.router.navigate(['./my-account']);
-        localStorage.removeItem('User');
-        localStorage.setItem('User', JSON.stringify(res));
-        this.userDetailsSubject.next(res);
-
-      },
-      (err) => {
-        this.spinnerService.setSpinner(false);
-        //window.alert(err)
-      },
-    );
+     return this.httpClient.post("https://our-river-our-life-api.herokuapp.com/user/update-profile", form, { headers: httpHeaders });
+    //  .subscribe(
+    //   (res) => {
+    //     res['accessToken']=accessToken; //required
+    //     this.spinnerService.setSpinner(false);
+    //     localStorage.removeItem('User');
+    //     localStorage.setItem('User', JSON.stringify(res));
+    //     this.userDetailsSubject.next(res);
+    //     return res;
+    //
+    //   },
+    //   (err) => {
+    //     this.spinnerService.setSpinner(false);
+    //     return err;
+    //   },
+    // );
   }
 
 

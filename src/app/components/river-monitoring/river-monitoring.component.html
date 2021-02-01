@@ -851,8 +851,8 @@
       </div>
     </mdb-tab>
 
-    <mdb-tab heading="View Reports" xstyle="height:500px">
-      <div class="bg-white">
+    <mdb-tab heading="Participation Certificates" xstyle="height:500px">
+      <div class="bg-white mt-5">
         <div *ngIf="this.reports.length == 0" class="row mt-2"
           style="height:450px; background-color:white;margin-left: -35px;margin-right: -35px;">
           <div class="col-12 text-center mt-5">
@@ -865,14 +865,20 @@
           style="min-height:450px; background-color:white;margin-left: -15px;margin-right: -15px;">
           <div class="text-center">
             <!-- <h3 class="h1-responsive font-weight-bold xmy-3">Certificate URL</h3> -->
-            <h3 class="stepper-heading text-left ml-5">Certificate URL</h3>
+            <h3 class="stepper-heading text-left ml-5">Certificates</h3>
 
           </div>
           <div class="search-results" infiniteScroll [infiniteScrollDistance]='2' [infiniteScrollThrottle]='10'
             [scrollWindow]="false" (scrolled)="onScroll()">
             <div class="col-12 mt-4 text-left">
               <ul style="list-style-type:none" *ngFor="let report of reports">
-                <li><a [href]="report.certificateURL" target="_blank">{{report.certificateURL}}</a></li>
+                <li>
+                  <div class="card_certificate">
+                    <a [href]="report.certificateURL" target="_blank" style="font-size:20px">View Certificate</a>
+                    <span>By {{report.contributorName}}</span>
+                    <span>On {{report.generalInformation.activityDate |date}}</span>
+                    </div>
+                  <!-- <a [href]="report.certificateURL" target="_blank">{{report.certificateURL}}</a></li> -->
               </ul>
             </div>
           </div>

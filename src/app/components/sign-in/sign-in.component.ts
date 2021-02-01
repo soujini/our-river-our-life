@@ -37,6 +37,7 @@ export class SignInComponent implements AfterViewInit {
   @Output() userName = new EventEmitter();
   @Output() password = new EventEmitter();
   @Output() phoneNumber = new EventEmitter();
+  @Output() avatarURL = new EventEmitter();
   loginBtnText:string="Send OTP"
 
   constructor( public ngZone: NgZone,
@@ -87,13 +88,26 @@ export class SignInComponent implements AfterViewInit {
 
     }
     signInWithEmailAndPassword(userName:String, password?:string){
-      this.authService.SignIn(userName, password).then((result) => {
-        if(result.user.emailVerified == true){
+      this.authService.SignIn(userName, password).then((data) => {
+        if(data.user.emailVerified == true){
           this.getAccessToken(userName, "email");
           this.spinnerService.setSpinner(false);
           this.ngZone.run(() => {
-            this.router.navigate(['home']);
+            // this.router.navigate(['home']);
             this.isLogin.emit(false);
+
+            const User: any = {
+              'id':data['user']['id'],
+              'accessToken':data['accessToken'],
+              'firstName':data['user']['firstName'],
+              'lastName':data['user']['lastName'],
+              'phoneNumber':data['user']['phoneNumber'],
+              'email':data['user']['email'],
+              'avatarURL':data['user']['avatarURL'][0],
+            }
+
+            localStorage.setItem('User', JSON.stringify(User));
+            this.orolService.userDetailsSubject.next(JSON.stringify(User));
           });
           // this.SetUserData(result.user);
         }

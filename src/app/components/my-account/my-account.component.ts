@@ -18,13 +18,15 @@ export class MyAccountComponent implements OnInit {
   images = [];
   submitted: boolean = false;
   imgResultBeforeCompress: string;
-  imgResultAfterCompress: string;
+  imgResultAfterCompress: string="../../assets/icons/profile.png";
   reports: any = [];
   pageNumber = 1;
   note=".jpg, .jpeg, .png, files accepted";
   info = "(Max. size 100KB)";
   isLargeImageFile=false;
   isInvalidImageFile=false;
+  successMessage="";
+  errorMessage="";
   constructor(private fb: FormBuilder, private imageCompress: NgxImageCompressService, public orolService: OrolService, private spinnerService: SpinnerService) {
     this.createForm();
   }
@@ -45,32 +47,73 @@ export class MyAccountComponent implements OnInit {
       avatarURL: this.fb.array([]),
     });
   }
+  gotoTop() {
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: 'smooth'
+  });
+}
   validate() {
     this.submitted = true;
     if (this.profileForm.get('firstName').valid &&
       this.profileForm.get('lastName').valid &&
       this.profileForm.get('phoneNumber').valid &&
       this.profileForm.get('email').valid
-       && this.imageFile != null
+      && (this.imageFile != null || this.imgResultAfterCompress != this.imageURL)
     ) {
       this.updateProfile();
     }
+    else{
+      this.gotoTop();
+    }
   }
   async updateProfile() {
-    await this.orolService.updateProfile(this.profileForm.value, this.imageFile);
-    this.show = false;
-    this.images = [];
+      var user = JSON.parse(localStorage.getItem('User'));
+      var accessToken = user.accessToken;
+    await this.orolService.updateProfile(this.profileForm.value, this.imageFile).subscribe(
+     (res) => {
+       res['accessToken']=accessToken; //required
+       this.spinnerService.setSpinner(false);
+       localStorage.removeItem('User');
+       localStorage.setItem('User', JSON.stringify(res));
+       this.orolService.userDetailsSubject.next(res);
+         this.show = false;
+         this.images = [];
+          this.successMessage="User Profile successfully updated!";
+         setTimeout(() => {
+            this.successMessage="";
+         }, 5000);
+
+         this.gotoTop();
+
+     },
+     (err) => {
+       this.spinnerService.setSpinner(false);
+        this.gotoTop();
+       // return err;
+     },
+   );
+    // .then((data) => {
+    //   console.log(data);
+    //   this.show = false;
+    //   this.images = [];
+    // });
   }
   getUser() {
     this.orolService.getUser().subscribe((data) => {
       if (JSON.stringify(data) != '{}') {
+        if(data['avatarURL']){
         this.imgResultAfterCompress = data['avatarURL'][0];
+      }
+
         this.profileForm.patchValue({
           id: data['id'],
           firstName: data['firstName'],
           lastName: data['lastName'],
           email: data['email'],
           phoneNumber: data['phoneNumber'],
+          // avatarURL:data['avatarURL'][0]
         });
       }
       else {
@@ -79,6 +122,7 @@ export class MyAccountComponent implements OnInit {
     });
   }
   deleteImage(){
+    this.imgResultAfterCompress="";
     this.isLargeImageFile=false;
     this.isInvalidImageFile=false;
     this.submitted = true;
@@ -96,10 +140,8 @@ export class MyAccountComponent implements OnInit {
       this.imageCompress.compressFile(image, orientation, 50, 50).then(
         result => {
           this.imgResultAfterCompress = result;
-          this.imageFile = this.dataURLtoFile(this.imgResultAfterCompress, "avatar_"+user.id);
-          console.log(this.imageFile);
+          this.imageFile = this.dataURLtoFile(this.imgResultAfterCompress, "avatar_"+user.id+"_"+Date.now());
           var type = this.imageFile.type.split('/');
-          alert(type[1]);
           if(type[1] == "jpeg" || type[1] == "jpg" || type[1] == "png"){
           if(this.imageFile.size > 100000){//250kb (in bytes)
             this.isLargeImageFile=true;

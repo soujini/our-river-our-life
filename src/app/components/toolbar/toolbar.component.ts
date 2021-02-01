@@ -41,19 +41,21 @@ export class ToolbarComponent implements OnInit {
         this.name = "";
       }
       else{
+
         var user = JSON.parse(localStorage.getItem('User'));
         this.user=user;
 
         this.name = user.firstName + ' '+user.lastName;
+        this.avatarURL = user.avatarURL;
       }
     });
   }
 
   ngOnInit()  {
-    var user = JSON.parse(localStorage.getItem('User'));
-    if(user){
-      this.avatarURL = user.avatarURL;
-    }
+    // var user = JSON.parse(localStorage.getItem('User'));
+    // if(user){
+    //   this.avatarURL = user.avatarURL;
+    // }
   }
 
   setIsRegister(event){
