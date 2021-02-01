@@ -160,7 +160,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="d-flex mt-1">
+                <div xclass="d-flex mt-1">
                   <div class="form-group col-md-12 text-left">
                     <label class="control-label">Observe the Water Level</label>
                     <div class="d-flex">
@@ -171,7 +171,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="mt-1 error-message-div">
+                  <div class="mt-1 error-message-div text-left">
                     <p *ngIf="activityForm.get('waterLevelAndWeather').get('waterLevel').errors?.required  && this.submitStep2==true"
                       class="errorMessage">
                       <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
@@ -179,7 +179,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="d-flex mt-1">
+                <div xclass="d-flex mt-1">
                   <div class="form-group col-md-12 text-left">
                     <label class="control-label">Weather Conditions</label>
                     <div class="d-flex">
@@ -190,7 +190,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="mt-1 error-message-div">
+                  <div class="mt-1 error-message-div text-left">
                     <p *ngIf="activityForm.get('waterLevelAndWeather').get('weather').errors?.required  && this.submitStep2==true"
                       class="errorMessage">
                       <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
