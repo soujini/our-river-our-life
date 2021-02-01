@@ -18,8 +18,8 @@
         <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
         is required.
       </p>
-      <div class="d-flex">
-        <div>
+      <div class="d-flex row">
+        <div class="col-md-6">
           <input for="latitude" formControlName="latitude" type="text" class="input-latitude col-md-12 mt-3"
             placeholder="Latitude" (change)="bla()">
           <div class="mt-1 ml-2 error-message-div text-left">
@@ -32,10 +32,11 @@
               Invalid field</p>
           </div>
         </div>
-        <div>
+
+
+        <div class="col-md-6">
           <input for="longitude" formControlName="longitude" type="text" class="input-latitude col-md-12 mt-3"
             placeholder="Longitude" (change)="bla()">
-
           <div class="mt-1 ml-2 error-message-div text-left">
             <p *ngIf="mapsForm.get('longitude').errors?.pattern" class="errorMessage"><img class="img-add"
                 src="../../../assets/icons/exclamation_icon.svg">
@@ -46,6 +47,8 @@
             </p>
           </div>
         </div>
+
+
       </div>
 
       <div class="alert-div xmt-3 text-center">
@@ -102,10 +105,11 @@
               This image is required.</p>
           </div>
           <div class="row" style="margin: 1px;">
-          <input id="file" type="file" class="form-control col-9" multiple (change)="onFileChange($event)"
-            style="height:45px;">
-          <button class="trash bg xml-2 col-3" (click)="deleteImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
-        </div>
+            <input id="file" type="file" class="form-control col-9" multiple (change)="onFileChange($event)"
+              style="height:45px;">
+            <button class="trash bg xml-2 col-3" (click)="deleteImage()"><img
+                src="../../assets/icons/trash_icon_grey.svg"></button>
+          </div>
           <div class="text-center mt-2">
             <span class="notes mt-2">{{note}}</span><br>
             <span class="notes2 mt-2">{{info}}</span><br>
