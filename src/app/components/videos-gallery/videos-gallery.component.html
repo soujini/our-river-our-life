@@ -19,7 +19,7 @@
       <li *ngFor="let v of campaign.videos">
         <div class="vid-item text-center" (click)="bla(i, v.url);">
           <div class="thumb">
-            <img alt="name" [src]="v.thumb" height="75px" width="75px">
+            <img alt="name" [src]="v.thumb" height="75px" width="75px" loading="lazy">
           </div>
           <div class="video-description">
             {{v.name}}

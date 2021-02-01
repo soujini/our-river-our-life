@@ -53,13 +53,10 @@
   }
 }
 
-.fas:hover{
-  // color:pink !important;
-}
 
-.dropdown-menu a:hover, .fas:hover{
+.dropdown-menu a:hover{
   background-color: whitesmoke !important;
-  opacity: 0.8 !important;
+  // opacity: 0.8 !important;
   box-shadow: none !important;
   // background: #014464!important;
   // background: linear-gradient(left, #0272a7, #013953);
@@ -72,10 +69,6 @@
 .fas , .far, .fab{
   font-size:20px;
   vertical-align: middle;
-}
-
-.fas:hover{
-  // color:red !important;
 }
 
 //mdb-accordion

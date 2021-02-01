@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { MDBBootstrapModulesPro,IconsModule,CollapseModule ,CarouselModule, WavesModule,CardsModule, ButtonsModule,LightBoxModule,ModalModule,TabsModule, NavbarModule} from 'ng-uikit-pro-standard';
+import { MDBBootstrapModulesPro,MDBSpinningPreloader, IconsModule,CollapseModule ,CarouselModule, WavesModule,CardsModule, ButtonsModule,LightBoxModule,ModalModule,TabsModule, NavbarModule} from 'ng-uikit-pro-standard';
 import { HomeComponent } from './components/home/home.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { FeaturesComponent } from './components/features/features.component';
@@ -123,7 +123,7 @@ import { NgOtpInputModule } from  'ng-otp-input';
     NgOtpInputModule
     // MatToolbarModule
   ],
-  providers: [AuthService,NgxImageCompressService],
+  providers: [AuthService,NgxImageCompressService,MDBSpinningPreloader],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

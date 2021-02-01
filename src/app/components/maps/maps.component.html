@@ -85,7 +85,7 @@
       </div>
       <div>
         <label class="alert-date" for='activityTime'>Time</label>
-        <mdb-time-picker #timepicker formControlName="activityTime" id="mytp"></mdb-time-picker>
+        <mdb-time-picker #timepicker formControlName="activityTime" id="mytp" [twelvehour]="true"></mdb-time-picker>
         <p *ngIf="mapsForm.get('activityTime').errors?.required  && this.submitted==true" class="errorMessage">
           <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
           is required.
