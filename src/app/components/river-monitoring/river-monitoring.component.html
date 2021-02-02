@@ -12,18 +12,25 @@
               </h3>
               <div class="mt-5 row" formGroupName="generalInformation">
                 <div class="form-group col-md-6 text-left">
-                  <label class="control-label col-md-6 col-xs-12" for="rm_dp">Activity Date</label>
+                  <label class="control-label col-md-6 col-xs-12" for="rm_dp">Activity Date </label>
                   <div class="input-group col-12">
                     <mdb-date-picker name="mydate" class="w-100" [inline]="true" auto formControlName="activityDate"
-                    [options]="myDatePickerOptions" id="mydp" [placeholder]="'Selected date'" required>
+                    [options]="myDatePickerOptions" id="mydp" required>
                   </mdb-date-picker>
                 </div>
+                <div class=" mt-1 error-message-div">
+                  <p *ngIf="activityForm.get('generalInformation').get('activityDate').errors?.required  && this.submitStep1==true"
+                  class="errorMessage">
+                  <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field is
+                  required.
+                </p>
+            </div>
               </div>
               <div class="form-group col-md-6 text-left">
                 <label for="rm_tp" class="control-label">Activity Time</label>
                 <div class="input-group col-12">
                   <mdb-time-picker #timepicker class="w-100" id="rm_tp" [buttonLabel]="'SET'" [twelvehour]="true"
-                  formControlName="activityTime" [darktheme]="false" [placeholder]="'Selected time'">
+                  formControlName="activityTime" [darktheme]="false" >
                 </mdb-time-picker>
               </div>
             </div>
@@ -32,7 +39,7 @@
 
             <div class="col-md-6 col-6">
               <div class="form-group text-left" formGroupName="generalInformation">
-                <label for="rm_testerName" class="control-label">Name</label>
+                <label for="rm_testerName" class="control-label">Name <span class="star">*</span></label>
                 <div class="input-group">
                   <input mdbInput id="rm_testerName" type="text" id="form1" class="form-control"
                   formControlName="testerName" placeholder="Name">
@@ -54,7 +61,7 @@
         </div>
         <div class="col-md-6 col-6">
           <div class="form-group text-left" formGroupName="generalInformation">
-            <label for="location" class="control-label">Location</label>
+            <label for="location" class="control-label">Location <span class="star">*</span></label>
             <div class="input-group">
               <input for="location" formControlName="location" placeholder="Search by location"
               autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
@@ -82,7 +89,7 @@
   <div class="d-flex xmt-1" formGroupName="generalInformation">
     <div class="col-md-6 col-6">
       <div class="form-group xcol-md-6 text-left">
-        <label for="rm_latitude" class="control-label">Latitude</label>
+        <label for="rm_latitude" class="control-label">Latitude <span class="star">*</span></label>
         <div class="input-group">
           <input for="latitude" formControlName="latitude" type="text" class="form-control"
           placeholder="Latitude" (change)="bla()">
@@ -102,7 +109,7 @@
   </div>
   <div class="col-md-6 col-6">
     <div class="form-group  text-left">
-      <label for="longitude" class="control-label">Longitude</label>
+      <label for="longitude" class="control-label">Longitude <span class="star">*</span></label>
       <div class="input-group">
         <input for="longitude" formControlName="longitude" type="text" class="form-control"
         placeholder="Longitude" (change)="bla()">
@@ -145,7 +152,7 @@
       </h3>
       <div class="mt-5" formGroupName="waterLevelAndWeather">
         <div class="form-group col-md-12 text-left">
-          <label class="control-label">Measure the air temperature</label>
+          <label class="control-label">Measure the air temperature <span class="star">*</span></label>
           <div class="input-group">
             <input mdbInput formControlName="airTemperature" type="text" class="form-control"
             placeholder="Air Temperature">
@@ -169,7 +176,7 @@
     <div class="responsive-groups">
       <div class="col-md-6 col-6">
         <div class="form-group col-md-12 text-left">
-          <label class="control-label">Observe the Water Level</label>
+          <label class="control-label">Observe the Water Level <span class="star">*</span></label>
           <div class="d-flex">
             <div *ngFor="let wl of waterLevels" class="mr-5">
               <img class="cursor-pointer" (click)=setWaterLevel(wl.name);
@@ -188,7 +195,7 @@
     </div>
     <div class="col-md-6 col-6">
       <div class="form-group col-md-12 text-left">
-        <label class="control-label">Weather Conditions</label>
+        <label class="control-label">Weather Conditions <span class="star">*</span></label>
         <div class="d-flex">
           <div *ngFor="let wc of weatherCodition" class="mr-5">
             <img class="cursor-pointer" (click)=setWeather(wc.name);
@@ -209,7 +216,7 @@
 </div>
 <div class="text-left">
   <div class="form-group col-md-12 text-left">
-    <label for="rm_location" class="control-label">River Pictures</label>
+    <label for="rm_location" class="control-label">River Pictures <span class="star">*</span></label>
   </div>
   <div class="col-md-12 text-left">
     <img *ngFor='let url of imageUrlRiver' [src]="url" height="50px" width="50px">

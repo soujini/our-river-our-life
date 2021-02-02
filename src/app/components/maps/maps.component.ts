@@ -24,7 +24,7 @@ export class MapsComponent implements OnInit {
   imgResultBeforeCompress: string;
   imgResultAfterCompress= [];
   note=".jpg,.png, files accepted";
-  info = "(Max. size 250KB)";
+  info = "(Max. size 100KB)";
   public iconUrl = '../../../assets/icons/marker.svg';
   public imageFiles: File[] = [];
   public imageFile:File;

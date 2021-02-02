@@ -27,7 +27,7 @@ export class RiverMonitoringComponent implements OnInit {
   public imageFileTemp: File = null;
   imageFileErrorMessage: String = "";
   note = ".jpg, .jpeg, .png, files accepted";
-  info = "(Max. size 250KB)";
+  info = "(Max. size 100KB)";
   geocoder: any;
   surroundingArray: any;
   reports: any = [];
@@ -228,8 +228,8 @@ export class RiverMonitoringComponent implements OnInit {
           activityDate: [(new Date()), [Validators.required]],
           activityTime: ['', [Validators.required]],
           testerName: ['',  [Validators.required, Validators.maxLength(100)]],
-          latitude: ['',[Validators.pattern(this.decimalPattern)]],
-          longitude: ['',[Validators.pattern(this.decimalPattern)]],
+          latitude: ['',[Validators.required, Validators.pattern(this.decimalPattern)]],
+          longitude: ['',[Validators.required, Validators.pattern(this.decimalPattern)]],
           location: ['', [Validators.required, Validators.maxLength(200)]],
         }),
         waterLevelAndWeather: this.fb.group({
