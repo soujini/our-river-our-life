@@ -1,3 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ng-uikit-pro-standard/assets/scss/core/colors';
+@import '~ng-uikit-pro-standard/assets/scss/core/variables';
+@import '~ng-uikit-pro-standard/assets/scss/core/variables-pro';
+@import '~ng-uikit-pro-standard/assets/scss/bootstrap/functions';
+@import '~ng-uikit-pro-standard/assets/scss/bootstrap/variables';
+@import '~ng-uikit-pro-standard/assets/scss/core/mixins';
 .river-monitoring{
   background-color: white;
 }
@@ -472,6 +479,10 @@ input[type="file"] {
 .box {
    display: flex;
    flex-wrap: wrap;
+
+   .item{
+     padding:20px;
+   }
 }
 .box>* {
    flex: 1 1 430px;
@@ -487,4 +498,12 @@ input[type="file"] {
   border-radius: 5px;
   padding:20px;
 display: grid !important;
+}
+.responsive-groups{
+  display:flex;
+}
+@include media-breakpoint-down(md) {
+  .responsive-groups{
+    display: grid;
+  }
 }
