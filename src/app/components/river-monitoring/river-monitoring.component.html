@@ -97,11 +97,6 @@
 
       </div>
       <div class="row mt-1 error-message-div">
-        <p *ngIf="activityForm.get('generalInformation').get('latitude').errors?.required  && this.submitStep1==true"
-        class="errorMessage">
-        <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
-        is required.
-      </p>
       <p *ngIf="activityForm.get('generalInformation').get('latitude').errors?.pattern"
       class="errorMessage"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg">
       Invalid field</p>
@@ -117,11 +112,6 @@
 
     </div>
     <div class="row mt-1 error-message-div">
-      <p *ngIf="activityForm.get('generalInformation').get('longitude').errors?.required  && this.submitStep1==true"
-      class="errorMessage">
-      <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field
-      is required.
-    </p>
     <p *ngIf="activityForm.get('generalInformation').get('longitude').errors?.pattern"
     class="errorMessage"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg">
     Invalid field</p>

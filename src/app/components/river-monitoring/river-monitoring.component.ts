@@ -228,8 +228,8 @@ export class RiverMonitoringComponent implements OnInit {
           activityDate: [(new Date()), [Validators.required]],
           activityTime: ['', [Validators.required]],
           testerName: ['',  [Validators.required, Validators.maxLength(100)]],
-          latitude: ['',[Validators.required, Validators.pattern(this.decimalPattern)]],
-          longitude: ['',[Validators.required, Validators.pattern(this.decimalPattern)]],
+          latitude: ['',[Validators.pattern(this.decimalPattern)]],
+          longitude: ['',[Validators.pattern(this.decimalPattern)]],
           location: ['', [Validators.required, Validators.maxLength(200)]],
         }),
         waterLevelAndWeather: this.fb.group({
@@ -269,9 +269,7 @@ export class RiverMonitoringComponent implements OnInit {
       if (this.activityForm.get('generalInformation').get('activityDate').valid &&
       this.activityForm.get('generalInformation').get('activityTime').valid &&
       this.activityForm.get('generalInformation').get('testerName').valid &&
-      this.activityForm.get('generalInformation').get('location').valid &&
-      this.activityForm.get('generalInformation').get('latitude').valid &&
-      this.activityForm.get('generalInformation').get('longitude').valid
+      this.activityForm.get('generalInformation').get('location').valid 
 
     ) {
       this.river_monitoring_stepper.next();
