@@ -28,7 +28,7 @@
               </div>
               <div class="form-group col-md-6 text-left">
                 <label for="rm_tp" class="control-label">Activity Time</label>
-                <div class="input-group col-12" (focusout)="bla1()">
+                <div class="input-group col-12">
                   <mdb-time-picker #timepicker class="w-100" id="rm_tp" [buttonLabel]="'SET'" [twelvehour]="true"
                   formControlName="activityTime" [darktheme]="false" >
                 </mdb-time-picker>
@@ -645,7 +645,7 @@
                             <div class="box col-12 mt-5">
                               <div class="item">
                                 <div class="preview-heading text-center">
-                                  <span>General Information <mdb-icon class="ml-2" fas icon="pencil-alt" (click)="move(1)"></mdb-icon>
+                                  <span>General Information <mdb-icon class="ml-2" fas icon="pencil-alt"></mdb-icon>
                                   </span>
                                 </div>
 
