@@ -24,7 +24,7 @@ export class FloraFaunaComponent implements OnInit {
     { value: '2', label: 'Fauna' },
   ];
   note=".jpg,.png, files accepted";
-  info = "(Max. size 250KB)";
+  info = "(Max. size 100KB)";
   public waterTestDetails: any;
   resource: any;
   fauna: any = [];

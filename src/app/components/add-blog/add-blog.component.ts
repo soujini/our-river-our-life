@@ -14,7 +14,7 @@ export class AddBlogComponent implements OnInit {
   public submitted: boolean = false;
   public imageFile: File;
   note=".jpg,.png, files accepted";
-  info = "(Max. size 250KB)";
+  info = "(Max. size 100KB)";
   featuredAdditionalVideosArray: any = [];
   featuredAdditionalVideos = [];
   // featuredPhoto= "../../../assets/icons/marker.svg";
