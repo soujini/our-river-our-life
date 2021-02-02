@@ -107,16 +107,16 @@ export class AddBlogComponent implements OnInit {
     this.imageCompress.uploadFile().then(({ image }) => {
       this.imgResultBeforeCompress = image;
       var filename = Date.now()+"-add-blog";
-<<<<<<< Updated upstream
-=======
+// <<<<<<< Updated upstream
+// =======
       console.log('Size in bytes was:', this.imageCompress.byteCount(image));
->>>>>>> Stashed changes
-      this.imageCompress.compressFile(image, orientation, 50, 50).then(
-        result => {
-          this.imgResultAfterCompress = result;
-          this.imageFile = this.dataURLtoFile(this.imgResultAfterCompress,filename);
-        }
-      );
+// >>>>>>> Stashed changes
+//       this.imageCompress.compressFile(image, orientation, 50, 50).then(
+//         result => {
+//           this.imgResultAfterCompress = result;
+//           this.imageFile = this.dataURLtoFile(this.imgResultAfterCompress,filename);
+//         }
+//       );
 
     });
   }

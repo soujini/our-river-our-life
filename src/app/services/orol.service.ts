@@ -32,7 +32,7 @@ export class OrolService {
   }
 
   public createWaterTestDetails(x, imageFilesRiver: File[], imageFilesSurrounding: File[], imageFilesFlora: File[],
-     imageFilesFauna: File[], imageFilesGroup: File[], imageFilesActivity: File[], imageFilesAtwork: File[]) {
+     imageFilesFauna: File[], imageFilesGroup: File[], imageFilesActivity: File[], imageFilesArtwork: File[]) {
     // this.spinnerService.setSpinner(true);
     var user = JSON.parse(localStorage.getItem('User'));
     const httpHeaders: HttpHeaders = new HttpHeaders({
@@ -57,8 +57,8 @@ export class OrolService {
     for (var i = 0; i < imageFilesActivity.length; i++) {
       form.append('activity', imageFilesActivity[i]);
     }
-    for (var i = 0; i < imageFilesAtwork.length; i++) {
-      form.append('artwork', imageFilesAtwork[i]);
+    for (var i = 0; i < imageFilesArtwork.length; i++) {
+      form.append('artwork', imageFilesArtwork[i]);
     }
     form.append("userId", user.id);
     form.append("generalInformation[activityDate]", x.generalInformation.activityDate);

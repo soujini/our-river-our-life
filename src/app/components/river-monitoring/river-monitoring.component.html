@@ -207,7 +207,7 @@
                   </div>
                   <label class="custom-file-upload ml-3 mt-2">
                     <input id="file" type="file" class="form-control" multiple
-                      (change)="onFileChangesRiver($event)">Upload
+                      (change)="selectRiverPhotos($event)">Upload
                   </label>
                   <button class="trash bg ml-2" (click)="deleteRiverImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
                   <div class="mt-1 error-message-div">
@@ -258,7 +258,7 @@
                   </div>
                   <label class="custom-file-upload ml-3 mt-2">
                     <input id="file" type="file" class="form-control" multiple
-                      (change)="onFileChangesSurrounding($event)">Upload
+                      (change)="selectSurroundingPhotos($event)">Upload
                   </label>
                   <button class="trash bg ml-2" (click)="deleteSurroundingImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
                   <div class="mt-1 error-message-div">
@@ -281,7 +281,7 @@
   </div>
   <label class="custom-file-upload ml-3 mt-2">
   <input id="file" type="file" class="form-control" multiple
-  (change)="onFileChangesSurrounding($event)">Upload
+  (change)="selectSurroundingPhotos($event)">Upload
 </label>
 
 </div> -->
@@ -572,7 +572,7 @@
                   </div>
                   <label class="custom-file-upload mt-2">
                     <input id="file" type="file" class="form-control" multiple
-                      (change)="onFileChangesFlora($event)">Upload
+                      (change)="selectFloraPhotos($event)">Upload
                   </label>
                   <button class="trash bg ml-2" (click)="deleteFloraImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
                   <div class="ml-2">
@@ -594,7 +594,7 @@
                   </div>
                   <label class="custom-file-upload mt-2">
                     <input id="file" type="file" class="form-control" multiple
-                      (change)="onFileChangesFauna($event)">Upload
+                      (change)="selectFaunaPhotos($event)">Upload
                   </label>
                   <button class="trash bg ml-2" (click)="deleteFaunaImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
                   <div class="ml-2">
@@ -622,7 +622,7 @@
                 </div>
                 <label class="custom-file-upload mt-2">
                   <input id="file" type="file" class="form-control" multiple
-                    (change)="onFileChangesGroup($event)">Upload
+                    (change)="selectGroupPhotos($event)">Upload
                   Group Picture
                 </label>
                 <button class="trash bg ml-2" (click)="deleteGroupImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
@@ -632,16 +632,16 @@
                 </div>
                 <label class="custom-file-upload mt-2">
                   <input id="file" type="file" class="form-control" multiple
-                    (change)="onFileChangesActivity($event)">Upload
+                    (change)="selectActivityPhotos($event)">Upload
                   Activity Picture
                 </label>
                 <button class="trash bg ml-2" (click)="deleteActivityImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
                 <div class="col-md-12">
-                  <img *ngFor='let url of imageUrlAtwork' [src]="url" height="50px" width="50px">
+                  <img *ngFor='let url of imageUrlArtwork' [src]="url" height="50px" width="50px">
                 </div>
                 <label class="custom-file-upload mt-2">
                   <input id="file" type="file" class="form-control" multiple
-                    (change)="onFileChangesAtwork($event)">Upload
+                    (change)="selectArtworkPhotos($event)">Upload
                   Artwork
                 </label>
                 <button class="trash bg ml-2" (click)="deleteArtworkImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
