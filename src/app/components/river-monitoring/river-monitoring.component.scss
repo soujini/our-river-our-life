@@ -7,6 +7,7 @@
 @import '~ng-uikit-pro-standard/assets/scss/core/mixins';
 .river-monitoring{
   background-color: white;
+  height:100%;
 }
 
 .item {
@@ -26,6 +27,9 @@
 //   }
 .img-add{
   margin-left:15px;
+}
+.step1_div-responsive{
+  display: flex;
 }
 // .item1 {
 //   width: 550px;
@@ -506,4 +510,9 @@ display: grid !important;
   .responsive-groups{
     display: grid;
   }
+}
+@include media-breakpoint-down(xs) {
+.step1_div-responsive{
+  display: grid;
+}
 }

@@ -1,4 +1,4 @@
-<div class="container" style="border:1px dashed #B3BDBB;box-shadow: rgba(0, 0, 0, 0.1) 0px 30px 90px;padding:5px">
+<div xclass="container" style="border:1px dashed #B3BDBB;box-shadow: rgba(0, 0, 0, 0.1) 0px 30px 90px;padding:5px">
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="'hybrid'" [disableDefaultUI]="false"
         [zoomControl]="true" [fitBounds]="true" (mapClick)="mapClicked($event)">
         <agm-marker-cluster
@@ -9,8 +9,8 @@
                 xlabel="m.label" [markerDraggable]="m.draggable">
             </agm-marker>
         </agm-marker-cluster>
-        <agm-circle [latitude]="lat + 0.3" [longitude]="lng" [radius]="5000" [fillColor]="'red'"
+        <!-- <agm-circle [latitude]="lat + 0.3" [longitude]="lng" [radius]="5000" [fillColor]="'red'"
             [circleDraggable]="true" [editable]="true">
-        </agm-circle>
+        </agm-circle> -->
     </agm-map>
 </div>

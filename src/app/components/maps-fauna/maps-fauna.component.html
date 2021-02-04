@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="border:1px dashed #B3BDBB;box-shadow: rgba(0, 0, 0, 0.1) 0px 30px 90px;padding:5px">
  <agm-map
 [latitude]="lat"
 [longitude]="lng"
@@ -19,21 +19,19 @@
 <agm-info-window>
   <mdb-tabset [buttonClass]="'nav md-pills pills-primary'" [contentClass]="'card'">
     <mdb-tab heading="Images">
-      <div class="container">
+      <div class="container text-left">
         <div class="row">
-          <div class="col-lg-3">
+          <div class="col-lg-2">
             <label>LOCATION</label>
           </div>
-          <div class="col-lg-9">
+          <div class="col-lg-10">
             <strong>{{m.location}}</strong>
           </div>
         </div>
-        <div class="row">
-          <div class="col-12 mt-2">
-            <div *ngFor="let img of m.fauna" style="display:inline-block; text-align:center">
-              <img [src]="img.imageURL" style="image-orientation: none;transform: rotate(360deg);" height="150px" width="150px" class="ml-2">
+          <div class="mt-4">
+            <div *ngFor="let img of m.fauna" style="display:inline-block">
+              <img [src]="img.imageURL" height="150px" width="150px" class="ml-2 mb-2">
             </div>
-          </div>
         </div>
         </div>
     </mdb-tab>
@@ -41,11 +39,11 @@
 </agm-info-window>
 </agm-marker>
 </agm-marker-cluster>
-<agm-circle [latitude]="lat + 0.3" [longitude]="lng"
+<!-- <agm-circle [latitude]="lat + 0.3" [longitude]="lng"
 [radius]="5000"
 [fillColor]="'red'"
 [circleDraggable]="true"
 [editable]="true">
-</agm-circle>
+</agm-circle> -->
 </agm-map>
 </div>

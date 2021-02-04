@@ -1,4 +1,4 @@
-<div class="container">
+<div xclass="container" style="border:1px dashed #B3BDBB;box-shadow: rgba(0, 0, 0, 0.1) 0px 30px 90px;padding:5px">
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="'hybrid'" [disableDefaultUI]="false"
     [zoomControl]="true" [fitBounds]="true" (mapClick)="mapClicked($event)" height=200>
     <agm-marker-cluster
@@ -9,36 +9,36 @@
         xlabel="m.label" [markerDraggable]="m.draggable">
 
         <agm-info-window>
-          <mdb-tabset class="xyz" [buttonClass]="'nav md-pills pills-primary'" [contentClass]="'card'">
+          <mdb-tabset [buttonClass]="'nav md-pills pills-primary'">
             <mdb-tab heading="Info">
-              <div class="container">
+              <div class="container text-left">
                 <div class="row">
                   <div class="col-lg-3">
-                    <label>LOCATION</label>
+                    <label>LOCATION : </label>
                   </div>
                   <div class="col-lg-9">
                     <strong>{{m.location}}</strong>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row mt-2">
                   <div class="col-lg-3">
-                    <label>TIME</label>
+                    <label>TIME : </label>
                   </div>
                   <div class="col-lg-9">
                     <strong>{{m.activityTime}}</strong>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row mt-2">
                   <div class="col-lg-3">
-                    <label>DATE</label>
+                    <label>DATE : </label>
                   </div>
                   <div class="col-lg-9">
                     <strong>{{m.activityDate}}</strong>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row mt-2">
                   <div class="col-lg-3">
-                    <label>EXPERIENCE</label>
+                    <label>EXPERIENCE : </label>
                   </div>
                   <div class="col-lg-9">
                     <strong>{{m.experience}}</strong>
@@ -47,20 +47,19 @@
               </div>
             </mdb-tab>
             <mdb-tab heading="Images">
-              <div class="container">
-                <div class="row">
-                    <div  class="col-lg-12" *ngFor="let img of m.photos">
-                      <img loading="lazy" [src]="img" height="150px" width="150px" class="ml-2">
-                    </div>
-                </div>
+              <div class="container text-left">
+              <div *ngFor="let img of m.photos" style="display:inline-block" >
+                <img [src]="img" height="150px" width="150px" class="mb-2 p-1" loading="lazy">
               </div>
+              </div>
+              <!-- <img class="text-left ml-2 mb-2" *ngFor="let img of m.photos" loading="lazy" [src]="img" height="150px" width="150px"> -->
             </mdb-tab>
           </mdb-tabset>
         </agm-info-window>
       </agm-marker>
     </agm-marker-cluster>
-    <agm-circle [latitude]="lat + 0.3" [longitude]="lng" [radius]="5000" [fillColor]="'red'" [circleDraggable]="true"
+    <!-- <agm-circle [latitude]="lat + 0.3" [longitude]="lng" [radius]="5000" [fillColor]="'red'" [circleDraggable]="true"
       [editable]="true">
-    </agm-circle>
+    </agm-circle> -->
   </agm-map>
 </div>

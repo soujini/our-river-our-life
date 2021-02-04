@@ -162,6 +162,13 @@ export class RiverMonitoringComponent implements OnInit {
       this.setCurrentPosition();
     }
 
+    gotoTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
     ngOnInit() {
       this.setCurrentTime();
       this.zoom = 13;
@@ -269,7 +276,7 @@ export class RiverMonitoringComponent implements OnInit {
       if (this.activityForm.get('generalInformation').get('activityDate').valid &&
       this.activityForm.get('generalInformation').get('activityTime').valid &&
       this.activityForm.get('generalInformation').get('testerName').valid &&
-      this.activityForm.get('generalInformation').get('location').valid 
+      this.activityForm.get('generalInformation').get('location').valid
 
     ) {
       this.river_monitoring_stepper.next();

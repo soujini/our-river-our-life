@@ -7,10 +7,10 @@
         <mdb-step>
           <div  style="justify-content:center">
 
-            <form class="form form-horizontal text-left col-xs-12" [formGroup]="activityForm">
-              <h3 class="stepper-heading text-left">General Information <span class="step-number">(Step 1/7)</span>
-              </h3>
-              <div class="mt-5 row" formGroupName="generalInformation">
+            <form class="form form-horizontal text-left col-xs-12 " [formGroup]="activityForm">
+              <h4 class="stepper-heading text-left">General Information <span class="step-number">(Step 1/7)</span>
+              </h4>
+              <div class="mt-5 row" formGroupName="generalInformation" >
                 <div class="form-group col-md-6 text-left">
                   <label class="control-label col-md-6 col-xs-12" for="rm_dp">Activity Date </label>
                   <div class="input-group col-12">
@@ -24,79 +24,78 @@
                   <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field is
                   required.
                 </p>
-            </div>
-              </div>
-              <div class="form-group col-md-6 text-left">
-                <label for="rm_tp" class="control-label">Activity Time</label>
-                <div class="input-group col-12">
-                  <mdb-time-picker #timepicker class="w-100" id="rm_tp" [buttonLabel]="'SET'" [twelvehour]="true"
-                  formControlName="activityTime" [darktheme]="false" >
-                </mdb-time-picker>
               </div>
             </div>
-          </div>
-          <div class="d-flex xmt-1" xformGroupName="generalInformation">
-
-            <div class="col-md-6 col-6">
-              <div class="form-group text-left" formGroupName="generalInformation">
-                <label for="rm_testerName" class="control-label">Name <span class="star">*</span></label>
-                <div class="input-group">
-                  <input mdbInput id="rm_testerName" type="text" id="form1" class="form-control"
-                  formControlName="testerName" placeholder="Name">
-                </div>
-              </div>
-              <div class="row mt-1 error-message-div">
-                <p *ngIf="activityForm.get('generalInformation').get('testerName').errors?.required  && this.submitStep1==true"
-                class="errorMessage">
-                <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field is
-                required.
-              </p>
-              <p *ngIf="activityForm.get('generalInformation').get('testerName').errors?.maxlength"
-              class="errorMessage">
-              <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field must not
-              exceed 100
-              characters.
-            </p>
+            <div class="form-group col-md-6 text-left">
+              <label for="rm_tp" class="control-label col-md-6 col-xs-12">Activity Time</label>
+              <div class="input-group col-12">
+                <mdb-time-picker #timepicker class="w-100" id="rm_tp" [buttonLabel]="'SET'" [twelvehour]="true"
+                formControlName="activityTime" [darktheme]="false" >
+              </mdb-time-picker>
+            </div>
           </div>
         </div>
-        <div class="col-md-6 col-6">
-          <div class="form-group text-left" formGroupName="generalInformation">
-            <label for="location" class="control-label">Location <span class="star">*</span></label>
-            <div class="input-group">
-              <input for="location" formControlName="location" placeholder="Search by location"
-              autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
-              class="form-control input-search mt-2" #search>
+        <div class="step1_div-responsive" xformGroupName="generalInformation" >
+          <div class="col-md-6 col-xs-12">
+            <div class="form-group text-left" formGroupName="generalInformation">
+              <label for="rm_testerName" class="control-label">Name <span class="star">*</span></label>
+              <div class="input-group">
+                <input mdbInput id="rm_testerName" type="text" id="form1" class="form-control"
+                formControlName="testerName" placeholder="Name">
+              </div>
             </div>
-
-          </div>
-          <div class="row mt-1 error-message-div">
-            <p *ngIf="activityForm.get('generalInformation').get('location').errors?.required  && this.submitStep1==true"
+            <div class="row mt-1 error-message-div">
+              <p *ngIf="activityForm.get('generalInformation').get('testerName').errors?.required  && this.submitStep1==true"
+              class="errorMessage">
+              <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field is
+              required.
+            </p>
+            <p *ngIf="activityForm.get('generalInformation').get('testerName').errors?.maxlength"
             class="errorMessage">
-            <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field is
-            required.
+            <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field must not
+            exceed 100
+            characters.
           </p>
-          <p *ngIf="activityForm.get('generalInformation').get('location').errors?.maxlength"
-          class="errorMessage">
-          <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field must not
-          exceed 200
-          characters.
-        </p>
+        </div>
       </div>
-    </div>
+      <div class="col-md-6 col-xs-12">
+        <div class="form-group text-left" formGroupName="generalInformation">
+          <label for="location" class="control-label">Location <span class="star">*</span></label>
+          <div class="input-group">
+            <input for="location" formControlName="location" placeholder="Search by location"
+            autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+            class="form-control input-search" #search>
+          </div>
 
+        </div>
+        <div class="row mt-1 error-message-div">
+          <p *ngIf="activityForm.get('generalInformation').get('location').errors?.required  && this.submitStep1==true"
+          class="errorMessage">
+          <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field is
+          required.
+        </p>
+        <p *ngIf="activityForm.get('generalInformation').get('location').errors?.maxlength"
+        class="errorMessage">
+        <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field must not
+        exceed 200
+        characters.
+      </p>
+    </div>
   </div>
 
-  <div class="d-flex xmt-1" formGroupName="generalInformation">
-    <div class="col-md-6 col-6">
-      <div class="form-group xcol-md-6 text-left">
-        <label for="rm_latitude" class="control-label">Latitude</label>
-        <div class="input-group">
-          <input for="latitude" formControlName="latitude" type="text" class="form-control"
-          placeholder="Latitude" (change)="bla()">
-        </div>
+</div>
 
+<div class="d-flex xmt-1" formGroupName="generalInformation" >
+  <div class="col-md-6 col-6">
+    <div class="form-group xcol-md-6 text-left">
+      <label for="rm_latitude" class="control-label">Latitude</label>
+      <div class="input-group">
+        <input for="latitude" formControlName="latitude" type="text" class="form-control"
+        placeholder="Latitude" (change)="bla()">
       </div>
-      <div class="row mt-1 error-message-div">
+
+    </div>
+    <div class="row mt-1 error-message-div">
       <p *ngIf="activityForm.get('generalInformation').get('latitude').errors?.pattern"
       class="errorMessage"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg">
       Invalid field</p>
@@ -112,14 +111,14 @@
 
     </div>
     <div class="row mt-1 error-message-div">
-    <p *ngIf="activityForm.get('generalInformation').get('longitude').errors?.pattern"
-    class="errorMessage"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg">
-    Invalid field</p>
+      <p *ngIf="activityForm.get('generalInformation').get('longitude').errors?.pattern"
+      class="errorMessage"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg">
+      Invalid field</p>
+    </div>
   </div>
 </div>
-</div>
 <div class="mt-2">
-  <agm-map style="height: 300px;" [mapTypeId]="'hybrid'" [fitBounds]="true" accuracy=100
+  <agm-map style="height: 500px;" [mapTypeId]="'hybrid'" [fitBounds]="true" accuracy=100
   [latitude]="this.activityForm.get('generalInformation').get('latitude').value"
   [longitude]="this.activityForm.get('generalInformation').get('longitude').value" [zoom]="zoom"
   [scrollwheel]="false" (mapReady)="mapReady($event)" [usePanning]='true' [draggable]=false>
@@ -131,17 +130,17 @@
 </form>
 </div>
 <hr class="hr-line" />
-<div class="text-right">
-  <button mdbBtn size="sm" class="custom-btn-blue" (click)="validateStep1()">NEXT</button>
+<div class="col-12 text-right">
+  <button mdbBtn size="sm" class="custom-btn-blue" (click)="validateStep1();this.gotoTop()">NEXT</button>
 </div>
 </mdb-step>
 <mdb-step xname="Water Level & Weather" xstepForm="activityForm">
-  <div  style="justify-content:center">
+  <div>
     <form class="form form-horizontal text-left col-xs-12" [formGroup]="activityForm">
-      <h3 class="stepper-heading text-left">Water Level & Weather <span class="step-number">(Step 2/7)</span>
-      </h3>
+      <h4 class="stepper-heading text-left">Water Level & Weather <span class="step-number">(Step 2/7)</span>
+      </h4>
       <div class="mt-5" formGroupName="waterLevelAndWeather">
-        <div class="form-group col-md-12 text-left">
+        <div class="form-group col-md-12 text-left" >
           <label class="control-label">Measure the air temperature <span class="star">*</span></label>
           <div class="input-group">
             <input mdbInput formControlName="airTemperature" type="text" class="form-control"
@@ -164,16 +163,17 @@
       </div>
     </div>
     <div class="responsive-groups">
-      <div class="col-md-6 col-6">
-        <div class="form-group col-md-12 text-left">
+      <div class="col-md-6 col-xs-12" >
+        <div class="form-group text-left">
           <label class="control-label">Observe the Water Level <span class="star">*</span></label>
-          <div class="d-flex">
-            <div *ngFor="let wl of waterLevels" class="mr-5">
-              <img class="cursor-pointer" (click)=setWaterLevel(wl.name);
-              [src]="this.activityForm.get('waterLevelAndWeather').get('waterLevel').value == wl.name ? wl.imageUrlEnable : wl.imageUrl">
-              <br /><label class="w-100 text-center light mt-2">{{wl.name}}</label>
-            </div>
-          </div>
+          <ul style="padding: 0;list-style-type: none;">
+              <li *ngFor="let wl of waterLevels" style="display:inline-grid; width:95px;justify-content:center" class="mb-2">
+                <img class="cursor-pointer" (click)=setWaterLevel(wl.name);
+                [src]="this.activityForm.get('waterLevelAndWeather').get('waterLevel').value == wl.name ? wl.imageUrlEnable : wl.imageUrl">
+                <label class="w-100 text-center light mt-2">{{wl.name}}</label>
+                </li>
+            </ul>
+
         </div>
         <div class="mt-1 error-message-div text-left">
           <p *ngIf="activityForm.get('waterLevelAndWeather').get('waterLevel').errors?.required  && this.submitStep2==true"
@@ -183,16 +183,16 @@
         </p>
       </div>
     </div>
-    <div class="col-md-6 col-6">
-      <div class="form-group col-md-12 text-left">
+    <div class="col-md-6 col-xs-12" >
+      <div class="form-group xcol-md-12 text-left" style="display:grid">
         <label class="control-label">Weather Conditions <span class="star">*</span></label>
-        <div class="d-flex">
-          <div *ngFor="let wc of weatherCodition" class="mr-5">
-            <img class="cursor-pointer" (click)=setWeather(wc.name);
-            [src]="this.activityForm.get('waterLevelAndWeather').get('weather').value == wc.name ? wc.imageUrlEnable : wc.imageUrl">
-            <br /><label class="w-100 text-center light mt-2">{{wc.name}}</label>
-          </div>
-        </div>
+        <ul style="padding: 0;list-style-type: none;">
+            <li *ngFor="let wc of weatherCodition" style="display:inline-grid; width:95px;justify-content:center" class="mb-2">
+              <img class="cursor-pointer" (click)=setWeather(wc.name);
+              [src]="this.activityForm.get('waterLevelAndWeather').get('weather').value == wc.name ? wc.imageUrlEnable : wc.imageUrl">
+              <label class="w-100 text-center light mt-2">{{wc.name}}</label>
+              </li>
+          </ul>
       </div>
       <div class="mt-1 error-message-div text-left">
         <p *ngIf="activityForm.get('waterLevelAndWeather').get('weather').errors?.required  && this.submitStep2==true"
@@ -205,13 +205,13 @@
 
 </div>
 <div class="text-left">
-  <div class="form-group col-md-12 text-left">
+  <div class="form-group col-md-12 text-left" >
     <label for="rm_location" class="control-label">River Pictures <span class="star">*</span></label>
   </div>
   <div class="col-md-12 text-left">
     <img *ngFor='let url of imageUrlRiver' [src]="url" height="50px" width="50px">
   </div>
-  <label class="custom-file-upload ml-3 mt-2">
+  <label class="custom-file-upload mt-2 ml-2" >
     <input id="file" type="file" class="form-control" multiple
     (change)="selectRiverPhotos($event)">Upload
   </label>
@@ -221,7 +221,7 @@
       class="img-add" src="../../../assets/icons/exclamation_icon.svg">
       This image is required.</p>
     </div>
-    <div class="ml-3">
+    <div>
       <span class="notes mt-2">{{note}}</span><br>
       <span class="notes2 mt-2">{{info}}</span><br>
     </div>
@@ -229,18 +229,18 @@
 </form>
 </div>
 <hr class="hr-line" />
-<div class="text-right">
-  <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
-  <button mdbBtn size="sm" class="custom-btn-blue" (click)="validateStep2()">NEXT</button>
+<div style="display:flex;justify-content: space-between;">
+  <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous(); this.gotoTop()">BACK</button>
+  <button mdbBtn size="sm" class="custom-btn-blue" (click)="validateStep2();this.gotoTop()">NEXT</button>
 </div>
 </mdb-step>
 <mdb-step>
-  <div  style="justify-content:center">
+  <div style="justify-content:center">
     <form xformGroupx="surroundings" class="form form-horizontal text-left col-xs-12">
-      <h3 class="stepper-heading text-left">Observe your Surroundings <span class="step-number">(Step
-        3/7)</span></h3>
-        <div class="mt-5">
-          <div class="col-md-12 mt-3 text-left">
+      <h4 class="stepper-heading text-left">Observe your Surroundings <span class="step-number">(Step
+        3/7)</span></h4>
+        <div class="mt-5" >
+          <div class="col-md-12 mt-3 text-left" style="margin-left:-15px">
             <div *ngFor="let obj of surroundings ; let i=index" class="col-md-3 text-left"
             style="display:inline-block">
             <mdb-checkbox class="checkbox-coco-filled" [checked]="false" value={{obj}}
@@ -255,7 +255,7 @@
         </div>
       </div>
     </div>
-    <div class="xmt-1 text-left">
+    <div class="xmt-1 text-left" >
       <div class="form-group col-md-12 text-left">
         <label for="rm_location" class="control-label">Surrounding Pictures</label>
       </div>
@@ -280,18 +280,18 @@
     </form>
   </div>
   <hr class="hr-line" />
-  <div class="text-right">
-    <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
-    <button mdbBtn size="sm" class="custom-btn-blue" (click)="validateStep4()">NEXT</button>
+  <div style="display:flex;justify-content: space-between;">
+    <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous();this.gotoTop()">BACK</button>
+    <button mdbBtn size="sm" class="custom-btn-blue" (click)="validateStep4();this.gotoTop()">NEXT</button>
   </div>
 </mdb-step>
 <mdb-step>
   <div  style="justify-content:center">
     <form [formGroup]="activityForm" class="form form-horizontal text-left col-xs-12">
-      <h3 class="stepper-heading text-left">Water Quality Testing <span class="step-number">(Step 4/7)</span>
-      </h3>
+      <h4 class="stepper-heading text-left">Water Quality Testing <span class="step-number">(Step 4/7)</span>
+      </h4>
       <div class="responsive-groups mt-5" formGroupName="waterTesting">
-        <div class="form-group col-md-3 col-12 text-left">
+        <div class="form-group col-md-3 col-12 text-left" >
           <label class="control-label">Water Temperature</label>
           <div class="input-group">
             <input mdbInput formControlName="waterTemperature" type="text" class="form-control"
@@ -306,7 +306,7 @@
             Invalid field</p>
           </div>
         </div>
-        <div class="form-group col-md-3  col-12 text-left">
+        <div class="form-group col-md-3  col-12 text-left" >
           <label class="control-label">pH</label>
           <div class="input-group">
             <input mdbInput formControlName="pH" class="form-control" placeholder="Water Temperature">
@@ -320,7 +320,7 @@
               Invalid field</p>
             </div>
           </div>
-          <div class="form-group col-md-3 text-left">
+          <div class="form-group col-md-3 text-left" >
             <label class="control-label">Alkalinity</label>
             <div class="input-group">
               <input mdbInput formControlName="alkalinity" class="form-control" placeholder="Water Temperature">
@@ -334,7 +334,7 @@
               Invalid field</p>
             </div>
           </div>
-          <div class="form-group col-md-3 text-left">
+          <div class="form-group col-md-3 xol-xs-12 text-left">
             <label class="control-label">Nitrate</label>
             <div class="input-group">
               <input mdbInput formControlName="nitrate" class="form-control" placeholder="Nitrate">
@@ -525,14 +525,14 @@
                         </form>
                       </div>
                       <hr class="hr-line" />
-                      <div class="text-right">
-                        <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
-                        <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
+                      <div style="display:flex;justify-content: space-between;">
+                        <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous();this.gotoTop()">BACK</button>
+                        <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next();this.gotoTop()">NEXT</button>
                       </div>
                     </mdb-step>
                     <mdb-step>
                       <form class="form form-horizontal text-left col-xs-12">
-                        <h3 class="stepper-heading text-left">Flora & Fauna <span class="step-number">(Step 5/7)</span></h3>
+                        <h4 class="stepper-heading text-left">Flora & Fauna <span class="step-number">(Step 5/7)</span></h4>
 
                         <div class="col-md-12 mt-5">
                           <div >
@@ -583,15 +583,15 @@
                           </form>
                           <!-- </div> -->
                           <hr class="hr-line" />
-                          <div class="text-right">
-                            <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
-                            <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
+                          <div style="display:flex;justify-content: space-between;">
+                            <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous();this.gotoTop()">BACK</button>
+                            <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next();this.gotoTop()">NEXT</button>
                           </div>
                         </mdb-step>
                         <mdb-step>
                           <div>
                             <form class="form form-horizontal text-left col-xs-12">
-                              <h3 class="stepper-heading text-left">Pictures <span class="step-number">(Step 6/7)</span></h3>
+                              <h4 class="stepper-heading text-left">Pictures <span class="step-number">(Step 6/7)</span></h4>
 
                               <div class="mt-5 ml-2">
                                 <div class="col-md-12">
@@ -634,14 +634,14 @@
                             </form>
                           </div>
                           <hr class="hr-line" />
-                          <div class="text-right">
-                            <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
-                            <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next()">NEXT</button>
+                          <div style="display:flex;justify-content: space-between;">
+                            <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous();this.gotoTop()">BACK</button>
+                            <button mdbBtn size="sm" class="custom-btn-blue" (click)="river_monitoring_stepper.next();this.gotoTop()">NEXT</button>
                           </div>
                         </mdb-step>
                         <mdb-step>
                           <form class="form form-horizontal text-left col-xs-12">
-                            <h3 class="stepper-heading text-left">Preview <span class="step-number">(Step 7/7)</span></h3>
+                            <h4 class="stepper-heading text-left">Preview <span class="step-number">(Step 7/7)</span></h4>
                             <div class="box col-12 mt-5">
                               <div class="item">
                                 <div class="preview-heading text-center">
@@ -860,7 +860,7 @@
                             </form>
                             <hr class="hr-line" />
 
-                            <div class="xstep-actions text-right">
+                            <div style="display:flex;justify-content: space-between;">
                               <button mdbBtn size="sm" class="custom-btn" (click)="river_monitoring_stepper.previous()">BACK</button>
                               <button mdbBtn size="sm" class="custom-btn-blue" (click)="createWaterTestDetails()">SUBMIT</button>
                             </div>
@@ -872,7 +872,7 @@
                     <mdb-tab heading="Participation Certificates" xstyle="height:500px">
                       <div class="bg-white mt-5">
                         <div *ngIf="this.reports.length == 0" class="row mt-2"
-                        style="height:450px; background-color:white;xmargin-left: -35px;xmargin-right: -35px;">
+                        style="height:450px; background-color:white">
                         <div class="col-12 text-center mt-5">
                           <p class="mt-4">Sorry! We don't have any reports to view at the moment. Would you like to contribute and
                             create a new report?</p>
@@ -882,7 +882,7 @@
                         <div *ngIf="this.reports.length != 0" class="xrow mt-2"
                         style="min-height:450px; background-color:white;margin-left: -15px;margin-right: -15px;">
                         <div class="text-center">
-                          <h3 class="stepper-heading text-left ml-5">Certificates</h3>
+                          <h4 class="stepper-heading text-left ml-5">Certificates</h4>
 
                         </div>
                         <div class="search-results" infiniteScroll [infiniteScrollDistance]='2' [infiniteScrollThrottle]='10'

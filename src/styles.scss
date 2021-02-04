@@ -161,9 +161,10 @@
   opacity:1;
 
 }
-.tab-content{
-  margin-top:25px !important;
+.tab-content{ //removed because it was affecting agm map info
+  margin-top:15px !important;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
+  min-height:230px !important;
 }
 //Classic Tabs
 
@@ -181,10 +182,33 @@
   font-weight:500;
   min-height:16px;
 }
-//
-input{
+//<AGM-MAP INFO popup//
+.agm-info-window-content{
+  // width:300px !important;
+  height:300px !important;
+  overflow: scroll !important;
 
+  // max-width:300px !important;
+  // max-height:300px !important;
 }
+.gm-style .gm-style-iw {
+  font-family: 'Quicksand', sans-serif !important;
+  color:black !important;
+  font-size:0.9rem !important;
+  letter-spacing: 1px !important;
+}
+  .gm-style-iw
+{
+  min-height:350px !important;
+  max-height:350px !important;
+  min-width:650px !important;
+}
+.gm-style-iw-c{
+  min-height:350px !important;
+  max-height:350px !important;
+  min-width:650px !important;
+}
+//<AGM-MAP INFO//
 
 //images
 .notes{
@@ -375,8 +399,23 @@ ul.stepper.horizontal .step-title {
   }
 }
 
+@include media-breakpoint-down(sm)
+{
+  .gm-style-iw
+{
+  min-height:350px !important;
+  max-height:350px !important;
+  min-width:375px !important;
+}
+.gm-style-iw-c{
+  min-height:350px !important;
+  max-height:350px !important;
+  min-width:375px !important;
+}
+}
+
 @media (min-width: 500px){
   .container {
-    max-width: 470px;
+    // max-width: 470px;
   }
 }
