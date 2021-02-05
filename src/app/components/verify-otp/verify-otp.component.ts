@@ -23,7 +23,7 @@ export class VerifyOtpComponent implements AfterViewInit {
   constructor(private orolService: OrolService, private win: WindowService, private router: Router, private spinnerService: SpinnerService) { }
   ngAfterViewInit(): void {
     this.otpModal.show();
-    console.log('userId is:', this.userName);
+    console.log('username : ', this.userName);
   }
 
   ngOnInit(): void {

@@ -39,14 +39,21 @@ export class ToolbarComponent implements OnInit {
     this.orolService.userDetailsSubject.subscribe(data => {
       if(JSON.stringify(data) === '{}'){
         this.name = "";
+        this.avatarURL="../../assets/icons/profile.png";
       }
       else{
 
         var user = JSON.parse(localStorage.getItem('User'));
         this.user=user;
 
+        if(user.firstName != undefined){
         this.name = user.firstName + ' '+user.lastName;
         this.avatarURL = user.avatarURL;
+      }
+      else{
+        this.name = "+91"+user.phoneNumber;
+        this.avatarURL="../../assets/icons/profile.png";
+      }
       }
     });
   }
