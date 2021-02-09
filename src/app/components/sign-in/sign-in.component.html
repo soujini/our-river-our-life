@@ -17,12 +17,12 @@ aria-labelledby="myBasicModalLabel" aria-hidden="true">
       <div class="formGroup">
         <input id="userName" mdbInput type="text" class="form-control custom-form-control" placeholder="Mobile Number or Email" #userName required (keyup)="validate($event);">
       </div>
-      <div [ngClass]="this.mode == 'phone' ?'visible':'invisible captcha-height'" class="formGroup text-center mt-2" id="recaptcha-container"></div>
+      <div [ngClass]="this.mode == 'phone' ?'visible':'invisible captcha-height'" class="formGroup text-center mt-4" id="recaptcha-container"></div>
       <div class="formGroup mt-2" [ngClass]="this.showPassword == true ?'visible':'invisible captcha-height'">
         <input id="userPassword" mdbInput type="password" class="form-control custom-form-control" placeholder="Password" #userPassword required>
 
       </div>
-      <div class="formGroup text-center">
+      <div class="formGroup text-center mt-3">
         <button [disabled]="loading" (click)="signIn(userName.value, userPassword.value)" type="button" class="btn btn-primary btn-rounded">{{loginBtnText}}</button>
       </div>
     </div>
@@ -31,7 +31,7 @@ aria-labelledby="myBasicModalLabel" aria-hidden="true">
         <span (click)="forgotPassword()">Forgot Password?</span>
       </div>
       <div class="redirectToLogin">
-        <span>Not a Member?<span class="redirect" (click)="register()"> Register</span></span>
+        <span>Not a Member?<span class="redirect" style="cursor:pointer" (click)="register()"> Register</span></span>
       </div>
     </div>
   </div>

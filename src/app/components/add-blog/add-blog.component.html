@@ -1,156 +1,21 @@
+<div class="add-blog">
 <mdb-card>
   <div class="container">
     <div fxLayout="column" class="blog-details">
       <div class="container">
         <div fxLayout="row">
           <h1 class="blocks">
-            {{post.data?.title}} 
+            {{post.data?.title}}
           </h1>
+
         </div>
-        <h4> 
+        <p class="mt-2" style="display:grid">
           {{ post.data?.author?.first_name }} {{ post.data?.author?.last_name }}
-        </h4>
-        <div class="post-body" [innerHTML]="post.data?.body"></div>
+          <span>Updated On : {{post.data?.updated |date}}</span>
+        </p>
+        <div class="post-body mt-5" [innerHTML]="post.data?.body"></div>
       </div>
     </div>
   </div>
 </mdb-card>
-
-
-
-
-<!-- <div class="banner text-center">
-  <h2 class="title"><span>Add Blog</span>
-  </h2>
-</div> -->
-<!-- <div class="overlay form-group mt-2">
-  <form class="alert-box form form-horizontal text-left col-lg-8 col-xs-12" [formGroup]="blogForm">
-    <div class="row">
-      <label for="templateType" class="col-md-3 mt-2 control-label">Type <span class="star">*</span> </label>
-      <div class="col-md-9 mt-2 p-0">
-        <select id="drop" class="custom-select" formControlName="templateType">
-          <option value="" selected disabled>Select Type</option>
-          <option value="1">Template 1</option>
-          <option value="2">Template 2</option>
-        </select><br />
-        <div class="error-message-div mt-1">
-          <p *ngIf="blogForm.get('templateType').errors?.required && this.submitted == true" class="errorMessage">
-            <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field is
-            required.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <label for="featuredTitle" class="col-md-3 mt-2 control-label">Title <span class="star">*</span> </label>
-      <div class="col-md-9 mt-2 p-0">
-        <input for="featuredTitle" type="text" value='' class="form-control input-latitude" id="featuredTitle"
-          formControlName="featuredTitle" placeholder="Enter title">
-        <div class="error-message-div mt-1">
-          <p *ngIf="blogForm.get('featuredTitle').errors?.required && this.submitted == true" class="errorMessage"><img
-              class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field is required.</p>
-              <p *ngIf="blogForm.get('featuredTitle').errors?.maxlength" class="errorMessage">
-                <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field must not exceed 200
-                characters.
-              </p>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <label for="featuredDescription" class="col-md-3 mt-2 control-label">Description <span class="star">*</span> </label>
-      <div class="col-md-9 mt-2 p-0">
-        <textarea type="text" value='' class="form-control" id="featuredDescription"
-          formControlName="featuredDescription" placeholder="Description">
-                </textarea>
-        <div class="error-message-div mt-1">
-          <p *ngIf="blogForm.get('featuredDescription').errors?.required && this.submitted == true"
-            class="errorMessage"><img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field is
-            required.</p>
-            <p *ngIf="blogForm.get('featuredDescription').errors?.maxlength" class="errorMessage">
-              <img class="img-add" src="../../../assets/icons/exclamation_icon.svg"> This field must not exceed 1000
-              characters.
-            </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-3 mt-2 addFlora" class="control-label">Featured Photo  <span class="star">*</span></label>
-      <div class="d-flex">
-        <div class="flexbox1" style="height:176px; width:176px; line-height:54px;">
-          <div class="frame">
-            <img [src]=imgResultAfterCompress class="img-list" height="auto" width="176px">
-          </div>
-        </div>
-        <div class="flexbox2 ml-4">
-          <div class="flex">
-            <button type="button" class="btn custom-btn" (click)="compressFile()">Upload Image</button>
-            <button class="trash bg ml-2" (click)="deleteImage()"><img src="../../assets/icons/trash_icon_grey.svg"></button>
-            <div class="error-message-div mt-1">
-              <p *ngIf="imageFile == null && this.submitted == true" class="errorMessage"><img class="img-add"
-                  src="../../../assets/icons/exclamation_icon.svg"> Please select a photo.</p>
-            </div>
-          </div>
-          <div  class="icon-info">
-            <span class="notes mt-2">{{note}}</span><br>
-            <span class="notes2 mt-2">{{info}}</span><br>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- <div class="row">
-      <label class="col-md-3 mt-2 control-label">Featured Additional Photos </label>
-      <div class="col-md-9 mt-2 p-0">
-        <img *ngFor='let url of featuredAdditionalPhotos' [src]="url" height="50px" width="50px" style="margin: 3px;">
-        <div>
-          <label class="custom-file-uploader">
-            <input id="file" type="file" class="form-control" multiple
-              (change)="onFeaturedAdditionalPhoto($event)">Upload
-          </label>
-        </div>
-      </div>
-
-    </div>
-
-
-    <div class="row" *ngIf="this.blogForm.get('templateType').value == 2">
-      <label for="featuredVideo" class="col-md-3 mt-2 control-label">Featured Videos </label>
-      <div class="input-group col-md-9 mt-2 p-0">
-        <div class="input-group-prepend">
-          <span id="featuredVideo" class="input-group-text md-addon"
-            style="border-left:1px solid #c9c9c9">https://</span>
-        </div>
-        <input mdbInput type="text" class="form-control" formControlName="featuredVideo" id="inlineFormInputGroupMD"
-          placeholder="Enter the Featured Videos URL">
-      </div>
-    </div>
-
-    <div class="row" formArrayName="featuredAdditionalVideos" *ngIf="this.blogForm.get('templateType').value == 2">
-      <label for="featuredAdditionalVideos" class="col-md-3 mt-2 control-label">Featured Additional Videos</label>
-      <div class="col-md-9 mt-2 p-0">
-        <div *ngFor="let su of blogForm.get('featuredAdditionalVideos'); let i=index" [formGroupName]="i"
-          class="input-group attach_link mb-2">
-          <div class="input-group-prepend">
-            <span id="featuredAdditionalVideos" class="input-group-text" xclass="md-addon">https://</span>
-          </div>
-          <input type="text" class="form-control input-color append" formControlName="featuredAdditionalVideos"
-            placeholder=" Enter the Featured Additional Videos URL " id="inlineFormInputGroupMD">
-          <div class="input-group-append">
-            <span class="input-group-text">
-              <button *ngIf="this.blogForm.get('featuredAdditionalVideos')['controls'][i]['controls'].value != ''"
-                class="trash bg" (click)="removeScreenshotURL(i)"><img class="trash-icon"
-                  src="../../assets/icons/trash_icon_grey.svg"></button>
-            </span>
-          </div>
-
-        </div>
-        <button class="col-xs-12 btn_white_dashed" (click)="addScreenshotURL()">+ Additional Videos </button>
-
-      </div>
-    </div> -->
-
-    <!-- <div class="text-right">
-      <button mdbBtn class="custom-btn-orol"  (click)="createblog()">Submit</button>
-    </div>
-  </form>
-</div> -->
+</div>

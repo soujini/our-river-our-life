@@ -31,13 +31,13 @@
           <mdb-card-title>
             <div class="blog-card">
               <div class="view overlay rounded xz-depth-2 mb-4 waves-light bg-green" mdbWavesEffect>
-                <img class="img-fluid blog-images" [src]=card.featuredPhoto.imageURL alt="Sample image">
+                <img class="img-fluid blog-images" [src]=card.featuredPhoto alt="Sample image">
                 <a>
                   <div class="mask rgba-white-slight"></div>
                 </a>
               </div>
-              <h4 class="font-weight-bold mb-3"><strong>{{card.featuredTitle}}</strong></h4>
-              <p>by <a class="font-weight-bold">{{card.contributorName}}</a>, {{card.createdAt | date:"dd-MMM-y"}}
+              <h4 class="font-weight-bold mb-3" style="height:60px"><strong>{{card.featuredTitle}}</strong></h4>
+              <p>By : <a class="font-weight-bold">{{card.contributorName}}</a><br/> Updated on : {{card.updated | date}}
               </p>
             </div>
           </mdb-card-title>

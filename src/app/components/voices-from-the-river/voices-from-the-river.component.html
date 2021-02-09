@@ -1,18 +1,18 @@
 <div class="content">
-  <div class="text-right">
+  <div class="text-right col-12">
     <a href="https://buttercms.com/login/" target="_blank">
-      <button type="button" class="btn xmt-2 btn-primary btn-rounded" style="width:200px">Add Post</button>
+      <button type="button" class="btn btn-primary btn-rounded" style="width:200px">Add Post</button>
     </a>
   </div>
   <div class="banner text-center">
     <h2 class="title"><span>All Posts</span>
     </h2>
   </div>
-  <div class="search-results" infiniteScroll [infiniteScrollDistance]='2' [infiniteScrollThrottle]='50'
+  <div xclass="search-results" infiniteScroll [infiniteScrollDistance]='2' [infiniteScrollThrottle]='50'
     [scrollWindow]="false" (scrolled)="onScroll()">
     <div class="outer-block">
       <section class="text-center">
-        <div class="row">
+        <div class="col-12 row">
           <div class="col-lg-3 col-md-12 mb-5" *ngFor="let post of posts">
             <div class="blog-card">
               <div class="view overlay rounded xz-depth-2 mb-4 waves-light bg-green" mdbWavesEffect>
@@ -22,7 +22,8 @@
                   <div class="mask rgba-white-slight"></div>
                 </a>
               </div>
-              <h4 class="font-weight-bold mb-3"><strong>{{post.title}}</strong></h4>
+              <h4 class="font-weight-bold mb-3" style="height:65px"><strong>{{post.title}}</strong></h4>
+              <p style="display:grid">By : {{post.author?.first_name }} {{ post.author?.last_name }}<span>Updated On : {{post.updated |date}}</span></p>
               <p class="dark-grey-text ellipsis">{{post.summary}}</p>
               <a mdbBtn class="btn btn-primary btn-rounded" rounded="true" [routerLink]="[post.slug]"
                 mdbWavesEffect>Read

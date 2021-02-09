@@ -27,8 +27,6 @@ const routes: Routes = [
   path: 'river-monitoring',
   loadChildren: () => import('./components/river-monitoring/river-monitoring.module').then(m => m.RiverMonitoringModule)
 },
-  // { path: 'voices-from-the-river', component: VoicesFromTheRiverComponent },
-  // { path: 'add-blog', component: AddBlogComponent },
   { path: 'flood-watch', component: FloodWatchComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
   { path: '',redirectTo: 'home',pathMatch: 'full'},

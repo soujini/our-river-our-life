@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrolService } from '../../services/orol.service';
+import { butterService } from '../../services';
+import { SpinnerService } from '../../services/spinner.service';
 
 @Component({
   selector: 'app-recent-blog-post',
@@ -7,6 +9,7 @@ import { OrolService } from '../../services/orol.service';
   styleUrls: ['./recent-blog-post.component.scss']
 })
 export class RecentBlogPostComponent implements OnInit {
+  posts:any;
 
     // cards = [
     //   // {
@@ -54,9 +57,29 @@ export class RecentBlogPostComponent implements OnInit {
     slides: any = [[]];
     cards = [];
 
-    constructor( private orolService: OrolService,) {
-      this.getRecentBlogs();
+    constructor( private orolService: OrolService, private spinnerService: SpinnerService) {
+      this.getPostsFromButterCMS();
 
+    }
+    getPostsFromButterCMS(){
+      this.spinnerService.setSpinner(true);
+      butterService.post.list({
+        page: 1,
+        page_size: 10
+      }).then((res) => {
+        this.posts = res.data.data;
+        for (var i = 0; i < this.posts.length; i++) {
+          console.log(this.posts[i].featured_image);
+          this.cards.push({
+            featuredTitle: this.posts[i].title,
+            featuredPhoto: this.posts[i].featured_image,
+            updated: this.posts[i].updated,
+            contributorName: this.posts[i].author.first_name + " " + this.posts[i].author.last_name
+
+          });
+        }
+        this.slides = this.chunk(this.cards, 4);
+      });
     }
 
     ngOnInit() {

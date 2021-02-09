@@ -1,5 +1,5 @@
 <div class="river-monitoring">
-  <mdb-tabset id="river_monitoring_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'"
+  <mdb-tabset *ngIf="this.user != null" id="river_monitoring_tabs" [buttonClass]="'classic-tabs tabs-transparent custom-tabs'"
   [contentClass]="'card'" class="classic-tabs">
   <mdb-tab heading="Create Report">
     <div class="bg-white">
@@ -869,14 +869,14 @@
                       </div>
                     </mdb-tab>
 
-                    <mdb-tab heading="Participation Certificates" xstyle="height:500px">
+                    <mdb-tab heading="Certification/ River Monitoring Reports" xstyle="height:500px">
                       <div class="bg-white mt-5">
                         <div *ngIf="this.reports.length == 0" class="row mt-2"
                         style="height:450px; background-color:white">
                         <div class="col-12 text-center mt-5">
-                          <p class="mt-4">Sorry! We don't have any reports to view at the moment. Would you like to contribute and
-                            create a new report?</p>
-                            <p class="mt-4">Please click on <strong>'CREATE REPORT'</strong> to add a new report.</p>
+                          <h5 class="mt-4">Sorry! We don't have any reports to view at the moment. Would you like to contribute and
+                            create a new report?</h5>
+                            <h5 class="mt-4">Please click on <strong>'CREATE REPORT'</strong> to add a new report.</h5>
                           </div>
                         </div>
                         <div *ngIf="this.reports.length != 0" class="xrow mt-2"
@@ -902,4 +902,12 @@
                     </div>
                   </mdb-tab>
                 </mdb-tabset>
+
+                  <div *ngIf="this.user == null" class="row xmt-2">
+                  <div class="col-12 text-center mt-5">
+                    <!-- <p class="mt-4"> <strong> -->
+                      <!-- <button class="btn-custom-blue" mdbBtn type="button" rounded="true" mdbWavesEffect>Register </button></strong> or <strong><button class="btn-custom-blue" mdbBtn type="button" rounded="true" mdbWavesEffect>Login</button></strong> to access this feature.</p> -->
+                      <h5 class="mt-4">Please <strong>'LOGIN'</strong> or <strong>'REGISTER'</strong> to access this feature.</h5>
+                    </div>
+                  </div>
               </div>

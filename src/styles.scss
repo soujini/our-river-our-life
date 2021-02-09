@@ -387,6 +387,17 @@ ul.stepper.horizontal .step .step-title:before {
 
 }
 //STEPPER
+
+#recaptcha-container > div > div{
+  width: 100% !important;
+}
+
+//To Remove unwarranted outline
+*:focus {
+  outline: 0 !important;
+  outline: none !important;
+  color:green !important;
+}
 @include media-breakpoint-down(md) {
   links ul li{
     width:50%;

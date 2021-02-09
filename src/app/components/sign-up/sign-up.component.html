@@ -17,7 +17,7 @@
         <div>
           <p class="red-text text-center" style="font-size:11px;min-height:10px">{{errorMessage}}</p>
           <div class="row">
-            <div class="formGroup col-sm-6">
+            <div class="formGroup col-sm-6 mt-2">
               <input type="firstName" class="form-control" placeholder="First Name" #userFirstName required>
             </div>
             <div class="formGroup col-sm-6 mt-2">
@@ -35,7 +35,7 @@
             <input type="password" class="form-control" placeholder="Password" #userPwd required>
           </div>
 
-          <div class="formGroup text-center">
+          <div class="formGroup text-center mt-3">
             <button (click)="signUp(userEmail.value, userPwd.value, userPhone.value, userFirstName.value, userLastName.value)" type="button"
               class="btn btn-primary btn-rounded mt-2">Sign Up</button>
           </div>

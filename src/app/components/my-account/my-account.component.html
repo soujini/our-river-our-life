@@ -115,11 +115,8 @@
       </div>
 
     </mdb-tab>
-    <!-- <mdb-tab heading="Draft">
 
-    </mdb-tab> -->
-
-    <mdb-tab heading="PARTICIPATION CERTIFICATES">
+    <!-- <mdb-tab heading="CERTIFICATION / RIVER MONITORING REPORTS">
       <div class="xrow bg-white mt-2 pt-5" style="min-height:450px; margin-left: -35px;margin-right: -35px;">
         <div class="text-center">
           <h3 class="stepper-heading text-left ml-5">Certificates</h3>
@@ -130,7 +127,7 @@
           <div class="col-12 mt-4 text-left">
             <ul style="list-style-type:none" *ngFor="let report of reports">
               <li>
-                <!-- <a [href]="report.certificateURL" target="_blank">{{report.certificateURL}}</a> -->
+
                 <div class="card_certificate">
                   <a [href]="report.certificateURL" target="_blank" style="font-size:20px">View Certificate</a>
                   <span>By {{report.contributorName}}</span>
@@ -141,7 +138,39 @@
           </div>
         </div>
       </div>
-    </mdb-tab>
+    </mdb-tab> -->
+    <mdb-tab heading="Certification/ River Monitoring Reports" xstyle="height:500px">
+      <div class="bg-white mt-5">
+        <div *ngIf="this.reports.length == 0" class="row mt-2"
+        style="height:450px; background-color:white">
+        <div class="col-12 text-center mt-5">
+          <h5 class="mt-4">Sorry! We don't have any reports to view at the moment. Would you like to contribute and
+            create a new report?</h5>
+            <h5 class="mt-4">Please click on <strong>'CREATE REPORT'</strong> to add a new report.</h5>
+          </div>
+        </div>
+        <div *ngIf="this.reports.length != 0" class="xrow mt-2"
+        style="min-height:450px; background-color:white;margin-left: -15px;margin-right: -15px;">
+        <div class="text-center">
+          <h4 class="stepper-heading text-left ml-5">Certificates</h4>
+
+        </div>
+        <div class="search-results" infiniteScroll [infiniteScrollDistance]='2' [infiniteScrollThrottle]='10'
+        [scrollWindow]="false" (scrolled)="onScroll()">
+        <div class="col-12 mt-4 text-left">
+          <ul style="list-style-type:none" *ngFor="let report of reports">
+            <li>
+              <div class="card_certificate">
+                <a [href]="report.certificateURL" target="_blank" style="font-size:20px">View Certificate</a>
+                <span>By {{report.contributorName}}</span>
+                <span>On {{report.generalInformation.activityDate |date}}</span>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mdb-tab>
 
   </mdb-tabset>
 </div>

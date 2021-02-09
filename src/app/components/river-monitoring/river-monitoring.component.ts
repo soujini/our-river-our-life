@@ -18,7 +18,7 @@ import { SpinnerService } from '../../services/spinner.service';
 })
 export class RiverMonitoringComponent implements OnInit {
   @ViewChild('river_monitoring_stepper', { static: true }) river_monitoring_stepper: MdbStepperComponent
-  @ViewChild('search', { static: true }) public searchElementRef: ElementRef;
+  @ViewChild('search', { static: false }) public searchElementRef: ElementRef;
   defaultImageURL: string = "../../../assets/icons/default_image_upload.jpg";
   @ViewChild('basicModal') basicModal: ModalDirective;
   @ViewChild('timePicker', { static: true }) timePicker: ClockPickerComponent;
@@ -151,15 +151,62 @@ export class RiverMonitoringComponent implements OnInit {
   getAddress: any;
   lat: number;
   lng: number;
+  user:any;
+  userName :any = "";
+password :any = "";
+phoneNumber :any = "";
+isLogin =false;
+isRegister:boolean=false;
+isRecoverPassword:boolean=false;
+isVerifyOTP:boolean=false;
+loading = false;
+submitted = false;
+isEyeHidden:boolean=true;
+isGetInvolved:boolean=false;
+avatarURL:String="../../assets/icons/profile.png";
 
   constructor(private fb: FormBuilder, private orolService: OrolService, private router: Router, private imageCompress: NgxImageCompressService,
     private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private spinnerService: SpinnerService) {
       this.createForm();
+      var user = JSON.parse(localStorage.getItem('User'));
+
+      this.orolService.userDetailsSubject.subscribe(data => {
+        if(JSON.stringify(data) === '{}'){
+        }
+        else{
+          var user = JSON.parse(localStorage.getItem('User'));
+          this.user=user;
+        }
+      });
+
       this.surroundingArray = this.activityForm.controls.surroundings as FormArray;
 
     }
     mapReady(event) {
       this.setCurrentPosition();
+      // this.mapsAPILoader.load().then(() => {
+      //   let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+      //     types: ["address"]
+      //   });
+      //
+      //   autocomplete.addListener("place_changed", () => {
+      //     this.ngZone.run(() => {
+      //       let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+      //       //verify result
+      //       if (place.geometry === undefined || place.geometry === null) {
+      //         return;
+      //       }
+      //
+      //       //set latitude, longitude and zoom
+      //       this.activityForm.get('generalInformation').patchValue({
+      //         latitude: place.geometry.location.lat(),
+      //         longitude: place.geometry.location.lng(),
+      //         location: place.formatted_address,
+      //       });
+      //       this.centerLoc = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() };
+      //     });
+      //   });
+      // });
     }
 
     gotoTop() {
@@ -170,6 +217,7 @@ export class RiverMonitoringComponent implements OnInit {
     });
   }
     ngOnInit() {
+      if(this.user){
       this.setCurrentTime();
       this.zoom = 13;
       this.getWaterTestDetails();
@@ -197,7 +245,7 @@ export class RiverMonitoringComponent implements OnInit {
         });
       });
     }
-
+    }
 
     setCurrentTime() {
       let dt = new Date();

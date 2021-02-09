@@ -1,5 +1,6 @@
 .content{
   background-color: white;
+  padding-bottom:50px;
   }
   .search-results {
     height:500px;
@@ -15,8 +16,8 @@
     sans-serif;padding-top:35px;
     padding-bottom:35px;
   }
-  
-  
+
+
   .btn-primary {
     background-color: #34495e !important;
     color: #fff;
@@ -50,40 +51,9 @@
    -webkit-line-clamp: 1;
    -webkit-box-orient: vertical;
   }
-  .modal-dialog-full-width {
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    max-width:none !important;
-
-}
-.modal-content-full-width  {
-    height: auto !important;
-    min-height: 100% !important;
-    border-radius: 0 !important;
-    background-color: #fff !important
-}
-
-.modal-header-full-width  {
-    border-bottom: 1px solid #9ea2a2 !important;
-}
-
-.modal-footer-full-width  {
-    border-top: 1px solid #9ea2a2 !important;
-}
 
 .title-name{
   text-align: center;
-}
-.modal-dialog{
-  overflow-y: initial !important
-}
-.modal-body{
-  // height: 80vh;
-  overflow-y: auto;
-  padding-left: 350px;
-  padding-right: 350px;
 }
 
 .description {
@@ -91,4 +61,3 @@
   text-align: justify;
   letter-spacing: 1px;
 }
-

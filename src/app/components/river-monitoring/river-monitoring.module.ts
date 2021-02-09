@@ -16,6 +16,7 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
+
 @NgModule({
   declarations: [RiverMonitoringComponent],
   imports: [
@@ -42,7 +43,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
   ],
   exports: [
-    RiverMonitoringComponent
+    RiverMonitoringComponent,
 
   ]
 })
