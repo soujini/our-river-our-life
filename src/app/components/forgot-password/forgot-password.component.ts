@@ -38,4 +38,8 @@ export class ForgotPasswordComponent implements AfterViewInit {
       this.errorMessage = error.message;
     })
   }
+  login(){
+    this.isRecoverPassword.emit(false);
+    this.isLogin.emit(true);
+  }
 }

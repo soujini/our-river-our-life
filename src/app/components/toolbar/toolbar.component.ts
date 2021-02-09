@@ -14,73 +14,85 @@ import { ModalDirective } from 'ng-uikit-pro-standard';
 export class ToolbarComponent implements OnInit {
   @ViewChild('phone') phone: ElementRef
   loginForm: FormGroup;
-  name:any="";
-  userName :any = "";
-  password :any = "";
-  phoneNumber :any = "";
-  isLogin =false;
-  isRegister:boolean=false;
-  isRecoverPassword:boolean=false;
-  isVerifyOTP:boolean=false;
+  name: any = "";
+  userName: any = "";
+  password: any = "";
+  phoneNumber: any = "";
+  isLogin = false;
+  isRegister: boolean = false;
+  isRecoverPassword: boolean = false;
+  isVerifyOTP: boolean = false;
   loading = false;
   submitted = false;
-  isEyeHidden:boolean=true;
-  isGetInvolved:boolean=false;
-  avatarURL:String="../../assets/icons/profile.png";
+  isEyeHidden: boolean = true;
+  isGetInvolved: boolean = false;
+  avatarURL: String = "../../assets/icons/profile.png";
   public user;
 
   constructor(
     private formBuilder: FormBuilder,
     public router: Router,
     public route: ActivatedRoute,
-    private orolService:OrolService,
-    private authService:AuthService
-  ){
+    private orolService: OrolService,
+    private authService: AuthService
+  ) {
     this.orolService.userDetailsSubject.subscribe(data => {
-      if(JSON.stringify(data) === '{}'){
+      if (JSON.stringify(data) === '{}') {
         this.name = "";
+        this.avatarURL = "../../assets/icons/profile.png";
       }
-      else{
+      else {
 
         var user = JSON.parse(localStorage.getItem('User'));
-        this.user=user;
+        this.user = user;
 
-        this.name = user.firstName + ' '+user.lastName;
-        this.avatarURL = user.avatarURL;
+        if (user.firstName != undefined) {
+          this.name = user.firstName + ' ' + user.lastName;
+          this.avatarURL = user.avatarURL;
+        }
+        else {
+          this.name = "+91" + user.phoneNumber;
+          this.avatarURL = "../../assets/icons/profile.png";
+        }
       }
     });
   }
 
-  ngOnInit()  {
+
+  ngOnInit() {
     // var user = JSON.parse(localStorage.getItem('User'));
     // if(user){
     //   this.avatarURL = user.avatarURL;
     // }
   }
 
-  setIsRegister(event){
+  gotoBlogPosts() {
+    this.router.navigate([`/blog`]);
+  }
+
+  setIsRegister(event) {
     this.isRegister = event;
   }
 
-  setIsRecoverPassword(event){
+  setIsRecoverPassword(event) {
     this.isRecoverPassword = event;
   }
-  setIsLogin(event){
+  setIsLogin(event) {
     this.isLogin = event;
   }
-  setisVerifyOTP(event){
-    this.isVerifyOTP=event;
+  setisVerifyOTP(event) {
+    this.isVerifyOTP = event;
   }
-  setUserName(event){
-    this.userName=event;
+  setUserName(event) {
+    this.userName = event;
   }
-  setPassword(event){
-    this.password=event;
+  setPassword(event) {
+    this.password = event;
   }
-  setPhoneNumber(event){
-    this.phoneNumber=event;
+  setPhoneNumber(event) {
+    this.phoneNumber = event;
   }
-  logout(){
+  logout() {
     this.authService.SignOut();
   }
 

@@ -17,8 +17,8 @@ aria-labelledby="myBasicModalLabel" aria-hidden="true">
       <div class="formGroup">
         <input id="userName" mdbInput type="text" class="form-control custom-form-control" placeholder="Mobile Number or Email" #userName required (keyup)="validate($event);">
       </div>
-      <div [ngClass]="this.mode == 'phone' ?'visible':'invisible captcha-height'" class="formGroup text-center" id="recaptcha-container"></div>
-      <div class="formGroup mt-3" [ngClass]="this.showPassword == true ?'visible':'invisible captcha-height'">
+      <div [ngClass]="this.mode == 'phone' ?'visible':'invisible captcha-height'" class="formGroup text-center mt-2" id="recaptcha-container"></div>
+      <div class="formGroup mt-2" [ngClass]="this.showPassword == true ?'visible':'invisible captcha-height'">
         <input id="userPassword" mdbInput type="password" class="form-control custom-form-control" placeholder="Password" #userPassword required>
 
       </div>

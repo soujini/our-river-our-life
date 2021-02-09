@@ -4,7 +4,7 @@ import { VoicesFromTheRiverComponent } from './voices-from-the-river.component';
 import {AddBlogComponent} from '../add-blog/add-blog.component'
 const routes: Routes = [
   { path: '', component: VoicesFromTheRiverComponent },
-  { path: 'add-blog', component: AddBlogComponent },
+  { path: ':slug', component: AddBlogComponent },
 ];
 
 @NgModule({

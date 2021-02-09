@@ -20,24 +20,24 @@
             <div class="formGroup col-sm-6">
               <input type="firstName" class="form-control" placeholder="First Name" #userFirstName required>
             </div>
-            <div class="formGroup col-sm-6">
+            <div class="formGroup col-sm-6 mt-2">
               <input type="lastName" class="form-control" placeholder="Last Name" #userLastName required>
             </div>
           </div>
-          <div class="formGroup">
+          <div class="formGroup mt-2">
             <input type="email" class="form-control" placeholder="Email Address" #userEmail required>
           </div>
 
-          <div class="formGroup">
+          <div class="formGroup mt-2">
             <input type="mobilenumber" class="form-control" placeholder="Mobile Number" #userPhone required>
           </div>
-          <div class="formGroup">
+          <div class="formGroup mt-2">
             <input type="password" class="form-control" placeholder="Password" #userPwd required>
           </div>
 
           <div class="formGroup text-center">
             <button (click)="signUp(userEmail.value, userPwd.value, userPhone.value, userFirstName.value, userLastName.value)" type="button"
-              class="btn btn-primary btn-rounded">Sign Up</button>
+              class="btn btn-primary btn-rounded mt-2">Sign Up</button>
           </div>
           <div class="text-center" style="font-size:12px;color:#6c6666">
             <span>By registering you accept the</span>
@@ -46,9 +46,6 @@
           </div>
         </div>
         <div>
-          <div class="formGroup">
-            <span class="or"><span class="orInner">Or</span></span>
-          </div>
           <div class="redirectToLogin">
             <span>Already have an account? <span class="redirect" (click)="login()">Log In</span></span>
           </div>

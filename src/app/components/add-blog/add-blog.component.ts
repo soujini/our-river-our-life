@@ -1,53 +1,109 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormArray,Validators } from '@angular/forms';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Observable} from 'rxjs';
+import {ActivatedRoute} from '@angular/router';
+import {butterService} from '../../services';
+import {map, take} from 'rxjs/operators';
 
-import { OrolService } from '../../services/orol.service';
-import { SpinnerService } from '../../services/spinner.service';
-import { NgxImageCompressService } from 'ngx-image-compress';
 @Component({
   selector: 'app-add-blog',
   templateUrl: './add-blog.component.html',
-  styleUrls: ['./add-blog.component.scss']
+  styleUrls: ['./add-blog.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AddBlogComponent implements OnInit {
-  blogForm: FormGroup;
-  public submitted: boolean = false;
-  public imageFile: File;
-  note=".jpg,.png, files accepted";
-  info = "(Max. size 100KB)";
-  featuredAdditionalVideosArray: any = [];
-  featuredAdditionalVideos = [];
-  // featuredPhoto= "../../../assets/icons/marker.svg";
-  imagefeaturedPhoto = [];
-  imgResultBeforeCompress: string;
-  imgResultAfterCompress: string;
-  featuredPhoto: string;
-  featuredAdditionalPhotos = [];
-  public imagefeaturedAdditionalPhotos: File[] = [];
 
-  constructor(private fb: FormBuilder, private orolService: OrolService, private imageCompress: NgxImageCompressService,
-    private spinnerService: SpinnerService) {
-    this.createForm();
-    this.featuredAdditionalVideosArray = this.blogForm.controls.featuredAdditionalVideos as FormArray;
-
+ 
+  constructor(protected route: ActivatedRoute) {
   }
 
-  ngOnInit(): void {
-  }
+  protected slug$: Observable<string>;
+  public post = {
+      meta: null,
+      data: null
+  };
 
-  createForm() {
-    var user = JSON.parse(localStorage.getItem('User'));
-    this.blogForm = this.fb.group({
-      templateType: ['', [Validators.required]],
-      userId: [user.id],
-      featuredTitle: ['',[Validators.required,Validators.maxLength(200)]],
-      featuredDescription: ['',[Validators.required,Validators.maxLength(1000)]],
-      featuredPhoto: this.fb.array([]),
-      featuredAdditionalPhotos: this.fb.array([]),
-      featuredVideo: [''],
-      featuredAdditionalVideos: this.fb.array([]),
-    });
+  ngOnInit() {
+      this.slug$ = this.route.paramMap
+          .pipe(
+              map(params => (params.get('slug')))
+          );
+
+      this.slug$.pipe(
+          take(1))
+          .subscribe(slug => {
+              butterService.post.retrieve(slug)
+                  .then((res) => {
+                      this.post = res.data;
+                  }).catch((res) => {
+                  console.log(res);
+              });
+          });
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { Component, OnInit } from '@angular/core';
+// import { FormBuilder, FormControl, FormGroup, FormArray,Validators } from '@angular/forms';
+
+// import { OrolService } from '../../services/orol.service';
+// import { SpinnerService } from '../../services/spinner.service';
+// import { NgxImageCompressService } from 'ngx-image-compress';
+// @Component({
+//   selector: 'app-add-blog',
+//   templateUrl: './add-blog.component.html',
+//   styleUrls: ['./add-blog.component.scss']
+// })
+// export class AddBlogComponent implements OnInit {
+//   blogForm: FormGroup;
+//   public submitted: boolean = false;
+//   public imageFile: File;
+//   note=".jpg,.png, files accepted";
+//   info = "(Max. size 100KB)";
+//   featuredAdditionalVideosArray: any = [];
+//   featuredAdditionalVideos = [];
+//   // featuredPhoto= "../../../assets/icons/marker.svg";
+//   imagefeaturedPhoto = [];
+//   imgResultBeforeCompress: string;
+//   imgResultAfterCompress: string;
+//   featuredPhoto: string;
+//   featuredAdditionalPhotos = [];
+//   public imagefeaturedAdditionalPhotos: File[] = [];
+
+//   constructor(private fb: FormBuilder, private orolService: OrolService, private imageCompress: NgxImageCompressService,
+//     private spinnerService: SpinnerService) {
+//     this.createForm();
+//     this.featuredAdditionalVideosArray = this.blogForm.controls.featuredAdditionalVideos as FormArray;
+
+//   }
+
+//   ngOnInit(): void {
+//   }
+
+  // createForm() {
+  //   var user = JSON.parse(localStorage.getItem('User'));
+  //   this.blogForm = this.fb.group({
+  //     templateType: ['', [Validators.required]],
+  //     userId: [user.id],
+  //     featuredTitle: ['',[Validators.required,Validators.maxLength(200)]],
+  //     featuredDescription: ['',[Validators.required,Validators.maxLength(1000)]],
+  //     featuredPhoto: this.fb.array([]),
+  //     featuredAdditionalPhotos: this.fb.array([]),
+  //     featuredVideo: [''],
+  //     featuredAdditionalVideos: this.fb.array([]),
+  //   });
+  // }
 
   // addScreenshotURL() {
   //   if (this.featuredAdditionalVideosArray.length < 4) {
@@ -57,25 +113,25 @@ export class AddBlogComponent implements OnInit {
   // removeScreenshotURL(index) {
   //   this.featuredAdditionalVideosArray.removeAt(index);
   // }
-  createblog() {
-    this.submitted = true;
-    this.orolService.createblog(this.blogForm.value, this.imageFile)
+  // createblog() {
+  //   this.submitted = true;
+  //   this.orolService.createblog(this.blogForm.value, this.imageFile)
 
-  }
-  deleteImage(){
-    this.imageFile=null;
-    this.imgResultAfterCompress="";
-  }
+  // }
+  // deleteImage(){
+  //   this.imageFile=null;
+  //   this.imgResultAfterCompress="";
+  // }
 
 
-  getId(url) {
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-    const match = url.match(regExp);
+  // getId(url) {
+  //   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  //   const match = url.match(regExp);
 
-    return (match && match[2].length === 11)
-      ? match[2]
-      : null;
-  }
+  //   return (match && match[2].length === 11)
+  //     ? match[2]
+  //     : null;
+  // }
   // onFeaturedAdditionalPhoto(event) {
   //   if (event.target.files && event.target.files[0]) {
   //     var length = event.target.files.length;
@@ -90,26 +146,26 @@ export class AddBlogComponent implements OnInit {
   //   }
   // }
 
-  dataURLtoFile(dataurl, filename) {
-    var arr = dataurl.split(','),
-      mime = arr[0].match(/:(.*?);/)[1],
-      bstr = atob(arr[1]),
-      n = bstr.length,
-      u8arr = new Uint8Array(n);
-    while (n--) {
-      u8arr[n] = bstr.charCodeAt(n);
-    }
-    return new File([u8arr], filename, { type: mime });
-  }
+  // dataURLtoFile(dataurl, filename) {
+  //   var arr = dataurl.split(','),
+  //     mime = arr[0].match(/:(.*?);/)[1],
+  //     bstr = atob(arr[1]),
+  //     n = bstr.length,
+  //     u8arr = new Uint8Array(n);
+  //   while (n--) {
+  //     u8arr[n] = bstr.charCodeAt(n);
+  //   }
+  //   return new File([u8arr], filename, { type: mime });
+  // }
 
-  compressFile() {
-    var orientation = -1;
-    this.imageCompress.uploadFile().then(({ image }) => {
-      this.imgResultBeforeCompress = image;
-      var filename = Date.now()+"-add-blog";
+  // compressFile() {
+  //   var orientation = -1;
+  //   this.imageCompress.uploadFile().then(({ image }) => {
+  //     this.imgResultBeforeCompress = image;
+  //     var filename = Date.now()+"-add-blog";
 // <<<<<<< Updated upstream
 // =======
-      console.log('Size in bytes was:', this.imageCompress.byteCount(image));
+      // console.log('Size in bytes was:', this.imageCompress.byteCount(image));
 // >>>>>>> Stashed changes
 //       this.imageCompress.compressFile(image, orientation, 50, 50).then(
 //         result => {
@@ -118,8 +174,8 @@ export class AddBlogComponent implements OnInit {
 //         }
 //       );
 
-    });
-  }
+  //   });
+  // }
   // onFeaturedPhoto(event) {
   //   if (event.target.files && event.target.files[0]) {
   //     var length = event.target.files.length;
@@ -136,6 +192,4 @@ export class AddBlogComponent implements OnInit {
 
   // }
 
-
-
-}
+// }
