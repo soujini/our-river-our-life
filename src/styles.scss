@@ -379,6 +379,14 @@ ul.stepper.horizontal .step-title {
 .form-group{
   margin-bottom:0px !important;
 }
+
+//STEPPER
+ul.stepper.horizontal .step .step-title:before {
+  height:25px !important;
+  width:25px !important;
+
+}
+//STEPPER
 @include media-breakpoint-down(md) {
   links ul li{
     width:50%;
@@ -398,6 +406,7 @@ ul.stepper.horizontal .step-title {
     padding-right:5px;
   }
 }
+
 
 @include media-breakpoint-down(sm)
 {

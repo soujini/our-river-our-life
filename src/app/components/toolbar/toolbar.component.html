@@ -31,13 +31,13 @@
             <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light heading" mdbWavesEffect>
               Get Involved<span class="caret"></span></a>
               <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown" role="menu" style="position:relative !important">
-                <a  [routerLink]="'/river-monitoring'" class="dropdown-item" mdbWavesEffect href="#"><mdb-icon fas icon="water" [routerLinkActive]="['router-link-active']"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">River Monitoring</span></a>
-                <div class="divider dropdown-divider"></div>
+                <a *ngIf="this.user" [routerLink]="'/river-monitoring'" class="dropdown-item" mdbWavesEffect href="#"><mdb-icon fas icon="water"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">River Monitoring</span></a>
+                <div *ngIf="this.user" class="divider dropdown-divider"></div>
                 <a [routerLink]="'/flood-watch'" class="dropdown-item" mdbWavesEffect href="#"><mdb-icon fas icon="binoculars"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">Flood Watch</span></a>
                 <div class="divider dropdown-divider"></div>
                 <a [routerLink]="'/flora-fauna'" class="dropdown-item" mdbWavesEffect href="#"><mdb-icon fab icon="pagelines"></mdb-icon><mdb-icon fas icon="frog"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">Flora & Fauna</span></a>
-                <div class="divider dropdown-divider"></div>
-                <a [routerLink]="'/voices-from-the-river'" class="dropdown-item" mdbWavesEffect href="#"><mdb-icon fas icon="fish"></mdb-icon><mdb-icon far icon="comments"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">Voices from the River</span></a>
+                <!-- <div class="divider dropdown-divider"></div>
+                <a [routerLink]="'/voices-from-the-river'" class="dropdown-item" mdbWavesEffect href="#"><mdb-icon fas icon="fish"></mdb-icon><mdb-icon far icon="comments"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">Voices from the River</span></a> -->
               </div>
             </li>
             <div class="divider dropdown-divider"></div>
@@ -52,9 +52,9 @@
             <li class="nav-item" *ngIf="this.name == ''">
               <a (click)="this.isLogin = true" class="nav-link waves-light heading" mdbWavesEffect><span [ngClass]="{'router-link-active': isLogin == true}" [routerLinkActive]="['router-link-active']" class="heading">Login</span></a>
             </li>
-            <div class="divider dropdown-divider"></div>
+            <!-- <div class="divider dropdown-divider" *ngIf="this.name == ''"></div> -->
 
-            <li class="nav-item avatar dropdown  xd-none xd-lg-block" dropdown *ngIf="this.name != ''">
+            <li class="nav-item avatar dropdown  d-none d-lg-block" dropdown *ngIf="this.name != ''">
               <a  dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light heading" mdbWavesEffect>
                 <img [src]="avatarURL" alt="" class="img-fluid rounded-circle z-depth-0" style="vertical-align:middle">
                 <span class="ml-2" style="vertical-align:middle">{{name}}</span><span class="caret"></span>
@@ -65,10 +65,10 @@
                   <img [src]="avatarURL" alt="" class="img-fluid rounded-circle z-depth-0" height="20px" width="20px" style="vertical-align:middle">
                   <span [routerLinkActive]="['router-link-active']" class="heading ml-2">My Account</span></a>
                 <div class="divider dropdown-divider"></div>
-                <a class="dropdown-item" mdbWavesEffect href="#" (click)="logout()"><mdb-icon fas icon="sign-out-alt"></mdb-icon><span  xrouterLinkActive="['router-link-active']" class="heading ml-2">Logout</span></a>
+                <a class="dropdown-item" mdbWavesEffect href="#" (click)="logout()"><mdb-icon fas icon="sign-out-alt"></mdb-icon><span  [routerLinkActive]="['router-link-active']" class="heading ml-2">Logout</span></a>
               </div>
             </li>
-            <li class="nav-item avatar dropdown d-lg-none" dropdown>
+            <li class="nav-item avatar dropdown d-lg-none" dropdown *ngIf="this.name != ''">
               <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light heading" mdbWavesEffect>
                 <img [src]="avatarURL" alt="" class="img-fluid rounded-circle z-depth-0" style="vertical-align:middle">
                 <span class="ml-2" style="vertical-align:middle">{{name}}</span><span class="caret"></span>
@@ -76,7 +76,7 @@
               <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown xdropdown-custom" role="menu" style="position:relative !important">
                 <a [routerLink]="'/my-account'" class="dropdown-item" mdbWavesEffect href="#"><img [src]="avatarURL" alt="" class="img-fluid rounded-circle z-depth-0" height="20px" width="20px" style="vertical-align:middle"><span [routerLinkActive]="['router-link-active']" class="heading ml-2">My Account</span></a>
                 <div class="divider dropdown-divider"></div>
-                <a class="dropdown-item" mdbWavesEffect href="#"><mdb-icon fas icon="sign-out-alt"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">Logout</span></a>
+                <a class="dropdown-item" mdbWavesEffect href="#" (click)="logout()"><mdb-icon fas icon="sign-out-alt"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">Logout</span></a>
               </div>
             </li>
             <div class="divider dropdown-divider"></div>

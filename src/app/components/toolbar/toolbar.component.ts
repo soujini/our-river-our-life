@@ -39,13 +39,18 @@ export class ToolbarComponent implements OnInit {
     this.orolService.userDetailsSubject.subscribe(data => {
       if (JSON.stringify(data) === '{}') {
         this.name = "";
+<<<<<<< HEAD
         this.avatarURL = "../../assets/icons/profile.png";
+=======
+        this.avatarURL="../../assets/icons/profile.png";
+>>>>>>> 53d80eedd8ea00d713f84474401519daa214a1ba
       }
       else {
 
         var user = JSON.parse(localStorage.getItem('User'));
         this.user = user;
 
+<<<<<<< HEAD
         if (user.firstName != undefined) {
           this.name = user.firstName + ' ' + user.lastName;
           this.avatarURL = user.avatarURL;
@@ -54,6 +59,16 @@ export class ToolbarComponent implements OnInit {
           this.name = "+91" + user.phoneNumber;
           this.avatarURL = "../../assets/icons/profile.png";
         }
+=======
+        if(user.firstName != undefined){
+        this.name = user.firstName + ' '+user.lastName;
+        this.avatarURL = user.avatarURL;
+>>>>>>> 53d80eedd8ea00d713f84474401519daa214a1ba
+      }
+      else{
+        this.name = "+91"+user.phoneNumber;
+        this.avatarURL="../../assets/icons/profile.png";
+      }
       }
     });
   }

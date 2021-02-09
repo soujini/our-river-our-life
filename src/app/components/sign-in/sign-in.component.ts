@@ -144,18 +144,21 @@ export class SignInComponent implements AfterViewInit {
       var appVerifier = this.windowRef.recaptchaVerifier;
       this.afAuth.signInWithPhoneNumber("+91"+phone, appVerifier)
       .then(result => {
+        this.windowRef.confirmationResult = result;
+        // alert(result);
+        console.log(result);
         this.orolService.signInPhone(phone).subscribe((res)=>{
           // localStorage.setItem('userId', res['id']);
         });
         this.spinnerService.setSpinner(false);
-        this.windowRef.confirmationResult = result;
+
         this.userName.emit(phone);
         this.isVerifyOTP.emit(true);
         this.isLogin.emit(false);
       })
       .catch( error => {
         this.spinnerService.setSpinner(false);
-        console.log(error)
+        console.log("signInWithPhoneNumber "+error)
         this.errorMessage = error.message;
       });
     }
