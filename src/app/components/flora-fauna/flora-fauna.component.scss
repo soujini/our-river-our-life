@@ -34,17 +34,24 @@
     display: table-cell;
       background-color: #f7f7f7 !important;
 }
-.custom-btn {
-  // margin-top:50px;
-  border: 1px solid #268586 !important;
-  background-color: white;
-  color: #757575;
-  font-size: 0.9rem;
-  border-radius: 5px;
+ .custom-btn {
+  border: 1px solid #1C3764;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 20px;
+  width:189px;
   text-align: center;
-  width: 160px;
-  letter-spacing: 1px;
-    padding: 10px;
+  background-color: #fff ;
+}
+.custom-btn-blue{
+border: 1px solid #1C3764;
+background-color: #1C3764;
+color:white;
+font-size: 12px;
+border-radius: 20px;
+width:189px;
+text-align: center;
 }
 
 .search-results {

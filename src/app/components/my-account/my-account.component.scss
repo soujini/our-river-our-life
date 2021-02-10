@@ -59,7 +59,25 @@ ul{
 //   letter-spacing: 1px;
 //     padding: 10px;
 // }
-
+ .custom-btn {
+  border: 1px solid #1C3764;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 20px;
+  width:189px;
+  text-align: center;
+  background-color: #fff ;
+}
+.custom-btn-blue{
+border: 1px solid #1C3764;
+background-color: #1C3764;
+color:white;
+font-size: 12px;
+border-radius: 20px;
+width:189px;
+text-align: center;
+}
 input[type="file"] {
   display: none;
 }
