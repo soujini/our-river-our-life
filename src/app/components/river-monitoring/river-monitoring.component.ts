@@ -17,7 +17,7 @@ import { SpinnerService } from '../../services/spinner.service';
   styleUrls: ['./river-monitoring.component.scss']
 })
 export class RiverMonitoringComponent implements OnInit {
-  @ViewChild('river_monitoring_stepper', { static: true }) river_monitoring_stepper: MdbStepperComponent
+  @ViewChild('river_monitoring_stepper', { static: false }) river_monitoring_stepper: MdbStepperComponent
   @ViewChild('search', { static: false }) public searchElementRef: ElementRef;
   defaultImageURL: string = "../../../assets/icons/default_image_upload.jpg";
   @ViewChild('basicModal') basicModal: ModalDirective;
@@ -325,7 +325,6 @@ avatarURL:String="../../assets/icons/profile.png";
       this.activityForm.get('generalInformation').get('activityTime').valid &&
       this.activityForm.get('generalInformation').get('testerName').valid &&
       this.activityForm.get('generalInformation').get('location').valid
-
     ) {
       this.river_monitoring_stepper.next();
     }
