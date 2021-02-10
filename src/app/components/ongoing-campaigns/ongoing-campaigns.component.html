@@ -5,8 +5,8 @@
 </div>
 <div class="campaigns" *ngFor="let campaign of campaigns_list; let i=index">
   <p class="campaign-title">{{campaign.name}}</p>
-  <div class="campaign-url pb-2" *ngFor="let c of campaign.campaigns">
-    <u><a class="col-12" [href]="c.url" target="_blank">{{c.url}}</a></u>
+  <div class="campaign-url pb-2 container" *ngFor="let c of campaign.campaigns">
+    <u><a cxlass="col-12" [href]="c.url" target="_blank">{{c.url}}</a></u>
   </div>
   <div class="container mt-4">
     <div class="xrow">
