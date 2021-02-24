@@ -7,7 +7,7 @@
           <div class="items" *ngFor="let f of flora">
             <mdb-card cascade="true" wider="true">
               <mdb-card-body cascade="true" class="text-center">
-                <img *ngIf="f.img" class="ng-thumb" [src]="f.img" alt="Image"
+                <img *ngIf="f.img" class="img-responsive-100 xng-thumb" [src]="f.img" alt="Image"
                   style="-webkit-transform: rotate(360deg);image-orientation: none;
                 -moz-transform: rotate(360deg);-ms-transform: rotate(360deg);-o-transform: rotate(360deg);transform: rotate(360deg);">
                 <div *ngIf="!f.img" class="spinner"></div>
@@ -63,7 +63,7 @@
               <mdb-card-body cascade="true" class="text-center">
                 <img *ngIf="f.img" style="image-orientation: none;"
                   style="-webkit-transform: rotate(360deg);image-orientation: none;
-                -moz-transform: rotate(360deg);-ms-transform: rotate(360deg);-o-transform: rotate(360deg);transform: rotate(360deg);" class="ng-thumb" [src]="f.img"
+                -moz-transform: rotate(360deg);-ms-transform: rotate(360deg);-o-transform: rotate(360deg);transform: rotate(360deg);" class="img-responsive-100 xng-thumb" [src]="f.img"
                   alt="Image">
                 <div *ngIf="!f.img" class="spinner"></div>
                 <mdb-card-text>
@@ -204,7 +204,7 @@
             <div class="d-flex">
               <div class="flexbox1" style="height:176px; width:176px; line-height:54px;">
                 <div class="frame">
-                  <img [src]=imgResultAfterCompress class="img-list" width="176px" height="auto">
+                  <img [src]=imgResultAfterCompress class="img-responsive-176">
                 </div>
               </div>
               <div class="flexbox2 ml-4">

@@ -338,7 +338,14 @@ input[type="file"] {
 //   display: block;
 //   margin: 0 auto;
 // }
-
+.frame {
+    width: 50px !important;
+    height: 50px !important;
+    vertical-align: middle;
+    text-align: center;
+    display: table-cell;
+      background-color: #f7f7f7 !important;
+}
 // .dropdown-menu {
 //   width:100%;
 //   max-height:300px;
