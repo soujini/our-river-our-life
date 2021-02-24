@@ -1,4 +1,6 @@
 export const environment = {
+  OROL_API_URL: 'https://our-river-our-life-api.herokuapp/',
+  REDIRECT_URL: 'http://ourriverourlife.com',
   production: true,
   firebase: {
     apiKey: "AIzaSyALR2ZDTTyZXGBRFeCV0AHd0S-TV_GWYm8",
