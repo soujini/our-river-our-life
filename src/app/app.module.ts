@@ -55,6 +55,7 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 import { FilterDateComponent } from './components/filter-date/filter-date.component';
 
 import { NgOtpInputModule } from  'ng-otp-input';
+import { TickerComponent } from './components/ticker/ticker.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { NgOtpInputModule } from  'ng-otp-input';
     MapsComponent,
     PrivacyPolicyComponent,
     // RiverMonitoringComponent,
-    FilterDateComponent
+    FilterDateComponent,
+    TickerComponent
   ],
   imports: [
     AngularFireAuthModule,

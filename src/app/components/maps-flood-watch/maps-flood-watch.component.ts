@@ -28,13 +28,17 @@ export class MapsFloodWatchComponent implements OnInit {
   }
 
   mapClicked($event: MouseEvent) {
+     // this.zoom=this.zoom+1;
     // this.markers.push({
     //   latitude: $event.coords.lat,
     //   longitude: $event.coords.lng,
     //   draggable: true
     // });
   }
-
+  changeMapZoom(e: any): any {
+   // console.log(e);
+   // this.zoom=e;
+  }
   // markerDragEnd(m: marker, $event: MouseEvent) {
   //   console.log('dragEnd', m, $event);
   // }
@@ -42,6 +46,7 @@ export class MapsFloodWatchComponent implements OnInit {
 
   getFloodAlerts() {
     // var a = this.orolService.getFloodAlerts();
+
     this.orolService.getFloodAlerts().subscribe((data)=>{
       if(data['count']){
         for(var i=0; i<data['rows'].length;i++){

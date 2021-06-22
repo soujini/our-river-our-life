@@ -1,12 +1,12 @@
 <div xclass="container" style="border:1px dashed #B3BDBB;box-shadow: rgba(0, 0, 0, 0.1) 0px 30px 90px;padding:5px">
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="'hybrid'" [disableDefaultUI]="false"
-    [zoomControl]="true" [fitBounds]="true" (mapClick)="mapClicked($event)" height=200>
+  <agm-map [latitude]="lat" [longitude]="lng"  [zoom]="zoom" [mapTypeId]="'hybrid'" [disableDefaultUI]="false"
+    [zoomControl]="true" [fitBounds]="true" (mapClick)="mapClicked($event)" height=200 >
     <agm-marker-cluster
       imagePath="https://raw.githubusercontent.com/googlearchive/js-marker-clusterer/gh-pages/images/m">
       <agm-marker [agmFitBounds]="true" *ngFor="let m of markers; let i = index"
         (markerClick)="clickedMarker(m.label, i)" [latitude]="m.latitude"
         [iconUrl]='{"url": iconUrl,"scaledSize": {"height": 35, "width": 35}}' [longitude]="m.longitude"
-        xlabel="m.label" [markerDraggable]="m.draggable">
+        xlabel="m.label" [markerDraggable]="m.draggable" (zoomChange)="changeMapZoom($event)">
 
         <agm-info-window>
           <mdb-tabset [buttonClass]="'nav md-pills pills-primary'">
