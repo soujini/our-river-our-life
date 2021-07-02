@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -122,7 +123,7 @@ import { TickerComponent } from './components/ticker/ticker.component';
       libraries: ["places"]
     }),
     AgmJsMarkerClustererModule,
-    NgOtpInputModule
+    NgOtpInputModule,
     // MatToolbarModule
   ],
   providers: [AuthService,NgxImageCompressService,MDBSpinningPreloader],

@@ -6,8 +6,8 @@
 <div class="container text-center">
   <div class="gallery">
     <mdb-carousel [interval]="15000" class="carousel slide carousel-fade d-none d-xl-block" [animation]="'fade'" >
-      <mdb-carousel-item *ngFor="let item of slides; let i = index" style="margin-top:-8px">
-        <div *ngFor="let card of item; let cardIndex = index">
+      <mdb-carousel-item *ngFor="let item of slides; let i = index;" style="margin-top:-8px">
+        <div *ngFor="let card of item; let cardIndex = index;">
           <mdb-card>
             <div *ngIf="i % 2 == 0" class="slide-card1">
               <div class="image2-section">
@@ -68,8 +68,8 @@
     </mdb-carousel>
 
     <mdb-carousel [interval]="15000" class="carousel slide carousel-fade d-block d-xl-none" [animation]="'fade'" >
-      <mdb-carousel-item *ngFor="let item of slides; let i = index" style="margin-top:-8px">
-        <div *ngFor="let card of item; let cardIndex = index">
+      <mdb-carousel-item *ngFor="let item of slides; let i = index;" style="margin-top:-8px">
+        <div *ngFor="let card of item; let cardIndex = index;">
           <mdb-card>
             <div class="slide-card1">
               <div class="image2-section">
